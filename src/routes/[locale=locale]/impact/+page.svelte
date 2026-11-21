@@ -132,7 +132,7 @@
 		<h2 id="translations-heading">{s('Translations')}</h2>
 		<ul class="plain-list">
 			{#each translated as project (project.slug)}
-				<li><a href={href(`projects/${project.slug}`)}>{project.name}</a>: {project.languages}</li>
+				<li><a href={href(`projects/${project.slug}`)}>{project.name}</a>: {s(project.languages ?? '')}</li>
 			{/each}
 		</ul>
 		<p class="small">{s('Translation counts are as published by each project.')}</p>

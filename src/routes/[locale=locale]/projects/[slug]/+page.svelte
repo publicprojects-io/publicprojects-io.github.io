@@ -125,7 +125,7 @@
 				{/each}
 				{#if project.languages}
 					<dt>{s('Translations')}</dt>
-					<dd>{project.languages}</dd>
+					<dd>{s(project.languages)}</dd>
 				{/if}
 				{#if safety}
 					<dt>{s('Clinical Safety Officer')}</dt>

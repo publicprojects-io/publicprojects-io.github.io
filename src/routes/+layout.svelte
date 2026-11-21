@@ -5,7 +5,7 @@
 	import { ContainerWithFixedWidth, Footer, Header, InsetText, NavigationMenu, SkipLink } from '@lilydesignsystem/svelte-headless';
 	import type { Snippet } from 'svelte';
 	import SitePickerBar from '#lib/components/SitePickerBar.svelte';
-	import { localePath, parsePath, t } from '#lib/locales.js';
+	import { isTranslated, localePath, parsePath, t } from '#lib/locales.js';
 	import { PAGES } from '#lib/pages.js';
 	import { projectBySlug } from '#lib/data/projects.js';
 	import { ISSUES_URL, PERSON, SITE_NAME, SITE_TAGLINE } from '#lib/site.js';
@@ -54,7 +54,7 @@
 </Header>
 
 <main id="content" tabindex="-1">
-	{#if locale === 'cy-gb'}
+	{#if isTranslated(locale)}
 		<ContainerWithFixedWidth maxWidth="76rem">
 			<InsetText class="draft-notice"><p>{m.draftNotice} <a href={ISSUES_URL}>{m.reportIssue}</a>.</p></InsetText>
 		</ContainerWithFixedWidth>

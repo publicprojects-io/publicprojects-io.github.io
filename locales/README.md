@@ -16,6 +16,10 @@ catalogue that maps each English source string to its translation:
 | Locale | Language | Status |
 | --- | --- | --- |
 | [`cy-gb`](cy-gb/messages.json) | Cymraeg (Welsh, United Kingdom) | Draft: needs review by a first-language Welsh speaker |
+| [`zh-cn`](zh-cn/messages.json) | 中文（中国） (Simplified Chinese, China) | Draft: needs review by a first-language Chinese speaker |
+| [`zh-001`](zh-001/messages.json) | 中文（世界） (Simplified Chinese, World) | Draft: a copy of `zh-cn`; keep the two in step |
+| [`hi-in`](hi-in/messages.json) | हिन्दी (भारत) (Hindi, India) | Draft: needs review by a first-language Hindi speaker |
+| [`hi-001`](hi-001/messages.json) | हिन्दी (विश्व) (Hindi, World) | Draft: a copy of `hi-in`; keep the two in step |
 
 English locales (`en-001`, `en-gb`, `en-us`) need no catalogue: `en-us` spelling is
 derived by rule in `src/lib/locales.ts`.

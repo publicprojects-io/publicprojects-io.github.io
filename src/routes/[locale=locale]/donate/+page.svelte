@@ -29,7 +29,7 @@
 			<ul>
 				<li><strong>{s('Improve the code')}</strong>: {s('fix a bug, add a test, or build a feature in any project.')}</li>
 				<li><strong>{s('Improve the documentation')}</strong>: {s('clarify a guide, add an example, or correct a mistake.')}</li>
-				<li><strong>{s('Translate')}</strong>: {s('translate a guide into your language, or review an existing translation, including the Welsh version of this site.')}</li>
+				<li><strong>{s('Translate')}</strong>: {s('translate a guide into your language, or review an existing translation, including the translations of this site.')}</li>
 				<li><strong>{s('Test and review')}</strong>: {s('try a project in your own setting, check accessibility, or review clinical, security, or data-protection aspects, and report what you find.')}</li>
 				<li><strong>{s('Share')}</strong>: {s('tell colleagues, star a repository, or write about a project you use.')}</li>
 			</ul>

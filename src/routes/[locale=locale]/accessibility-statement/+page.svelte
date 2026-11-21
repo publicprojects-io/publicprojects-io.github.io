@@ -44,7 +44,7 @@
 		<ul>
 			<li><strong>{s('Screen readers')}</strong>: {s('the site has not yet been tested in full with VoiceOver, NVDA, JAWS, or TalkBack.')}</li>
 			<li><strong>{s('Themes')}</strong>: {s('the default light theme is designed for good contrast. Other themes are a reader’s choice, and some may not reach the contrast you need.')}</li>
-			<li><strong>{s('Translations')}</strong>: {s('the Welsh version is a draft translation that a native speaker has not yet reviewed, so some wording may be wrong.')}</li>
+			<li><strong>{s('Translations')}</strong>: {s('the translated versions are drafts that native speakers have not yet reviewed, so some wording may be wrong.')}</li>
 			<li><strong>{s('Other websites')}</strong>: {s('the projects link to repositories and websites we do not control, which may be less accessible.')}</li>
 		</ul>
 
@@ -69,7 +69,7 @@
 		<ul>
 			<li>{s('Automated accessibility checks on every page as part of each build.')}</li>
 			<li>{s('Screen-reader testing of the main pages, with the results published.')}</li>
-			<li>{s('Native-speaker review of the Welsh translation.')}</li>
+			<li>{s('Native-speaker review of the translations.')}</li>
 		</ul>
 
 		<p class="small">

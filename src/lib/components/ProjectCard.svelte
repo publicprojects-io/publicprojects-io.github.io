@@ -37,7 +37,7 @@
 			{@const stat = statValue(ref)}
 			<li><strong>{formatNumber(locale, stat.value, stat.value >= 10000)}</strong> {stat.label === 'stars' ? m.stars : m.downloads}</li>
 		{/each}
-		{#if project.languages}<li><strong>{project.languages}</strong></li>{/if}
+		{#if project.languages}<li><strong>{s(project.languages)}</strong></li>{/if}
 	</ul>
 	{#if share}
 		<div class="project-card-share">

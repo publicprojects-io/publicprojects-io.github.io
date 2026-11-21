@@ -40,7 +40,7 @@ const BASE = {
 		smallest: 'Smallest'
 	},
 	draftNotice:
-		'This Welsh translation is a draft that a native speaker has not yet reviewed. Some wording may be wrong. Please report errors on the issue tracker.',
+		'This translation is a draft that a native speaker has not yet reviewed. Some wording may be wrong. Please report errors on the issue tracker.',
 	reportIssue: 'Report an error',
 	activeTheme: 'Active theme',
 	activeLanguage: 'Active language',
