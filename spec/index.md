@@ -176,8 +176,8 @@ then the footer.
 3. Why public open source matters.
 4. The three areas.
 5. The digital health teams callout.
-6. All projects: every project card, with its area. Each card has a Lily Share button
-   (SharePicker, with a visible "Share" label) in its lower-left corner that shares
+6. All projects: every project card, with its area. Each card has a Lily SharePicker,
+   with its default icon button as in the header, in its lower-left corner. It shares
    that project's page, not the home page, with the same destinations as the header.
 
 ### Project pages
@@ -187,7 +187,8 @@ Each project page has a key-facts list, from dated, sourced data:
 - **Status** (see `project-status`), computed by `statusOf()`: archived repository,
   then the project's own override (demonstration or pre-release), then a package
   version below 1.0.0 (pre-release), then no commit for over a year (maintenance),
-  else active. Cards show the status too.
+  else active. Cards show the status too, except active and pre-release, which are
+  common enough to be noise on a card.
 - **Current version** and release date, for crates and gems.
 - **Licence**: from the registry for packages; otherwise as the project's licence
   file or README states it, recorded in `projects.ts`. If the repository states no
@@ -293,7 +294,8 @@ CI runs the same three commands before deploying.
 ## 10. Acceptance criteria
 
 1. The home page shows a Lily Hero, headline numbers dated from `stats.json`, the
-   three areas, and then every project card, each with a lower-left Share button.
+   three areas, and then every project card, each with a lower-left Lily SharePicker, and a status pill only when the status
+   is demonstration, maintenance, or archived.
 2. The header has a Lily PickerBar with search, all Lily default themes (sorted, UK
    and US last), locales en-001, en-gb, en-us, cy-gb, zh-cn, zh-001, hi-in, and hi-001, text size, and the six share
    options.

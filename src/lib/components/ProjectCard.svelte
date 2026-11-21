@@ -19,20 +19,22 @@
 		locale: Locale;
 		headingLevel?: 2 | 3 | 4;
 		showArea?: boolean;
-		/** Show a Share button (lower left) that shares this project's page. */
+		/** Show a Lily SharePicker (lower left) that shares this project's page. */
 		share?: boolean;
 	} = $props();
 	const s = (text: string) => t(locale, text);
 	const m = $derived(ui(locale));
 	const path = $derived(`${base}${localePath(locale, `projects/${project.slug}`)}`);
 	const status = $derived(statusOf(project));
+	// Cards leave out the common statuses; the project page still shows them in its key facts.
+	const QUIET_STATUSES: string[] = ['active', 'pre-release'];
 </script>
 
 <Card class="project-card" heading={project.name} {headingLevel} href={path} wholeCardLink>
 	{#if showArea}<p class="project-card-area">{s(AREAS[project.area].name)}</p>{/if}
 	<p>{s(project.summary)}</p>
 	<ul class="project-card-facts">
-		<li class="project-status" data-status={status}>{s(STATUS_NAMES[status])}</li>
+		{#if !QUIET_STATUSES.includes(status)}<li class="project-status" data-status={status}>{s(STATUS_NAMES[status])}</li>{/if}
 		{#each project.stats ?? [] as ref (ref.key)}
 			{@const stat = statValue(ref)}
 			<li><strong>{formatNumber(locale, stat.value, stat.value >= 10000)}</strong> {stat.label === 'stars' ? m.stars : m.downloads}</li>
@@ -50,12 +52,7 @@
 				copyLabel={m.share.copy}
 				copiedLabel={m.share.copied}
 				copyFailedLabel={m.share.copyFailed}
-			>
-				{#snippet children()}
-					<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10V2M5 5l3-3 3 3M3 9v4h10V9" /></svg>
-					<span>{m.share.button}</span>
-				{/snippet}
-			</SharePicker>
+			/>
 		</div>
 	{/if}
 </Card>

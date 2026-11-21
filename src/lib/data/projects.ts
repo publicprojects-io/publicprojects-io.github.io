@@ -413,6 +413,7 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'emergency-care-system',
 		repo: 'emergency-care-system/emergency-care-system',
+		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		status: 'demonstration',
 		name: 'Emergency Care System',
 		area: 'health',

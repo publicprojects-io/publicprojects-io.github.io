@@ -417,31 +417,19 @@ main:focus {
 	font-weight: 600;
 }
 
-.project-status[data-status='pre-release'],
 .project-status[data-status='demonstration'] {
 	color: var(--color-warning-content, inherit);
 	background: var(--color-warning, transparent);
 	border-color: transparent;
 }
 
-/* Lower-left Share button: above the whole-card link overlay, so it can be
+/* Lower-left SharePicker: above the whole-card link overlay, so it can be
    used without opening the project. */
 .project-card-share {
 	position: relative;
 	z-index: 1;
 	align-self: flex-start;
 	margin-block-start: 0.75rem;
-}
-
-.project-card-share .share-picker-button {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.35rem;
-	width: auto;
-	padding: 0.3rem 0.7rem;
-	font: inherit;
-	font-size: 0.875rem;
-	font-weight: 600;
 }
 
 .area-card {
