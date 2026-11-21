@@ -1,0 +1,230 @@
+# Public Projects website: specification
+
+This is the source of truth for the Public Projects website. Where the code and this
+specification disagree, the specification wins: fix the code, or change the
+specification on purpose and bring the code into line in the same commit.
+
+Related specifications:
+
+- [`lily-design-system-svelte-with-picker-bar/index.md`](lily-design-system-svelte-with-picker-bar/index.md): Lily Design System packages and PickerBar rules.
+
+## 1. Goal
+
+A user-friendly website for Joel Parker Henderson's public open-source projects:
+open source for the public good.
+
+### Subgoals
+
+1. **Reach more people with the software.** Make every project easy to find (search
+   engines, AI agents, site search), easy to understand in one sentence, and easy to
+   share.
+2. **Support evidence of global recognition and impact**, such as for a UK Global
+   Talent Visa (Digital Technology) application. The site gives assessors and
+   recommenders one public, checkable place for dated statistics, translations,
+   citations, and leadership. The site itself never mentions the visa, and holds no
+   private information (salary, recommender names, contact details).
+3. **Help NHS Wales DHCW colleagues** discover projects relevant to their work, use
+   them safely, and get involved.
+
+### Emphasis
+
+- **The global importance of public open-source projects**: solve once and share
+  everywhere, public money and public code, reach in many languages, safer software.
+- **Public value, and health care and medical value**: what each project does for
+  patients, carers, citizens, and public services.
+- **Software engineering global leadership**: widely adopted practices (such as
+  Architecture Decision Record), measured adoption, and external citation.
+
+## 2. Audiences
+
+| Audience | Needs | Primary pages |
+| --- | --- | --- |
+| Developers and health-tech teams worldwide | Find a library or guide, judge its quality, start using it | Projects, Health care, Engineering, Search |
+| Public-sector leaders | Understand public value; find guides and metrics | Public value, Home |
+| NHS Wales and DHCW colleagues | See what fits their work; know it is safe and independent | NHS Wales |
+| Assessors, recommenders, journalists | Verify impact and recognition quickly | Impact, About |
+
+## 3. Implementation
+
+- **SvelteKit 3** with Svelte 5 runes, TypeScript, and Vite 8. Configuration lives in
+  `vite.config.ts` (SvelteKit 3 has no `svelte.config.js`). Imports use `#lib/…` with
+  file extensions, per SvelteKit 3.
+- **Static site**: `@sveltejs/adapter-static`, every route prerendered,
+  `trailingSlash: 'always'`, `404.html` fallback. No server and no runtime network
+  calls.
+- **GitHub Pages**, organisation root site: this repository is
+  `publicprojects-io/publicprojects-io.github.io`, served at the custom domain
+  **https://publicprojects.io** (`static/CNAME`), like `lilydesignsystem.com`.
+  `.github/workflows/deploy.yml` installs, checks, tests, builds, and deploys on push
+  to `main`. The site lives at the domain root, so there is no base path.
+  `BASE_PATH` (injected as `__BASE_PATH__`, read via `src/lib/base.ts`, because
+  SvelteKit 3 removed `base` from `$app/paths`) exists only to preview a build under
+  a sub-path. `SITE_ORIGIN` in `src/lib/site.ts` is `https://publicprojects.io`.
+- **pnpm** only (pinned in `packageManager`). Node 26 or later.
+- **Lily Design System** as npm dependencies, not vendored:
+  `svelte-headless`, `svelte-picker-bar`, `svelte-theme-picker`,
+  `svelte-locale-picker`, `svelte-text-size-picker`, `svelte-share-picker`,
+  `svelte-search-picker`, and `themes`.
+
+### Lily components
+
+- **Header**: brand, `PickerBar`, and `NavigationMenu`. Also `SkipLink`, `Footer`,
+  `ContainerWithFixedWidth`, `Card`, `Tag`, `TagGroup`, `InsetText`, and `ActionLink`.
+- **Hero**: the home page uses Lily `Hero` and `HeroHeadline`, with a decorative SVG
+  in the `media` snippet. It is drawn in `currentColor`, so it suits every theme.
+- **PickerBar** (in this order, fixed by Lily): search, theme, locale, text size, share.
+  - **Search**: the search picker sends `/<locale>/search/?<query>`.
+  - **Theme**: every Lily default theme (`DEFAULT_THEMES`), with no custom themes. They
+    are sorted alphabetically, with the United Kingdom and United States themes at
+    the end (`src/lib/themes.ts`, tested). The default is `light`. Choices persist in
+    `localStorage` and a cookie, and a pre-paint script in `app.html` avoids a flash.
+    Theme CSS is copied from `@lilydesignsystem/themes` into `static/themes/` at
+    build time (generated, git-ignored).
+  - **Locale**: `en-001`, `en-gb`, and `en-us`. Choosing one navigates to the same
+    page in that locale.
+  - **Text size**: Lily default sizes.
+  - **Share**: Copy Link, Email Link, LinkedIn, Reddit, Bluesky, and Mastodon (through
+    mastodonshare.com).
+- **Styling**: `src/app.css` holds layout only, using the active theme's tokens
+  (`--color-*`, `--lily-*`). Never hard-code colours that would break a theme.
+
+## 4. Locales
+
+| Locale | Path prefix | Spelling | `<html lang>` |
+| --- | --- | --- | --- |
+| `en-001` English (World), the default | none (site root) | international / British | `en-001` |
+| `en-gb` English (United Kingdom) | `/en-gb/` | British | `en-GB` |
+| `en-us` English (United States) | `/en-us/` | American | `en-US` |
+
+- Content is written once, in international / British spelling. `spell(locale, text)`
+  in `src/lib/locales.ts` derives American spelling for `en-us` from an explicit,
+  tested word list. Add words there; never fork content per locale.
+- Proper names keep their own spelling ("World Health Organization", "Digital Health
+  and Care Wales").
+- Dates and numbers use `Intl` with the locale's tag, such as "21 November 2026" and
+  "November 21, 2026".
+- Every page carries `hreflang` alternates for all three locales plus `x-default`
+  (en-001). The footer links to the current page in each locale, which also lets the
+  prerender crawler find every locale.
+
+## 5. Pages
+
+`src/lib/pages.ts` is the single list of top-level pages. Navigation, the sitemap,
+`llms.txt`, and search all read from it. Each page exists in all three locales.
+
+| Slug | Purpose |
+| --- | --- |
+| `` (home) | Hero; headline numbers; why public open source matters; the three areas; featured projects; NHS Wales callout; who builds this |
+| `health` | Health care and medical projects; the standards they serve; a clinical safety notice; trademark notices |
+| `public-value` | Public value projects; translation and accessibility as public value |
+| `engineering` | Software engineering leadership; adoption and citation |
+| `projects` | Every project, grouped by area |
+| `projects/<slug>` | One page per project: summary, links, about, public value, dated facts, topics, related projects |
+| `nhs-wales` | For NHS Wales and DHCW colleagues: an independence and clinical safety notice, a table mapping needs to projects, why open source fits (GOV.UK Service Standard point 12, Technology Code of Practice), and how to get involved |
+| `impact` | Every statistic with its date and source link; recognition; translations; method |
+| `about` | About the site and the author; principles; independence |
+| `search` | Client-side search results (not in nav, sitemap, or llms.txt) |
+
+Machine-readable routes: `sitemap.xml` (all locales, with `xhtml:link` alternates),
+`llms.txt`, and `robots.txt`. Pages include schema.org JSON-LD: `WebSite` on home,
+`SoftwareSourceCode` or `CreativeWork` on projects, and `ProfilePage` on about.
+
+## 6. Content
+
+### The project catalogue
+
+`src/lib/data/projects.ts` is the single source for every project. Each project has a
+`slug`, `name`, `area` (`health`, `public-value`, or `engineering`), a one-sentence
+`summary`, a `description`, a `value` (why it matters to the public), `links`,
+optional `stats` (pointers into `stats.json`), an optional `languages` (a translation
+count the project itself publishes), `tags`, and `featured`.
+
+### Content integrity (strict)
+
+- **Never fabricate** numbers, citations, endorsements, users, or affiliations.
+- Facts come only from public, checkable sources: the project's own site, its
+  repository, its registry page (crates.io, RubyGems), the author's ORCID record, or
+  the author's public CV.
+- **Numbers come only from `src/lib/data/stats.json`**, which carries an `asOf` date.
+  Refresh it with `pnpm stats` (`scripts/refresh-stats.mjs`), review the diff, and
+  commit. Headline totals are derived from `stats.json` in code, never typed by hand.
+- Translation counts ("60+ languages") only where the project publishes them.
+- Recognition only with a public link. Currently: the GitHub Blog article "Why write
+  ADRs" links to the ADR repository. Add others, such as analyst citations or
+  talks, only with a public URL.
+- **Independence**: the projects are personal, built in the author's own time. They
+  are not products of, or endorsed by, NHS Wales, DHCW, or any employer. The footer,
+  NHS Wales page, and About page all say so.
+- **Clinical safety**: health projects are building blocks, not certified medical
+  devices. Health pages state that live clinical use needs the adopting
+  organisation's own clinical safety assessment (DCB0129 and DCB0160).
+  Demonstration projects say they are not for medical use.
+- **Trademarks**: HL7®, FHIR®, SNOMED CT®, and openEHR® notices on the health page.
+- **Pronouns**: refer to the author by name ("Joel"), not by pronoun.
+
+### Writing style
+
+- Plain, warm, confident English. Short sentences. Lead with what it does for people.
+- Write the public value of each project, not only its features.
+- No hype words ("revolutionary", "world-class"). Let dated numbers speak.
+
+## 7. Search
+
+`src/lib/search.ts` builds an index from `PAGES` and `PROJECTS` (name, summary,
+description, public value, area, and tags), with each locale's spelling. Matching is
+case-insensitive and requires every query word; title matches rank first. The search
+page reads the query from `location.search` after hydration, because the page is
+prerendered once.
+
+## 8. Accessibility
+
+- WCAG 2.2 AA. A skip link, landmarks (header, nav, main, footer), one `h1` per page,
+  and logical heading order.
+- Every Lily accessible name comes from `src/lib/ui.ts`.
+- Visually hidden live regions announce the active theme and language.
+- Tables have header cells with `scope`. Whole-card links use a single real link.
+- Colour comes from the active theme, so every Lily theme stays legible. Motion
+  respects `prefers-reduced-motion`.
+
+## 9. Quality bar
+
+Before a change is done:
+
+```sh
+pnpm run check   # svelte-kit sync + svelte-check: 0 errors, 0 warnings
+pnpm test        # vitest: spelling, paths, search, theme order
+pnpm run build   # prerenders every page in every locale; fails on broken links or missing ids
+```
+
+CI runs the same three commands before deploying.
+
+## 10. Acceptance criteria
+
+1. The home page shows a Lily Hero, headline numbers dated from `stats.json`, the
+   three areas, and featured projects.
+2. The header has a Lily PickerBar with search, all Lily default themes (sorted, UK
+   and US last), locales en-001, en-gb, and en-us, text size, and the six share
+   options.
+3. Choosing a locale navigates to the same page in that locale; en-us pages use
+   American spelling.
+4. Searching from the picker lands on the search page with matching results.
+5. Every project has a page in all three locales, with a source link and date for
+   every number.
+6. The NHS Wales page maps needs to projects and states independence and clinical
+   safety.
+7. `sitemap.xml`, `llms.txt`, `robots.txt`, canonical URLs, and `hreflang` use `https://publicprojects.io`.
+8. The site deploys to GitHub Pages from `main` and serves at https://publicprojects.io over HTTPS.
+
+## 11. Open items
+
+- Domain setup for `publicprojects.io`. At the DNS provider: apex `A` records
+  `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (and
+  `AAAA` `2606:50c0:8000::153` through `8003::153`), plus `www` `CNAME`
+  `publicprojects-io.github.io`. On GitHub: verify the domain for the organisation,
+  set Pages to deploy from GitHub Actions with custom domain `publicprojects.io`, and
+  enforce HTTPS.
+- Add recognition that has a public URL: analyst citations, talks, hackathon judging,
+  and media coverage.
+- Consider a Welsh (Cymraeg) locale for NHS Wales audiences, which needs real
+  translation, not derived spelling.
+- Add an Open Graph image.

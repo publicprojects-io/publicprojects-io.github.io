@@ -1,0 +1,96 @@
+<script lang="ts">
+	import { base } from '#lib/base.js';
+	import { ContainerWithFixedWidth, Tag, TagGroup } from '@lilydesignsystem/svelte-headless';
+	import ProjectGrid from '#lib/components/ProjectGrid.svelte';
+	import Seo from '#lib/components/Seo.svelte';
+	import { AREAS, PROJECTS, STATS_AS_OF, statSource, statValue } from '#lib/data/projects.js';
+	import { formatDate, formatNumber, localePath, spell } from '#lib/locales.js';
+	import { PERSON } from '#lib/site.js';
+	import { ui } from '#lib/ui.js';
+
+	let { data } = $props();
+	const locale = $derived(data.locale);
+	const project = $derived(data.project);
+	const m = $derived(ui(locale));
+	const s = (text: string) => spell(locale, text);
+	const href = (to: string) => `${base}${localePath(locale, to)}`;
+	const area = $derived(AREAS[project.area]);
+	const related = $derived(PROJECTS.filter((p) => p.area === project.area && p.slug !== project.slug).slice(0, 3));
+	const isCode = $derived(project.links.some((l) => /^https:\/\/(crates\.io|rubygems\.org|github\.com)\//.test(l.href)));
+</script>
+
+<Seo
+	{locale}
+	slug={`projects/${project.slug}`}
+	title={project.name}
+	description={s(project.summary)}
+	jsonLd={{
+		'@context': 'https://schema.org',
+		'@type': isCode ? 'SoftwareSourceCode' : 'CreativeWork',
+		name: project.name,
+		description: project.summary,
+		url: project.links[0]?.href,
+		keywords: project.tags.join(', '),
+		isAccessibleForFree: true,
+		author: { '@type': 'Person', name: PERSON.name, url: PERSON.website }
+	}}
+/>
+
+<ContainerWithFixedWidth maxWidth="76rem">
+	<nav class="breadcrumb" aria-label={m.breadcrumb}>
+		<ol>
+			<li><a href={href('')}>{m.home}</a></li>
+			<li><a href={href(area.slug)}>{s(area.name)}</a></li>
+			<li aria-current="page">{project.name}</li>
+		</ol>
+	</nav>
+	<header class="page-header" data-area={project.area}>
+		<h1>{project.name}</h1>
+		<p class="lead">{s(project.summary)}</p>
+		<ul class="link-buttons" role="list">
+			{#each project.links as link (link.href)}
+				<li><a class="button" href={link.href} rel="external">{s(link.label)}</a></li>
+			{/each}
+		</ul>
+	</header>
+
+	<div class="detail-grid">
+		<div class="prose">
+			<h2>{s('About')}</h2>
+			<p>{s(project.description)}</p>
+			<h2>{s('Public value')}</h2>
+			<p>{s(project.value)}</p>
+		</div>
+		<aside class="detail-facts" aria-labelledby="facts-heading">
+			<h2 id="facts-heading">{s('Facts')}</h2>
+			<dl>
+				<dt>{s('Area')}</dt>
+				<dd><a href={href(area.slug)}>{s(area.name)}</a></dd>
+				{#each project.stats ?? [] as ref (ref.key)}
+					{@const stat = statValue(ref)}
+					<dt>{stat.label === 'stars' ? m.stars : s('Downloads')}</dt>
+					<dd>
+						{formatNumber(locale, stat.value)}
+						<span class="small">({m.asOf} {formatDate(locale, STATS_AS_OF)}, <a href={statSource(ref)}>{m.source.toLowerCase()}</a>)</span>
+					</dd>
+				{/each}
+				{#if project.languages}
+					<dt>{s('Translations')}</dt>
+					<dd>{project.languages}</dd>
+				{/if}
+				<dt>{s('Licence')}</dt>
+				<dd>{s('Free and open source; see the project for its licence.')}</dd>
+			</dl>
+			<TagGroup label={s('Topics')}>
+				{#each project.tags as tag (tag)}<Tag label={tag}>{tag}</Tag>{/each}
+			</TagGroup>
+		</aside>
+	</div>
+
+	{#if related.length}
+		<section class="section" aria-labelledby="related-heading">
+			<h2 id="related-heading">{s('Related projects')}</h2>
+			<ProjectGrid projects={related} {locale} />
+		</section>
+	{/if}
+</ContainerWithFixedWidth>

@@ -1,0 +1,45 @@
+{
+	"name": "publicprojects-io.github.io",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"description": "Public Projects: open source for the public good. A prerendered SvelteKit site on GitHub Pages.",
+	"license": "MIT OR Apache-2.0 OR GPL-2.0-only OR GPL-3.0-only",
+	"packageManager": "pnpm@11.21.0",
+	"engines": {
+		"node": ">=26"
+	},
+	"scripts": {
+		"themes": "node scripts/copy-themes.mjs",
+		"dev": "node scripts/copy-themes.mjs && vite dev",
+		"build": "node scripts/copy-themes.mjs && vite build",
+		"preview": "vite preview",
+		"stats": "node scripts/refresh-stats.mjs",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"test": "vitest run"
+	},
+	"dependencies": {
+		"@lilydesignsystem/svelte-headless": "^0.12.0",
+		"@lilydesignsystem/svelte-locale-picker": "^0.3.3",
+		"@lilydesignsystem/svelte-picker-bar": "^0.8.0",
+		"@lilydesignsystem/svelte-search-picker": "^0.2.2",
+		"@lilydesignsystem/svelte-share-picker": "^0.3.2",
+		"@lilydesignsystem/svelte-text-size-picker": "^0.3.2",
+		"@lilydesignsystem/svelte-theme-picker": "^0.4.0",
+		"@lilydesignsystem/themes": "^0.7.0"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-static": "^4.0.1",
+		"@sveltejs/kit": "^3.4.0",
+		"@sveltejs/vite-plugin-svelte": "^7.3.1",
+		"svelte": "^5.59.1",
+		"svelte-check": "^4.7.8",
+		"typescript": "^6.0.3",
+		"vite": "^8.3.8",
+		"vitest": "^5.1.0"
+	},
+	"imports": {
+		"#lib/*": "./src/lib/*"
+	}
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="%lang%">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light dark" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.svg" type="image/svg+xml" />
+		<!-- The theme picker swaps this stylesheet. Default kept in sync with DEFAULT_THEME in src/lib/site.ts. -->
+		<link rel="stylesheet" id="lily-theme" data-lily-theme-picker="theme" href="%sveltekit.assets%/themes/light.css" />
+		<script>
+			// Apply stored theme and text size before first paint, so returning
+			// visitors never see a flash of the default. Keys match src/lib/site.ts.
+			(function () {
+				try {
+					var theme = localStorage.getItem('publicprojects-theme');
+					if (theme && /^[a-z0-9-]+$/.test(theme)) {
+						var link = document.getElementById('lily-theme');
+						link.href = link.href.replace(/[^/]+\.css$/, theme + '.css');
+						document.documentElement.dataset.theme = theme;
+					}
+					var size = localStorage.getItem('publicprojects-text-size');
+					if (size && /^[a-z]+$/.test(size)) document.documentElement.dataset.textSize = size;
+				} catch (e) {}
+			})();
+		</script>
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
