@@ -181,14 +181,6 @@ main:focus {
 	line-height: 1.1;
 }
 
-.hero-kicker {
-	margin: 0;
-	font-weight: 700;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	opacity: 0.85;
-}
-
 .hero-lead {
 	max-width: 40rem;
 	font-size: 1.25rem;
@@ -417,6 +409,41 @@ main:focus {
 	font-size: 0.9rem;
 }
 
+.project-status {
+	padding: 0 0.45rem;
+	border: 1px solid currentColor;
+	border-radius: 999px;
+	font-size: 0.8rem;
+	font-weight: 600;
+}
+
+.project-status[data-status='pre-release'],
+.project-status[data-status='demonstration'] {
+	color: var(--color-warning-content, inherit);
+	background: var(--color-warning, transparent);
+	border-color: transparent;
+}
+
+/* Lower-left Share button: above the whole-card link overlay, so it can be
+   used without opening the project. */
+.project-card-share {
+	position: relative;
+	z-index: 1;
+	align-self: flex-start;
+	margin-block-start: 0.75rem;
+}
+
+.project-card-share .share-picker-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	width: auto;
+	padding: 0.3rem 0.7rem;
+	font: inherit;
+	font-size: 0.875rem;
+	font-weight: 600;
+}
+
 .area-card {
 	border-block-start-width: 6px !important;
 	border-block-start-color: var(--color-primary) !important;
@@ -642,4 +669,26 @@ main:focus {
 .language-chooser a:hover,
 .language-chooser a:focus-visible {
 	background: var(--color-base-200);
+}
+
+/* ── Code examples ──────────────────────────────────────────────────── */
+
+.code {
+	overflow-x: auto;
+	padding: var(--lily-space-md, 1rem);
+	border: 1px solid var(--color-base-300);
+	border-radius: var(--lily-radius-md, 0.5rem);
+	background: var(--color-base-200);
+	font-family: var(--lily-font-mono, ui-monospace, monospace);
+	font-size: 0.875rem;
+	line-height: 1.5;
+}
+
+.code-output {
+	border-style: dashed;
+}
+
+.licence {
+	font-size: 0.85rem;
+	overflow-wrap: anywhere;
 }

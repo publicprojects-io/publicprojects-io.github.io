@@ -61,6 +61,19 @@ export const PAGES: PageInfo[] = [
 	},
 	{ slug: 'search', name: 'Search', description: 'Search Public Projects.', nav: false },
 	{
+		slug: 'project-status',
+		name: 'Project status',
+		description: 'What each project status means: active, pre-release, demonstration, maintenance, and archived, and how each is decided.',
+		nav: false
+	},
+	{
+		slug: 'security',
+		name: 'Security',
+		description: 'How to report a security vulnerability in Public Projects privately, and what happens next.',
+		nav: false,
+		footer: true
+	},
+	{
 		slug: 'accessibility-statement',
 		name: 'Accessibility statement',
 		description: 'How accessible the Public Projects website is, what we know falls short, and how to report a problem.',

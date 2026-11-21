@@ -5,7 +5,7 @@
 	import { ContainerWithFixedWidth, Footer, Header, InsetText, NavigationMenu, SkipLink } from '@lilydesignsystem/svelte-headless';
 	import type { Snippet } from 'svelte';
 	import SitePickerBar from '#lib/components/SitePickerBar.svelte';
-	import { LOCALES, LOCALE_LABELS, LOCALE_TAGS, localePath, parsePath, t } from '#lib/locales.js';
+	import { localePath, parsePath, t } from '#lib/locales.js';
 	import { PAGES } from '#lib/pages.js';
 	import { projectBySlug } from '#lib/data/projects.js';
 	import { ISSUES_URL, PERSON, SITE_NAME, SITE_TAGLINE } from '#lib/site.js';
@@ -73,17 +73,6 @@
 				<ul>
 					{#each PAGES.filter((p) => p.nav) as item (item.slug)}
 						<li><a href={href(item.slug)}>{s(item.name)}</a></li>
-					{/each}
-				</ul>
-			</nav>
-			<nav aria-label={m.languages}>
-				<ul>
-					{#each LOCALES as l (l)}
-						<li>
-							<a href={`${base}${localePath(l, slug)}`} hreflang={LOCALE_TAGS[l]} aria-current={l === locale ? 'true' : undefined}>
-								{LOCALE_LABELS[l]}
-							</a>
-						</li>
 					{/each}
 				</ul>
 			</nav>

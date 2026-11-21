@@ -26,7 +26,9 @@ const BASE = {
 		linkedin: 'Share on LinkedIn',
 		reddit: 'Share on Reddit',
 		bluesky: 'Share on Bluesky',
-		mastodon: 'Share on Mastodon'
+		mastodon: 'Share on Mastodon',
+		button: 'Share',
+		project: 'Share this project'
 	},
 	sizes: {
 		largest: 'Largest',

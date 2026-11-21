@@ -57,7 +57,7 @@
 			{s('You can report a problem or ask a question through')} <a href={ISSUES_URL}>{s('the public issue tracker')}</a>.
 			{s('Anything you post there is public, and is held by GitHub under its own terms. We use what you tell us only to answer you and to improve the project.')}
 		</p>
-		<p>{s('If you find a security problem, please do not post the details publicly. Open an issue asking for a private contact, and we will reply.')}</p>
+		<p>{s('If you find a security problem, please report it privately, as the')} <a href={href('security')}>{s('security policy')}</a> {s('explains.')}</p>
 
 		<h2>{s('Your rights')}</h2>
 		<p>

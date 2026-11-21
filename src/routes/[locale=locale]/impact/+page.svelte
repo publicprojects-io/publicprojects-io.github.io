@@ -54,6 +54,11 @@
 				{s('links to the')} <a href={href('projects/architecture-decision-record')}>{s('Architecture Decision Record')}</a> {s('project as a resource.')}
 			</li>
 			<li>
+				{s('The Open Health Technology Foundation lists')}
+				<a href={href('projects/nhs-number')}>NHS Number</a>
+				{s('as a')} <a href="https://openhealthtechnology.org/projects/candidates/#nhs-number-for-rust">{s('candidate project')}</a>{s(', tested against the same shared NHS Number test vectors as its Python library.')}
+			</li>
+			<li>
 				{s('Public Projects works are listed on the author’s')} <a href={PERSON.orcid}>{s('ORCID record')}</a>
 				{s('(0009-0000-4681-282X), the persistent identifier used by researchers and publishers worldwide.')}
 			</li>

@@ -4,25 +4,17 @@
 	import { goto } from '$app/navigation';
 	import { base } from '#lib/base.js';
 	import PickerBar from '@lilydesignsystem/svelte-picker-bar';
-	import type { ShareTarget } from '@lilydesignsystem/svelte-share-picker';
 	import { themeName } from '@lilydesignsystem/svelte-theme-picker';
 	import { LOCALES, LOCALE_LABELS, localePath, type Locale } from '#lib/locales.js';
 	import { DEFAULT_THEME, SITE_NAME, STORAGE_KEYS } from '#lib/site.js';
 	import { THEMES } from '#lib/themes.js';
 	import { ui } from '#lib/ui.js';
+	import { shareTargets } from '#lib/share.js';
 
 	let { locale, slug, title }: { locale: Locale; slug: string; title: string } = $props();
 	const m = $derived(ui(locale));
 
-	const enc = encodeURIComponent;
-	const shareTargets: ShareTarget[] = $derived([
-		{ id: 'email', label: m.share.email, href: (url, t) => `mailto:?subject=${enc(t)}&body=${enc(url)}`, newTab: false },
-		{ id: 'linkedin', label: m.share.linkedin, href: (url) => `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}` },
-		{ id: 'reddit', label: m.share.reddit, href: (url, t) => `https://www.reddit.com/submit?url=${enc(url)}&title=${enc(t)}` },
-		{ id: 'bluesky', label: m.share.bluesky, href: (url, t) => `https://bsky.app/intent/compose?text=${enc(`${t} ${url}`)}` },
-		// Mastodon has no single instance; mastodonshare.com asks for the reader's own.
-		{ id: 'mastodon', label: m.share.mastodon, href: (url, t) => `https://mastodonshare.com/?text=${enc(t)}&url=${enc(url)}` }
-	]);
+	const targets = $derived(shareTargets(m));
 
 	let themeValue = $state(DEFAULT_THEME);
 
@@ -50,7 +42,7 @@
 	locales={[...LOCALES]}
 	localeProps={{ value: locale, localeLabels: LOCALE_LABELS, onChange: changeLocale }}
 	textSizeProps={{ storageKey: STORAGE_KEYS.textSize, sizeLabels: m.sizes }}
-	{shareTargets}
+	shareTargets={targets}
 	shareProps={{
 		title: `${title} · ${SITE_NAME}`,
 		copyLabel: m.share.copy,

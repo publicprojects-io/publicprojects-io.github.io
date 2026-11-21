@@ -3,7 +3,7 @@
 	"github": {
 		"architecture-decision-record/architecture-decision-record": {
 			"stars": 17500,
-			"forks": 2825
+			"forks": 2824
 		},
 		"gitalias/gitalias": {
 			"stars": 2703,
@@ -74,7 +74,7 @@
 		"health-economics": 85
 	},
 	"gems": {
-		"sixarm_ruby_unaccent": 93534624
+		"sixarm_ruby_unaccent": 93535411
 	},
 	"owners": {
 		"joelparkerhenderson": {
@@ -88,6 +88,247 @@
 		"sixarm": {
 			"repos": 648,
 			"stars": 2941
+		}
+	},
+	"repos": {
+		"international-patient-summary/international-patient-summary": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"fhir-rust/fhir-rust": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"hl7-rust/hl7-rust": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"er7-rust/er7-rust": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"snomed-rust/snomed-rust": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"openehr-rust/openehr-rust": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"joelparkerhenderson/nhs-number-using-rust": {
+			"pushedAt": "2026-10-28",
+			"archived": false
+		},
+		"schematron-rust/schematron-rust": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"who-fic-rust/who-fic-rust": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"formexamples/form-examples": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"publicprojects-io/digital-health-rust-crate": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"healthprojects/health-economics-rust-crate": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"electronic-patient-record/electronic-patient-record": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"patient-administration-system/patient-administration-system": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"emergency-care-system/emergency-care-system": {
+			"pushedAt": "2026-10-06",
+			"archived": false
+		},
+		"joelparkerhenderson/care-plan": {
+			"pushedAt": "2026-03-26",
+			"archived": false
+		},
+		"boldcontacts/boldcontacts-mobile-app-for-apple": {
+			"pushedAt": "2025-02-26",
+			"archived": false
+		},
+		"publicprojects-io/public-value-rust-crate": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"coordinated-vulnerability-disclosure/coordinated-vulnerability-disclosure": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"lilydesignsystem/lily-design-system": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"service-management-guide/service-management-guide": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"agile-itil-guide/agile-itil-guide": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"ways-of-working/ways-of-working": {
+			"pushedAt": "2026-08-13",
+			"archived": false
+		},
+		"architecture-decision-record/architecture-decision-record": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"publicprojects-io/software-engineering-rust-crate": {
+			"pushedAt": "2026-11-21",
+			"archived": false
+		},
+		"assertables/assertables-rust-crate": {
+			"pushedAt": "2026-06-13",
+			"archived": false
+		},
+		"sixarm/sixarm_ruby_unaccent": {
+			"pushedAt": "2025-04-14",
+			"archived": false
+		},
+		"gitalias/gitalias": {
+			"pushedAt": "2026-08-06",
+			"archived": false
+		},
+		"joelparkerhenderson/queueing-theory": {
+			"pushedAt": "2026-06-07",
+			"archived": false
+		},
+		"joelparkerhenderson/git-commit-message": {
+			"pushedAt": "2025-04-14",
+			"archived": false
+		},
+		"joelparkerhenderson/monorepo-vs-polyrepo": {
+			"pushedAt": "2026-03-26",
+			"archived": false
+		},
+		"joelparkerhenderson/objectives-and-key-results": {
+			"pushedAt": "2025-04-14",
+			"archived": false
+		},
+		"joelparkerhenderson/key-performance-indicators": {
+			"pushedAt": "2025-04-14",
+			"archived": false
+		},
+		"joelparkerhenderson/system-quality-attributes": {
+			"pushedAt": "2025-09-15",
+			"archived": false
+		},
+		"joelparkerhenderson/maturity-models": {
+			"pushedAt": "2026-08-20",
+			"archived": false
+		},
+		"sixarm/usv": {
+			"pushedAt": "2025-02-26",
+			"archived": false
+		},
+		"numcommand/num": {
+			"pushedAt": "2023-10-06",
+			"archived": false
+		},
+		"joelparkerhenderson/demo-rust-axum": {
+			"pushedAt": "2025-07-13",
+			"archived": false
+		}
+	},
+	"crateVersions": {
+		"assertables": {
+			"version": "10.1.0",
+			"released": "2026-06-01",
+			"licence": "MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only"
+		},
+		"nhs-number": {
+			"version": "2.0.1",
+			"released": "2026-10-28",
+			"licence": "MIT OR Apache-2.0 OR GPL-2.0 OR GPL-3.0 OR BSD-3-Clause"
+		},
+		"fhir": {
+			"version": "4.2.4",
+			"released": "2026-10-16",
+			"licence": "MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only"
+		},
+		"hl7": {
+			"version": "0.2.3",
+			"released": "2026-10-16",
+			"licence": "MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only"
+		},
+		"er7": {
+			"version": "0.3.0",
+			"released": "2026-11-17",
+			"licence": "MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only"
+		},
+		"snomed": {
+			"version": "0.56.1",
+			"released": "2026-10-16",
+			"licence": "Apache-2.0 OR MIT"
+		},
+		"openehr": {
+			"version": "0.11.0",
+			"released": "2026-11-17",
+			"licence": "MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only"
+		},
+		"schematron": {
+			"version": "0.17.1",
+			"released": "2026-11-20",
+			"licence": "MIT OR Apache-2.0 OR GPL-2.0-only OR GPL-3.0-only"
+		},
+		"software-engineering": {
+			"version": "1.1.2",
+			"released": "2026-11-20",
+			"licence": "MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only"
+		},
+		"public-value": {
+			"version": "1.0.4",
+			"released": "2026-11-20",
+			"licence": "MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only"
+		},
+		"who-fic": {
+			"version": "0.4.0",
+			"released": "2026-11-17",
+			"licence": "MIT OR Apache-2.0"
+		},
+		"digital-health": {
+			"version": "1.2.3",
+			"released": "2026-11-20",
+			"licence": "MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only"
+		},
+		"health-economics": {
+			"version": "1.0.4",
+			"released": "2026-11-20",
+			"licence": "MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only"
+		}
+	},
+	"gemVersions": {
+		"sixarm_ruby_unaccent": {
+			"version": "1.2.2",
+			"released": "2023-05-23",
+			"licences": [
+				"Apache-2.0",
+				"Artistic-2.0",
+				"BSD-3-Clause",
+				"CC-BY-NC-SA-4.0",
+				"AGPL-3.0",
+				"EPL-1.0",
+				"GPL-2.0",
+				"GPL-3.0",
+				"LGPL-3.0",
+				"MIT",
+				"MPL-2.0",
+				"Ruby"
+			]
 		}
 	}
 }

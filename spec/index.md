@@ -135,12 +135,14 @@ open source for the public good.
 
 | Slug | Purpose |
 | --- | --- |
-| `` (home) | Hero; headline numbers; why public open source matters; the three areas; featured projects; digital health teams callout; who builds this |
+| `` (home) | See § Home page below |
 | `health` | Health care and medical projects; the standards they serve; a clinical safety notice; trademark notices |
 | `public-value` | Public value projects; translation and accessibility as public value |
 | `engineering` | Software engineering leadership (nav label "Software engineering"); adoption and citation |
 | `projects` | Every project, grouped by area |
-| `projects/<slug>` | One page per project: summary, links, about, public value, dated facts, topics, related projects |
+| `projects/<slug>` | One page per project: summary, links, about, public value, "Use it" (where a verified example exists), recognition (where any), key facts, topics, related projects. See § Project pages |
+| `project-status` | What each status means and the rule that decides it, with a count per status |
+| `security` | Security policy: private reporting through GitHub private vulnerability reporting on the affected repository, what to include, safety-relevant reports, coordinated disclosure |
 | `digital-health-teams` | For digital health groups: an independence and clinical safety notice, a table mapping needs to projects, why open source fits (with UK examples: Service Standard point 12, Technology Code of Practice), and how to get involved |
 | `impact` | Every statistic with its date and source link; GitHub stars by account (joelparkerhenderson, gitalias, sixarm: every owned repository, including forks) and by project; recognition; translations; method |
 | `donate` | How to donate time (code, docs, translation, testing, sharing) and money (PayPal or Venmo to the author's email), and to ask about other ways; donations go to the author personally, not tax-deductible |
@@ -154,9 +156,44 @@ open source for the public good.
 
 Main navigation (in the header, and repeated in the footer): Health care, Public
 value, Software engineering, All projects, Digital health teams, Impact, Donate,
-About. The footer's policy row: Accessibility statement, Cookie policy, Privacy
-policy, Terms of use, Site map. The footer colophon is © year, name, GitHub, ORCID,
-LinkedIn.
+About. The footer's policy row: Security, Accessibility statement, Cookie policy,
+Privacy policy, Terms of use, Site map. The footer colophon is © year, name, GitHub,
+ORCID, LinkedIn. The footer has no locale links: language is chosen with the header's
+locale picker or the root chooser.
+
+### Home page
+
+In this order: all relevant information first, then the entire list of project cards,
+then the footer.
+
+1. Hero: headline, lead, and action links. No eyebrow above the headline.
+2. Headline numbers, dated, with a link to the Impact page.
+3. Why public open source matters.
+4. The three areas.
+5. The digital health teams callout.
+6. All projects: every project card, with its area. Each card has a Lily Share button
+   (SharePicker, with a visible "Share" label) in its lower-left corner that shares
+   that project's page, not the home page, with the same destinations as the header.
+
+### Project pages
+
+Each project page has a key-facts list, from dated, sourced data:
+
+- **Status** (see `project-status`), computed by `statusOf()`: archived repository,
+  then the project's own override (demonstration or pre-release), then a package
+  version below 1.0.0 (pre-release), then no commit for over a year (maintenance),
+  else active. Cards show the status too.
+- **Current version** and release date, for crates and gems.
+- **Licence**: from the registry for packages; otherwise as the project's licence
+  file or README states it, recorded in `projects.ts`. If the repository states no
+  licence, the page says "Not stated in the repository". Never assume one.
+- **Maintainer**, **latest commit**, area, downloads or stars, translations, source.
+- For health projects: **Clinical Safety Officer**, **medical device position**, and
+  **clinical safety documentation**, defaulting to "None named", "No assessment
+  published" and "None published", with links where a project publishes documents.
+- A "Use it" section for projects with a verified example: install command, code,
+  and the real output, with the version it was run against. Examples must be run
+  before they are published.
 
 ### Header
 
@@ -177,7 +214,8 @@ Machine-readable routes: `sitemap.xml` (all locales, with `xhtml:link` alternate
 `slug`, `name`, `area` (`health`, `public-value`, or `engineering`), a one-sentence
 `summary`, a `description`, a `value` (why it matters to the public), `links`,
 optional `stats` (pointers into `stats.json`), an optional `languages` (a translation
-count the project itself publishes), `tags`, and `featured`.
+count the project itself publishes), `tags`, `repo` (main repository), and optionally
+`licence`, `status`, `clinicalSafety`, `usage`, and `recognition`.
 
 ### Content integrity (strict)
 
@@ -185,8 +223,9 @@ count the project itself publishes), `tags`, and `featured`.
 - Facts come only from public, checkable sources: the project's own site, its
   repository, its registry page (crates.io, RubyGems), the author's ORCID record, or
   the author's public CV.
-- **Numbers come only from `src/lib/data/stats.json`** (repositories, crates, gems, and
-  per-account totals in `owners`), which carries an `asOf` date.
+- **Numbers come only from `src/lib/data/stats.json`** (repositories, crates, gems,
+  per-account totals in `owners`, each project repository's latest commit and archived
+  flag in `repos`, and package versions and licences), which carries an `asOf` date.
   Refresh it with `pnpm stats` (`scripts/refresh-stats.mjs`), review the diff, and
   commit. Headline totals are derived from `stats.json` in code, never typed by hand.
 - Translation counts ("60+ languages") only where the project publishes them.
@@ -249,7 +288,7 @@ CI runs the same three commands before deploying.
 ## 10. Acceptance criteria
 
 1. The home page shows a Lily Hero, headline numbers dated from `stats.json`, the
-   three areas, and featured projects.
+   three areas, and then every project card, each with a lower-left Share button.
 2. The header has a Lily PickerBar with search, all Lily default themes (sorted, UK
    and US last), locales en-001, en-gb, en-us, and cy-gb, text size, and the six share
    options.

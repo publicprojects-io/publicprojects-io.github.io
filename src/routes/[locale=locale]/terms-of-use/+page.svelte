@@ -27,7 +27,7 @@
 
 		<h2>{s('Licences')}</h2>
 		<p>
-			{s('Every project listed here is free and open source. Each project has its own licence, which is stated in its repository or package registry entry; that licence, not this page, sets out what you may do with the project.')}
+			{s('Each project has its own licence, stated in its repository or package registry entry and shown in its key facts; that licence, not this page, sets out what you may do with the project. Where a project’s key facts say its licence is not stated, ask the author before reusing it.')}
 		</p>
 		<p>{s('The source code of this website is public in')} <a href={SOURCE_URL}>{s('its repository')}</a>.</p>
 
@@ -51,7 +51,7 @@
 		<h2>{s('Safe and responsible use')}</h2>
 		<ul>
 			<li>{s('Do not try to disrupt the site, or use it to harm others.')}</li>
-			<li>{s('If you find a security problem, please report it privately: open an issue asking for a private contact.')}</li>
+			<li>{s('If you find a security problem, please report it privately, as the')} <a href={href('security')}>{s('security policy')}</a> {s('explains.')}</li>
 		</ul>
 
 		<h2>{s('Links to other sites')}</h2>

@@ -29,6 +29,7 @@
 				{#each PAGES.filter((p) => p.nav) as page (page.slug)}
 					<li><a href={href(page.slug)}>{s(page.name)}</a></li>
 				{/each}
+				<li><a href={href('project-status')}>{s('Project status')}</a></li>
 				<li><a href={href('search')}>{s('Search')}</a></li>
 			</ul>
 

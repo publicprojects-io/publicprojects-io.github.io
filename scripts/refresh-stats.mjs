@@ -19,7 +19,16 @@ async function json(url, headers = {}) {
 }
 
 const githubHeaders = process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {};
-const next = { asOf: new Date().toISOString().slice(0, 10), github: {}, crates: {}, gems: {}, owners: {} };
+const next = {
+	asOf: new Date().toISOString().slice(0, 10),
+	github: {},
+	crates: {},
+	gems: {},
+	owners: {},
+	repos: {},
+	crateVersions: {},
+	gemVersions: {}
+};
 
 for (const repo of Object.keys(previous.github)) {
 	const data = await json(`https://api.github.com/repos/${repo}`, githubHeaders);
@@ -38,14 +47,24 @@ for (const owner of Object.keys(previous.owners)) {
 	}
 	next.owners[owner] = { repos, stars };
 }
+// Each project's main repository: last commit date and archived flag, for the
+// project status (statusOf in src/lib/data/projects.ts).
+for (const repo of Object.keys(previous.repos)) {
+	const data = await json(`https://api.github.com/repos/${repo}`, githubHeaders);
+	next.repos[repo] = { pushedAt: data.pushed_at.slice(0, 10), archived: data.archived };
+}
 for (const name of Object.keys(previous.crates)) {
 	const data = await json(`https://crates.io/api/v1/crates/${name}`);
 	next.crates[name] = data.crate.downloads;
+	const version = data.crate.max_stable_version ?? data.crate.max_version;
+	const release = (await json(`https://crates.io/api/v1/crates/${name}/${version}`)).version;
+	next.crateVersions[name] = { version, released: release.created_at.slice(0, 10), licence: release.license };
 	await new Promise((resolve) => setTimeout(resolve, 1000)); // crates.io asks for at most one request a second
 }
 for (const name of Object.keys(previous.gems)) {
 	const data = await json(`https://rubygems.org/api/v1/gems/${name}.json`);
 	next.gems[name] = data.downloads;
+	next.gemVersions[name] = { version: data.version, released: data.version_created_at.slice(0, 10), licences: data.licenses };
 }
 
 await writeFile(file, JSON.stringify(next, null, '\t') + '\n');

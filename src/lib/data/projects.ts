@@ -35,9 +35,100 @@ export type Project = {
 	/** A translation count the project itself publishes, e.g. "60+ languages". */
 	languages?: string;
 	tags: string[];
-	/** Shown on the home page. */
-	featured?: boolean;
+	/** Main repository, "owner/name" in lower case; a key of stats.json `repos`. */
+	repo: keyof typeof stats.repos;
+	/**
+	 * Licence as the project states it, for projects with no package. Packages take
+	 * their licence from the registry (stats.json). Absent means the repository states
+	 * no licence, which the site shows plainly.
+	 */
+	licence?: string;
+	/** Overrides the computed status; see statusOf and the project-status page. */
+	status?: 'demonstration' | 'pre-release';
+	/** Health projects: overrides of DEFAULT_CLINICAL_SAFETY. */
+	clinicalSafety?: Partial<ClinicalSafety>;
+	/** A verified example: run against `version`, with its real output. */
+	usage?: { version: string; install: string; code: string; output: string };
+	/** Third-party recognition, each with a public link. */
+	recognition?: Link[];
 };
+
+export type ClinicalSafety = {
+	/** Clinical Safety Officer. */
+	officer: string;
+	/** Medical device position. */
+	device: string;
+	/** Published clinical safety documentation, if any. */
+	documents?: Link;
+};
+
+/**
+ * What every health project shows unless it publishes more. These describe what the
+ * repositories contain, checked on the stats date: no named Clinical Safety Officer
+ * and no medical device assessment.
+ */
+export const DEFAULT_CLINICAL_SAFETY: ClinicalSafety = {
+	officer: 'None named',
+	device: 'No assessment published'
+};
+
+export function clinicalSafetyOf(project: Project): ClinicalSafety | undefined {
+	return project.area === 'health' ? { ...DEFAULT_CLINICAL_SAFETY, ...project.clinicalSafety } : undefined;
+}
+
+export type Status = 'active' | 'pre-release' | 'demonstration' | 'maintenance' | 'archived';
+
+/** Statuses in the order the project-status page explains them. */
+export const STATUSES: Status[] = ['active', 'pre-release', 'demonstration', 'maintenance', 'archived'];
+
+export const STATUS_NAMES: Record<Status, string> = {
+	active: 'Active',
+	'pre-release': 'Pre-release',
+	demonstration: 'Demonstration',
+	maintenance: 'Maintenance',
+	archived: 'Archived'
+};
+
+const DAY = 86_400_000;
+
+/**
+ * A project's status, computed from dated facts so it stays honest:
+ * archived repository → archived; then the project's own override; then a
+ * package version below 1.0.0 → pre-release; then no commit for over a year
+ * → maintenance; otherwise active.
+ */
+export function statusOf(project: Project): Status {
+	const repo = stats.repos[project.repo];
+	if (repo.archived) return 'archived';
+	if (project.status) return project.status;
+	const version = versionOf(project)?.version;
+	if (version && Number(version.split('.')[0]) < 1) return 'pre-release';
+	if (Date.parse(stats.asOf) - Date.parse(repo.pushedAt) > 365 * DAY) return 'maintenance';
+	return 'active';
+}
+
+/** The package version and release date, for projects published as a crate or gem. */
+export function versionOf(project: Project): { version: string; released: string } | undefined {
+	for (const ref of project.stats ?? []) {
+		if (ref.kind === 'crate') return stats.crateVersions[ref.key];
+		if (ref.kind === 'gem') return stats.gemVersions[ref.key];
+	}
+	return undefined;
+}
+
+/** The licence: from the registry for packages, else as the project states it; undefined if none is stated. */
+export function licenceOf(project: Project): string | undefined {
+	for (const ref of project.stats ?? []) {
+		if (ref.kind === 'crate') return stats.crateVersions[ref.key].licence;
+		if (ref.kind === 'gem') return stats.gemVersions[ref.key].licences.join(' OR ');
+	}
+	return project.licence;
+}
+
+/** Date of the latest commit to the main repository. */
+export function lastCommitOf(project: Project): string {
+	return stats.repos[project.repo].pushedAt;
+}
 
 export const AREAS: Record<Area, { name: string; slug: string; summary: string }> = {
 	health: {
@@ -68,6 +159,8 @@ export const PROJECTS: Project[] = [
 	// ── Health care and medical ────────────────────────────────────────────
 	{
 		slug: 'international-patient-summary',
+		repo: 'international-patient-summary/international-patient-summary',
+		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		name: 'International Patient Summary',
 		area: 'health',
 		summary:
@@ -79,10 +172,23 @@ export const PROJECTS: Project[] = [
 		links: [site('https://international-patient-summary.github.io'), github('international-patient-summary/international-patient-summary')],
 		languages: '50+ locales',
 		tags: ['IPS', 'HL7 FHIR', 'interoperability', 'translation', 'SvelteKit', 'Rust'],
-		featured: true
 	},
 	{
 		slug: 'fhir',
+		repo: 'fhir-rust/fhir-rust',
+		status: 'pre-release',
+		usage: {
+			version: '4.2.4',
+			install: 'cargo add fhir serde_json',
+			code: `use fhir::r5::resources::Resource;
+
+let json = r#"{"resourceType":"Patient","id":"pat-1","name":[{"family":"Jones","given":["Ann"]}]}"#;
+if let Resource::Patient(patient) = serde_json::from_str(json).unwrap() {
+    println!("{}", patient.id.unwrap().0);
+    println!("{}", patient.name[0].family.as_ref().unwrap().0);
+}`,
+			output: "pat-1\nJones"
+		},
 		name: 'FHIR for Rust',
 		area: 'health',
 		summary:
@@ -94,10 +200,20 @@ export const PROJECTS: Project[] = [
 		links: [crate('fhir'), github('fhir-rust/fhir-rust')],
 		stats: [{ kind: 'crate', key: 'fhir' }],
 		tags: ['FHIR', 'HL7', 'interoperability', 'Rust'],
-		featured: true
 	},
 	{
 		slug: 'hl7',
+		repo: 'hl7-rust/hl7-rust',
+		usage: {
+			version: '0.2.3',
+			install: 'cargo add hl7',
+			code: `use hl7::v2;
+
+let message = v2::parse("MSH|^~\\\\&|LAB||EHR||20260101||ORU^R01|1|P|2.5\\rPID|1||241900||JONES^ANN")?;
+println!("{:?}", message.get("PID-5.1")?.as_deref());
+println!("{:?}", message.get("MSH-9.1")?.as_deref());`,
+			output: "Some(\"JONES\")\nSome(\"ORU\")"
+		},
 		name: 'HL7 for Rust',
 		area: 'health',
 		summary: 'HL7® message tooling in Rust: parse, navigate, validate, modify, and render Health Level Seven messages.',
@@ -111,6 +227,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'er7',
+		repo: 'er7-rust/er7-rust',
 		name: 'ER7 for Rust',
 		area: 'health',
 		summary: 'Parse, query, edit, and write HL7® v2 messages in the ER7 pipe-hat encoding, with zero dependencies.',
@@ -123,6 +240,19 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'snomed',
+		repo: 'snomed-rust/snomed-rust',
+		usage: {
+			version: '0.56.1',
+			install: 'cargo add snomed',
+			code: `use snomed::prelude::*;
+
+// |Myocardial infarction|, with a valid check digit.
+let id = SctId::parse("22298006")?;
+println!("{:?}", id.component_type());
+// The same digits with a wrong check digit are rejected.
+println!("{}", SctId::parse("22298007").is_ok());`,
+			output: "Some(Concept)\nfalse"
+		},
 		name: 'SNOMED for Rust',
 		area: 'health',
 		summary: 'SNOMED® CT tooling in Rust: RF2 parsing, SCTID validation, a snapshot store, and hierarchy queries.',
@@ -135,6 +265,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'openehr',
+		repo: 'openehr-rust/openehr-rust',
 		name: 'openEHR for Rust',
 		area: 'health',
 		summary: 'openEHR® Reference Model types, validation, paths, AQL parsing, and change-control security primitives in Rust.',
@@ -147,6 +278,25 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'nhs-number',
+		repo: 'joelparkerhenderson/nhs-number-using-rust',
+		usage: {
+			version: '2.0.1',
+			install: 'cargo add nhs-number',
+			code: `use nhs_number::NHSNumber;
+use std::str::FromStr;
+
+// A test-safe number from the reserved testable range.
+let nhs_number = NHSNumber::from_str("999 100 0003").unwrap();
+println!("{}", nhs_number);
+println!("{}", nhs_number.validate_check_digit());`,
+			output: "999 100 0003\ntrue"
+		},
+		recognition: [
+			{
+				label: 'Listed by the Open Health Technology Foundation as a candidate project, tested against the same shared NHS Number test vectors as its Python library',
+				href: 'https://openhealthtechnology.org/projects/candidates/#nhs-number-for-rust'
+			}
+		],
 		name: 'NHS Number',
 		area: 'health',
 		summary: 'Parse, format, and validate the ten-digit NHS Number used by NHS England, NHS Scotland, NHS Wales, and NHS Isle of Man.',
@@ -156,10 +306,10 @@ export const PROJECTS: Project[] = [
 		links: [crate('nhs-number'), github('joelparkerhenderson/nhs-number-using-rust')],
 		stats: [{ kind: 'crate', key: 'nhs-number' }],
 		tags: ['NHS', 'patient identifier', 'UK', 'Rust'],
-		featured: true
 	},
 	{
 		slug: 'schematron',
+		repo: 'schematron-rust/schematron-rust',
 		name: 'Schematron for Rust',
 		area: 'health',
 		summary: 'A pure Rust implementation of ISO/IEC 19757-3 rule-based XML validation, with its own XML parser and XPath engine.',
@@ -172,6 +322,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'who-fic',
+		repo: 'who-fic-rust/who-fic-rust',
 		name: 'WHO Family of International Classifications for Rust',
 		area: 'health',
 		summary: 'Rust tooling for the World Health Organization Family of International Classifications: ICD, ICF, and ICHI.',
@@ -184,6 +335,9 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'form-examples',
+		repo: 'formexamples/form-examples',
+		licence: 'CC-BY-NC-SA-4.0 OR OGL-UK-3.0',
+		clinicalSafety: { device: 'Discussed in each form’s safety case notes', documents: { label: 'Safety case notes for each form', href: 'https://github.com/FormExamples/form-examples/tree/main/forms' } },
 		name: 'Form Examples',
 		area: 'health',
 		summary: '360 medical-form reference implementations: clinical assessments, scoring engines, SQL, FHIR R5, SvelteKit, and Rust.',
@@ -195,6 +349,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'digital-health',
+		repo: 'publicprojects-io/digital-health-rust-crate',
 		name: 'Digital Health Guide and Metrics',
 		area: 'health',
 		summary: 'A guide to digital health, with metrics and a Rust crate of models and calculations.',
@@ -211,6 +366,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'health-economics',
+		repo: 'healthprojects/health-economics-rust-crate',
 		name: 'Health Economics Guide and Metrics',
 		area: 'health',
 		summary: 'A guide to health economics, with metrics and a Rust crate of models and calculations.',
@@ -228,6 +384,10 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'electronic-patient-record',
+		repo: 'electronic-patient-record/electronic-patient-record',
+		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
+		status: 'pre-release',
+		clinicalSafety: { officer: 'Not named', documents: { label: 'Draft risk management plan and hazard log', href: 'https://github.com/electronic-patient-record/electronic-patient-record/tree/main/governance/clinical-safety' } },
 		name: 'Electronic Patient Record',
 		area: 'health',
 		summary: 'Software for longitudinal patient records, developed in public under open licences.',
@@ -238,6 +398,10 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'patient-administration-system',
+		repo: 'patient-administration-system/patient-administration-system',
+		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
+		status: 'pre-release',
+		clinicalSafety: { officer: 'Not named', documents: { label: 'Draft hazard log', href: 'https://github.com/patient-administration-system/patient-administration-system/blob/main/governance/clinical-safety.md' } },
 		name: 'Patient Administration System',
 		area: 'health',
 		summary: 'An open-source patient administration system for hospitals and clinics: appointments, reminders, waiting lists, and access reporting.',
@@ -248,6 +412,8 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'emergency-care-system',
+		repo: 'emergency-care-system/emergency-care-system',
+		status: 'demonstration',
 		name: 'Emergency Care System',
 		area: 'health',
 		summary: 'A public demonstration of how to plan an emergency care system, from high-level use cases to low-level test automation.',
@@ -259,6 +425,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'care-plan',
+		repo: 'joelparkerhenderson/care-plan',
 		name: 'Care Plan',
 		area: 'health',
 		summary: 'A free, open-source care plan template for caregivers: medical, financial, government, legal, and practical care.',
@@ -270,6 +437,8 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'bold-contacts',
+		repo: 'boldcontacts/boldcontacts-mobile-app-for-apple',
+		licence: 'GPL-2.0-or-later',
 		name: 'Bold Contacts',
 		area: 'health',
 		summary: 'A mobile contacts app for people with vision, cognition, or motor disabilities.',
@@ -283,6 +452,7 @@ export const PROJECTS: Project[] = [
 	// ── Public value ───────────────────────────────────────────────────────
 	{
 		slug: 'public-value',
+		repo: 'publicprojects-io/public-value-rust-crate',
 		name: 'Public Value Guide and Metrics',
 		area: 'public-value',
 		summary: 'A guide to creating and measuring public value, in 60+ languages, with a Rust crate of public-sector calculations.',
@@ -297,10 +467,11 @@ export const PROJECTS: Project[] = [
 		stats: [{ kind: 'crate', key: 'public-value' }],
 		languages: '60+ languages',
 		tags: ['public value', 'cost-benefit', 'SROI', 'social value', 'Rust'],
-		featured: true
 	},
 	{
 		slug: 'coordinated-vulnerability-disclosure',
+		repo: 'coordinated-vulnerability-disclosure/coordinated-vulnerability-disclosure',
+		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		name: 'Coordinated Vulnerability Disclosure',
 		area: 'public-value',
 		summary: 'Guidance and policy examples for coordinated vulnerability disclosure (CVD), in 60+ languages.',
@@ -313,6 +484,8 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'lily-design-system',
+		repo: 'lilydesignsystem/lily-design-system',
+		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		name: 'Lily Design System',
 		area: 'public-value',
 		summary: 'A free, open-source headless design system: accessible components across seven frameworks, with themes and 60+ languages.',
@@ -322,10 +495,11 @@ export const PROJECTS: Project[] = [
 		links: [site('https://lilydesignsystem.github.io'), github('lilydesignsystem/lily-design-system')],
 		languages: '60+ languages',
 		tags: ['design system', 'accessibility', 'i18n', 'Svelte', 'React', 'Vue'],
-		featured: true
 	},
 	{
 		slug: 'service-management',
+		repo: 'service-management-guide/service-management-guide',
+		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		name: 'Service Management Guide and Metrics',
 		area: 'public-value',
 		summary: 'A guide to IT service management, with a companion metrics site.',
@@ -336,6 +510,8 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'agile-itil',
+		repo: 'agile-itil-guide/agile-itil-guide',
+		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		name: 'Agile ITIL Guide and Metrics',
 		area: 'public-value',
 		summary: 'A guide to combining agile ways of working with ITIL service management, in 10+ languages.',
@@ -347,6 +523,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'ways-of-working',
+		repo: 'ways-of-working/ways-of-working',
 		name: 'Ways of Working',
 		area: 'public-value',
 		summary: '100+ tips for teamwork: principles, values, tenets, ground rules, norms, and agreements.',
@@ -360,6 +537,8 @@ export const PROJECTS: Project[] = [
 	// ── Software engineering leadership ───────────────────────────────────
 	{
 		slug: 'architecture-decision-record',
+		repo: 'architecture-decision-record/architecture-decision-record',
+		licence: 'CC-BY-NC-SA-4.0 OR OGL-UK-3.0',
 		name: 'Architecture Decision Record',
 		area: 'engineering',
 		summary: 'Architecture decision record (ADR) examples and templates for software planning and IT leadership, in 60+ languages.',
@@ -373,10 +552,10 @@ export const PROJECTS: Project[] = [
 		stats: [{ kind: 'github', key: 'architecture-decision-record/architecture-decision-record' }],
 		languages: '60+ languages',
 		tags: ['ADR', 'architecture', 'governance', 'decision making'],
-		featured: true
 	},
 	{
 		slug: 'software-engineering',
+		repo: 'publicprojects-io/software-engineering-rust-crate',
 		name: 'Software Engineering Guide and Metrics',
 		area: 'engineering',
 		summary: 'A guide to software engineering practice, with a metrics site in 20+ languages and a Rust crate of metrics models.',
@@ -394,6 +573,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'assertables',
+		repo: 'assertables/assertables-rust-crate',
 		name: 'Assertables',
 		area: 'engineering',
 		summary: 'A Rust crate of assert macros for better testing, debugging, quality assurance, and runtime reliability.',
@@ -402,10 +582,10 @@ export const PROJECTS: Project[] = [
 		links: [crate('assertables'), github('assertables/assertables-rust-crate')],
 		stats: [{ kind: 'crate', key: 'assertables' }],
 		tags: ['Rust', 'testing', 'quality assurance'],
-		featured: true
 	},
 	{
 		slug: 'unaccent',
+		repo: 'sixarm/sixarm_ruby_unaccent',
 		name: 'Unaccent for Ruby',
 		area: 'engineering',
 		summary: 'A Ruby gem that converts accented Unicode characters to their unaccented equivalents.',
@@ -417,6 +597,8 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'gitalias',
+		repo: 'gitalias/gitalias',
+		licence: 'GPL-2.0-or-later',
 		name: 'GitAlias',
 		area: 'engineering',
 		summary: 'Hundreds of git alias commands for faster, easier version control.',
@@ -428,6 +610,8 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'queueing-theory',
+		repo: 'joelparkerhenderson/queueing-theory',
+		licence: 'MIT OR Apache-2.0 OR GPL-2.0 OR GPL-3.0',
 		name: 'Queueing Theory',
 		area: 'engineering',
 		summary: 'An introduction to queueing theory for software development.',
@@ -439,6 +623,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'git-commit-message',
+		repo: 'joelparkerhenderson/git-commit-message',
 		name: 'Git Commit Message',
 		area: 'engineering',
 		summary: 'How to write a great git commit message, with a commit template for version control.',
@@ -450,6 +635,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'monorepo-vs-polyrepo',
+		repo: 'joelparkerhenderson/monorepo-vs-polyrepo',
 		name: 'Monorepo vs. Polyrepo',
 		area: 'engineering',
 		summary: 'Architecture for source code management: the trade-offs between one repository and many.',
@@ -461,6 +647,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'objectives-and-key-results',
+		repo: 'joelparkerhenderson/objectives-and-key-results',
 		name: 'Objectives and Key Results',
 		area: 'engineering',
 		summary: 'Objectives and key results (OKR) examples for goals, plans, projects, and strategy.',
@@ -472,6 +659,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'key-performance-indicators',
+		repo: 'joelparkerhenderson/key-performance-indicators',
 		name: 'Key Performance Indicators',
 		area: 'engineering',
 		summary: 'Key performance indicator (KPI) examples for metrics, measurements, and OKRs.',
@@ -483,6 +671,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'system-quality-attributes',
+		repo: 'joelparkerhenderson/system-quality-attributes',
 		name: 'System Quality Attributes',
 		area: 'engineering',
 		summary: 'System quality attributes, non-functional requirements, and cross-cutting concerns.',
@@ -494,6 +683,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'maturity-models',
+		repo: 'joelparkerhenderson/maturity-models',
 		name: 'Maturity Models',
 		area: 'engineering',
 		summary: 'Maturity models for IT, agile, DevOps, TOGAF, Six Sigma, P3M3, and more.',
@@ -505,6 +695,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'unicode-separated-values',
+		repo: 'sixarm/usv',
 		name: 'Unicode Separated Values',
 		area: 'engineering',
 		summary: 'Unicode Separated Values (USV): a data format beyond CSV and TSV for units, records, groups, files, and streams.',
@@ -516,6 +707,8 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'num',
+		repo: 'numcommand/num',
+		licence: 'Any of: Apache, BSD, Creative Commons BY-NC-SA, AGPL, GPL, LGPL, MIT, Perl Artistic, or Ruby',
 		name: 'Num',
 		area: 'engineering',
 		summary: 'Number utilities for statistics on the command line, using only standard POSIX.',
@@ -527,6 +720,9 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'demo-rust-axum',
+		repo: 'joelparkerhenderson/demo-rust-axum',
+		licence: 'Creative Commons ShareAlike',
+		status: 'demonstration',
 		name: 'Demo Rust Axum',
 		area: 'engineering',
 		summary: 'A demonstration of the Rust Axum web framework with Tokio, Tower, Hyper, and Serde.',

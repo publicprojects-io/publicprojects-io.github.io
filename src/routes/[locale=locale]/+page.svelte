@@ -16,7 +16,6 @@
 	const n = (value: number) => formatNumber(locale, value, true);
 
 	const adrStars = statValue({ kind: 'github', key: 'architecture-decision-record/architecture-decision-record' }).value;
-	const featured = PROJECTS.filter((p) => p.featured);
 	const areas = Object.entries(AREAS) as [Area, (typeof AREAS)[Area]][];
 
 	const reasons = [
@@ -58,7 +57,6 @@
 		<HeroHeadline label={s(SITE_TAGLINE)}>
 			{#snippet media()}<HeroArt />{/snippet}
 			<div class="hero-copy">
-			<p class="hero-kicker">{SITE_NAME}</p>
 			<h1>{s('Open source for the public good')}</h1>
 			<p class="hero-lead">
 				{s('Free, open-source software, standards tooling, and guides for health care, public services, and software engineering. Built in public, translated for the world, and free for anyone to use.')}
@@ -119,12 +117,6 @@
 		</ul>
 	</section>
 
-	<section class="section" aria-labelledby="featured-heading">
-		<h2 id="featured-heading">{s('Featured projects')}</h2>
-		<ProjectGrid projects={featured} {locale} showArea />
-		<p><ActionLink href={href('projects')}>{s('See all')} {TOTALS.projects} {s('projects')}</ActionLink></p>
-	</section>
-
 	<section class="section callout" aria-labelledby="teams-heading">
 		<h2 id="teams-heading">{s('For digital health teams')}</h2>
 		<p>
@@ -133,11 +125,9 @@
 		<p><ActionLink href={href('digital-health-teams')}>{s('Open the digital health teams page')}</ActionLink></p>
 	</section>
 
-	<section class="section" aria-labelledby="author-heading">
-		<h2 id="author-heading">{s('Who builds this')}</h2>
-		<p>
-			{s('Public Projects is created and maintained by')} <a href={href('about')}>{PERSON.name}</a>,
-			{s('a software engineering leader in public digital health, whose open-source work is used by developers and organisations around the world.')}
-		</p>
+	<!-- Spec: all other home page information comes first, then every project card, then the footer. -->
+	<section class="section" aria-labelledby="projects-heading">
+		<h2 id="projects-heading">{s('All projects')} ({PROJECTS.length})</h2>
+		<ProjectGrid projects={PROJECTS} {locale} showArea share />
 	</section>
 </ContainerWithFixedWidth>
