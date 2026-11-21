@@ -107,8 +107,8 @@ open source for the public good.
   then language and region, then the language's `-001` variant, then any locale in that
   language, so `cy` goes to `cy-gb`), falling back to `en-001`. It stores nothing.
   Without JavaScript it lists every language by its own name.
-- **Old unprefixed links** (such as `/donate/` from before prefixes) are forwarded by
-  the error page to the same page under `/en-001/`. Unknown pages show "Page not found".
+- **Unprefixed paths** (such as `/donate/`) are not pages and are not forwarded: like
+  lilydesignsystem.com, they show "Page not found".
 - Content is written once, in international / British English, and every visible
   string passes through `t(locale, text)` in `src/lib/locales.ts`.
   - en-us: `t()` applies an explicit, tested British-to-American word list. Add words
