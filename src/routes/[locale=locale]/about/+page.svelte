@@ -2,13 +2,13 @@
 	import { base } from '#lib/base.js';
 	import { ContainerWithFixedWidth } from '@lilydesignsystem/svelte-headless';
 	import Seo from '#lib/components/Seo.svelte';
-	import { localePath, spell } from '#lib/locales.js';
+	import { localePath, t } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { PERSON, SITE_ORIGIN, SOURCE_URL } from '#lib/site.js';
 
 	let { data } = $props();
 	const locale = $derived(data.locale);
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 	const href = (to: string) => `${base}${localePath(locale, to)}`;
 </script>
 
@@ -24,8 +24,6 @@
 		mainEntity: {
 			'@type': 'Person',
 			name: PERSON.name,
-			jobTitle: 'Head of Software Engineering',
-			worksFor: { '@type': 'Organization', name: 'Digital Health and Care Wales' },
 			url: PERSON.website,
 			sameAs: [PERSON.github, PERSON.orcid, PERSON.linkedin]
 		}
@@ -43,10 +41,10 @@
 	<div class="prose">
 		<h2>{PERSON.name}</h2>
 		<p>
-			{s('Joel Parker Henderson is Head of Software Engineering at NHS Wales Digital Health and Care Wales (DHCW), leading growth in engineering capabilities for agile delivery, analytics, automation, and AI, and advising executives on technology practices.')}
+			{s('Joel Parker Henderson is a software engineering leader in public digital health, growing engineering capabilities for agile delivery, analytics, automation, and AI, and advising executives on technology practices.')}
 		</p>
 		<p>
-			{s('Before joining NHS Wales, Joel ran SixArm Software Consulting from 2006, building and leading software teams from zero through launch and scale. Roles include Chief Technology Officer at a Y Combinator-backed startup, technology consultant to the CTO of a venture-backed fintech, and Principal Consultant at ThoughtWorks, where Joel grew a team from zero to twenty and coached Fortune 50 clients.')}
+			{s('Since 2006, Joel has run SixArm Software Consulting, building and leading software teams from zero through launch and scale. Roles include Chief Technology Officer at a Y Combinator-backed startup, technology consultant to the CTO of a venture-backed fintech, and Principal Consultant at ThoughtWorks, where Joel grew a team from zero to twenty and coached Fortune 50 clients.')}
 		</p>
 		<p>
 			{s('Joel has written guidebooks on agile change, project management, UI/UX design, software programming, innovation partnerships, startups, and business language, and maintains hundreds of open-source repositories.')}
@@ -70,7 +68,7 @@
 
 		<h2>{s('Independence')}</h2>
 		<p>
-			{s('Public Projects are personal open-source projects, built in the author’s own time. They are not products of, or endorsed by, NHS Wales, Digital Health and Care Wales, or any other employer.')}
+			{s('Public Projects are personal open-source projects, built in the author’s own time. They are not products of, or endorsed by, any employer or health organisation.')}
 		</p>
 		<p><a href={SOURCE_URL}>{s('The source code for this website')}</a> {s('is open too.')}</p>
 	</div>

@@ -1,20 +1,62 @@
 {
 	"asOf": "2026-11-21",
 	"github": {
-		"architecture-decision-record/architecture-decision-record": { "stars": 17500, "forks": 2825 },
-		"gitalias/gitalias": { "stars": 2703, "forks": 347 },
-		"joelparkerhenderson/queueing-theory": { "stars": 2249, "forks": 77 },
-		"joelparkerhenderson/git-commit-message": { "stars": 1305, "forks": 122 },
-		"joelparkerhenderson/monorepo-vs-polyrepo": { "stars": 1216, "forks": 94 },
-		"ways-of-working/ways-of-working": { "stars": 753, "forks": 82 },
-		"joelparkerhenderson/demo-rust-axum": { "stars": 443, "forks": 43 },
-		"joelparkerhenderson/objectives-and-key-results": { "stars": 421, "forks": 63 },
-		"joelparkerhenderson/maturity-models": { "stars": 286, "forks": 91 },
-		"sixarm/usv": { "stars": 224, "forks": 5 },
-		"joelparkerhenderson/key-performance-indicators": { "stars": 164, "forks": 39 },
-		"numcommand/num": { "stars": 134, "forks": 10 },
-		"joelparkerhenderson/system-quality-attributes": { "stars": 107, "forks": 14 },
-		"joelparkerhenderson/care-plan": { "stars": 62, "forks": 5 }
+		"architecture-decision-record/architecture-decision-record": {
+			"stars": 17500,
+			"forks": 2825
+		},
+		"gitalias/gitalias": {
+			"stars": 2703,
+			"forks": 347
+		},
+		"joelparkerhenderson/queueing-theory": {
+			"stars": 2249,
+			"forks": 77
+		},
+		"joelparkerhenderson/git-commit-message": {
+			"stars": 1305,
+			"forks": 122
+		},
+		"joelparkerhenderson/monorepo-vs-polyrepo": {
+			"stars": 1216,
+			"forks": 94
+		},
+		"ways-of-working/ways-of-working": {
+			"stars": 753,
+			"forks": 82
+		},
+		"joelparkerhenderson/demo-rust-axum": {
+			"stars": 443,
+			"forks": 43
+		},
+		"joelparkerhenderson/objectives-and-key-results": {
+			"stars": 421,
+			"forks": 63
+		},
+		"joelparkerhenderson/maturity-models": {
+			"stars": 286,
+			"forks": 91
+		},
+		"sixarm/usv": {
+			"stars": 224,
+			"forks": 5
+		},
+		"joelparkerhenderson/key-performance-indicators": {
+			"stars": 164,
+			"forks": 39
+		},
+		"numcommand/num": {
+			"stars": 134,
+			"forks": 10
+		},
+		"joelparkerhenderson/system-quality-attributes": {
+			"stars": 107,
+			"forks": 14
+		},
+		"joelparkerhenderson/care-plan": {
+			"stars": 62,
+			"forks": 5
+		}
 	},
 	"crates": {
 		"assertables": 2808802,
@@ -33,5 +75,19 @@
 	},
 	"gems": {
 		"sixarm_ruby_unaccent": 93534624
+	},
+	"owners": {
+		"joelparkerhenderson": {
+			"repos": 430,
+			"stars": 10867
+		},
+		"gitalias": {
+			"repos": 2,
+			"stars": 2705
+		},
+		"sixarm": {
+			"repos": 648,
+			"stars": 2941
+		}
 	}
 }

@@ -44,12 +44,12 @@
 	themeProps={{
 		defaultValue: DEFAULT_THEME,
 		storageKey: STORAGE_KEYS.theme,
-		cookieName: STORAGE_KEYS.theme,
+		cookieName: '', // no cookies: a static site has no server to read one
 		onChange: (value: string) => (themeValue = value)
 	}}
 	locales={[...LOCALES]}
 	localeProps={{ value: locale, localeLabels: LOCALE_LABELS, onChange: changeLocale }}
-	textSizeProps={{ storageKey: STORAGE_KEYS.textSize }}
+	textSizeProps={{ storageKey: STORAGE_KEYS.textSize, sizeLabels: m.sizes }}
 	{shareTargets}
 	shareProps={{
 		title: `${title} · ${SITE_NAME}`,

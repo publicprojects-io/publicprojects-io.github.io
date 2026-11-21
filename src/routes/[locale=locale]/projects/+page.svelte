@@ -4,12 +4,12 @@
 	import ProjectGrid from '#lib/components/ProjectGrid.svelte';
 	import Seo from '#lib/components/Seo.svelte';
 	import { AREAS, PROJECTS, projectsInArea, type Area } from '#lib/data/projects.js';
-	import { localePath, spell } from '#lib/locales.js';
+	import { localePath, t } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 
 	let { data } = $props();
 	const locale = $derived(data.locale);
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 	const areas = Object.entries(AREAS) as [Area, (typeof AREAS)[Area]][];
 </script>
 

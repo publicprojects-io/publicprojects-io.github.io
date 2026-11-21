@@ -23,8 +23,10 @@ open source for the public good.
    recommenders one public, checkable place for dated statistics, translations,
    citations, and leadership. The site itself never mentions the visa, and holds no
    private information (salary, recommender names, contact details).
-3. **Help NHS Wales DHCW colleagues** discover projects relevant to their work, use
-   them safely, and get involved.
+3. **Help digital health groups** (health services, health-tech teams, public health
+   organisations) discover projects relevant to their work, use them safely, and get
+   involved. The site does not name the author's employer or any specific health
+   organisation.
 
 ### Emphasis
 
@@ -41,7 +43,7 @@ open source for the public good.
 | --- | --- | --- |
 | Developers and health-tech teams worldwide | Find a library or guide, judge its quality, start using it | Projects, Health care, Engineering, Search |
 | Public-sector leaders | Understand public value; find guides and metrics | Public value, Home |
-| NHS Wales and DHCW colleagues | See what fits their work; know it is safe and independent | NHS Wales |
+| Digital health groups | See what fits their work; know it is safe and independent | Digital health teams |
 | Assessors, recommenders, journalists | Verify impact and recognition quickly | Impact, About |
 
 ## 3. Implementation
@@ -80,7 +82,7 @@ open source for the public good.
     `localStorage` and a cookie, and a pre-paint script in `app.html` avoids a flash.
     Theme CSS is copied from `@lilydesignsystem/themes` into `static/themes/` at
     build time (generated, git-ignored).
-  - **Locale**: `en-001`, `en-gb`, and `en-us`. Choosing one navigates to the same
+  - **Locale**: `en-001`, `en-gb`, `en-us`, and `cy-gb`. Choosing one navigates to the same
     page in that locale.
   - **Text size**: Lily default sizes.
   - **Share**: Copy Link, Email Link, LinkedIn, Reddit, Bluesky, and Mastodon (through
@@ -90,22 +92,41 @@ open source for the public good.
 
 ## 4. Locales
 
-| Locale | Path prefix | Spelling | `<html lang>` |
+| Locale | Path prefix | Text | `<html lang>` |
 | --- | --- | --- | --- |
-| `en-001` English (World), the default | none (site root) | international / British | `en-001` |
-| `en-gb` English (United Kingdom) | `/en-gb/` | British | `en-GB` |
-| `en-us` English (United States) | `/en-us/` | American | `en-US` |
+| `en-001` English (World), default | `/en-001/` | international / British English source | `en-001` |
+| `en-gb` English (United Kingdom) | `/en-gb/` | same as source | `en-GB` |
+| `en-us` English (United States) | `/en-us/` | American spelling, derived by rule | `en-US` |
+| `cy-gb` Cymraeg (Welsh) | `/cy-gb/` | translated, from `locales/cy-gb/messages.json` | `cy-GB` |
 
-- Content is written once, in international / British spelling. `spell(locale, text)`
-  in `src/lib/locales.ts` derives American spelling for `en-us` from an explicit,
-  tested word list. Add words there; never fork content per locale.
-- Proper names keep their own spelling ("World Health Organization", "Digital Health
-  and Care Wales").
-- Dates and numbers use `Intl` with the locale's tag, such as "21 November 2026" and
-  "November 21, 2026".
-- Every page carries `hreflang` alternates for all three locales plus `x-default`
-  (en-001). The footer links to the current page in each locale, which also lets the
+- **Every locale has a path prefix**, including the default, like lilydesignsystem.com:
+  `https://publicprojects.io/en-001/donate/`. Routes live under
+  `src/routes/[locale=locale]/`.
+- **The site root `/` is a language chooser.** With JavaScript it redirects at once to
+  the locale that best matches the browser's languages (`pickLocale()`: exact match,
+  then language and region, then the language's `-001` variant, then any locale in that
+  language, so `cy` goes to `cy-gb`), falling back to `en-001`. It stores nothing.
+  Without JavaScript it lists every language by its own name.
+- **Old unprefixed links** (such as `/donate/` from before prefixes) are forwarded by
+  the error page to the same page under `/en-001/`. Unknown pages show "Page not found".
+- Content is written once, in international / British English, and every visible
+  string passes through `t(locale, text)` in `src/lib/locales.ts`.
+  - en-us: `t()` applies an explicit, tested British-to-American word list. Add words
+    there; never fork content.
+  - cy-gb: `t()` looks the English text up in `locales/cy-gb/messages.json` (see
+    `locales/README.md`). A missing entry falls back to English and is reported as
+    `I18N_MISSING` during the build; CI builds with `I18N_STRICT=1`, which fails on any
+    missing entry.
+  - The Welsh translation is a draft. Every Welsh page shows a notice saying so, with a
+    link to report errors, until a first-language speaker has reviewed it.
+- Not translated: project names, technical tags, Lily theme names, and proper names
+  ("World Health Organization").
+- Dates and numbers use `Intl` with the locale's tag ("21 November 2026",
+  "November 21, 2026", "21 Tachwedd 2026").
+- Every page carries `hreflang` alternates for every locale plus `x-default`
+  (the en-001 page; for the home page, the root chooser). The footer links to the current page in each locale, which also lets the
   prerender crawler find every locale.
+- The language choice is held in the URL, not in browser storage.
 
 ## 5. Pages
 
@@ -114,16 +135,35 @@ open source for the public good.
 
 | Slug | Purpose |
 | --- | --- |
-| `` (home) | Hero; headline numbers; why public open source matters; the three areas; featured projects; NHS Wales callout; who builds this |
+| `` (home) | Hero; headline numbers; why public open source matters; the three areas; featured projects; digital health teams callout; who builds this |
 | `health` | Health care and medical projects; the standards they serve; a clinical safety notice; trademark notices |
 | `public-value` | Public value projects; translation and accessibility as public value |
-| `engineering` | Software engineering leadership; adoption and citation |
+| `engineering` | Software engineering leadership (nav label "Software engineering"); adoption and citation |
 | `projects` | Every project, grouped by area |
 | `projects/<slug>` | One page per project: summary, links, about, public value, dated facts, topics, related projects |
-| `nhs-wales` | For NHS Wales and DHCW colleagues: an independence and clinical safety notice, a table mapping needs to projects, why open source fits (GOV.UK Service Standard point 12, Technology Code of Practice), and how to get involved |
-| `impact` | Every statistic with its date and source link; recognition; translations; method |
+| `digital-health-teams` | For digital health groups: an independence and clinical safety notice, a table mapping needs to projects, why open source fits (with UK examples: Service Standard point 12, Technology Code of Practice), and how to get involved |
+| `impact` | Every statistic with its date and source link; GitHub stars by account (joelparkerhenderson, gitalias, sixarm: every owned repository, including forks) and by project; recognition; translations; method |
+| `donate` | How to donate time (code, docs, translation, testing, sharing) and money (PayPal or Venmo to the author's email), and to ask about other ways; donations go to the author personally, not tax-deductible |
 | `about` | About the site and the author; principles; independence |
 | `search` | Client-side search results (not in nav, sitemap, or llms.txt) |
+| `accessibility-statement` | Aim (WCAG 2.2 AA, no conformance claim), what is checked, known shortfalls, other formats, reporting, plans |
+| `cookie-policy` | No cookies; what cookies are; the two localStorage keys (`publicprojects-theme`, `publicprojects-text-size`); managing storage; other sites; concerns; changes |
+| `privacy-policy` | Collects nothing; device storage; hosting (GitHub Pages); sharing; contact; rights; children; changes |
+| `terms-of-use` | Use of the site; per-project licences; trademarks and independence; health and clinical use; no warranty; responsible use; links; changes |
+| `site-map` | Every page and project, grouped, plus locales and machine-readable files |
+
+Main navigation (in the header, and repeated in the footer): Health care, Public
+value, Software engineering, All projects, Digital health teams, Impact, Donate,
+About. The footer's policy row: Accessibility statement, Cookie policy, Privacy
+policy, Terms of use, Site map. The footer colophon is © year, name, GitHub, ORCID,
+LinkedIn.
+
+### Header
+
+Logo, navigation links, and the PickerBar share one row (the header container is
+84rem, wider than the 76rem content, so English fits one line from about 1200px).
+The logo and PickerBar never shrink; the links may wrap within their space. Below
+60rem the header stacks.
 
 Machine-readable routes: `sitemap.xml` (all locales, with `xhtml:link` alternates),
 `llms.txt`, and `robots.txt`. Pages include schema.org JSON-LD: `WebSite` on home,
@@ -145,7 +185,8 @@ count the project itself publishes), `tags`, and `featured`.
 - Facts come only from public, checkable sources: the project's own site, its
   repository, its registry page (crates.io, RubyGems), the author's ORCID record, or
   the author's public CV.
-- **Numbers come only from `src/lib/data/stats.json`**, which carries an `asOf` date.
+- **Numbers come only from `src/lib/data/stats.json`** (repositories, crates, gems, and
+  per-account totals in `owners`), which carries an `asOf` date.
   Refresh it with `pnpm stats` (`scripts/refresh-stats.mjs`), review the diff, and
   commit. Headline totals are derived from `stats.json` in code, never typed by hand.
 - Translation counts ("60+ languages") only where the project publishes them.
@@ -153,14 +194,21 @@ count the project itself publishes), `tags`, and `featured`.
   ADRs" links to the ADR repository. Add others, such as analyst citations or
   talks, only with a public URL.
 - **Independence**: the projects are personal, built in the author's own time. They
-  are not products of, or endorsed by, NHS Wales, DHCW, or any employer. The footer,
-  NHS Wales page, and About page all say so.
+  are not products of, or endorsed by, any employer or health organisation. The footer,
+  digital health teams page, and About page all say so. Do not name the author's
+  employer or specific health organisations, except where a project's own scope names
+  them (for example, the NHS Number crate's supported NHS bodies).
 - **Clinical safety**: health projects are building blocks, not certified medical
   devices. Health pages state that live clinical use needs the adopting
   organisation's own clinical safety assessment (DCB0129 and DCB0160).
   Demonstration projects say they are not for medical use.
 - **Trademarks**: HL7®, FHIR®, SNOMED CT®, and openEHR® notices on the health page.
-- **Pronouns**: refer to the author by name ("Joel"), not by pronoun.
+- **Pronouns**: refer to the author by name ("Joel"), not by pronoun, in every language.
+- **No cookies**: the theme picker's cookie is disabled (`cookieName: ''`). Adding any
+  cookie, analytics, or third-party request requires updating the cookie and privacy
+  policies first.
+- **Contact**: the issue tracker, and the author's email only where the author asked
+  for it (the donate page).
 
 ### Writing style
 
@@ -203,14 +251,14 @@ CI runs the same three commands before deploying.
 1. The home page shows a Lily Hero, headline numbers dated from `stats.json`, the
    three areas, and featured projects.
 2. The header has a Lily PickerBar with search, all Lily default themes (sorted, UK
-   and US last), locales en-001, en-gb, and en-us, text size, and the six share
+   and US last), locales en-001, en-gb, en-us, and cy-gb, text size, and the six share
    options.
 3. Choosing a locale navigates to the same page in that locale; en-us pages use
-   American spelling.
+   American spelling; cy-gb pages are fully Welsh, with the draft notice.
 4. Searching from the picker lands on the search page with matching results.
 5. Every project has a page in all three locales, with a source link and date for
    every number.
-6. The NHS Wales page maps needs to projects and states independence and clinical
+6. The digital health teams page maps needs to projects and states independence and clinical
    safety.
 7. `sitemap.xml`, `llms.txt`, `robots.txt`, canonical URLs, and `hreflang` use `https://publicprojects.io`.
 8. The site deploys to GitHub Pages from `main` and serves at https://publicprojects.io over HTTPS.
@@ -225,6 +273,6 @@ CI runs the same three commands before deploying.
   enforce HTTPS.
 - Add recognition that has a public URL: analyst citations, talks, hackathon judging,
   and media coverage.
-- Consider a Welsh (Cymraeg) locale for NHS Wales audiences, which needs real
-  translation, not derived spelling.
+- First-language review of the Welsh translation, then remove the draft notice.
+- Consider more locales, each with its own catalogue under `locales/`.
 - Add an Open Graph image.

@@ -540,6 +540,9 @@ export const PROJECTS: Project[] = [
 
 export const STATS_AS_OF = stats.asOf;
 
+/** GitHub accounts whose repositories are counted in TOTALS.ownerStars. */
+export const OWNERS = Object.entries(stats.owners).map(([login, counts]) => ({ login, ...counts, url: `https://github.com/${login}` }));
+
 export function projectBySlug(slug: string): Project | undefined {
 	return PROJECTS.find((project) => project.slug === slug);
 }
@@ -567,6 +570,9 @@ export const TOTALS = {
 	downloads:
 		Object.values(stats.crates).reduce((sum, n) => sum + n, 0) + Object.values(stats.gems).reduce((sum, n) => sum + n, 0),
 	stars: Object.values(stats.github).reduce((sum, repo) => sum + repo.stars, 0),
+	/** Every repository owned by the accounts in stats.owners. */
+	ownerStars: Object.values(stats.owners).reduce((sum, owner) => sum + owner.stars, 0),
+	ownerRepos: Object.values(stats.owners).reduce((sum, owner) => sum + owner.repos, 0),
 	projects: PROJECTS.length,
 	healthProjects: PROJECTS.filter((project) => project.area === 'health').length
 };

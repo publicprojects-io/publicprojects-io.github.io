@@ -1,10 +1,10 @@
 <script lang="ts">
 	import AreaPage from '#lib/components/AreaPage.svelte';
-	import { spell } from '#lib/locales.js';
+	import { t } from '#lib/locales.js';
 
 	let { data } = $props();
 	const locale = $derived(data.locale);
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 </script>
 
 <AreaPage area="public-value" {locale}>

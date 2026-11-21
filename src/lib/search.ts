@@ -1,13 +1,13 @@
 // The search index: every page and project, built from the same data the
 // pages render, so search can never disagree with the site.
 import { AREAS, PROJECTS } from './data/projects';
-import { localePath, spell, type Locale } from './locales';
+import { localePath, t, type Locale } from './locales';
 import { PAGES } from './pages';
 
 export type SearchEntry = { path: string; title: string; description: string; text: string };
 
 export function searchIndex(locale: Locale): SearchEntry[] {
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 	const pages = PAGES.filter((p) => p.slug !== 'search').map((p) => ({
 		path: localePath(locale, p.slug),
 		title: s(p.name),
@@ -17,7 +17,7 @@ export function searchIndex(locale: Locale): SearchEntry[] {
 		path: localePath(locale, `projects/${p.slug}`),
 		title: p.name,
 		description: s(p.summary),
-		extra: [p.description, p.value, AREAS[p.area].name, ...p.tags].map(s).join(' ')
+		extra: [...[p.description, p.value, AREAS[p.area].name].map(s), ...p.tags].join(' ')
 	}));
 	return [...pages, ...projects].map(({ path, title, description, ...rest }) => ({
 		path,

@@ -5,13 +5,13 @@
 	import ProjectGrid from '#lib/components/ProjectGrid.svelte';
 	import Seo from '#lib/components/Seo.svelte';
 	import { AREAS, PROJECTS, STATS_AS_OF, TOTALS, statValue, type Area } from '#lib/data/projects.js';
-	import { formatDate, formatNumber, localePath, spell } from '#lib/locales.js';
+	import { formatDate, formatNumber, localePath, t } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { PERSON, SITE_NAME, SITE_ORIGIN, SITE_TAGLINE } from '#lib/site.js';
 
 	let { data } = $props();
 	const locale = $derived(data.locale);
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 	const href = (to: string) => `${base}${localePath(locale, to)}`;
 	const n = (value: number) => formatNumber(locale, value, true);
 
@@ -42,7 +42,7 @@
 <Seo
 	{locale}
 	slug=""
-	title={SITE_TAGLINE}
+	title={s(SITE_TAGLINE)}
 	description={s(pageBySlug('').description)}
 	jsonLd={{
 		'@context': 'https://schema.org',
@@ -55,7 +55,7 @@
 
 <Hero class="site-hero" label={SITE_NAME}>
 	<ContainerWithFixedWidth maxWidth="76rem">
-		<HeroHeadline label={SITE_TAGLINE}>
+		<HeroHeadline label={s(SITE_TAGLINE)}>
 			{#snippet media()}<HeroArt />{/snippet}
 			<div class="hero-copy">
 			<p class="hero-kicker">{SITE_NAME}</p>
@@ -66,7 +66,7 @@
 			<div class="hero-actions">
 				<ActionLink href={href('projects')}>{s('Explore the projects')}</ActionLink>
 				<ActionLink href={href('health')}>{s('Health care projects')}</ActionLink>
-				<ActionLink href={href('nhs-wales')}>{s('For NHS Wales colleagues')}</ActionLink>
+				<ActionLink href={href('digital-health-teams')}>{s('For digital health teams')}</ActionLink>
 			</div>
 			</div>
 		</HeroHeadline>
@@ -78,6 +78,7 @@
 		<h2 id="impact-heading" class="visually-hidden">{s('Impact at a glance')}</h2>
 		<dl>
 			<div><dt>{s('package downloads')}</dt><dd>{n(TOTALS.downloads)}+</dd></div>
+			<div><dt>{s('GitHub stars across the joelparkerhenderson, GitAlias, and SixArm repositories')}</dt><dd>{n(TOTALS.ownerStars)}+</dd></div>
 			<div><dt>{s('GitHub stars for Architecture Decision Record')}</dt><dd>{n(adrStars)}+</dd></div>
 			<div><dt>{s('languages for the most-translated guides')}</dt><dd>60+</dd></div>
 			<div><dt>{s('open-source projects, including health care')}</dt><dd>{TOTALS.projects}</dd></div>
@@ -124,19 +125,19 @@
 		<p><ActionLink href={href('projects')}>{s('See all')} {TOTALS.projects} {s('projects')}</ActionLink></p>
 	</section>
 
-	<section class="section callout" aria-labelledby="nhs-heading">
-		<h2 id="nhs-heading">{s('For NHS Wales and DHCW colleagues')}</h2>
+	<section class="section callout" aria-labelledby="teams-heading">
+		<h2 id="teams-heading">{s('For digital health teams')}</h2>
 		<p>
 			{s('NHS Number validation, HL7 and FHIR integration, SNOMED CT terminology, architecture decision records, and public value business cases: see where these open-source projects can help your work, and how to get involved.')}
 		</p>
-		<p><ActionLink href={href('nhs-wales')}>{s('Open the NHS Wales page')}</ActionLink></p>
+		<p><ActionLink href={href('digital-health-teams')}>{s('Open the digital health teams page')}</ActionLink></p>
 	</section>
 
 	<section class="section" aria-labelledby="author-heading">
 		<h2 id="author-heading">{s('Who builds this')}</h2>
 		<p>
 			{s('Public Projects is created and maintained by')} <a href={href('about')}>{PERSON.name}</a>,
-			{s('a software engineering leader whose open-source work is used by developers and organisations around the world. Joel is Head of Software Engineering at NHS Wales Digital Health and Care Wales (DHCW).')}
+			{s('a software engineering leader in public digital health, whose open-source work is used by developers and organisations around the world.')}
 		</p>
 	</section>
 </ContainerWithFixedWidth>

@@ -2,26 +2,26 @@
 	import '../app.css';
 	import { base } from '#lib/base.js';
 	import { page } from '$app/state';
-	import { ContainerWithFixedWidth, Footer, Header, NavigationMenu, SkipLink } from '@lilydesignsystem/svelte-headless';
+	import { ContainerWithFixedWidth, Footer, Header, InsetText, NavigationMenu, SkipLink } from '@lilydesignsystem/svelte-headless';
 	import type { Snippet } from 'svelte';
 	import SitePickerBar from '#lib/components/SitePickerBar.svelte';
-	import { LOCALES, LOCALE_LABELS, LOCALE_TAGS, localePath, parsePath, spell } from '#lib/locales.js';
+	import { LOCALES, LOCALE_LABELS, LOCALE_TAGS, localePath, parsePath, t } from '#lib/locales.js';
 	import { PAGES } from '#lib/pages.js';
 	import { projectBySlug } from '#lib/data/projects.js';
-	import { PERSON, SITE_NAME, SITE_TAGLINE, SOURCE_URL } from '#lib/site.js';
+	import { ISSUES_URL, PERSON, SITE_NAME, SITE_TAGLINE } from '#lib/site.js';
 	import { ui } from '#lib/ui.js';
 
 	let { data, children }: { data: { locale: import('#lib/locales.js').Locale }; children: Snippet } = $props();
 
 	const locale = $derived(data.locale);
 	const m = $derived(ui(locale));
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 	const slug = $derived(parsePath(page.url.pathname.slice(base.length) || '/').slug);
 	const section = $derived(slug.split('/')[0]);
 	const href = (to: string) => `${base}${localePath(locale, to)}`;
 	const title = $derived.by(() => {
 		const project = slug.startsWith('projects/') ? projectBySlug(slug.slice('projects/'.length)) : undefined;
-		return project?.name ?? PAGES.find((p) => p.slug === slug)?.name ?? SITE_TAGLINE;
+		return project?.name ?? s(PAGES.find((p) => p.slug === slug)?.name ?? SITE_TAGLINE);
 	});
 	const year = new Date().getFullYear();
 </script>
@@ -29,7 +29,8 @@
 <SkipLink href="#content" label={m.skip} />
 
 <Header class="site-header" label={SITE_NAME}>
-	<ContainerWithFixedWidth maxWidth="76rem">
+	<!-- Wider than page content (76rem) so logo, links, and picker bar fit one row. -->
+	<ContainerWithFixedWidth maxWidth="84rem">
 		<div class="site-header-row">
 			<a class="site-brand" href={href('')}>
 				<svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false">
@@ -38,21 +39,26 @@
 				</svg>
 				<span>{SITE_NAME}</span>
 			</a>
+			<NavigationMenu label={m.mainNav} class="site-nav">
+				<ul>
+					{#each PAGES.filter((p) => p.nav) as item (item.slug)}
+						<li>
+							<a href={href(item.slug)} aria-current={section === item.slug ? 'page' : undefined}>{s(item.name)}</a>
+						</li>
+					{/each}
+				</ul>
+			</NavigationMenu>
 			<SitePickerBar {locale} {slug} {title} />
 		</div>
-		<NavigationMenu label={m.mainNav} class="site-nav">
-			<ul>
-				{#each PAGES.filter((p) => p.nav) as item (item.slug)}
-					<li>
-						<a href={href(item.slug)} aria-current={section === item.slug ? 'page' : undefined}>{s(item.name)}</a>
-					</li>
-				{/each}
-			</ul>
-		</NavigationMenu>
 	</ContainerWithFixedWidth>
 </Header>
 
 <main id="content" tabindex="-1">
+	{#if locale === 'cy-gb'}
+		<ContainerWithFixedWidth maxWidth="76rem">
+			<InsetText class="draft-notice"><p>{m.draftNotice} <a href={ISSUES_URL}>{m.reportIssue}</a>.</p></InsetText>
+		</ContainerWithFixedWidth>
+	{/if}
 	{@render children()}
 </main>
 
@@ -82,13 +88,18 @@
 				</ul>
 			</nav>
 		</div>
+		<nav class="site-footer-policies" aria-label={m.policies}>
+			<ul>
+				{#each PAGES.filter((p) => p.footer) as item (item.slug)}
+					<li><a href={href(item.slug)} aria-current={slug === item.slug ? 'page' : undefined}>{s(item.name)}</a></li>
+				{/each}
+			</ul>
+		</nav>
 		<p class="site-colophon">
 			© {year} <a href={PERSON.website}>{PERSON.name}</a> ·
 			<a href={PERSON.github}>GitHub</a> ·
 			<a href={PERSON.orcid}>ORCID</a> ·
-			<a href={PERSON.linkedin}>LinkedIn</a> ·
-			<a href={SOURCE_URL}>{m.viewSource}</a> ·
-			{m.builtWith}
+			<a href={PERSON.linkedin}>LinkedIn</a>
 		</p>
 	</ContainerWithFixedWidth>
 </Footer>

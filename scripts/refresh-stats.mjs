@@ -19,11 +19,24 @@ async function json(url, headers = {}) {
 }
 
 const githubHeaders = process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {};
-const next = { asOf: new Date().toISOString().slice(0, 10), github: {}, crates: {}, gems: {} };
+const next = { asOf: new Date().toISOString().slice(0, 10), github: {}, crates: {}, gems: {}, owners: {} };
 
 for (const repo of Object.keys(previous.github)) {
 	const data = await json(`https://api.github.com/repos/${repo}`, githubHeaders);
 	next.github[repo] = { stars: data.stargazers_count, forks: data.forks_count };
+}
+// Every repository each account or organisation owns, including forks: stars on a
+// fork belong to that fork, not to its upstream.
+for (const owner of Object.keys(previous.owners)) {
+	let repos = 0;
+	let stars = 0;
+	for (let page = 1; ; page++) {
+		const batch = await json(`https://api.github.com/users/${owner}/repos?type=owner&per_page=100&page=${page}`, githubHeaders);
+		repos += batch.length;
+		stars += batch.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+		if (batch.length < 100) break;
+	}
+	next.owners[owner] = { repos, stars };
 }
 for (const name of Object.keys(previous.crates)) {
 	const data = await json(`https://crates.io/api/v1/crates/${name}`);

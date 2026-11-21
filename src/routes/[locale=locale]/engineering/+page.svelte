@@ -2,11 +2,11 @@
 	import { base } from '#lib/base.js';
 	import AreaPage from '#lib/components/AreaPage.svelte';
 	import { statValue, TOTALS } from '#lib/data/projects.js';
-	import { formatNumber, localePath, spell } from '#lib/locales.js';
+	import { formatNumber, localePath, t } from '#lib/locales.js';
 
 	let { data } = $props();
 	const locale = $derived(data.locale);
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 	const n = (value: number) => formatNumber(locale, value);
 	const adr = statValue({ kind: 'github', key: 'architecture-decision-record/architecture-decision-record' }).value;
 	const assertables = statValue({ kind: 'crate', key: 'assertables' }).value;

@@ -1,7 +1,8 @@
 // The site's top-level pages: the single source for navigation, the sitemap,
 // llms.txt, and search. Adding a page means adding it here. See spec/index.md § Pages.
 
-export type PageInfo = { slug: string; name: string; description: string; nav: boolean };
+/** nav: main navigation and footer. footer: the footer's policy row. */
+export type PageInfo = { slug: string; name: string; description: string; nav: boolean; footer?: boolean };
 
 export const PAGES: PageInfo[] = [
 	{
@@ -24,7 +25,7 @@ export const PAGES: PageInfo[] = [
 	},
 	{
 		slug: 'engineering',
-		name: 'Engineering',
+		name: 'Software engineering',
 		description: 'Software engineering leadership: architecture decision records, metrics, testing, and version-control practices used around the world.',
 		nav: true
 	},
@@ -35,9 +36,9 @@ export const PAGES: PageInfo[] = [
 		nav: true
 	},
 	{
-		slug: 'nhs-wales',
-		name: 'NHS Wales',
-		description: 'For NHS Wales and Digital Health and Care Wales (DHCW) colleagues: where these open-source projects can help, and how to get involved.',
+		slug: 'digital-health-teams',
+		name: 'Digital health teams',
+		description: 'For digital health groups, such as health services, health-tech teams, and public health organisations: where these open-source projects can help, and how to get involved.',
 		nav: true
 	},
 	{
@@ -47,12 +48,53 @@ export const PAGES: PageInfo[] = [
 		nav: true
 	},
 	{
-		slug: 'about',
-		name: 'About',
-		description: 'About Public Projects and its author, Joel Parker Henderson, Head of Software Engineering at NHS Wales Digital Health and Care Wales.',
+		slug: 'donate',
+		name: 'Donate',
+		description: 'How to support Public Projects by donating time, money, or other help.',
 		nav: true
 	},
-	{ slug: 'search', name: 'Search', description: 'Search Public Projects.', nav: false }
+	{
+		slug: 'about',
+		name: 'About',
+		description: 'About Public Projects and its author, Joel Parker Henderson, a software engineering leader in public digital health.',
+		nav: true
+	},
+	{ slug: 'search', name: 'Search', description: 'Search Public Projects.', nav: false },
+	{
+		slug: 'accessibility-statement',
+		name: 'Accessibility statement',
+		description: 'How accessible the Public Projects website is, what we know falls short, and how to report a problem.',
+		nav: false,
+		footer: true
+	},
+	{
+		slug: 'cookie-policy',
+		name: 'Cookie policy',
+		description: 'The Public Projects website sets no cookies. This page lists the preferences kept in your browser and how to manage them.',
+		nav: false,
+		footer: true
+	},
+	{
+		slug: 'privacy-policy',
+		name: 'Privacy policy',
+		description: 'The Public Projects website collects no personal information. This page explains what that means and where the limits are.',
+		nav: false,
+		footer: true
+	},
+	{
+		slug: 'terms-of-use',
+		name: 'Terms of use',
+		description: 'How you may use the Public Projects website and its open-source projects.',
+		nav: false,
+		footer: true
+	},
+	{
+		slug: 'site-map',
+		name: 'Site map',
+		description: 'Every page on the Public Projects website.',
+		nav: false,
+		footer: true
+	}
 ];
 
 export function pageBySlug(slug: string): PageInfo {

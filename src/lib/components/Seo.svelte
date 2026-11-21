@@ -24,7 +24,8 @@
 	{#each LOCALES as l (l)}
 		<link rel="alternate" hreflang={LOCALE_TAGS[l]} href={url(l)} />
 	{/each}
-	<link rel="alternate" hreflang="x-default" href={url(DEFAULT_LOCALE)} />
+	<!-- x-default: the root language chooser, which redirects to the visitor's language. -->
+	<link rel="alternate" hreflang="x-default" href={slug ? url(DEFAULT_LOCALE) : `${SITE_ORIGIN}${base}/`} />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content={SITE_NAME} />
 	<meta property="og:title" content={fullTitle} />

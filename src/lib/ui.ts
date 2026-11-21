@@ -1,11 +1,12 @@
 // Interface strings. Written once in international English; `ui(locale)`
 // applies each locale's spelling. Every accessible name Lily asks for lives here.
-import { spell, type Locale } from './locales';
+import { t, type Locale } from './locales';
 
 const BASE = {
 	skip: 'Skip to content',
 	mainNav: 'Main',
 	footerNav: 'Footer',
+	policies: 'Policies and site map',
 	languages: 'Languages',
 	preferences: 'Display preferences',
 	picker: {
@@ -27,6 +28,18 @@ const BASE = {
 		bluesky: 'Share on Bluesky',
 		mastodon: 'Share on Mastodon'
 	},
+	sizes: {
+		largest: 'Largest',
+		larger: 'Larger',
+		large: 'Large',
+		normal: 'Normal',
+		small: 'Small',
+		smaller: 'Smaller',
+		smallest: 'Smallest'
+	},
+	draftNotice:
+		'This Welsh translation is a draft that a native speaker has not yet reviewed. Some wording may be wrong. Please report errors on the issue tracker.',
+	reportIssue: 'Report an error',
 	activeTheme: 'Active theme',
 	activeLanguage: 'Active language',
 	breadcrumb: 'Breadcrumb',
@@ -37,16 +50,14 @@ const BASE = {
 	source: 'Source',
 	footerAbout:
 		'Public Projects are personal open-source projects by Joel Parker Henderson, built in the author’s own time. They are not products of, or endorsed by, any employer.',
-	builtWith: 'Built with SvelteKit and the Lily Design System. Hosted on GitHub Pages.',
-	viewSource: 'Source code for this site'
 };
 
 export type Ui = typeof BASE;
 
-function spellAll<T>(locale: Locale, value: T): T {
-	if (typeof value === 'string') return spell(locale, value) as T;
+function translateAll<T>(locale: Locale, value: T): T {
+	if (typeof value === 'string') return t(locale, value) as T;
 	if (value && typeof value === 'object') {
-		return Object.fromEntries(Object.entries(value).map(([key, inner]) => [key, spellAll(locale, inner)])) as T;
+		return Object.fromEntries(Object.entries(value).map(([key, inner]) => [key, translateAll(locale, inner)])) as T;
 	}
 	return value;
 }
@@ -54,6 +65,6 @@ function spellAll<T>(locale: Locale, value: T): T {
 const cache = new Map<Locale, Ui>();
 export function ui(locale: Locale): Ui {
 	let messages = cache.get(locale);
-	if (!messages) cache.set(locale, (messages = spellAll(locale, BASE)));
+	if (!messages) cache.set(locale, (messages = translateAll(locale, BASE)));
 	return messages;
 }

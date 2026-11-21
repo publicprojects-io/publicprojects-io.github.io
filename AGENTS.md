@@ -23,7 +23,8 @@ a static SvelteKit 3 site on the `publicprojects-io` organisation's root GitHub 
 | `src/lib/data/projects.ts` | Project catalogue: the single source for project content |
 | `src/lib/data/stats.json` | Dated statistics snapshot: the only source for numbers |
 | `src/lib/pages.ts` | Top-level pages: navigation, sitemap, llms.txt, and search |
-| `src/lib/locales.ts` | Locales, paths, en-us spelling, and number and date formats |
+| `src/lib/locales.ts` | Locales, paths, `t()` (en-us spelling, catalogue lookup), and number and date formats |
+| `locales/cy-gb/messages.json` | Welsh catalogue, keyed by English source text; see `locales/README.md` |
 | `src/lib/ui.ts` | Interface strings and accessible names |
 | `.github/workflows/deploy.yml` | Check, test, build, and deploy to GitHub Pages |
 
@@ -62,12 +63,16 @@ A change is done when `check`, `test`, and `build` all pass.
 - **Keep private information out.** Personal research material contains private data
   (salary, recommenders, contacts). Never copy it into this public repository or site.
 - **Independence**: keep the notices that these are personal projects, not products
-  of, or endorsed by, NHS Wales, DHCW, or any employer.
-- **Clinical safety**: keep the notices on the health and NHS Wales pages.
-- **Write content once** in international / British English. en-us spelling is derived
-  by `spell()`; add missing words to its list, with a test.
+  of, or endorsed by, any employer or health organisation. Do not name the
+  author's employer or specific health organisations.
+- **Clinical safety**: keep the notices on the health and digital health teams pages.
+- **Write content once** in international / British English, and pass every visible
+  string through `t(locale, text)`. en-us spelling is derived; add missing words to its
+  list, with a test. Every new or changed string needs a Welsh entry in
+  `locales/cy-gb/messages.json`: run `I18N_STRICT=1 pnpm run build` (as CI does).
 - **Add a page** by adding it to `src/lib/pages.ts`, then creating
-  `src/routes/[[locale=locale]]/<slug>/+page.svelte`.
+  `src/routes/[locale=locale]/<slug>/+page.svelte`. Every page lives under a locale
+  prefix (`/en-001/…`); the root `/` is only the language chooser.
 - **Add a project** by adding it to `projects.ts`, and adding any stats key to
   `stats.json`.
 - **Lily**: use npm packages, not vendored copies; Lily default themes only, with no

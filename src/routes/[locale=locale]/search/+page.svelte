@@ -3,13 +3,13 @@
 	import { base } from '#lib/base.js';
 	import { ContainerWithFixedWidth } from '@lilydesignsystem/svelte-headless';
 	import Seo from '#lib/components/Seo.svelte';
-	import { spell } from '#lib/locales.js';
+	import { t } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { search, searchIndex } from '#lib/search.js';
 
 	let { data } = $props();
 	const locale = $derived(data.locale);
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 	const index = $derived(searchIndex(locale));
 
 	// The page is prerendered once; the query (the Lily search picker sends /search/?<query>) is only known in the browser.

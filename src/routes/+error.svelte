@@ -2,10 +2,21 @@
 	import { base } from '#lib/base.js';
 	import { page } from '$app/state';
 	import { ContainerWithFixedWidth } from '@lilydesignsystem/svelte-headless';
-	import { localePath, parsePath, spell } from '#lib/locales.js';
+	import { onMount } from 'svelte';
+	import { DEFAULT_LOCALE, localePath, parsePath, t } from '#lib/locales.js';
+	import { SLUGS } from '#lib/urls.js';
 
 	const locale = $derived(parsePath(page.url.pathname.slice(base.length) || '/').locale);
-	const s = (text: string) => spell(locale, text);
+
+	// Links from before every page had a locale prefix (such as /donate/) still
+	// work: forward them to the same page in the default locale.
+	onMount(() => {
+		const { slug, prefixed } = parsePath(location.pathname.slice(base.length) || '/');
+		if (!prefixed && (SLUGS.includes(slug) || slug === 'search')) {
+			location.replace(`${base}${localePath(DEFAULT_LOCALE, slug)}${location.search}${location.hash}`);
+		}
+	});
+	const s = (text: string) => t(locale, text);
 </script>
 
 <svelte:head><title>{page.status} · Public Projects</title></svelte:head>

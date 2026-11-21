@@ -4,7 +4,7 @@
 	import ProjectGrid from '#lib/components/ProjectGrid.svelte';
 	import Seo from '#lib/components/Seo.svelte';
 	import { AREAS, PROJECTS, STATS_AS_OF, statSource, statValue } from '#lib/data/projects.js';
-	import { formatDate, formatNumber, localePath, spell } from '#lib/locales.js';
+	import { formatDate, formatNumber, localePath, t } from '#lib/locales.js';
 	import { PERSON } from '#lib/site.js';
 	import { ui } from '#lib/ui.js';
 
@@ -12,7 +12,7 @@
 	const locale = $derived(data.locale);
 	const project = $derived(data.project);
 	const m = $derived(ui(locale));
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 	const href = (to: string) => `${base}${localePath(locale, to)}`;
 	const area = $derived(AREAS[project.area]);
 	const related = $derived(PROJECTS.filter((p) => p.area === project.area && p.slug !== project.slug).slice(0, 3));
@@ -56,7 +56,7 @@
 
 	<div class="detail-grid">
 		<div class="prose">
-			<h2>{s('About')}</h2>
+			<h2>{s('About this project')}</h2>
 			<p>{s(project.description)}</p>
 			<h2>{s('Public value')}</h2>
 			<p>{s(project.value)}</p>

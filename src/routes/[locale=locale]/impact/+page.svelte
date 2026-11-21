@@ -2,8 +2,8 @@
 	import { base } from '#lib/base.js';
 	import { ContainerWithFixedWidth } from '@lilydesignsystem/svelte-headless';
 	import Seo from '#lib/components/Seo.svelte';
-	import { PROJECTS, STATS_AS_OF, TOTALS, statSource, statValue } from '#lib/data/projects.js';
-	import { formatDate, formatNumber, localePath, spell } from '#lib/locales.js';
+	import { OWNERS, PROJECTS, STATS_AS_OF, TOTALS, statSource, statValue } from '#lib/data/projects.js';
+	import { formatDate, formatNumber, localePath, t } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { PERSON } from '#lib/site.js';
 	import { ui } from '#lib/ui.js';
@@ -11,7 +11,7 @@
 	let { data } = $props();
 	const locale = $derived(data.locale);
 	const m = $derived(ui(locale));
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 	const href = (to: string) => `${base}${localePath(locale, to)}`;
 
 	const rows = $derived(
@@ -39,7 +39,7 @@
 		<h2 id="totals-heading" class="visually-hidden">{s('Totals')}</h2>
 		<dl>
 			<div><dt>{s('package downloads')}</dt><dd>{formatNumber(locale, TOTALS.downloads)}</dd></div>
-			<div><dt>{s('GitHub stars across the listed repositories')}</dt><dd>{formatNumber(locale, TOTALS.stars)}</dd></div>
+			<div><dt>{s('GitHub stars across the joelparkerhenderson, GitAlias, and SixArm repositories')}</dt><dd>{formatNumber(locale, TOTALS.ownerStars)}</dd></div>
 			<div><dt>{s('projects translated into 10 or more languages')}</dt><dd>{translated.length}</dd></div>
 			<div><dt>{s('health care and medical projects')}</dt><dd>{TOTALS.healthProjects}</dd></div>
 		</dl>
@@ -78,8 +78,35 @@
 		</div>
 	</section>
 
+	<section class="section" aria-labelledby="accounts-heading">
+		<h2 id="accounts-heading">{s('GitHub stars by account')}</h2>
+		<p>{s('Every repository each account owns, including forks.')}</p>
+		<div class="needs-table-wrap">
+			<table class="data-table">
+				<thead><tr><th scope="col">{s('Account')}</th><th scope="col" class="num">{s('Repositories')}</th><th scope="col" class="num">{s('Stars')}</th></tr></thead>
+				<tbody>
+					{#each OWNERS as owner (owner.login)}
+						<tr>
+							<th scope="row"><a href={owner.url}>{owner.login}</a></th>
+							<td class="num">{formatNumber(locale, owner.repos)}</td>
+							<td class="num">{formatNumber(locale, owner.stars)}</td>
+						</tr>
+					{/each}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th scope="row">{s('Total')}</th>
+						<td class="num">{formatNumber(locale, TOTALS.ownerRepos)}</td>
+						<td class="num">{formatNumber(locale, TOTALS.ownerStars)}</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<p class="small">{s('The Architecture Decision Record repository belongs to its own organisation, so its stars are listed separately below and are not in this total.')}</p>
+	</section>
+
 	<section class="section" aria-labelledby="stars-heading">
-		<h2 id="stars-heading">{m.stars}</h2>
+		<h2 id="stars-heading">{s('GitHub stars by project')}</h2>
 		<div class="needs-table-wrap">
 			<table class="data-table">
 				<thead><tr><th scope="col">{s('Project')}</th><th scope="col" class="num">{s('Stars')}</th><th scope="col">{m.source}</th></tr></thead>

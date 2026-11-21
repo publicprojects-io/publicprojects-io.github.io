@@ -2,7 +2,7 @@
 	import { base } from '#lib/base.js';
 	import { Card } from '@lilydesignsystem/svelte-headless';
 	import { AREAS, statValue, type Project } from '#lib/data/projects.js';
-	import { formatNumber, localePath, spell, type Locale } from '#lib/locales.js';
+	import { formatNumber, localePath, t, type Locale } from '#lib/locales.js';
 	import { ui } from '#lib/ui.js';
 
 	let { project, locale, headingLevel = 3, showArea = false }: {
@@ -11,7 +11,7 @@
 		headingLevel?: 2 | 3 | 4;
 		showArea?: boolean;
 	} = $props();
-	const s = (text: string) => spell(locale, text);
+	const s = (text: string) => t(locale, text);
 	const m = $derived(ui(locale));
 </script>
 

@@ -65,11 +65,36 @@ main:focus {
 
 .site-header-row {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	align-items: center;
-	justify-content: space-between;
-	gap: var(--lily-space-md, 1rem);
+	gap: var(--lily-space-sm, 0.75rem);
 	padding-block: var(--lily-space-sm, 0.5rem);
+}
+
+/* Logo, links, and picker bar share one row. The logo and picker bar keep their
+   size; the links take the space between and wrap inside it if they must. */
+.site-header-row > .site-brand,
+.site-header-row > .picker-bar {
+	flex: 0 0 auto;
+}
+
+.site-header-row .site-nav {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+/* Phones and narrow windows: stack, since one row cannot fit. */
+@media (max-width: 60rem) {
+	.site-header-row {
+		flex-wrap: wrap;
+	}
+	.site-header-row .site-nav {
+		order: 3;
+		flex-basis: 100%;
+	}
+	.site-nav ul {
+		justify-content: flex-start;
+	}
 }
 
 .site-brand {
@@ -96,16 +121,19 @@ main:focus {
 .site-nav ul {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.25rem 1.25rem;
+	justify-content: center;
+	gap: 0 0.75rem;
 	margin: 0;
-	padding: 0 0 var(--lily-space-sm, 0.5rem);
+	padding: 0;
 	list-style: none;
 }
 
 .site-nav a {
 	display: inline-block;
-	padding-block: 0.35rem;
+	padding-block: 0.3rem;
+	font-size: 0.925rem;
 	font-weight: 600;
+	white-space: nowrap;
 	text-decoration: none;
 	border-block-end: 3px solid transparent;
 }
@@ -552,7 +580,66 @@ main:focus {
 	margin-block-start: 0;
 }
 
+.site-footer-policies ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem 1.25rem;
+	margin-block-start: var(--lily-space-lg, 2rem);
+	padding-block-start: var(--lily-space-md, 1rem);
+	border-block-start: 1px solid var(--color-base-300);
+}
+
+.site-footer-policies li + li {
+	margin-block-start: 0;
+}
+
 .site-colophon {
 	margin-block-start: var(--lily-space-lg, 2rem);
 	font-size: 0.875rem;
+}
+
+/* ── Policies and site map ──────────────────────────────────────────── */
+
+.policy h2 {
+	margin-block-start: var(--lily-space-lg, 2rem);
+}
+
+.site-map-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+	gap: var(--lily-space-lg, 2rem);
+}
+
+.site-map-grid h2 {
+	font-size: 1.2rem;
+}
+
+.site-map-grid ul {
+	padding-inline-start: 1.1rem;
+}
+
+/* ── Root language chooser ──────────────────────────────────────────── */
+
+.language-chooser {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+	gap: var(--lily-space-sm, 0.75rem);
+	margin: 0 0 var(--lily-space-xl, 3rem);
+	padding: 0;
+	list-style: none;
+}
+
+.language-chooser a {
+	display: block;
+	padding: var(--lily-space-md, 1rem);
+	border: 1px solid var(--color-base-300);
+	border-radius: var(--lily-radius-md, 0.5rem);
+	font-size: 1.15rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.language-chooser a:hover,
+.language-chooser a:focus-visible {
+	background: var(--color-base-200);
 }
