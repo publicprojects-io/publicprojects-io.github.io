@@ -22,6 +22,9 @@ catalogue that maps each English source string to its translation:
 | [`hi-001`](hi-001/messages.json) | हिन्दी (विश्व) (Hindi, World) | Draft: a copy of `hi-in`; keep the two in step |
 | [`ar-eg`](ar-eg/messages.json) | العربية (مصر) (Arabic, Egypt) | Draft: needs review by a first-language Arabic speaker |
 | [`ar-001`](ar-001/messages.json) | العربية (العالم) (Arabic, World) | Draft: a copy of `ar-eg`; keep the two in step |
+| [`es-mx`](es-mx/messages.json) | Español (México) (Spanish, Mexico) | Draft: needs review by a first-language Spanish speaker |
+| [`es-001`](es-001/messages.json) | Español (Mundo) (Spanish, World) | Draft: a copy of `es-mx`; keep the two in step |
+| [`es-es`](es-es/messages.json) | Español (España) (Spanish, Spain) | Draft: `es-mx` tuned for Spain; keep it in step with `es-mx` |
 
 English locales (`en-001`, `en-gb`, `en-us`) need no catalogue: `en-us` spelling is
 derived by rule in `src/lib/locales.ts`.

@@ -70,6 +70,20 @@ describe('formatNumber', () => {
 	});
 });
 
+describe('Spanish', () => {
+	it('formats numbers by region', () => {
+		expect(formatNumber('es-mx', 96_386_872)).toBe('96,386,872');
+		expect(formatNumber('es-es', 96_386_872)).toBe('96.386.872');
+		expect(formatNumber('es-mx', 96_386_872, true)).toBe('96.3\u00a0M');
+		expect(formatNumber('es-es', 96_386_872, true)).toBe('96,3\u00a0M');
+		expect(formatNumber('es-001', 96_386_872)).toBe('96,386,872');
+		expect(formatNumber('es-001', 16_513, true)).toBe('16.5\u00a0k');
+		expect(formatDate('es-mx', '2026-11-21')).toBe('21 de noviembre de 2026');
+		expect(isTranslated('es-es')).toBe(true);
+		expect(localeDir('es-mx')).toBe('ltr');
+	});
+});
+
 describe('localeDir', () => {
 	it('is right to left for Arabic only', () => {
 		expect(localeDir('ar-eg')).toBe('rtl');
