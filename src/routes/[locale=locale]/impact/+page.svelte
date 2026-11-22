@@ -73,7 +73,7 @@
 				<tbody>
 					{#each downloads as row (row.ref.key)}
 						<tr>
-							<th scope="row"><a href={href(`projects/${row.project.slug}`)}>{row.project.name}</a></th>
+							<th scope="row"><a href={href(`projects/${row.project.slug}`)}>{s(row.project.name)}</a></th>
 							<td class="num">{formatNumber(locale, row.value)}</td>
 							<td><a href={statSource(row.ref)}>{row.ref.kind === 'gem' ? 'RubyGems' : 'crates.io'}</a></td>
 						</tr>
@@ -118,7 +118,7 @@
 				<tbody>
 					{#each stars as row (row.ref.key)}
 						<tr>
-							<th scope="row"><a href={href(`projects/${row.project.slug}`)}>{row.project.name}</a></th>
+							<th scope="row"><a href={href(`projects/${row.project.slug}`)}>{s(row.project.name)}</a></th>
 							<td class="num">{formatNumber(locale, row.value)}</td>
 							<td><a href={statSource(row.ref)}>GitHub</a></td>
 						</tr>
@@ -132,7 +132,7 @@
 		<h2 id="translations-heading">{s('Translations')}</h2>
 		<ul class="plain-list">
 			{#each translated as project (project.slug)}
-				<li><a href={href(`projects/${project.slug}`)}>{project.name}</a>: {s(project.languages ?? '')}</li>
+				<li><a href={href(`projects/${project.slug}`)}>{s(project.name)}</a>: {s(project.languages ?? '')}</li>
 			{/each}
 		</ul>
 		<p class="small">{s('Translation counts are as published by each project.')}</p>

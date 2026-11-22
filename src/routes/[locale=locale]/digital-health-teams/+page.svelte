@@ -99,7 +99,7 @@
 							<td>
 								<ul class="plain-list">
 									{#each row.slugs as slug (slug)}
-										<li><a href={href(`projects/${slug}`)}>{project(slug).name}</a></li>
+										<li><a href={href(`projects/${slug}`)}>{s(project(slug).name)}</a></li>
 									{/each}
 								</ul>
 							</td>

@@ -124,7 +124,14 @@ open source for the public good.
   - The Welsh, Chinese, and Hindi translations are drafts. Every page in a catalogue locale
     (`isTranslated()`) shows a notice saying so, in that language, with a
     link to report errors, until a first-language speaker has reviewed it.
-- Not translated: project names, technical tags, Lily theme names, and proper names
+- Project names are translated when they describe the project ("Care Plan" →
+  "Cynllun Gofal"), keeping standard and product names inside them ("FHIR for Rust" →
+  "FHIR ar gyfer Rust"). Brand and product names stay in English (Lily Design System,
+  GitAlias, Assertables, Num, Bold Contacts, Unicode Separated Values, Demo Rust Axum).
+  Every project name is a catalogue entry, brands mapping to themselves, so the strict
+  build catches a new project with no entry. Search still matches the English name, and
+  the JSON-LD keeps the English name beside its English description.
+- Not translated: technical tags, Lily theme names, and proper names
   ("World Health Organization").
 - Dates and numbers use `Intl` with the locale's tag ("21 November 2026",
   "November 21, 2026", "21 Tachwedd 2026").

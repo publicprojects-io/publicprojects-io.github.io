@@ -45,6 +45,15 @@ describe('t for hi-in and hi-001', () => {
 	});
 });
 
+describe('project names', () => {
+	it('translates descriptive names and keeps brand names', () => {
+		expect(t('cy-gb', 'Care Plan')).toBe('Cynllun Gofal');
+		expect(t('zh-001', 'FHIR for Rust')).toBe('面向 Rust 的 FHIR');
+		expect(t('hi-in', 'Maturity Models')).toBe('परिपक्वता मॉडल');
+		expect(t('zh-cn', 'Lily Design System')).toBe('Lily Design System');
+	});
+});
+
 describe('formatNumber', () => {
 	it('truncates compact numbers, so "+" stays true', () => {
 		expect(formatNumber('en-001', 96_386_872, true)).toBe('96.3M');

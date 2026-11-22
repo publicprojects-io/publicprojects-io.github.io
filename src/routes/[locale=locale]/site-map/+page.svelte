@@ -59,7 +59,7 @@
 				<h2 id={`sm-${key}`}><a href={href(area.slug)}>{s(area.name)}</a></h2>
 				<ul>
 					{#each projectsInArea(key) as project (project.slug)}
-						<li><a href={href(`projects/${project.slug}`)}>{project.name}</a></li>
+						<li><a href={href(`projects/${project.slug}`)}>{s(project.name)}</a></li>
 					{/each}
 				</ul>
 			</section>

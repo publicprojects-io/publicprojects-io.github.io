@@ -21,7 +21,7 @@
 	const href = (to: string) => `${base}${localePath(locale, to)}`;
 	const title = $derived.by(() => {
 		const project = slug.startsWith('projects/') ? projectBySlug(slug.slice('projects/'.length)) : undefined;
-		return project?.name ?? s(PAGES.find((p) => p.slug === slug)?.name ?? SITE_TAGLINE);
+		return project ? s(project.name) : s(PAGES.find((p) => p.slug === slug)?.name ?? SITE_TAGLINE);
 	});
 	const year = new Date().getFullYear();
 </script>

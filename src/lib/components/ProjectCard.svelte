@@ -30,7 +30,7 @@
 	const QUIET_STATUSES: string[] = ['active', 'pre-release'];
 </script>
 
-<Card class="project-card" heading={project.name} {headingLevel} href={path} wholeCardLink>
+<Card class="project-card" heading={s(project.name)} {headingLevel} href={path} wholeCardLink>
 	{#if showArea}<p class="project-card-area">{s(AREAS[project.area].name)}</p>{/if}
 	<p>{s(project.summary)}</p>
 	<ul class="project-card-facts">
@@ -44,9 +44,9 @@
 	{#if share}
 		<div class="project-card-share">
 			<SharePicker
-				label={`${m.share.project}: ${project.name}`}
+				label={`${m.share.project}: ${s(project.name)}`}
 				url={`${SITE_ORIGIN}${path}`}
-				title={`${project.name} · ${SITE_NAME}`}
+				title={`${s(project.name)} · ${SITE_NAME}`}
 				text={s(project.summary)}
 				targets={shareTargets(m)}
 				copyLabel={m.share.copy}

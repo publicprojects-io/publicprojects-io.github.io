@@ -39,7 +39,7 @@
 <Seo
 	{locale}
 	slug={`projects/${project.slug}`}
-	title={project.name}
+	title={s(project.name)}
 	description={s(project.summary)}
 	jsonLd={{
 		'@context': 'https://schema.org',
@@ -58,11 +58,11 @@
 		<ol>
 			<li><a href={href('')}>{m.home}</a></li>
 			<li><a href={href(area.slug)}>{s(area.name)}</a></li>
-			<li aria-current="page">{project.name}</li>
+			<li aria-current="page">{s(project.name)}</li>
 		</ol>
 	</nav>
 	<header class="page-header" data-area={project.area}>
-		<h1>{project.name}</h1>
+		<h1>{s(project.name)}</h1>
 		<p class="lead">{s(project.summary)}</p>
 		<ul class="link-buttons" role="list">
 			{#each project.links as link (link.href)}

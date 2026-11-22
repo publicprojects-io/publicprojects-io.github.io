@@ -15,9 +15,10 @@ export function searchIndex(locale: Locale): SearchEntry[] {
 	}));
 	const projects = PROJECTS.map((p) => ({
 		path: localePath(locale, `projects/${p.slug}`),
-		title: p.name,
+		title: s(p.name),
 		description: s(p.summary),
-		extra: [...[p.description, p.value, AREAS[p.area].name].map(s), ...p.tags].join(' ')
+		// The English name stays searchable, since it is the repository's name.
+		extra: [p.name, ...[p.description, p.value, AREAS[p.area].name].map(s), ...p.tags].join(' ')
 	}));
 	return [...pages, ...projects].map(({ path, title, description, ...rest }) => ({
 		path,
