@@ -57,6 +57,8 @@ open source for the public good.
 - **GitHub Pages**, organisation root site: this repository is
   `publicprojects-io/publicprojects-io.github.io`, served at the custom domain
   **https://publicprojects.io** (`static/CNAME`), like `lilydesignsystem.com`.
+  HTTPS is enforced, and the organisation has verified the domain; keep its DNS
+  `TXT` record `_github-pages-challenge-publicprojects-io`, which GitHub rechecks.
   `.github/workflows/deploy.yml` installs, checks, tests, builds, and deploys on push
   to `main`. The site lives at the domain root, so there is no base path.
   `BASE_PATH` (injected as `__BASE_PATH__`, read via `src/lib/base.ts`, because
@@ -364,12 +366,6 @@ CI runs the same three commands before deploying.
 
 ## 11. Open items
 
-- Domain setup for `publicprojects.io`. At the DNS provider: apex `A` records
-  `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (and
-  `AAAA` `2606:50c0:8000::153` through `8003::153`), plus `www` `CNAME`
-  `publicprojects-io.github.io`. On GitHub: verify the domain for the organisation,
-  set Pages to deploy from GitHub Actions with custom domain `publicprojects.io`, and
-  enforce HTTPS.
 - Add recognition that has a public URL: analyst citations, talks, hackathon judging,
   and media coverage.
 - First-language review of the Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, and Indonesian translations, then remove the draft notice for each.
