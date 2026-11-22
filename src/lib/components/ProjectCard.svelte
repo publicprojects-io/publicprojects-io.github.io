@@ -31,7 +31,7 @@
 </script>
 
 <Card class="project-card" heading={s(project.name)} {headingLevel} href={path} wholeCardLink>
-	{#if showArea}<p class="project-card-area">{s(AREAS[project.area].name)}</p>{/if}
+	{#if showArea}<p class="project-card-area">{s(project.eyebrow ?? AREAS[project.area].name)}</p>{/if}
 	<p>{s(project.summary)}</p>
 	<ul class="project-card-facts">
 		{#if !QUIET_STATUSES.includes(status)}<li class="project-status" data-status={status}>{s(STATUS_NAMES[status])}</li>{/if}

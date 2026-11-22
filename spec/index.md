@@ -207,7 +207,10 @@ then the footer.
 3. Why public open source matters.
 4. The three areas.
 5. The digital health teams callout.
-6. All projects: every project card, with its area. Each card has a Lily SharePicker,
+6. All projects: every project card, with its area above the project name.
+   Objectives and Key Results, Key Performance Indicators, and Maturity Models show
+   "Business executive leadership" there instead; they stay in the software
+   engineering leadership area everywhere else. Each card has a Lily SharePicker,
    with its default icon button as in the header, in its lower-left corner. It shares
    that project's page, not the home page, with the same destinations as the header.
    The grid shows at most three cards to a row. The first three rows are, in order:

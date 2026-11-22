@@ -24,6 +24,8 @@ export type Project = {
 	slug: string;
 	name: string;
 	area: Area;
+	/** Overrides the area name shown above the project name on cards. */
+	eyebrow?: string;
 	/** One sentence, shown on cards and in search results. */
 	summary: string;
 	/** A short paragraph for the detail page: what it is, who it helps. */
@@ -651,6 +653,7 @@ println!("{}", nhs_number.validate_check_digit());`,
 		repo: 'joelparkerhenderson/objectives-and-key-results',
 		name: 'Objectives and Key Results',
 		area: 'engineering',
+		eyebrow: 'Business executive leadership',
 		summary: 'Objectives and key results (OKR) examples for goals, plans, projects, and strategy.',
 		description: 'Worked OKR examples that help leaders connect strategy to measurable outcomes.',
 		value: 'Clear goals and honest measures help organisations focus effort on outcomes that matter.',
@@ -663,6 +666,7 @@ println!("{}", nhs_number.validate_check_digit());`,
 		repo: 'joelparkerhenderson/key-performance-indicators',
 		name: 'Key Performance Indicators',
 		area: 'engineering',
+		eyebrow: 'Business executive leadership',
 		summary: 'Key performance indicator (KPI) examples for metrics, measurements, and OKRs.',
 		description: 'Examples of KPIs across business and technology, with guidance on choosing measures that drive the right behaviour.',
 		value: 'Good indicators let public bodies see whether services are improving.',
@@ -687,6 +691,7 @@ println!("{}", nhs_number.validate_check_digit());`,
 		repo: 'joelparkerhenderson/maturity-models',
 		name: 'Maturity Models',
 		area: 'engineering',
+		eyebrow: 'Business executive leadership',
 		summary: 'Maturity models for IT, agile, DevOps, TOGAF, Six Sigma, P3M3, and more.',
 		description: 'A comparison of maturity models that help organisations assess where they are and plan improvement.',
 		value: 'Honest self-assessment helps organisations improve step by step rather than by leaps that fail.',
