@@ -1,9 +1,9 @@
 // Locales. Content is written once, in the international / British English
 // that en-001 and en-gb share. `t(locale, text)` gives the text for a locale:
 // en-us spelling is derived by rule; Welsh (cy-gb), Simplified Chinese
-// (zh-cn, zh-001), Hindi (hi-in, hi-001), Arabic (ar-eg, ar-001), and Spanish (es-mx,
-// es-001, es-es) come from the catalogues in
-// locales/<locale>/messages.json,
+// (zh-cn, zh-001), Hindi (hi-in, hi-001), Arabic (ar-eg, ar-001), Spanish (es-mx,
+// es-001, es-es), and French (fr-fr, fr-001, fr-ca) come from
+// the catalogues in locales/<locale>/messages.json,
 // keyed by the English source text. Dates and
 // numbers come from Intl. See spec/index.md § Locales.
 import cyGb from '../../locales/cy-gb/messages.json' with { type: 'json' };
@@ -16,8 +16,11 @@ import ar001 from '../../locales/ar-001/messages.json' with { type: 'json' };
 import esMx from '../../locales/es-mx/messages.json' with { type: 'json' };
 import es001 from '../../locales/es-001/messages.json' with { type: 'json' };
 import esEs from '../../locales/es-es/messages.json' with { type: 'json' };
+import frFr from '../../locales/fr-fr/messages.json' with { type: 'json' };
+import fr001 from '../../locales/fr-001/messages.json' with { type: 'json' };
+import frCa from '../../locales/fr-ca/messages.json' with { type: 'json' };
 
-export const LOCALES = ['en-001', 'en-gb', 'en-us', 'cy-gb', 'zh-cn', 'zh-001', 'hi-in', 'hi-001', 'ar-eg', 'ar-001', 'es-mx', 'es-001', 'es-es'] as const;
+export const LOCALES = ['en-001', 'en-gb', 'en-us', 'cy-gb', 'zh-cn', 'zh-001', 'hi-in', 'hi-001', 'ar-eg', 'ar-001', 'es-mx', 'es-001', 'es-es', 'fr-fr', 'fr-001', 'fr-ca'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 /**
@@ -41,7 +44,10 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 	'ar-001': 'العربية (العالم)',
 	'es-mx': 'Español (México)',
 	'es-001': 'Español (Mundo)',
-	'es-es': 'Español (España)'
+	'es-es': 'Español (España)',
+	'fr-fr': 'Français (France)',
+	'fr-001': 'Français (Monde)',
+	'fr-ca': 'Français (Canada)'
 };
 
 /** BCP 47 tag with canonical case, for <html lang>, hreflang, and Intl. */
@@ -58,7 +64,10 @@ export const LOCALE_TAGS: Record<Locale, string> = {
 	'ar-001': 'ar-001',
 	'es-mx': 'es-MX',
 	'es-001': 'es-001',
-	'es-es': 'es-ES'
+	'es-es': 'es-ES',
+	'fr-fr': 'fr-FR',
+	'fr-001': 'fr-001',
+	'fr-ca': 'fr-CA'
 };
 
 /** Text direction for <html dir> and for any element that shows a locale's own name. */
@@ -158,7 +167,7 @@ function matchCase(source: string, target: string): string {
 	return source[0] === source[0].toUpperCase() ? target[0].toUpperCase() + target.slice(1) : target;
 }
 
-const CATALOGUES: Partial<Record<Locale, Record<string, string>>> = { 'cy-gb': cyGb, 'zh-cn': zhCn, 'zh-001': zh001, 'hi-in': hiIn, 'hi-001': hi001, 'ar-eg': arEg, 'ar-001': ar001, 'es-mx': esMx, 'es-001': es001, 'es-es': esEs };
+const CATALOGUES: Partial<Record<Locale, Record<string, string>>> = { 'cy-gb': cyGb, 'zh-cn': zhCn, 'zh-001': zh001, 'hi-in': hiIn, 'hi-001': hi001, 'ar-eg': arEg, 'ar-001': ar001, 'es-mx': esMx, 'es-001': es001, 'es-es': esEs, 'fr-fr': frFr, 'fr-001': fr001, 'fr-ca': frCa };
 
 /** Locales translated from a catalogue. Their translations are drafts until reviewed, so their pages show a notice. */
 export function isTranslated(locale: Locale): boolean {

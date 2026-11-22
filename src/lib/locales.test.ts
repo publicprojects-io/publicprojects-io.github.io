@@ -84,6 +84,21 @@ describe('Spanish', () => {
 	});
 });
 
+describe('French', () => {
+	it('translates and formats numbers by region', () => {
+		expect(t('fr-fr', 'Home')).toBe('Accueil');
+		expect(t('fr-001', 'Software engineering')).toBe('Génie logiciel');
+		expect(t('fr-ca', 'Cookie policy')).toBe('Politique relative aux témoins');
+		expect(t('fr-fr', 'Cookie policy')).toBe('Politique relative aux cookies');
+		expect(formatNumber('fr-fr', 96_386_872)).toBe('96\u202f386\u202f872');
+		expect(formatNumber('fr-ca', 96_386_872)).toBe('96\u00a0386\u00a0872');
+		expect(formatNumber('fr-001', 16_513, true)).toBe('16,5\u00a0k');
+		expect(formatDate('fr-ca', '2026-11-21')).toBe('21 novembre 2026');
+		expect(isTranslated('fr-ca')).toBe(true);
+		expect(localeDir('fr-fr')).toBe('ltr');
+	});
+});
+
 describe('localeDir', () => {
 	it('is right to left for Arabic only', () => {
 		expect(localeDir('ar-eg')).toBe('rtl');
@@ -116,10 +131,14 @@ describe('paths', () => {
 		expect(pickLocale(['ar-EG'])).toBe('ar-eg');
 		expect(pickLocale(['ar'])).toBe('ar-001');
 		expect(pickLocale(['ar-SA'])).toBe('ar-001');
+		expect(pickLocale(['fr-FR'])).toBe('fr-fr');
+		expect(pickLocale(['fr'])).toBe('fr-001');
+		expect(pickLocale(['fr-CA'])).toBe('fr-ca');
+		expect(pickLocale(['fr-BE'])).toBe('fr-001');
 		expect(pickLocale(['en'])).toBe('en-001');
 		expect(pickLocale(['en-US'])).toBe('en-us');
 		expect(pickLocale(['en-AU'])).toBe('en-001');
-		expect(pickLocale(['fr-FR', 'en-GB'])).toBe('en-gb');
-		expect(pickLocale(['fr-FR'])).toBe(null);
+		expect(pickLocale(['de-DE', 'en-GB'])).toBe('en-gb');
+		expect(pickLocale(['de-DE'])).toBe(null);
 	});
 });

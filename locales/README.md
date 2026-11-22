@@ -25,6 +25,9 @@ catalogue that maps each English source string to its translation:
 | [`es-mx`](es-mx/messages.json) | Español (México) (Spanish, Mexico) | Draft: needs review by a first-language Spanish speaker |
 | [`es-001`](es-001/messages.json) | Español (Mundo) (Spanish, World) | Draft: a copy of `es-mx`; keep the two in step |
 | [`es-es`](es-es/messages.json) | Español (España) (Spanish, Spain) | Draft: `es-mx` tuned for Spain; keep it in step with `es-mx` |
+| [`fr-fr`](fr-fr/messages.json) | Français (France) (French, France) | Draft: needs review by a first-language French speaker |
+| [`fr-001`](fr-001/messages.json) | Français (Monde) (French, World) | Draft: a copy of `fr-fr`; keep the two in step |
+| [`fr-ca`](fr-ca/messages.json) | Français (Canada) (French, Canada) | Draft: `fr-fr` tuned for Canada; keep it in step with `fr-fr` |
 
 English locales (`en-001`, `en-gb`, `en-us`) need no catalogue: `en-us` spelling is
 derived by rule in `src/lib/locales.ts`.
