@@ -31,6 +31,9 @@ catalogue that maps each English source string to its translation:
 | [`ru-ru`](ru-ru/messages.json) | Русский (Россия) (Russian, Russia) | Draft: needs review by a first-language Russian speaker |
 | [`ru-001`](ru-001/messages.json) | Русский (Мир) (Russian, World) | Draft: a copy of `ru-ru`; keep the two in step |
 | [`ru-by`](ru-by/messages.json) | Русский (Беларусь) (Russian, Belarus) | Draft: a copy of `ru-ru`, since written Russian in Belarus follows the same standard; keep the two in step |
+| [`bn-bd`](bn-bd/messages.json) | বাংলা (বাংলাদেশ) (Bengali, Bangladesh) | Draft: needs review by a first-language Bengali speaker |
+| [`bn-001`](bn-001/messages.json) | বাংলা (বিশ্ব) (Bengali, World) | Draft: a copy of `bn-bd`; keep the two in step |
+| [`bn-in`](bn-in/messages.json) | বাংলা (ভারত) (Bengali, India) | Draft: a copy of `bn-bd`, since the site uses no wording that differs between Bangladesh and India; keep the two in step |
 
 English locales (`en-001`, `en-gb`, `en-us`) need no catalogue: `en-us` spelling is
 derived by rule in `src/lib/locales.ts`.

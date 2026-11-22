@@ -112,6 +112,20 @@ describe('Russian', () => {
 	});
 });
 
+describe('Bengali', () => {
+	it('translates, with Western digits in lakh and crore grouping', () => {
+		expect(t('bn-bd', 'Home')).toBe('প্রথম পাতা');
+		expect(t('bn-in', 'Cookie policy')).toBe('কুকি নীতি');
+		expect(t('bn-001', 'Software engineering')).toBe('সফটওয়্যার প্রকৌশল');
+		expect(formatNumber('bn-bd', 96_386_872)).toBe('9,63,86,872');
+		expect(formatNumber('bn-in', 96_386_872, true)).toBe('9.6\u00a0কো');
+		expect(formatNumber('bn-001', 16_513, true)).toBe('16.5\u00a0হা');
+		expect(formatDate('bn-bd', '2026-11-21')).toBe('21 নভেম্বর, 2026');
+		expect(isTranslated('bn-in')).toBe(true);
+		expect(localeDir('bn-bd')).toBe('ltr');
+	});
+});
+
 describe('localeDir', () => {
 	it('is right to left for Arabic only', () => {
 		expect(localeDir('ar-eg')).toBe('rtl');
@@ -152,6 +166,9 @@ describe('paths', () => {
 		expect(pickLocale(['ru'])).toBe('ru-001');
 		expect(pickLocale(['ru-BY'])).toBe('ru-by');
 		expect(pickLocale(['ru-KZ'])).toBe('ru-001');
+		expect(pickLocale(['bn-BD'])).toBe('bn-bd');
+		expect(pickLocale(['bn'])).toBe('bn-001');
+		expect(pickLocale(['bn-IN'])).toBe('bn-in');
 		expect(pickLocale(['en'])).toBe('en-001');
 		expect(pickLocale(['en-US'])).toBe('en-us');
 		expect(pickLocale(['en-AU'])).toBe('en-001');
