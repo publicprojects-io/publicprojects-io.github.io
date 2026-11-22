@@ -464,6 +464,8 @@ main:focus {
 
 .detail-grid {
 	display: grid;
+	/* One column on small screens; minmax(0, …) stops a wide code block widening the page. */
+	grid-template-columns: minmax(0, 1fr);
 	gap: var(--lily-space-lg, 2rem);
 	padding-block: var(--lily-space-md, 1rem);
 }
