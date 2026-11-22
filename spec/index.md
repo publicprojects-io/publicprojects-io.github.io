@@ -204,6 +204,8 @@ then the footer.
 
 1. Hero: headline, lead, and action links. No eyebrow above the headline.
 2. Headline numbers, dated, with a link to the Impact page.
+   Downloads show as a round floor, "80M+" over the label "downloads", which must
+   stay at or below the total in `stats.json`; the Impact page shows the exact total.
 3. Why public open source matters.
 4. The three areas.
 5. The digital health teams callout.

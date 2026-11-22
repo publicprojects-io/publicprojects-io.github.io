@@ -790,6 +790,12 @@ export function statSource(ref: StatRef): string {
 }
 
 /** Totals derived from stats.json, so headline numbers can never drift from the detail. */
+/**
+ * The home page shows downloads as a round floor ("80M+"), not the exact total; the
+ * Impact page shows the exact figure. A test keeps the floor at or below TOTALS.downloads.
+ */
+export const HOME_DOWNLOADS_FLOOR = 80_000_000;
+
 export const TOTALS = {
 	downloads:
 		Object.values(stats.crates).reduce((sum, n) => sum + n, 0) + Object.values(stats.gems).reduce((sum, n) => sum + n, 0),

@@ -4,7 +4,7 @@
 	import HeroArt from '#lib/components/HeroArt.svelte';
 	import ProjectGrid from '#lib/components/ProjectGrid.svelte';
 	import Seo from '#lib/components/Seo.svelte';
-	import { AREAS, PROJECTS, STATS_AS_OF, TOTALS, homeProjects, statValue, type Area } from '#lib/data/projects.js';
+	import { AREAS, PROJECTS, STATS_AS_OF, TOTALS, HOME_DOWNLOADS_FLOOR, homeProjects, type Area } from '#lib/data/projects.js';
 	import { formatDate, formatNumber, localePath, t } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { PERSON, SITE_NAME, SITE_ORIGIN, SITE_TAGLINE } from '#lib/site.js';
@@ -15,7 +15,6 @@
 	const href = (to: string) => `${base}${localePath(locale, to)}`;
 	const n = (value: number) => formatNumber(locale, value, true);
 
-	const adrStars = statValue({ kind: 'github', key: 'architecture-decision-record/architecture-decision-record' }).value;
 	const areas = Object.entries(AREAS) as [Area, (typeof AREAS)[Area]][];
 
 	const reasons = [
@@ -75,9 +74,8 @@
 	<section class="stat-band" aria-labelledby="impact-heading">
 		<h2 id="impact-heading" class="visually-hidden">{s('Impact at a glance')}</h2>
 		<dl>
-			<div><dt>{s('package downloads')}</dt><dd>{n(TOTALS.downloads)}+</dd></div>
-			<div><dt>{s('GitHub stars across the joelparkerhenderson, GitAlias, and SixArm repositories')}</dt><dd>{n(TOTALS.ownerStars)}+</dd></div>
-			<div><dt>{s('GitHub stars for Architecture Decision Record')}</dt><dd>{n(adrStars)}+</dd></div>
+			<div><dt>{s('downloads')}</dt><dd>{n(HOME_DOWNLOADS_FLOOR)}+</dd></div>
+			<div><dt>{s('GitHub stars')}</dt><dd>{n(TOTALS.ownerStars)}+</dd></div>
 			<div><dt>{s('languages for the most-translated guides')}</dt><dd>60+</dd></div>
 			<div><dt>{s('open-source projects, including health care')}</dt><dd>{TOTALS.projects}</dd></div>
 		</dl>
