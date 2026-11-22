@@ -138,6 +138,10 @@ open source for the public good.
     `locales/README.md`). A missing entry falls back to English and is reported as
     `I18N_MISSING` during the build; CI builds with `I18N_STRICT=1`, which fails on any
     missing entry.
+  - Where one English string is used two ways and a language needs two
+    translations, `t(locale, text, 'label')` first looks up `"label|<text>"`, then
+    the plain entry. "GitHub stars" is the form after a number (home page tile,
+    project cards); "label|GitHub stars" is the project page label.
   - The Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, and Indonesian translations are drafts. Every page in a catalogue locale
     (`isTranslated()`) shows a notice saying so, in that language, with a
     link to report errors, until a first-language speaker has reviewed it.

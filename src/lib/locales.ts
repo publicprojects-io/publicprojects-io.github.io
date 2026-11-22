@@ -208,11 +208,17 @@ const reported = new Set<string>();
  * en-us, and the catalogue translation for other locales. A missing translation falls
  * back to English and is reported once (I18N_MISSING) during the build; set
  * I18N_STRICT=1 to make it fail the build instead.
+ *
+ * `context` is for English text that is used two ways, where a language needs two
+ * translations. A catalogue may hold `"<context>|<text>"` for it; without one, the plain
+ * entry is used. For example, "GitHub stars" follows a number ("16.5K+ GitHub stars",
+ * Russian "звёзд на GitHub"), and "label|GitHub stars" is the stand-alone label
+ * ("Звёзды на GitHub").
  */
-export function t(locale: Locale, text: string): string {
+export function t(locale: Locale, text: string, context?: 'label'): string {
 	const catalogue = CATALOGUES[locale];
 	if (catalogue) {
-		const translated = catalogue[text];
+		const translated = (context && catalogue[`${context}|${text}`]) || catalogue[text];
 		if (translated !== undefined) return translated;
 		if (!reported.has(text)) {
 			reported.add(text);

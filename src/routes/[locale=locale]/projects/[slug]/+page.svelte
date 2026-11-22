@@ -117,7 +117,7 @@
 				<dd><a href={href(area.slug)}>{s(area.name)}</a></dd>
 				{#each project.stats ?? [] as ref (ref.key)}
 					{@const stat = statValue(ref)}
-					<dt>{stat.label === 'stars' ? m.stars : s('Downloads')}</dt>
+					<dt>{stat.label === 'stars' ? t(locale, 'GitHub stars', 'label') : s('Downloads')}</dt>
 					<dd>
 						{formatNumber(locale, stat.value)}
 						<span class="small">(<a href={statSource(ref)}>{m.source.toLowerCase()}</a>)</span>
