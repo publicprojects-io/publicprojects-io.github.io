@@ -20,6 +20,12 @@ project pages. The plain entry is the form after a number, in lower case like
 (Russian "звёзд на GitHub" after a number, "Звёзды на GitHub" as a label).
 Languages that need only one form leave the `label|` entry out.
 
+Words after an exact count on project cards ("753 GitHub stars", "120 downloads")
+follow the language's plural rules. Add `"<category>|<text>"` for each
+[plural category](https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html)
+whose form differs from the plain entry. Russian, whose plain entries are the "many"
+form, adds `one|` and `few|`: "1 звезда", "753 звезды", "5 звёзд".
+
 | Locale | Language | Status |
 | --- | --- | --- |
 | [`cy-gb`](cy-gb/messages.json) | Cymraeg (Welsh, United Kingdom) | Draft: needs review by a first-language Welsh speaker |

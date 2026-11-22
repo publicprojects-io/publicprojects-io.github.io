@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDate, formatNumber, isTranslated, localeDir, localePath, parsePath, pickLocale, t } from './locales';
+import { formatDate, formatNumber, isTranslated, localeDir, localePath, parsePath, pickLocale, t, tCount } from './locales';
 
 describe('t', () => {
 	it('leaves en-001 and en-gb unchanged', () => {
@@ -201,5 +201,18 @@ describe('t with a label context', () => {
 		expect(t('fr-fr', 'GitHub stars', 'label')).toBe('Étoiles GitHub');
 		expect(t('zh-cn', 'GitHub stars', 'label')).toBe(t('zh-cn', 'GitHub stars'));
 		expect(t('en-001', 'GitHub stars', 'label')).toBe('GitHub stars');
+	});
+});
+
+describe('tCount', () => {
+	it('uses the plural form for the count, and the plain entry after a compact count', () => {
+		expect(tCount('ru-ru', 'GitHub stars', 1)).toBe('звезда на GitHub');
+		expect(tCount('ru-ru', 'GitHub stars', 753)).toBe('звезды на GitHub');
+		expect(tCount('ru-by', 'GitHub stars', 5)).toBe('звёзд на GitHub');
+		expect(tCount('ru-001', 'downloads', 21)).toBe('загрузка');
+		expect(tCount('ru-ru', 'downloads', 1234)).toBe('загрузки');
+		expect(tCount('ru-ru', 'downloads', 21_000, true)).toBe('загрузок');
+		expect(tCount('fr-fr', 'GitHub stars', 753)).toBe('étoiles GitHub');
+		expect(tCount('en-001', 'downloads', 1)).toBe('downloads');
 	});
 });

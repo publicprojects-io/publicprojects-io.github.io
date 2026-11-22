@@ -142,6 +142,10 @@ open source for the public good.
     translations, `t(locale, text, 'label')` first looks up `"label|<text>"`, then
     the plain entry. "GitHub stars" is the form after a number (home page tile,
     project cards); "label|GitHub stars" is the project page label.
+  - Words after an exact count (project cards) use `tCount()`, which picks the
+    language's plural form (Intl.PluralRules) from `"<category>|<text>"`, else the
+    plain entry. Russian has `one|` and `few|` forms for "GitHub stars" and
+    "downloads". Compact counts ("16,5 тыс.") always use the plain entry.
   - The Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, and Indonesian translations are drafts. Every page in a catalogue locale
     (`isTranslated()`) shows a notice saying so, in that language, with a
     link to report errors, until a first-language speaker has reviewed it.

@@ -3,7 +3,7 @@
 	import { Card } from '@lilydesignsystem/svelte-headless';
 	import SharePicker from '@lilydesignsystem/svelte-share-picker';
 	import { AREAS, STATUS_NAMES, statusOf, statValue, type Project } from '#lib/data/projects.js';
-	import { formatNumber, localePath, t, type Locale } from '#lib/locales.js';
+	import { formatNumber, localePath, t, tCount, type Locale } from '#lib/locales.js';
 	import { shareTargets } from '#lib/share.js';
 	import { SITE_NAME, SITE_ORIGIN } from '#lib/site.js';
 	import { ui } from '#lib/ui.js';
@@ -37,7 +37,8 @@
 		{#if !QUIET_STATUSES.includes(status)}<li class="project-status" data-status={status}>{s(STATUS_NAMES[status])}</li>{/if}
 		{#each project.stats ?? [] as ref (ref.key)}
 			{@const stat = statValue(ref)}
-			<li><strong>{formatNumber(locale, stat.value, stat.value >= 10000)}</strong> {stat.label === 'stars' ? m.stars : m.downloads}</li>
+			{@const compact = stat.value >= 10000}
+			<li><strong>{formatNumber(locale, stat.value, compact)}</strong> {tCount(locale, stat.label === 'stars' ? 'GitHub stars' : 'downloads', stat.value, compact)}</li>
 		{/each}
 		{#if project.languages}<li><strong>{s(project.languages)}</strong></li>{/if}
 	</ul>

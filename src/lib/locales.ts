@@ -234,6 +234,24 @@ export function t(locale: Locale, text: string, context?: 'label'): string {
 }
 
 /**
+ * The words after a count, such as "GitHub stars" in "753 GitHub stars", in the plural
+ * form `locale` uses for that count. A catalogue may hold `"<category>|<text>"`, where
+ * category is an Intl.PluralRules category (one, two, few, many, zero), for example
+ * Russian "few|GitHub stars" ("753 звезды на GitHub"); without one, the plain entry
+ * is used. A compact count ("16,5 тыс.") is followed by its unit word, not the count
+ * itself, so it always uses the plain entry ("16,5 тыс. звёзд на GitHub").
+ */
+export function tCount(locale: Locale, text: string, count: number, compact = false): string {
+	const catalogue = CATALOGUES[locale];
+	if (catalogue && !compact) {
+		const category = new Intl.PluralRules(intlTag(locale)).select(count);
+		const translated = catalogue[`${category}|${text}`];
+		if (translated !== undefined) return translated;
+	}
+	return t(locale, text);
+}
+
+/**
  * A number for `locale`. Compact numbers are truncated, never rounded up, because
  * the site shows them with a "+" ("96.3M+"). Chinese, Hindi, and Arabic units are wide words
  * (万, हज़ार, مليون), so once the number before the unit has two or more digits the decimal
