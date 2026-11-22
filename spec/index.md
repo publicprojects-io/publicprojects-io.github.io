@@ -210,6 +210,13 @@ then the footer.
 6. All projects: every project card, with its area. Each card has a Lily SharePicker,
    with its default icon button as in the header, in its lower-left corner. It shares
    that project's page, not the home page, with the same destinations as the header.
+   The grid shows at most three cards to a row. The first three rows are, in order:
+   - Public Value Guide and Metrics, Health Economics Guide and Metrics, Software
+     Engineering Guide and Metrics;
+   - Ways of Working, International Patient Summary, Architecture Decision Record;
+   - Coordinated Vulnerability Disclosure, Queueing Theory, Assertables.
+
+   Every other project follows in catalogue order (`HOME_FIRST` in `projects.ts`).
 
 ### Project pages
 

@@ -345,6 +345,14 @@ main:focus {
 	list-style: none;
 }
 
+/* At most three columns, so that rows line up with an intended order (home page). */
+.card-grid-max-3 {
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(max(min(100%, 18rem), calc((100% - 2 * var(--lily-space-md, 1rem)) / 3)), 1fr)
+	);
+}
+
 .card-grid > li {
 	display: flex;
 }

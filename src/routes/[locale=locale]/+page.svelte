@@ -4,7 +4,7 @@
 	import HeroArt from '#lib/components/HeroArt.svelte';
 	import ProjectGrid from '#lib/components/ProjectGrid.svelte';
 	import Seo from '#lib/components/Seo.svelte';
-	import { AREAS, PROJECTS, STATS_AS_OF, TOTALS, statValue, type Area } from '#lib/data/projects.js';
+	import { AREAS, PROJECTS, STATS_AS_OF, TOTALS, homeProjects, statValue, type Area } from '#lib/data/projects.js';
 	import { formatDate, formatNumber, localePath, t } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { PERSON, SITE_NAME, SITE_ORIGIN, SITE_TAGLINE } from '#lib/site.js';
@@ -128,6 +128,6 @@
 	<!-- Spec: all other home page information comes first, then every project card, then the footer. -->
 	<section class="section" aria-labelledby="projects-heading">
 		<h2 id="projects-heading">{s('All projects')} ({PROJECTS.length})</h2>
-		<ProjectGrid projects={PROJECTS} {locale} showArea share />
+		<ProjectGrid projects={homeProjects()} {locale} showArea share maxColumns={3} />
 	</section>
 </ContainerWithFixedWidth>

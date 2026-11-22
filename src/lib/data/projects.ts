@@ -744,6 +744,28 @@ export function projectBySlug(slug: string): Project | undefined {
 	return PROJECTS.find((project) => project.slug === slug);
 }
 
+/** The home page shows these first, three to a row, then every other project in catalogue order. */
+export const HOME_FIRST = [
+	'public-value',
+	'health-economics',
+	'software-engineering',
+	'ways-of-working',
+	'international-patient-summary',
+	'architecture-decision-record',
+	'coordinated-vulnerability-disclosure',
+	'queueing-theory',
+	'assertables'
+];
+
+export function homeProjects(): Project[] {
+	const first = HOME_FIRST.map((slug) => {
+		const project = projectBySlug(slug);
+		if (!project) throw new Error(`HOME_FIRST: no project ${slug}`);
+		return project;
+	});
+	return [...first, ...PROJECTS.filter((p) => !HOME_FIRST.includes(p.slug))];
+}
+
 export function projectsInArea(area: Area): Project[] {
 	return PROJECTS.filter((project) => project.area === area);
 }
