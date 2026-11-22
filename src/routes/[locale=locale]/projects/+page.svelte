@@ -4,7 +4,7 @@
 	import ProjectGrid from '#lib/components/ProjectGrid.svelte';
 	import Seo from '#lib/components/Seo.svelte';
 	import { AREAS, PROJECTS, projectsInArea, type Area } from '#lib/data/projects.js';
-	import { localePath, t } from '#lib/locales.js';
+	import { localePath, t, tCount } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 
 	let { data } = $props();
@@ -19,7 +19,7 @@
 	<header class="page-header">
 		<h1>{s('All projects')}</h1>
 		<p class="lead">
-			{PROJECTS.length} {s('free, open-source projects in three areas. Every project is free to use, study, change, and share.')}
+			{PROJECTS.length} {tCount(locale, 'free, open-source projects in three areas. Every project is free to use, study, change, and share.', PROJECTS.length)}
 		</p>
 		<nav aria-label={s('Areas')}>
 			<ul class="inline-list">

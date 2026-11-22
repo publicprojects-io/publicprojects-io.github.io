@@ -3,7 +3,7 @@
 	import { base } from '#lib/base.js';
 	import { ContainerWithFixedWidth } from '@lilydesignsystem/svelte-headless';
 	import Seo from '#lib/components/Seo.svelte';
-	import { t } from '#lib/locales.js';
+	import { t, tCount } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { search, searchIndex } from '#lib/search.js';
 
@@ -47,7 +47,7 @@
 	<noscript><p>{s('Search needs JavaScript. Every project is also listed on the all projects page.')}</p></noscript>
 	<div aria-live="polite">
 		{#if ready && query}
-			<p>{results.length} {s(results.length === 1 ? 'result for' : 'results for')} “{query}”</p>
+			<p>{results.length} {tCount(locale, results.length === 1 ? 'result for' : 'results for', results.length)} “{query}”</p>
 		{/if}
 	</div>
 	{#if results.length}

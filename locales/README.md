@@ -26,6 +26,12 @@ follow the language's plural rules. Add `"<category>|<text>"` for each
 whose form differs from the plain entry. Russian, whose plain entries are the "many"
 form, adds `one|` and `few|`: "1 звезда", "753 звезды", "5 звёзд".
 
+After a compact count ("16 ألف", "2,8 млн") the words follow the unit word, not the
+count. Add `"compact|<text>"` where that form differs from the plain entry. Arabic,
+whose plain entries are the plural for 3 to 10, adds `one|`, `two|`, `many|`,
+`other|`, and `compact|`: "1 تنزيل", "2 تنزيلان", "5 تنزيلات", "85 تنزيلًا",
+"3,801 تنزيل", "93 مليون تنزيل".
+
 | Locale | Language | Status |
 | --- | --- | --- |
 | [`cy-gb`](cy-gb/messages.json) | Cymraeg (Welsh, United Kingdom) | Draft: needs review by a first-language Welsh speaker |

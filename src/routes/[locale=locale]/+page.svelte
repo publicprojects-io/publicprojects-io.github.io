@@ -5,7 +5,7 @@
 	import ProjectGrid from '#lib/components/ProjectGrid.svelte';
 	import Seo from '#lib/components/Seo.svelte';
 	import { AREAS, PROJECTS, STATS_AS_OF, TOTALS, HOME_DOWNLOADS_FLOOR, homeProjects, type Area } from '#lib/data/projects.js';
-	import { formatDate, formatNumber, localePath, t } from '#lib/locales.js';
+	import { formatDate, formatNumber, localePath, t, tCount } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { PERSON, SITE_NAME, SITE_ORIGIN, SITE_TAGLINE } from '#lib/site.js';
 
@@ -74,8 +74,8 @@
 	<section class="stat-band" aria-labelledby="impact-heading">
 		<h2 id="impact-heading" class="visually-hidden">{s('Impact at a glance')}</h2>
 		<dl>
-			<div><dt>{s('downloads')}</dt><dd>{n(HOME_DOWNLOADS_FLOOR)}+</dd></div>
-			<div><dt>{s('GitHub stars')}</dt><dd>{n(TOTALS.ownerStars)}+</dd></div>
+			<div><dt>{tCount(locale, 'downloads', HOME_DOWNLOADS_FLOOR, true)}</dt><dd>{n(HOME_DOWNLOADS_FLOOR)}+</dd></div>
+			<div><dt>{tCount(locale, 'GitHub stars', TOTALS.ownerStars, true)}</dt><dd>{n(TOTALS.ownerStars)}+</dd></div>
 			<div><dt>{s('languages for the most-translated guides')}</dt><dd>60+</dd></div>
 			<div><dt>{s('open-source projects, including health care')}</dt><dd>{TOTALS.projects}</dd></div>
 		</dl>
@@ -108,7 +108,7 @@
 					<div class="card area-card" data-area={key}>
 						<h3><a href={href(area.slug)} data-lily-card-link="">{s(area.name)}</a></h3>
 						<p>{s(area.summary)}</p>
-						<p class="area-card-count">{PROJECTS.filter((p) => p.area === key).length} {s('projects')}</p>
+						<p class="area-card-count">{PROJECTS.filter((p) => p.area === key).length} {tCount(locale, 'projects', PROJECTS.filter((p) => p.area === key).length)}</p>
 					</div>
 				</li>
 			{/each}

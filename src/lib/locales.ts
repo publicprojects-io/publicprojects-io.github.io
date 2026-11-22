@@ -238,13 +238,14 @@ export function t(locale: Locale, text: string, context?: 'label'): string {
  * form `locale` uses for that count. A catalogue may hold `"<category>|<text>"`, where
  * category is an Intl.PluralRules category (one, two, few, many, zero), for example
  * Russian "few|GitHub stars" ("753 звезды на GitHub"); without one, the plain entry
- * is used. A compact count ("16,5 тыс.") is followed by its unit word, not the count
- * itself, so it always uses the plain entry ("16,5 тыс. звёзд на GitHub").
+ * is used. A compact count ("16,5 тыс.", "16 ألف") is followed by its unit word, not
+ * the count itself, so it uses `"compact|<text>"` (Arabic "16 ألف نجمة على GitHub"),
+ * else the plain entry (Russian "16,5 тыс. звёзд на GitHub").
  */
 export function tCount(locale: Locale, text: string, count: number, compact = false): string {
 	const catalogue = CATALOGUES[locale];
-	if (catalogue && !compact) {
-		const category = new Intl.PluralRules(intlTag(locale)).select(count);
+	if (catalogue) {
+		const category = compact ? 'compact' : new Intl.PluralRules(intlTag(locale)).select(count);
 		const translated = catalogue[`${category}|${text}`];
 		if (translated !== undefined) return translated;
 	}

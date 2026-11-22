@@ -216,3 +216,29 @@ describe('tCount', () => {
 		expect(tCount('en-001', 'downloads', 1)).toBe('downloads');
 	});
 });
+
+describe('tCount in Arabic', () => {
+	it('uses the dual, the plural for 3 to 10, and the singular from 11 and after a compact count', () => {
+		expect(tCount('ar-eg', 'GitHub stars', 1)).toBe('نجمة على GitHub');
+		expect(tCount('ar-eg', 'GitHub stars', 2)).toBe('نجمتان على GitHub');
+		expect(tCount('ar-001', 'GitHub stars', 7)).toBe('نجوم GitHub');
+		expect(tCount('ar-eg', 'downloads', 85)).toBe('تنزيلًا');
+		expect(tCount('ar-eg', 'downloads', 333)).toBe('تنزيلًا');
+		expect(tCount('ar-eg', 'downloads', 3801)).toBe('تنزيل');
+		expect(tCount('ar-eg', 'downloads', 103)).toBe('تنزيلات');
+		expect(tCount('ar-eg', 'downloads', 93_535_411, true)).toBe('تنزيل');
+		expect(tCount('ru-ru', 'downloads', 93_535_411, true)).toBe('загрузок');
+	});
+});
+
+describe('tCount for project and search counts', () => {
+	it('picks the Russian and Arabic forms for the count', () => {
+		expect(tCount('ru-ru', 'projects', 17)).toBe('проектов');
+		expect(tCount('ru-ru', 'projects', 22)).toBe('проекта');
+		expect(tCount('ru-ru', 'results for', 21)).toBe('результат по запросу');
+		expect(tCount('ar-eg', 'projects', 6)).toBe('مشروعات');
+		expect(tCount('ar-eg', 'projects', 17)).toBe('مشروعًا');
+		expect(tCount('ar-eg', 'results for', 2)).toBe('نتيجتان للبحث عن');
+		expect(tCount('en-001', 'projects', 17)).toBe('projects');
+	});
+});

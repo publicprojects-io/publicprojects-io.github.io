@@ -145,7 +145,9 @@ open source for the public good.
   - Words after an exact count (project cards) use `tCount()`, which picks the
     language's plural form (Intl.PluralRules) from `"<category>|<text>"`, else the
     plain entry. Russian has `one|` and `few|` forms for "GitHub stars" and
-    "downloads". Compact counts ("16,5 тыс.") always use the plain entry.
+    "downloads"; Arabic has `one|`, `two|`, `many|`, `other|`, and `compact|` forms.
+    Compact counts ("16,5 тыс.", "16 ألف"), on cards and the home page tiles, use
+    `"compact|<text>"`, else the plain entry.
   - The Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, and Indonesian translations are drafts. Every page in a catalogue locale
     (`isTranslated()`) shows a notice saying so, in that language, with a
     link to report errors, until a first-language speaker has reviewed it.
@@ -395,7 +397,8 @@ CI runs the same three commands before deploying.
   after a number take one of three forms (1 результат, 3 результата, 5
   результатов), but a fragment such as "results for" has one translation, which
   uses the "5" form, as does "free, open-source projects" after the project count
-  (right for 38 projects); plural rules (Intl.PluralRules) would fix this.
+  (right for 38 projects). `tCount()` adds the "1" and "3" forms for these, the
+  home page area counts, and the card and tile counts.
 - bn-001 and bn-in are copies of bn-bd, addressing the reader as "আপনি". The site
   uses no wording that differs between Bangladesh and India, so bn-in needs no
   tuning. Numbers use Western digits, as in Arabic, to match the digits in the text
