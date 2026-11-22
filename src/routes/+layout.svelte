@@ -5,7 +5,7 @@
 	import { ContainerWithFixedWidth, Footer, Header, InsetText, NavigationMenu, SkipLink } from '@lilydesignsystem/svelte-headless';
 	import type { Snippet } from 'svelte';
 	import SitePickerBar from '#lib/components/SitePickerBar.svelte';
-	import { isTranslated, localePath, parsePath, t } from '#lib/locales.js';
+	import { LOCALE_TAGS, isTranslated, localeDir, localePath, parsePath, t } from '#lib/locales.js';
 	import { PAGES } from '#lib/pages.js';
 	import { projectBySlug } from '#lib/data/projects.js';
 	import { ISSUES_URL, PERSON, SITE_NAME, SITE_TAGLINE } from '#lib/site.js';
@@ -24,6 +24,12 @@
 		return project ? s(project.name) : s(PAGES.find((p) => p.slug === slug)?.name ?? SITE_TAGLINE);
 	});
 	const year = new Date().getFullYear();
+	// The language picker navigates in the browser, so keep <html lang> and <html dir>
+	// in step; prerendering sets them for a first visit.
+	$effect(() => {
+		document.documentElement.lang = LOCALE_TAGS[locale];
+		document.documentElement.dir = localeDir(locale);
+	});
 </script>
 
 <SkipLink href="#content" label={m.skip} />

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatNumber, isTranslated, localePath, parsePath, pickLocale, t } from './locales';
+import { formatDate, formatNumber, isTranslated, localeDir, localePath, parsePath, pickLocale, t } from './locales';
 
 describe('t', () => {
 	it('leaves en-001 and en-gb unchanged', () => {
@@ -63,6 +63,19 @@ describe('formatNumber', () => {
 		expect(formatNumber('hi-in', 96_386_872)).toBe('9,63,86,872');
 		expect(formatNumber('hi-in', 16_513, true)).toBe('16\u00a0हज़ार');
 	});
+	it('uses Western digits for Arabic', () => {
+		expect(formatNumber('ar-eg', 96_386_872)).toBe('96,386,872');
+		expect(formatNumber('ar-eg', 96_386_872, true)).toBe('96\u00a0مليون');
+		expect(formatDate('ar-eg', '2026-11-21')).toBe('21 نوفمبر 2026');
+	});
+});
+
+describe('localeDir', () => {
+	it('is right to left for Arabic only', () => {
+		expect(localeDir('ar-eg')).toBe('rtl');
+		expect(localeDir('ar-001')).toBe('rtl');
+		expect(localeDir('hi-in')).toBe('ltr');
+	});
 });
 
 describe('paths', () => {
@@ -86,6 +99,9 @@ describe('paths', () => {
 		expect(pickLocale(['hi-IN'])).toBe('hi-in');
 		expect(pickLocale(['hi'])).toBe('hi-001');
 		expect(pickLocale(['hi-Latn-IN'])).toBe('hi-in');
+		expect(pickLocale(['ar-EG'])).toBe('ar-eg');
+		expect(pickLocale(['ar'])).toBe('ar-001');
+		expect(pickLocale(['ar-SA'])).toBe('ar-001');
 		expect(pickLocale(['en'])).toBe('en-001');
 		expect(pickLocale(['en-US'])).toBe('en-us');
 		expect(pickLocale(['en-AU'])).toBe('en-001');

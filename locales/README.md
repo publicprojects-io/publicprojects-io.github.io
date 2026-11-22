@@ -20,6 +20,8 @@ catalogue that maps each English source string to its translation:
 | [`zh-001`](zh-001/messages.json) | 中文（世界） (Simplified Chinese, World) | Draft: a copy of `zh-cn`; keep the two in step |
 | [`hi-in`](hi-in/messages.json) | हिन्दी (भारत) (Hindi, India) | Draft: needs review by a first-language Hindi speaker |
 | [`hi-001`](hi-001/messages.json) | हिन्दी (विश्व) (Hindi, World) | Draft: a copy of `hi-in`; keep the two in step |
+| [`ar-eg`](ar-eg/messages.json) | العربية (مصر) (Arabic, Egypt) | Draft: needs review by a first-language Arabic speaker |
+| [`ar-001`](ar-001/messages.json) | العربية (العالم) (Arabic, World) | Draft: a copy of `ar-eg`; keep the two in step |
 
 English locales (`en-001`, `en-gb`, `en-us`) need no catalogue: `en-us` spelling is
 derived by rule in `src/lib/locales.ts`.

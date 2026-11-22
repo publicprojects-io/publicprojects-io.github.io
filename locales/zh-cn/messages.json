@@ -1,5 +1,6 @@
 {
 	"(0009-0000-4681-282X), the persistent identifier used by researchers and publishers worldwide.": "（0009-0000-4681-282X），这是全球研究人员和出版机构使用的永久标识符。",
+	", from GitHub, crates.io, and RubyGems.": "，来自 GitHub、crates.io 和 RubyGems。",
 	", tested against the same shared NHS Number test vectors as its Python library.": "，并使用与其 Python 库相同的共享 NHS 号码测试向量进行测试。",
 	"10+ languages": "10 多种语言",
 	"100+ tips for teamwork: principles, values, tenets, ground rules, norms, and agreements.": "100 多条团队协作建议：原则、价值观、信条、基本规则、规范和约定。",
@@ -196,7 +197,6 @@
 	"Free, open-source software, standards tooling, and guides for health care, public services, and software engineering.": "面向医疗、公共服务和软件工程的免费开源软件、标准工具和指南。",
 	"Free, open-source software, standards tooling, and guides for health care, public services, and software engineering. Built in public, translated for the world, and free for anyone to use.": "面向医疗、公共服务和软件工程的免费开源软件、标准工具和指南。公开构建，面向世界翻译，任何人都可以免费使用。",
 	"Free, open-source tools and guides for problems that digital health groups work on every day: patient identity, integration, terminology, business cases, architecture, and accessible services. Use them, adapt them, and help improve them.": "免费开源的工具和指南，用于解决数字健康组织每天都在处理的问题：患者身份识别、系统集成、术语、业务论证、架构和无障碍服务。使用它们、改编它们，并帮助改进它们。",
-	"from GitHub, crates.io, and RubyGems.": "来自 GitHub、crates.io 和 RubyGems。",
 	"Git Commit Message": "Git 提交信息",
 	"GitAlias": "GitAlias",
 	"GitHub": "GitHub",

@@ -1,7 +1,7 @@
 // Locales. Content is written once, in the international / British English
 // that en-001 and en-gb share. `t(locale, text)` gives the text for a locale:
 // en-us spelling is derived by rule; Welsh (cy-gb), Simplified Chinese
-// (zh-cn, zh-001), and Hindi (hi-in, hi-001) come from the catalogues in
+// (zh-cn, zh-001), Hindi (hi-in, hi-001), and Arabic (ar-eg, ar-001) come from the catalogues in
 // locales/<locale>/messages.json,
 // keyed by the English source text. Dates and
 // numbers come from Intl. See spec/index.md § Locales.
@@ -10,8 +10,10 @@ import zhCn from '../../locales/zh-cn/messages.json' with { type: 'json' };
 import zh001 from '../../locales/zh-001/messages.json' with { type: 'json' };
 import hiIn from '../../locales/hi-in/messages.json' with { type: 'json' };
 import hi001 from '../../locales/hi-001/messages.json' with { type: 'json' };
+import arEg from '../../locales/ar-eg/messages.json' with { type: 'json' };
+import ar001 from '../../locales/ar-001/messages.json' with { type: 'json' };
 
-export const LOCALES = ['en-001', 'en-gb', 'en-us', 'cy-gb', 'zh-cn', 'zh-001', 'hi-in', 'hi-001'] as const;
+export const LOCALES = ['en-001', 'en-gb', 'en-us', 'cy-gb', 'zh-cn', 'zh-001', 'hi-in', 'hi-001', 'ar-eg', 'ar-001'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 /**
@@ -30,7 +32,9 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 	'zh-cn': '中文（中国）',
 	'zh-001': '中文（世界）',
 	'hi-in': 'हिन्दी (भारत)',
-	'hi-001': 'हिन्दी (विश्व)'
+	'hi-001': 'हिन्दी (विश्व)',
+	'ar-eg': 'العربية (مصر)',
+	'ar-001': 'العربية (العالم)'
 };
 
 /** BCP 47 tag with canonical case, for <html lang>, hreflang, and Intl. */
@@ -42,8 +46,24 @@ export const LOCALE_TAGS: Record<Locale, string> = {
 	'zh-cn': 'zh-CN',
 	'zh-001': 'zh-001',
 	'hi-in': 'hi-IN',
-	'hi-001': 'hi-001'
+	'hi-001': 'hi-001',
+	'ar-eg': 'ar-EG',
+	'ar-001': 'ar-001'
 };
+
+/** Text direction for <html dir> and for any element that shows a locale's own name. */
+export function localeDir(locale: Locale): 'ltr' | 'rtl' {
+	return locale.startsWith('ar-') ? 'rtl' : 'ltr';
+}
+
+/**
+ * The tag Intl formats with. Arabic uses Western digits in both locales: ar-EG would
+ * otherwise use Arabic-Indic digits (٩٦٬٣٨٦), while the text around them, such as
+ * "FHIR R5" and version numbers, keeps Western digits.
+ */
+function intlTag(locale: Locale): string {
+	return locale.startsWith('ar-') ? `${LOCALE_TAGS[locale]}-u-nu-latn` : LOCALE_TAGS[locale];
+}
 
 export function isLocale(value: string | undefined): value is Locale {
 	return (LOCALES as readonly string[]).includes(value ?? '');
@@ -126,7 +146,7 @@ function matchCase(source: string, target: string): string {
 	return source[0] === source[0].toUpperCase() ? target[0].toUpperCase() + target.slice(1) : target;
 }
 
-const CATALOGUES: Partial<Record<Locale, Record<string, string>>> = { 'cy-gb': cyGb, 'zh-cn': zhCn, 'zh-001': zh001, 'hi-in': hiIn, 'hi-001': hi001 };
+const CATALOGUES: Partial<Record<Locale, Record<string, string>>> = { 'cy-gb': cyGb, 'zh-cn': zhCn, 'zh-001': zh001, 'hi-in': hiIn, 'hi-001': hi001, 'ar-eg': arEg, 'ar-001': ar001 };
 
 /** Locales translated from a catalogue. Their translations are drafts until reviewed, so their pages show a notice. */
 export function isTranslated(locale: Locale): boolean {
@@ -160,19 +180,19 @@ export function t(locale: Locale, text: string): string {
 
 /**
  * A number for `locale`. Compact numbers are truncated, never rounded up, because
- * the site shows them with a "+" ("96.3M+"). Chinese and Hindi units are wide words
- * (万, हज़ार), so once the number before the unit has two or more digits the decimal
+ * the site shows them with a "+" ("96.3M+"). Chinese, Hindi, and Arabic units are wide words
+ * (万, हज़ार, مليون), so once the number before the unit has two or more digits the decimal
  * is dropped, to fit the stat cards ("9638万+", "16 हज़ार+").
  */
 export function formatNumber(locale: Locale, value: number, compact = false): string {
-	if (!compact) return new Intl.NumberFormat(LOCALE_TAGS[locale]).format(value);
+	if (!compact) return new Intl.NumberFormat(intlTag(locale)).format(value);
 	const format = (digits: number) =>
-		new Intl.NumberFormat(LOCALE_TAGS[locale], { notation: 'compact', maximumFractionDigits: digits, roundingMode: 'trunc' }).format(value);
+		new Intl.NumberFormat(intlTag(locale), { notation: 'compact', maximumFractionDigits: digits, roundingMode: 'trunc' }).format(value);
 	const text = format(1);
-	const wideUnits = locale.startsWith('zh-') || locale.startsWith('hi-');
+	const wideUnits = locale.startsWith('zh-') || locale.startsWith('hi-') || locale.startsWith('ar-');
 	return wideUnits && /\d{2}/.test(text) ? format(0) : text;
 }
 
 export function formatDate(locale: Locale, isoDate: string): string {
-	return new Intl.DateTimeFormat(LOCALE_TAGS[locale], { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${isoDate}T00:00:00Z`));
+	return new Intl.DateTimeFormat(intlTag(locale), { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${isoDate}T00:00:00Z`));
 }

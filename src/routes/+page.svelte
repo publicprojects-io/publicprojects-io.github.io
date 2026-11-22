@@ -7,7 +7,7 @@
 	import { base } from '#lib/base.js';
 	import { ContainerWithFixedWidth } from '@lilydesignsystem/svelte-headless';
 	import Seo from '#lib/components/Seo.svelte';
-	import { DEFAULT_LOCALE, LOCALES, LOCALE_LABELS, LOCALE_TAGS, localePath, pickLocale } from '#lib/locales.js';
+	import { DEFAULT_LOCALE, LOCALES, LOCALE_LABELS, LOCALE_TAGS, localeDir, localePath, pickLocale } from '#lib/locales.js';
 	import { SITE_NAME, SITE_TAGLINE } from '#lib/site.js';
 
 	onMount(() => {
@@ -26,7 +26,7 @@
 	</header>
 	<ul class="language-chooser" role="list">
 		{#each LOCALES as l (l)}
-			<li><a href={`${base}${localePath(l)}`} hreflang={LOCALE_TAGS[l]} lang={LOCALE_TAGS[l]}>{LOCALE_LABELS[l]}</a></li>
+			<li><a href={`${base}${localePath(l)}`} hreflang={LOCALE_TAGS[l]} lang={LOCALE_TAGS[l]} dir={localeDir(l)}>{LOCALE_LABELS[l]}</a></li>
 		{/each}
 	</ul>
 </ContainerWithFixedWidth>

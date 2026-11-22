@@ -1,5 +1,6 @@
 {
 	"(0009-0000-4681-282X), the persistent identifier used by researchers and publishers worldwide.": "(0009-0000-4681-282X), y dynodwr parhaol a ddefnyddir gan ymchwilwyr a chyhoeddwyr ledled y byd.",
+	", from GitHub, crates.io, and RubyGems.": ", o GitHub, crates.io a RubyGems.",
 	", tested against the same shared NHS Number test vectors as its Python library.": ", wedi’i brofi yn erbyn yr un fectorau prawf Rhif GIG a rennir â’i lyfrgell Python.",
 	"10+ languages": "10+ iaith",
 	"100+ tips for teamwork: principles, values, tenets, ground rules, norms, and agreements.": "Dros 100 o awgrymiadau ar gyfer gwaith tîm: egwyddorion, gwerthoedd, daliadau, rheolau sylfaenol, normau a chytundebau.",
@@ -196,7 +197,6 @@
 	"Free, open-source software, standards tooling, and guides for health care, public services, and software engineering.": "Meddalwedd, offer safonau a chanllawiau ffynhonnell agored am ddim ar gyfer gofal iechyd, gwasanaethau cyhoeddus a pheirianneg meddalwedd.",
 	"Free, open-source software, standards tooling, and guides for health care, public services, and software engineering. Built in public, translated for the world, and free for anyone to use.": "Meddalwedd, offer safonau a chanllawiau ffynhonnell agored am ddim ar gyfer gofal iechyd, gwasanaethau cyhoeddus a pheirianneg meddalwedd. Wedi’u hadeiladu’n gyhoeddus, wedi’u cyfieithu ar gyfer y byd, ac am ddim i unrhyw un eu defnyddio.",
 	"Free, open-source tools and guides for problems that digital health groups work on every day: patient identity, integration, terminology, business cases, architecture, and accessible services. Use them, adapt them, and help improve them.": "Offer a chanllawiau ffynhonnell agored am ddim ar gyfer problemau y mae grwpiau iechyd digidol yn gweithio arnynt bob dydd: hunaniaeth cleifion, integreiddio, terminoleg, achosion busnes, pensaernïaeth a gwasanaethau hygyrch. Defnyddiwch nhw, addaswch nhw, a helpwch i’w gwella.",
-	"from GitHub, crates.io, and RubyGems.": "o GitHub, crates.io a RubyGems.",
 	"Git Commit Message": "Neges Ymrwymo Git",
 	"GitAlias": "GitAlias",
 	"GitHub": "GitHub",

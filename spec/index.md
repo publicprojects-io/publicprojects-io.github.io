@@ -82,7 +82,7 @@ open source for the public good.
     `localStorage` and a cookie, and a pre-paint script in `app.html` avoids a flash.
     Theme CSS is copied from `@lilydesignsystem/themes` into `static/themes/` at
     build time (generated, git-ignored).
-  - **Locale**: `en-001`, `en-gb`, `en-us`, `cy-gb`, `zh-cn`, `zh-001`, `hi-in`, and `hi-001`. Choosing one navigates to the same
+  - **Locale**: `en-001`, `en-gb`, `en-us`, `cy-gb`, `zh-cn`, `zh-001`, `hi-in`, `hi-001`, `ar-eg`, and `ar-001`. Choosing one navigates to the same
     page in that locale.
   - **Text size**: Lily default sizes.
   - **Share**: Copy Link, Email Link, LinkedIn, Reddit, Bluesky, and Mastodon (through
@@ -102,6 +102,8 @@ open source for the public good.
 | `zh-001` 中文（世界） (Simplified Chinese, World) | `/zh-001/` | translated, from `locales/zh-001/messages.json` (a copy of zh-cn) | `zh-001` |
 | `hi-in` हिन्दी (भारत) (Hindi, India) | `/hi-in/` | translated, from `locales/hi-in/messages.json` | `hi-IN` |
 | `hi-001` हिन्दी (विश्व) (Hindi, World) | `/hi-001/` | translated, from `locales/hi-001/messages.json` (a copy of hi-in) | `hi-001` |
+| `ar-eg` العربية (مصر) (Arabic, Egypt) | `/ar-eg/` | translated, from `locales/ar-eg/messages.json`; right to left | `ar-EG` |
+| `ar-001` العربية (العالم) (Arabic, World) | `/ar-001/` | translated, from `locales/ar-001/messages.json` (a copy of ar-eg); right to left | `ar-001` |
 
 - **Every locale has a path prefix**, including the default, like lilydesignsystem.com:
   `https://publicprojects.io/en-001/donate/`. Routes live under
@@ -109,7 +111,7 @@ open source for the public good.
 - **The site root `/` is a language chooser.** With JavaScript it redirects at once to
   the locale that best matches the browser's languages (`pickLocale()`: exact match,
   then language and region, then the language's `-001` variant, then any locale in that
-  language, so `cy` goes to `cy-gb`; `zh` and other Chinese regions go to `zh-001`; `hi` and Hindi outside India go to `hi-001`), falling back to `en-001`. It stores nothing.
+  language, so `cy` goes to `cy-gb`; `zh` and other Chinese regions go to `zh-001`; `hi` and Hindi outside India go to `hi-001`; `ar` and Arabic outside Egypt go to `ar-001`), falling back to `en-001`. It stores nothing.
   Without JavaScript it lists every language by its own name.
 - **Unprefixed paths** (such as `/donate/`) are not pages and are not forwarded: like
   lilydesignsystem.com, they show "Page not found".
@@ -117,11 +119,11 @@ open source for the public good.
   string passes through `t(locale, text)` in `src/lib/locales.ts`.
   - en-us: `t()` applies an explicit, tested British-to-American word list. Add words
     there; never fork content.
-  - cy-gb, zh-cn, zh-001, hi-in, hi-001: `t()` looks the English text up in `locales/<locale>/messages.json` (see
+  - cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001: `t()` looks the English text up in `locales/<locale>/messages.json` (see
     `locales/README.md`). A missing entry falls back to English and is reported as
     `I18N_MISSING` during the build; CI builds with `I18N_STRICT=1`, which fails on any
     missing entry.
-  - The Welsh, Chinese, and Hindi translations are drafts. Every page in a catalogue locale
+  - The Welsh, Chinese, Hindi, and Arabic translations are drafts. Every page in a catalogue locale
     (`isTranslated()`) shows a notice saying so, in that language, with a
     link to report errors, until a first-language speaker has reviewed it.
 - Project names are translated when they describe the project ("Care Plan" →
@@ -133,6 +135,13 @@ open source for the public good.
   the JSON-LD keeps the English name beside its English description.
 - Not translated: technical tags, Lily theme names, and proper names
   ("World Health Organization").
+- Arabic is written right to left. `localeDir()` sets `<html dir="rtl">` at prerender
+  time, the layout keeps `lang` and `dir` in step when the language picker navigates
+  in the browser, and the root chooser marks each language's own name with its
+  direction. Styles use logical properties (`margin-inline-start`, not `margin-left`),
+  so layouts mirror without separate rules.
+- Arabic numbers and dates use Western digits (`ar-EG-u-nu-latn`), in both Arabic
+  locales, so they match the digits in the text, such as "FHIR R5" and version numbers.
 - Dates and numbers use `Intl` with the locale's tag ("21 November 2026",
   "November 21, 2026", "21 Tachwedd 2026").
 - Every page carries `hreflang` alternates for every locale plus `x-default`
@@ -304,10 +313,10 @@ CI runs the same three commands before deploying.
    three areas, and then every project card, each with a lower-left Lily SharePicker, and a status pill only when the status
    is demonstration, maintenance, or archived.
 2. The header has a Lily PickerBar with search, all Lily default themes (sorted, UK
-   and US last), locales en-001, en-gb, en-us, cy-gb, zh-cn, zh-001, hi-in, and hi-001, text size, and the six share
+   and US last), locales en-001, en-gb, en-us, cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, and ar-001, text size, and the six share
    options.
 3. Choosing a locale navigates to the same page in that locale; en-us pages use
-   American spelling; cy-gb pages are fully Welsh and zh-cn and zh-001 pages fully Simplified Chinese, and hi-in and hi-001 pages fully Hindi, with the draft notice.
+   American spelling; cy-gb pages are fully Welsh and zh-cn and zh-001 pages fully Simplified Chinese, hi-in and hi-001 pages fully Hindi, and ar-eg and ar-001 pages fully Arabic and right to left, with the draft notice.
 4. Searching from the picker lands on the search page with matching results.
 5. Every project has a page in all three locales, with a source link and date for
    every number.
@@ -326,8 +335,10 @@ CI runs the same three commands before deploying.
   enforce HTTPS.
 - Add recognition that has a public URL: analyst citations, talks, hackathon judging,
   and media coverage.
-- First-language review of the Welsh, Chinese, and Hindi translations, then remove the draft notice for each.
+- First-language review of the Welsh, Chinese, Hindi, and Arabic translations, then remove the draft notice for each.
 - zh-001 is a copy of zh-cn. Traditional Chinese readers (zh-TW, zh-HK) are sent to zh-001; add zh-tw if a Traditional catalogue is made.
-- hi-001 is a copy of hi-in. Some sentence-final full stops and commas around links come from page templates, so Chinese and Hindi pages show "." or "," there instead of "。" or "।".
+- hi-001 is a copy of hi-in. Some sentence-final full stops and commas around links come from page templates, so Chinese, Hindi, and Arabic pages show "." or "," there instead of "。", "।", or "،".
+- ar-001 is a copy of ar-eg. Arabic uses Western digits; a reviewer may prefer
+  Arabic-Indic digits (٠١٢٣) for ar-eg.
 - Consider more locales, each with its own catalogue under `locales/`.
 - Add an Open Graph image.

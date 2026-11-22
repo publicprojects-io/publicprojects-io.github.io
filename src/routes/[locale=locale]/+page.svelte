@@ -82,7 +82,7 @@
 			<div><dt>{s('open-source projects, including health care')}</dt><dd>{TOTALS.projects}</dd></div>
 		</dl>
 		<p class="stat-band-note">
-			{s('Figures as of')} {formatDate(locale, STATS_AS_OF)}, {s('from GitHub, crates.io, and RubyGems.')}
+			{s('Figures as of')} {formatDate(locale, STATS_AS_OF)}{s(', from GitHub, crates.io, and RubyGems.')}
 			<a href={href('impact')}>{s('See every number and its source')}</a>.
 		</p>
 	</section>
