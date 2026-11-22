@@ -56,6 +56,8 @@ whose plain entries are the plural for 3 to 10, adds `one|`, `two|`, `many|`,
 | [`id-id`](id-id/messages.json) | Bahasa Indonesia (Indonesia) (Indonesian, Indonesia) | Draft: needs review by a first-language Indonesian speaker |
 | [`id-001`](id-001/messages.json) | Bahasa Indonesia (Dunia) (Indonesian, World) | Draft: a copy of `id-id`; keep the two in step |
 | [`id-my`](id-my/messages.json) | Bahasa Indonesia (Malaysia) (Indonesian, Malaysia) | Draft: a copy of `id-id`, for Indonesian speakers in Malaysia (Malay itself would be its own `ms` locale); keep the two in step |
+| [`th-th`](th-th/messages.json) | ไทย (ประเทศไทย) (Thai, Thailand) | Draft: needs review by a first-language Thai speaker |
+| [`th-001`](th-001/messages.json) | ไทย (โลก) (Thai, World) | Draft: a copy of `th-th`; keep the two in step |
 
 English locales (`en-001`, `en-gb`, `en-us`) need no catalogue: `en-us` spelling is
 derived by rule in `src/lib/locales.ts`.

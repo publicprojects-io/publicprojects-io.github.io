@@ -186,6 +186,8 @@ describe('paths', () => {
 		expect(pickLocale(['id-ID'])).toBe('id-id');
 		expect(pickLocale(['id'])).toBe('id-001');
 		expect(pickLocale(['id-MY'])).toBe('id-my');
+		expect(pickLocale(['th-TH'])).toBe('th-th');
+		expect(pickLocale(['th'])).toBe('th-001');
 		expect(pickLocale(['en'])).toBe('en-001');
 		expect(pickLocale(['en-US'])).toBe('en-us');
 		expect(pickLocale(['en-AU'])).toBe('en-001');
@@ -240,5 +242,17 @@ describe('tCount for project and search counts', () => {
 		expect(tCount('ar-eg', 'projects', 17)).toBe('مشروعًا');
 		expect(tCount('ar-eg', 'results for', 2)).toBe('نتيجتان للبحث عن');
 		expect(tCount('en-001', 'projects', 17)).toBe('projects');
+	});
+});
+
+describe('Thai', () => {
+	it('translates, with Buddhist-era dates and Western digits', () => {
+		expect(t('th-th', 'Home')).toBe('หน้าแรก');
+		expect(t('th-001', 'Cookie policy')).toBe(t('th-th', 'Cookie policy'));
+		expect(formatNumber('th-th', 96_386_872)).toBe('96,386,872');
+		expect(formatNumber('th-001', 16_513, true)).toBe('16.5K');
+		expect(formatDate('th-th', '2026-11-21')).toBe('21 พฤศจิกายน 2569');
+		expect(isTranslated('th-001')).toBe(true);
+		expect(localeDir('th-th')).toBe('ltr');
 	});
 });

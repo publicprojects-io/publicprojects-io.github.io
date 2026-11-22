@@ -84,7 +84,7 @@ open source for the public good.
     `localStorage` and a cookie, and a pre-paint script in `app.html` avoids a flash.
     Theme CSS is copied from `@lilydesignsystem/themes` into `static/themes/` at
     build time (generated, git-ignored).
-  - **Locale**: `en-001`, `en-gb`, `en-us`, `cy-gb`, `zh-cn`, `zh-001`, `hi-in`, `hi-001`, `ar-eg`, `ar-001`, `es-mx`, `es-001`, `es-es`, `fr-fr`, `fr-001`, `fr-ca`, `ru-ru`, `ru-001`, `ru-by`, `bn-bd`, `bn-001`, `bn-in`, `id-id`, `id-001`, and `id-my`. Choosing one navigates to the same
+  - **Locale**: `en-001`, `en-gb`, `en-us`, `cy-gb`, `zh-cn`, `zh-001`, `hi-in`, `hi-001`, `ar-eg`, `ar-001`, `es-mx`, `es-001`, `es-es`, `fr-fr`, `fr-001`, `fr-ca`, `ru-ru`, `ru-001`, `ru-by`, `bn-bd`, `bn-001`, `bn-in`, `id-id`, `id-001`, `id-my`, `th-th`, and `th-001`. Choosing one navigates to the same
     page in that locale.
   - **Text size**: Lily default sizes.
   - **Share**: Copy Link, Email Link, LinkedIn, Reddit, Bluesky, and Mastodon (through
@@ -121,6 +121,8 @@ open source for the public good.
 | `id-id` Bahasa Indonesia (Indonesia) (Indonesian, Indonesia) | `/id-id/` | translated, from `locales/id-id/messages.json` | `id-ID` |
 | `id-001` Bahasa Indonesia (Dunia) (Indonesian, World) | `/id-001/` | translated, from `locales/id-001/messages.json` (a copy of id-id) | `id-001` |
 | `id-my` Bahasa Indonesia (Malaysia) (Indonesian, Malaysia) | `/id-my/` | translated, from `locales/id-my/messages.json` (a copy of id-id) | `id-MY` |
+| `th-th` ไทย (ประเทศไทย) (Thai, Thailand) | `/th-th/` | translated, from `locales/th-th/messages.json` | `th-TH` |
+| `th-001` ไทย (โลก) (Thai, World) | `/th-001/` | translated, from `locales/th-001/messages.json` (a copy of th-th) | `th-001` |
 
 - **Every locale has a path prefix**, including the default, like lilydesignsystem.com:
   `https://publicprojects.io/en-001/donate/`. Routes live under
@@ -128,7 +130,7 @@ open source for the public good.
 - **The site root `/` is a language chooser.** With JavaScript it redirects at once to
   the locale that best matches the browser's languages (`pickLocale()`: exact match,
   then language and region, then the language's `-001` variant, then any locale in that
-  language, so `cy` goes to `cy-gb`; `zh` and other Chinese regions go to `zh-001`; `hi` and Hindi outside India go to `hi-001`; `ar` and Arabic outside Egypt go to `ar-001`; `es` and Spanish outside Mexico and Spain go to `es-001`; `fr` and French outside France and Canada go to `fr-001`; `ru` and Russian outside Russia and Belarus go to `ru-001`; `bn` and Bengali outside Bangladesh and India go to `bn-001`; `id` and Indonesian outside Indonesia and Malaysia go to `id-001`), falling back to `en-001`. It stores nothing.
+  language, so `cy` goes to `cy-gb`; `zh` and other Chinese regions go to `zh-001`; `hi` and Hindi outside India go to `hi-001`; `ar` and Arabic outside Egypt go to `ar-001`; `es` and Spanish outside Mexico and Spain go to `es-001`; `fr` and French outside France and Canada go to `fr-001`; `ru` and Russian outside Russia and Belarus go to `ru-001`; `bn` and Bengali outside Bangladesh and India go to `bn-001`; `id` and Indonesian outside Indonesia and Malaysia go to `id-001`; `th` and Thai outside Thailand go to `th-001`), falling back to `en-001`. It stores nothing.
   Without JavaScript it lists every language by its own name.
 - **Unprefixed paths** (such as `/donate/`) are not pages and are not forwarded: like
   lilydesignsystem.com, they show "Page not found".
@@ -136,7 +138,7 @@ open source for the public good.
   string passes through `t(locale, text)` in `src/lib/locales.ts`.
   - en-us: `t()` applies an explicit, tested British-to-American word list. Add words
     there; never fork content.
-  - cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001, es-mx, es-001, es-es, fr-fr, fr-001, fr-ca, ru-ru, ru-001, ru-by, bn-bd, bn-001, bn-in, id-id, id-001, id-my: `t()` looks the English text up in `locales/<locale>/messages.json` (see
+  - cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001, es-mx, es-001, es-es, fr-fr, fr-001, fr-ca, ru-ru, ru-001, ru-by, bn-bd, bn-001, bn-in, id-id, id-001, id-my, th-th, th-001: `t()` looks the English text up in `locales/<locale>/messages.json` (see
     `locales/README.md`). A missing entry falls back to English and is reported as
     `I18N_MISSING` during the build; CI builds with `I18N_STRICT=1`, which fails on any
     missing entry.
@@ -150,7 +152,7 @@ open source for the public good.
     "downloads"; Arabic has `one|`, `two|`, `many|`, `other|`, and `compact|` forms.
     Compact counts ("16,5 тыс.", "16 ألف"), on cards and the home page tiles, use
     `"compact|<text>"`, else the plain entry.
-  - The Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, and Indonesian translations are drafts. Every page in a catalogue locale
+  - The Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, Indonesian, and Thai translations are drafts. Every page in a catalogue locale
     (`isTranslated()`) shows a notice saying so, in that language, with a
     link to report errors, until a first-language speaker has reviewed it.
 - Project names are translated when they describe the project ("Care Plan" →
@@ -352,10 +354,10 @@ CI runs the same three commands before deploying.
    three areas, and then every project card, each with a lower-left Lily SharePicker, and a status pill only when the status
    is demonstration, maintenance, or archived.
 2. The header has a Lily PickerBar with search, all Lily default themes (sorted, UK
-   and US last), locales en-001, en-gb, en-us, cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001, es-mx, es-001, es-es, fr-fr, fr-001, fr-ca, ru-ru, ru-001, ru-by, bn-bd, bn-001, bn-in, id-id, id-001, and id-my, text size, and the six share
+   and US last), locales en-001, en-gb, en-us, cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001, es-mx, es-001, es-es, fr-fr, fr-001, fr-ca, ru-ru, ru-001, ru-by, bn-bd, bn-001, bn-in, id-id, id-001, id-my, th-th, and th-001, text size, and the six share
    options.
 3. Choosing a locale navigates to the same page in that locale; en-us pages use
-   American spelling; cy-gb pages are fully Welsh and zh-cn and zh-001 pages fully Simplified Chinese, hi-in and hi-001 pages fully Hindi, ar-eg and ar-001 pages fully Arabic and right to left, es-mx, es-001, and es-es pages fully Spanish, fr-fr, fr-001, and fr-ca pages fully French, ru-ru, ru-001, and ru-by pages fully Russian, bn-bd, bn-001, and bn-in pages fully Bengali, and id-id, id-001, and id-my pages fully Indonesian, with the draft notice.
+   American spelling; cy-gb pages are fully Welsh and zh-cn and zh-001 pages fully Simplified Chinese, hi-in and hi-001 pages fully Hindi, ar-eg and ar-001 pages fully Arabic and right to left, es-mx, es-001, and es-es pages fully Spanish, fr-fr, fr-001, and fr-ca pages fully French, ru-ru, ru-001, and ru-by pages fully Russian, bn-bd, bn-001, and bn-in pages fully Bengali, id-id, id-001, and id-my pages fully Indonesian, and th-th and th-001 pages fully Thai, with the draft notice.
 4. Searching from the picker lands on the search page with matching results.
 5. Every project has a page in all three locales, with a source link and date for
    every number.
@@ -368,7 +370,7 @@ CI runs the same three commands before deploying.
 
 - Add recognition that has a public URL: analyst citations, talks, hackathon judging,
   and media coverage.
-- First-language review of the Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, and Indonesian translations, then remove the draft notice for each.
+- First-language review of the Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, Indonesian, and Thai translations, then remove the draft notice for each.
 - zh-001 is a copy of zh-cn. Traditional Chinese readers (zh-TW, zh-HK) are sent to zh-001; add zh-tw if a Traditional catalogue is made.
 - hi-001 is a copy of hi-in. Some sentence-final full stops and commas around links come from page templates, so Chinese, Hindi, and Arabic pages show "." or "," there instead of "。", "।", or "،".
 - ar-001 is a copy of ar-eg. Arabic uses Western digits; a reviewer may prefer
@@ -410,5 +412,12 @@ CI runs the same three commands before deploying.
   order follows English closely, so split sentences keep the English pattern.
   Established technical loanwords stay in English where Indonesian developers use
   them (commit, issue, crate, browser), and standard names stay as published.
+- th-001 is a copy of th-th, in polite written Thai that mostly leaves out "you"
+  ("คุณ" where needed). Dates use the Buddhist era, as Thai readers expect
+  ("21 พฤศจิกายน 2569"); a year in running text says "ค.ศ." ("ตั้งแต่ ค.ศ. 2006").
+  Numbers use Western digits and Latin compact units ("96.3M", "16.5K"), as Intl
+  gives for Thai. Thai has no plural forms. Sentences are separated by a space, as
+  in Thai, with no full stop; full stops that page templates add after links still
+  show as ".". Split sentences keep a leading comma where the English has one.
 - Consider more locales, each with its own catalogue under `locales/`.
 - Add an Open Graph image.
