@@ -28,6 +28,9 @@ catalogue that maps each English source string to its translation:
 | [`fr-fr`](fr-fr/messages.json) | Français (France) (French, France) | Draft: needs review by a first-language French speaker |
 | [`fr-001`](fr-001/messages.json) | Français (Monde) (French, World) | Draft: a copy of `fr-fr`; keep the two in step |
 | [`fr-ca`](fr-ca/messages.json) | Français (Canada) (French, Canada) | Draft: `fr-fr` tuned for Canada; keep it in step with `fr-fr` |
+| [`ru-ru`](ru-ru/messages.json) | Русский (Россия) (Russian, Russia) | Draft: needs review by a first-language Russian speaker |
+| [`ru-001`](ru-001/messages.json) | Русский (Мир) (Russian, World) | Draft: a copy of `ru-ru`; keep the two in step |
+| [`ru-by`](ru-by/messages.json) | Русский (Беларусь) (Russian, Belarus) | Draft: a copy of `ru-ru`, since written Russian in Belarus follows the same standard; keep the two in step |
 
 English locales (`en-001`, `en-gb`, `en-us`) need no catalogue: `en-us` spelling is
 derived by rule in `src/lib/locales.ts`.

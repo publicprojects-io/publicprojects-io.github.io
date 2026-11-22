@@ -99,6 +99,19 @@ describe('French', () => {
 	});
 });
 
+describe('Russian', () => {
+	it('translates and formats numbers and dates', () => {
+		expect(t('ru-ru', 'Home')).toBe('Главная');
+		expect(t('ru-by', 'Cookie policy')).toBe('Политика использования файлов cookie');
+		expect(t('ru-001', 'Software engineering')).toBe('Программная инженерия');
+		expect(formatNumber('ru-ru', 96_386_872)).toBe('96\u00a0386\u00a0872');
+		expect(formatNumber('ru-by', 96_386_872, true)).toBe('96,3\u00a0млн');
+		expect(formatDate('ru-ru', '2026-11-21')).toBe('21 ноября 2026');
+		expect(isTranslated('ru-001')).toBe(true);
+		expect(localeDir('ru-ru')).toBe('ltr');
+	});
+});
+
 describe('localeDir', () => {
 	it('is right to left for Arabic only', () => {
 		expect(localeDir('ar-eg')).toBe('rtl');
@@ -135,6 +148,10 @@ describe('paths', () => {
 		expect(pickLocale(['fr'])).toBe('fr-001');
 		expect(pickLocale(['fr-CA'])).toBe('fr-ca');
 		expect(pickLocale(['fr-BE'])).toBe('fr-001');
+		expect(pickLocale(['ru-RU'])).toBe('ru-ru');
+		expect(pickLocale(['ru'])).toBe('ru-001');
+		expect(pickLocale(['ru-BY'])).toBe('ru-by');
+		expect(pickLocale(['ru-KZ'])).toBe('ru-001');
 		expect(pickLocale(['en'])).toBe('en-001');
 		expect(pickLocale(['en-US'])).toBe('en-us');
 		expect(pickLocale(['en-AU'])).toBe('en-001');

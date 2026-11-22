@@ -2,8 +2,8 @@
 // that en-001 and en-gb share. `t(locale, text)` gives the text for a locale:
 // en-us spelling is derived by rule; Welsh (cy-gb), Simplified Chinese
 // (zh-cn, zh-001), Hindi (hi-in, hi-001), Arabic (ar-eg, ar-001), Spanish (es-mx,
-// es-001, es-es), and French (fr-fr, fr-001, fr-ca) come from
-// the catalogues in locales/<locale>/messages.json,
+// es-001, es-es), French (fr-fr, fr-001, fr-ca), and Russian (ru-ru, ru-001, ru-by)
+// come from the catalogues in locales/<locale>/messages.json,
 // keyed by the English source text. Dates and
 // numbers come from Intl. See spec/index.md § Locales.
 import cyGb from '../../locales/cy-gb/messages.json' with { type: 'json' };
@@ -19,8 +19,11 @@ import esEs from '../../locales/es-es/messages.json' with { type: 'json' };
 import frFr from '../../locales/fr-fr/messages.json' with { type: 'json' };
 import fr001 from '../../locales/fr-001/messages.json' with { type: 'json' };
 import frCa from '../../locales/fr-ca/messages.json' with { type: 'json' };
+import ruRu from '../../locales/ru-ru/messages.json' with { type: 'json' };
+import ru001 from '../../locales/ru-001/messages.json' with { type: 'json' };
+import ruBy from '../../locales/ru-by/messages.json' with { type: 'json' };
 
-export const LOCALES = ['en-001', 'en-gb', 'en-us', 'cy-gb', 'zh-cn', 'zh-001', 'hi-in', 'hi-001', 'ar-eg', 'ar-001', 'es-mx', 'es-001', 'es-es', 'fr-fr', 'fr-001', 'fr-ca'] as const;
+export const LOCALES = ['en-001', 'en-gb', 'en-us', 'cy-gb', 'zh-cn', 'zh-001', 'hi-in', 'hi-001', 'ar-eg', 'ar-001', 'es-mx', 'es-001', 'es-es', 'fr-fr', 'fr-001', 'fr-ca', 'ru-ru', 'ru-001', 'ru-by'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 /**
@@ -47,7 +50,10 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 	'es-es': 'Español (España)',
 	'fr-fr': 'Français (France)',
 	'fr-001': 'Français (Monde)',
-	'fr-ca': 'Français (Canada)'
+	'fr-ca': 'Français (Canada)',
+	'ru-ru': 'Русский (Россия)',
+	'ru-001': 'Русский (Мир)',
+	'ru-by': 'Русский (Беларусь)'
 };
 
 /** BCP 47 tag with canonical case, for <html lang>, hreflang, and Intl. */
@@ -67,7 +73,10 @@ export const LOCALE_TAGS: Record<Locale, string> = {
 	'es-es': 'es-ES',
 	'fr-fr': 'fr-FR',
 	'fr-001': 'fr-001',
-	'fr-ca': 'fr-CA'
+	'fr-ca': 'fr-CA',
+	'ru-ru': 'ru-RU',
+	'ru-001': 'ru-001',
+	'ru-by': 'ru-BY'
 };
 
 /** Text direction for <html dir> and for any element that shows a locale's own name. */
@@ -167,7 +176,7 @@ function matchCase(source: string, target: string): string {
 	return source[0] === source[0].toUpperCase() ? target[0].toUpperCase() + target.slice(1) : target;
 }
 
-const CATALOGUES: Partial<Record<Locale, Record<string, string>>> = { 'cy-gb': cyGb, 'zh-cn': zhCn, 'zh-001': zh001, 'hi-in': hiIn, 'hi-001': hi001, 'ar-eg': arEg, 'ar-001': ar001, 'es-mx': esMx, 'es-001': es001, 'es-es': esEs, 'fr-fr': frFr, 'fr-001': fr001, 'fr-ca': frCa };
+const CATALOGUES: Partial<Record<Locale, Record<string, string>>> = { 'cy-gb': cyGb, 'zh-cn': zhCn, 'zh-001': zh001, 'hi-in': hiIn, 'hi-001': hi001, 'ar-eg': arEg, 'ar-001': ar001, 'es-mx': esMx, 'es-001': es001, 'es-es': esEs, 'fr-fr': frFr, 'fr-001': fr001, 'fr-ca': frCa, 'ru-ru': ruRu, 'ru-001': ru001, 'ru-by': ruBy };
 
 /** Locales translated from a catalogue. Their translations are drafts until reviewed, so their pages show a notice. */
 export function isTranslated(locale: Locale): boolean {
@@ -214,6 +223,11 @@ export function formatNumber(locale: Locale, value: number, compact = false): st
 	return wideUnits && /\d{2}/.test(text) ? format(0) : text;
 }
 
+/**
+ * A long date for `locale`. Russian drops the trailing "г." ("21 ноября 2026", not
+ * "21 ноября 2026 г."), because the site often puts a full stop straight after a date.
+ */
 export function formatDate(locale: Locale, isoDate: string): string {
-	return new Intl.DateTimeFormat(intlTag(locale), { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${isoDate}T00:00:00Z`));
+	const text = new Intl.DateTimeFormat(intlTag(locale), { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${isoDate}T00:00:00Z`));
+	return locale.startsWith('ru-') ? text.replace(/\s*г\.$/, '') : text;
 }
