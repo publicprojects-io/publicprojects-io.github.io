@@ -24,7 +24,7 @@ a static SvelteKit 3 site on the `publicprojects-io` organisation's root GitHub 
 | `src/lib/data/stats.json` | Dated statistics snapshot: the only source for numbers |
 | `src/lib/pages.ts` | Top-level pages: navigation, sitemap, llms.txt, and search |
 | `src/lib/locales.ts` | Locales, paths, `t()` (en-us spelling, catalogue lookup), and number and date formats |
-| `locales/<locale>/messages.json` | Translation catalogues (cy-gb Welsh; zh-cn and zh-001 Simplified Chinese; hi-in and hi-001 Hindi; ar-eg and ar-001 Arabic, right to left; es-mx, es-001, and es-es Spanish; fr-fr, fr-001, and fr-ca French; ru-ru, ru-001, and ru-by Russian; bn-bd, bn-001, and bn-in Bengali), keyed by English source text; see `locales/README.md` |
+| `locales/<locale>/messages.json` | Translation catalogues (cy-gb Welsh; zh-cn and zh-001 Simplified Chinese; hi-in and hi-001 Hindi; ar-eg and ar-001 Arabic, right to left; es-mx, es-001, and es-es Spanish; fr-fr, fr-001, and fr-ca French; ru-ru, ru-001, and ru-by Russian; bn-bd, bn-001, and bn-in Bengali; id-id, id-001, and id-my Indonesian), keyed by English source text; see `locales/README.md` |
 | `src/lib/ui.ts` | Interface strings and accessible names |
 | `.github/workflows/deploy.yml` | Check, test, build, and deploy to GitHub Pages |
 
@@ -69,7 +69,7 @@ A change is done when `check`, `test`, and `build` all pass.
 - **Write content once** in international / British English, and pass every visible
   string through `t(locale, text)`. en-us spelling is derived; add missing words to its
   list, with a test. Every new or changed string needs an entry in every
-  catalogue (`locales/cy-gb`, `locales/zh-cn`, `locales/zh-001`, which is a copy of zh-cn, `locales/hi-in`, `locales/hi-001`, which is a copy of hi-in, `locales/ar-eg`, `locales/ar-001`, which is a copy of ar-eg, `locales/es-mx`, `locales/es-001`, which is a copy of es-mx, `locales/es-es`, which is es-mx tuned for Spain, `locales/fr-fr`, `locales/fr-001`, which is a copy of fr-fr, `locales/fr-ca`, which is fr-fr tuned for Canada, `locales/ru-ru`, `locales/ru-001` and `locales/ru-by`, which are copies of ru-ru, `locales/bn-bd`, and `locales/bn-001` and `locales/bn-in`, which are copies of bn-bd): run `I18N_STRICT=1 pnpm run build` (as CI does).
+  catalogue (`locales/cy-gb`, `locales/zh-cn`, `locales/zh-001`, which is a copy of zh-cn, `locales/hi-in`, `locales/hi-001`, which is a copy of hi-in, `locales/ar-eg`, `locales/ar-001`, which is a copy of ar-eg, `locales/es-mx`, `locales/es-001`, which is a copy of es-mx, `locales/es-es`, which is es-mx tuned for Spain, `locales/fr-fr`, `locales/fr-001`, which is a copy of fr-fr, `locales/fr-ca`, which is fr-fr tuned for Canada, `locales/ru-ru`, `locales/ru-001` and `locales/ru-by`, which are copies of ru-ru, `locales/bn-bd`, `locales/bn-001` and `locales/bn-in`, which are copies of bn-bd, `locales/id-id`, and `locales/id-001` and `locales/id-my`, which are copies of id-id): run `I18N_STRICT=1 pnpm run build` (as CI does).
 - **Add a page** by adding it to `src/lib/pages.ts`, then creating
   `src/routes/[locale=locale]/<slug>/+page.svelte`. Every page lives under a locale
   prefix (`/en-001/…`); the root `/` is only the language chooser.

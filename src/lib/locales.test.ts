@@ -126,6 +126,20 @@ describe('Bengali', () => {
 	});
 });
 
+describe('Indonesian', () => {
+	it('translates, with dot grouping and decimal comma', () => {
+		expect(t('id-id', 'Home')).toBe('Beranda');
+		expect(t('id-my', 'Cookie policy')).toBe('Kebijakan cookie');
+		expect(t('id-001', 'Software engineering')).toBe('Rekayasa perangkat lunak');
+		expect(formatNumber('id-id', 96_386_872)).toBe('96.386.872');
+		expect(formatNumber('id-my', 9_638_687, true)).toBe('9,6\u00a0jt');
+		expect(formatNumber('id-001', 16_513, true)).toBe('16,5\u00a0rb');
+		expect(formatDate('id-id', '2026-11-21')).toBe('21 November 2026');
+		expect(isTranslated('id-my')).toBe(true);
+		expect(localeDir('id-id')).toBe('ltr');
+	});
+});
+
 describe('localeDir', () => {
 	it('is right to left for Arabic only', () => {
 		expect(localeDir('ar-eg')).toBe('rtl');
@@ -169,6 +183,9 @@ describe('paths', () => {
 		expect(pickLocale(['bn-BD'])).toBe('bn-bd');
 		expect(pickLocale(['bn'])).toBe('bn-001');
 		expect(pickLocale(['bn-IN'])).toBe('bn-in');
+		expect(pickLocale(['id-ID'])).toBe('id-id');
+		expect(pickLocale(['id'])).toBe('id-001');
+		expect(pickLocale(['id-MY'])).toBe('id-my');
 		expect(pickLocale(['en'])).toBe('en-001');
 		expect(pickLocale(['en-US'])).toBe('en-us');
 		expect(pickLocale(['en-AU'])).toBe('en-001');

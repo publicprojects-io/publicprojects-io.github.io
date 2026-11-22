@@ -34,6 +34,9 @@ catalogue that maps each English source string to its translation:
 | [`bn-bd`](bn-bd/messages.json) | বাংলা (বাংলাদেশ) (Bengali, Bangladesh) | Draft: needs review by a first-language Bengali speaker |
 | [`bn-001`](bn-001/messages.json) | বাংলা (বিশ্ব) (Bengali, World) | Draft: a copy of `bn-bd`; keep the two in step |
 | [`bn-in`](bn-in/messages.json) | বাংলা (ভারত) (Bengali, India) | Draft: a copy of `bn-bd`, since the site uses no wording that differs between Bangladesh and India; keep the two in step |
+| [`id-id`](id-id/messages.json) | Bahasa Indonesia (Indonesia) (Indonesian, Indonesia) | Draft: needs review by a first-language Indonesian speaker |
+| [`id-001`](id-001/messages.json) | Bahasa Indonesia (Dunia) (Indonesian, World) | Draft: a copy of `id-id`; keep the two in step |
+| [`id-my`](id-my/messages.json) | Bahasa Indonesia (Malaysia) (Indonesian, Malaysia) | Draft: a copy of `id-id`, for Indonesian speakers in Malaysia (Malay itself would be its own `ms` locale); keep the two in step |
 
 English locales (`en-001`, `en-gb`, `en-us`) need no catalogue: `en-us` spelling is
 derived by rule in `src/lib/locales.ts`.
