@@ -188,11 +188,34 @@ describe('paths', () => {
 		expect(pickLocale(['id-MY'])).toBe('id-my');
 		expect(pickLocale(['th-TH'])).toBe('th-th');
 		expect(pickLocale(['th'])).toBe('th-001');
+		expect(pickLocale(['ja-JP'])).toBe('ja-jp');
+		expect(pickLocale(['ja'])).toBe('ja-001');
+		expect(pickLocale(['ko-KR'])).toBe('ko-kr');
+		expect(pickLocale(['ko'])).toBe('ko-001');
+		expect(pickLocale(['sw-TZ'])).toBe('sw-tz');
+		expect(pickLocale(['sw-KE'])).toBe('sw-001');
+		expect(pickLocale(['sv-SE'])).toBe('sv-se');
+		expect(pickLocale(['sv-FI'])).toBe('sv-001');
+		expect(pickLocale(['nl-NL'])).toBe('nl-nl');
+		expect(pickLocale(['nl-BE'])).toBe('nl-001');
+		expect(pickLocale(['vi-VN'])).toBe('vi-vn');
+		expect(pickLocale(['vi'])).toBe('vi-001');
+		expect(pickLocale(['de-DE'])).toBe('de-de');
+		expect(pickLocale(['de-AT'])).toBe('de-at');
+		expect(pickLocale(['de-CH'])).toBe('de-001');
+		expect(pickLocale(['de'])).toBe('de-001');
+		expect(pickLocale(['pt-BR'])).toBe('pt-br');
+		expect(pickLocale(['pt-PT'])).toBe('pt-pt');
+		expect(pickLocale(['pt-AO'])).toBe('pt-001');
+		expect(pickLocale(['pt'])).toBe('pt-001');
+		expect(pickLocale(['ur-PK'])).toBe('ur-001');
+		expect(pickLocale(['ur-IN'])).toBe('ur-001');
+		expect(pickLocale(['ur'])).toBe('ur-001');
 		expect(pickLocale(['en'])).toBe('en-001');
 		expect(pickLocale(['en-US'])).toBe('en-us');
 		expect(pickLocale(['en-AU'])).toBe('en-001');
-		expect(pickLocale(['de-DE', 'en-GB'])).toBe('en-gb');
-		expect(pickLocale(['de-DE'])).toBe(null);
+		expect(pickLocale(['fi-FI', 'en-GB'])).toBe('en-gb');
+		expect(pickLocale(['fi-FI'])).toBe(null);
 	});
 });
 
@@ -254,5 +277,143 @@ describe('Thai', () => {
 		expect(formatDate('th-th', '2026-11-21')).toBe('21 พฤศจิกายน 2569');
 		expect(isTranslated('th-001')).toBe(true);
 		expect(localeDir('th-th')).toBe('ltr');
+	});
+});
+
+describe('Japanese', () => {
+	it('translates, with 万 compact numbers and Japanese dates', () => {
+		expect(t('ja-jp', 'Home')).toBe('ホーム');
+		expect(t('ja-001', 'Cookie policy')).toBe(t('ja-jp', 'Cookie policy'));
+		expect(formatNumber('ja-jp', 96_386_872)).toBe('96,386,872');
+		expect(formatNumber('ja-jp', 96_386_872, true)).toBe('9638万');
+		expect(formatNumber('ja-001', 16_513, true)).toBe('1.6万');
+		expect(formatDate('ja-jp', '2026-11-21')).toBe('2026年11月21日');
+		expect(isTranslated('ja-001')).toBe(true);
+		expect(localeDir('ja-jp')).toBe('ltr');
+	});
+});
+
+describe('Korean', () => {
+	it('translates, with 만 compact numbers and Korean dates', () => {
+		expect(t('ko-kr', 'Home')).toBe('홈');
+		expect(t('ko-001', 'Cookie policy')).toBe(t('ko-kr', 'Cookie policy'));
+		expect(formatNumber('ko-kr', 96_386_872)).toBe('96,386,872');
+		expect(formatNumber('ko-kr', 96_386_872, true)).toBe('9638만');
+		expect(formatNumber('ko-001', 16_513, true)).toBe('1.6만');
+		expect(formatDate('ko-kr', '2026-11-21')).toBe('2026년 11월 21일');
+		expect(isTranslated('ko-001')).toBe(true);
+		expect(localeDir('ko-kr')).toBe('ltr');
+	});
+});
+
+describe('Swahili', () => {
+	it('translates, with singular count words and Swahili dates', () => {
+		expect(t('sw-tz', 'Home')).toBe('Mwanzo');
+		expect(t('sw-001', 'Cookie policy')).toBe(t('sw-tz', 'Cookie policy'));
+		expect(tCount('sw-tz', 'projects', 1)).toBe('mradi');
+		expect(tCount('sw-tz', 'projects', 5)).toBe('miradi');
+		expect(formatNumber('sw-tz', 96_386_872)).toBe('96,386,872');
+		expect(formatNumber('sw-tz', 16_513, true)).toBe('elfu\u00a016.5');
+		expect(formatDate('sw-tz', '2026-11-21')).toBe('21 Novemba 2026');
+		expect(isTranslated('sw-001')).toBe(true);
+		expect(localeDir('sw-tz')).toBe('ltr');
+	});
+});
+
+describe('Swedish', () => {
+	it('translates, with singular count words and Swedish numbers and dates', () => {
+		expect(t('sv-se', 'Home')).toBe('Hem');
+		expect(t('sv-001', 'Cookie policy')).toBe(t('sv-se', 'Cookie policy'));
+		expect(tCount('sv-se', 'downloads', 1)).toBe('nedladdning');
+		expect(tCount('sv-se', 'downloads', 5)).toBe('nedladdningar');
+		expect(formatNumber('sv-se', 96_386_872)).toBe('96\u00a0386\u00a0872');
+		expect(formatNumber('sv-se', 16_513, true)).toBe('16,5\u00a0tn');
+		expect(formatDate('sv-se', '2026-11-21')).toBe('21 november 2026');
+		expect(isTranslated('sv-001')).toBe(true);
+		expect(localeDir('sv-se')).toBe('ltr');
+	});
+});
+
+describe('Dutch', () => {
+	it('translates, with singular count words and Dutch numbers and dates', () => {
+		expect(t('nl-nl', 'Privacy policy')).toBe('Privacybeleid');
+		expect(t('nl-001', 'Cookie policy')).toBe(t('nl-nl', 'Cookie policy'));
+		expect(tCount('nl-nl', 'projects', 1)).toBe('project');
+		expect(tCount('nl-nl', 'projects', 5)).toBe('projecten');
+		expect(formatNumber('nl-nl', 96_386_872)).toBe('96.386.872');
+		expect(formatNumber('nl-nl', 16_513, true)).toBe('16,5K');
+		expect(formatDate('nl-nl', '2026-11-21')).toBe('21 november 2026');
+		expect(isTranslated('nl-001')).toBe(true);
+		expect(localeDir('nl-nl')).toBe('ltr');
+	});
+});
+
+describe('Vietnamese', () => {
+	it('translates, with Vietnamese numbers and dates', () => {
+		expect(t('vi-vn', 'Privacy policy')).toBe('Chính sách quyền riêng tư');
+		expect(t('vi-001', 'Cookie policy')).toBe(t('vi-vn', 'Cookie policy'));
+		expect(tCount('vi-vn', 'projects', 1)).toBe(tCount('vi-vn', 'projects', 5));
+		expect(formatNumber('vi-vn', 96_386_872)).toBe('96.386.872');
+		expect(formatNumber('vi-vn', 16_513, true)).toBe('16,5\u00a0N');
+		expect(formatDate('vi-vn', '2026-11-21')).toBe('21 tháng 11, 2026');
+		expect(isTranslated('vi-001')).toBe(true);
+		expect(localeDir('vi-vn')).toBe('ltr');
+	});
+});
+
+describe('German', () => {
+	it('translates, with German numbers, dates, and plurals', () => {
+		expect(t('de-de', 'Privacy policy')).toBe('Datenschutzerklärung');
+		expect(t('de-001', 'Cookie policy')).toBe(t('de-de', 'Cookie policy'));
+		expect(tCount('de-de', 'projects', 1)).toBe('Projekt');
+		expect(tCount('de-de', 'projects', 5)).toBe('Projekte');
+		expect(formatNumber('de-de', 96_386_872)).toBe('96.386.872');
+		expect(formatNumber('de-de', 96_386_872, true)).toBe('96,3\u00a0Mio.');
+		expect(formatDate('de-de', '2026-11-21')).toBe('21. November 2026');
+		expect(isTranslated('de-001')).toBe(true);
+		expect(localeDir('de-de')).toBe('ltr');
+	});
+
+	it('tunes de-at for Austria', () => {
+		expect(formatNumber('de-at', 96_386_872)).toBe('96\u00a0386\u00a0872');
+		expect(formatDate('de-at', '2026-01-21')).toBe('21. Jänner 2026');
+		expect(isTranslated('de-at')).toBe(true);
+	});
+});
+
+describe('Portuguese', () => {
+	it('translates, with Brazilian numbers, dates, and plurals', () => {
+		expect(t('pt-br', 'Privacy policy')).toBe('Política de privacidade');
+		expect(t('pt-001', 'Cookie policy')).toBe(t('pt-br', 'Cookie policy'));
+		expect(tCount('pt-br', 'projects', 1)).toBe('projeto');
+		expect(tCount('pt-br', 'projects', 5)).toBe('projetos');
+		expect(formatNumber('pt-br', 96_386_872)).toBe('96.386.872');
+		expect(formatNumber('pt-br', 96_386_872, true)).toBe('96,3\u00a0mi');
+		expect(formatNumber('pt-br', 16_513, true)).toBe('16,5\u00a0mil');
+		expect(formatDate('pt-br', '2026-11-21')).toBe('21 de novembro de 2026');
+		expect(isTranslated('pt-001')).toBe(true);
+		expect(localeDir('pt-br')).toBe('ltr');
+	});
+
+	it('tunes pt-pt for Portugal', () => {
+		expect(t('pt-pt', 'Digital health teams')).toBe('Equipas de saúde digital');
+		expect(t('pt-pt', 'Digital health teams')).not.toBe(t('pt-br', 'Digital health teams'));
+		expect(formatNumber('pt-pt', 96_386_872)).toBe('96\u00a0386\u00a0872');
+		expect(formatNumber('pt-pt', 96_386_872, true)).toBe('96,3\u00a0M');
+		expect(isTranslated('pt-pt')).toBe(true);
+	});
+});
+
+describe('Urdu', () => {
+	it('translates, right to left, with Western digits and plurals', () => {
+		expect(t('ur-001', 'Privacy policy')).toBe('رازداری کی پالیسی');
+		expect(tCount('ur-001', 'projects', 1)).toBe('پروجیکٹ');
+		expect(tCount('ur-001', 'projects', 5)).toBe('پروجیکٹس');
+		expect(formatNumber('ur-001', 96_386_872)).toBe('96,386,872');
+		expect(formatNumber('ur-001', 96_386_872, true)).toBe('9.6\u00a0کروڑ');
+		expect(formatNumber('ur-001', 16_513, true)).toBe('16\u00a0ہزار');
+		expect(formatDate('ur-001', '2026-11-21')).toBe('21 نومبر، 2026');
+		expect(isTranslated('ur-001')).toBe(true);
+		expect(localeDir('ur-001')).toBe('rtl');
 	});
 });

@@ -3,7 +3,7 @@
 // en-us spelling is derived by rule; Welsh (cy-gb), Simplified Chinese
 // (zh-cn, zh-001), Hindi (hi-in, hi-001), Arabic (ar-eg, ar-001), Spanish (es-mx,
 // es-001, es-es), French (fr-fr, fr-001, fr-ca), Russian (ru-ru, ru-001, ru-by),
-// Bengali (bn-bd, bn-001, bn-in), Indonesian (id-id, id-001, id-my), and Thai (th-th, th-001) come from the catalogues in locales/<locale>/messages.json,
+// Bengali (bn-bd, bn-001, bn-in), Indonesian (id-id, id-001, id-my), Thai (th-th, th-001), Japanese (ja-jp, ja-001), Korean (ko-kr, ko-001), Swahili (sw-tz, sw-001), Swedish (sv-se, sv-001), Dutch (nl-nl, nl-001), Vietnamese (vi-vn, vi-001), German (de-de, de-001, de-at), Portuguese (pt-br, pt-001, pt-pt), and Urdu (ur-001) come from the catalogues in locales/<locale>/messages.json,
 // keyed by the English source text. Dates and
 // numbers come from Intl. See spec/index.md § Locales.
 import cyGb from '../../locales/cy-gb/messages.json' with { type: 'json' };
@@ -30,8 +30,27 @@ import id001 from '../../locales/id-001/messages.json' with { type: 'json' };
 import idMy from '../../locales/id-my/messages.json' with { type: 'json' };
 import thTh from '../../locales/th-th/messages.json' with { type: 'json' };
 import th001 from '../../locales/th-001/messages.json' with { type: 'json' };
+import jaJp from '../../locales/ja-jp/messages.json' with { type: 'json' };
+import ja001 from '../../locales/ja-001/messages.json' with { type: 'json' };
+import koKr from '../../locales/ko-kr/messages.json' with { type: 'json' };
+import ko001 from '../../locales/ko-001/messages.json' with { type: 'json' };
+import swTz from '../../locales/sw-tz/messages.json' with { type: 'json' };
+import sw001 from '../../locales/sw-001/messages.json' with { type: 'json' };
+import svSe from '../../locales/sv-se/messages.json' with { type: 'json' };
+import sv001 from '../../locales/sv-001/messages.json' with { type: 'json' };
+import nlNl from '../../locales/nl-nl/messages.json' with { type: 'json' };
+import nl001 from '../../locales/nl-001/messages.json' with { type: 'json' };
+import viVn from '../../locales/vi-vn/messages.json' with { type: 'json' };
+import vi001 from '../../locales/vi-001/messages.json' with { type: 'json' };
+import deDe from '../../locales/de-de/messages.json' with { type: 'json' };
+import de001 from '../../locales/de-001/messages.json' with { type: 'json' };
+import deAt from '../../locales/de-at/messages.json' with { type: 'json' };
+import ptBr from '../../locales/pt-br/messages.json' with { type: 'json' };
+import pt001 from '../../locales/pt-001/messages.json' with { type: 'json' };
+import ptPt from '../../locales/pt-pt/messages.json' with { type: 'json' };
+import ur001 from '../../locales/ur-001/messages.json' with { type: 'json' };
 
-export const LOCALES = ['en-001', 'en-gb', 'en-us', 'cy-gb', 'zh-cn', 'zh-001', 'hi-in', 'hi-001', 'ar-eg', 'ar-001', 'es-mx', 'es-001', 'es-es', 'fr-fr', 'fr-001', 'fr-ca', 'ru-ru', 'ru-001', 'ru-by', 'bn-bd', 'bn-001', 'bn-in', 'id-id', 'id-001', 'id-my', 'th-th', 'th-001'] as const;
+export const LOCALES = ['en-001', 'en-gb', 'en-us', 'cy-gb', 'zh-cn', 'zh-001', 'hi-in', 'hi-001', 'ar-eg', 'ar-001', 'es-mx', 'es-001', 'es-es', 'fr-fr', 'fr-001', 'fr-ca', 'ru-ru', 'ru-001', 'ru-by', 'bn-bd', 'bn-001', 'bn-in', 'id-id', 'id-001', 'id-my', 'th-th', 'th-001', 'ja-jp', 'ja-001', 'ko-kr', 'ko-001', 'sw-tz', 'sw-001', 'sv-se', 'sv-001', 'nl-nl', 'nl-001', 'vi-vn', 'vi-001', 'de-de', 'de-001', 'de-at', 'pt-br', 'pt-001', 'pt-pt', 'ur-001'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 /**
@@ -69,7 +88,26 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 	'id-001': 'Bahasa Indonesia (Dunia)',
 	'id-my': 'Bahasa Indonesia (Malaysia)',
 	'th-th': 'ไทย (ประเทศไทย)',
-	'th-001': 'ไทย (โลก)'
+	'th-001': 'ไทย (โลก)',
+	'ja-jp': '日本語（日本）',
+	'ja-001': '日本語（世界）',
+	'ko-kr': '한국어(대한민국)',
+	'ko-001': '한국어(세계)',
+	'sw-tz': 'Kiswahili (Tanzania)',
+	'sw-001': 'Kiswahili (Dunia)',
+	'sv-se': 'Svenska (Sverige)',
+	'sv-001': 'Svenska (världen)',
+	'nl-nl': 'Nederlands (Nederland)',
+	'nl-001': 'Nederlands (wereld)',
+	'vi-vn': 'Tiếng Việt (Việt Nam)',
+	'vi-001': 'Tiếng Việt (Thế giới)',
+	'de-de': 'Deutsch (Deutschland)',
+	'de-001': 'Deutsch (Welt)',
+	'de-at': 'Deutsch (Österreich)',
+	'pt-br': 'Português (Brasil)',
+	'pt-001': 'Português (Mundo)',
+	'pt-pt': 'Português (Portugal)',
+	'ur-001': 'اردو (دنیا)'
 };
 
 /** BCP 47 tag with canonical case, for <html lang>, hreflang, and Intl. */
@@ -100,12 +138,31 @@ export const LOCALE_TAGS: Record<Locale, string> = {
 	'id-001': 'id-001',
 	'id-my': 'id-MY',
 	'th-th': 'th-TH',
-	'th-001': 'th-001'
+	'th-001': 'th-001',
+	'ja-jp': 'ja-JP',
+	'ja-001': 'ja-001',
+	'ko-kr': 'ko-KR',
+	'ko-001': 'ko-001',
+	'sw-tz': 'sw-TZ',
+	'sw-001': 'sw-001',
+	'sv-se': 'sv-SE',
+	'sv-001': 'sv-001',
+	'nl-nl': 'nl-NL',
+	'nl-001': 'nl-001',
+	'vi-vn': 'vi-VN',
+	'vi-001': 'vi-001',
+	'de-de': 'de-DE',
+	'de-001': 'de-001',
+	'de-at': 'de-AT',
+	'pt-br': 'pt-BR',
+	'pt-001': 'pt-001',
+	'pt-pt': 'pt-PT',
+	'ur-001': 'ur-001'
 };
 
 /** Text direction for <html dir> and for any element that shows a locale's own name. */
 export function localeDir(locale: Locale): 'ltr' | 'rtl' {
-	return locale.startsWith('ar-') ? 'rtl' : 'ltr';
+	return locale.startsWith('ar-') || locale.startsWith('ur-') ? 'rtl' : 'ltr';
 }
 
 /**
@@ -201,7 +258,7 @@ function matchCase(source: string, target: string): string {
 	return source[0] === source[0].toUpperCase() ? target[0].toUpperCase() + target.slice(1) : target;
 }
 
-const CATALOGUES: Partial<Record<Locale, Record<string, string>>> = { 'cy-gb': cyGb, 'zh-cn': zhCn, 'zh-001': zh001, 'hi-in': hiIn, 'hi-001': hi001, 'ar-eg': arEg, 'ar-001': ar001, 'es-mx': esMx, 'es-001': es001, 'es-es': esEs, 'fr-fr': frFr, 'fr-001': fr001, 'fr-ca': frCa, 'ru-ru': ruRu, 'ru-001': ru001, 'ru-by': ruBy, 'bn-bd': bnBd, 'bn-001': bn001, 'bn-in': bnIn, 'id-id': idId, 'id-001': id001, 'id-my': idMy, 'th-th': thTh, 'th-001': th001 };
+const CATALOGUES: Partial<Record<Locale, Record<string, string>>> = { 'cy-gb': cyGb, 'zh-cn': zhCn, 'zh-001': zh001, 'hi-in': hiIn, 'hi-001': hi001, 'ar-eg': arEg, 'ar-001': ar001, 'es-mx': esMx, 'es-001': es001, 'es-es': esEs, 'fr-fr': frFr, 'fr-001': fr001, 'fr-ca': frCa, 'ru-ru': ruRu, 'ru-001': ru001, 'ru-by': ruBy, 'bn-bd': bnBd, 'bn-001': bn001, 'bn-in': bnIn, 'id-id': idId, 'id-001': id001, 'id-my': idMy, 'th-th': thTh, 'th-001': th001, 'ja-jp': jaJp, 'ja-001': ja001, 'ko-kr': koKr, 'ko-001': ko001, 'sw-tz': swTz, 'sw-001': sw001, 'sv-se': svSe, 'sv-001': sv001, 'nl-nl': nlNl, 'nl-001': nl001, 'vi-vn': viVn, 'vi-001': vi001, 'de-de': deDe, 'de-001': de001, 'de-at': deAt, 'pt-br': ptBr, 'pt-001': pt001, 'pt-pt': ptPt, 'ur-001': ur001 };
 
 /** Locales translated from a catalogue. Their translations are drafts until reviewed, so their pages show a notice. */
 export function isTranslated(locale: Locale): boolean {
@@ -260,8 +317,8 @@ export function tCount(locale: Locale, text: string, count: number, compact = fa
 
 /**
  * A number for `locale`. Compact numbers are truncated, never rounded up, because
- * the site shows them with a "+" ("96.3M+"). Chinese, Hindi, and Arabic units are wide words
- * (万, हज़ार, مليون), so once the number before the unit has two or more digits the decimal
+ * the site shows them with a "+" ("96.3M+"). Chinese, Japanese, Korean, Hindi, Arabic, and Urdu units are wide words
+ * (万, हज़ार, مليون, ہزار), so once the number before the unit has two or more digits the decimal
  * is dropped, to fit the stat cards ("9638万+", "16 हज़ार+").
  */
 export function formatNumber(locale: Locale, value: number, compact = false): string {
@@ -269,7 +326,7 @@ export function formatNumber(locale: Locale, value: number, compact = false): st
 	const format = (digits: number) =>
 		new Intl.NumberFormat(intlTag(locale), { notation: 'compact', maximumFractionDigits: digits, roundingMode: 'trunc' }).format(value);
 	const text = format(1);
-	const wideUnits = locale.startsWith('zh-') || locale.startsWith('hi-') || locale.startsWith('ar-');
+	const wideUnits = locale.startsWith('zh-') || locale.startsWith('ja-') || locale.startsWith('ko-') || locale.startsWith('hi-') || locale.startsWith('ar-') || locale.startsWith('ur-');
 	return wideUnits && /\d{2}/.test(text) ? format(0) : text;
 }
 

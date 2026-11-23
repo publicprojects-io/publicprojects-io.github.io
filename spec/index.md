@@ -84,7 +84,7 @@ open source for the public good.
     `localStorage` and a cookie, and a pre-paint script in `app.html` avoids a flash.
     Theme CSS is copied from `@lilydesignsystem/themes` into `static/themes/` at
     build time (generated, git-ignored).
-  - **Locale**: `en-001`, `en-gb`, `en-us`, `cy-gb`, `zh-cn`, `zh-001`, `hi-in`, `hi-001`, `ar-eg`, `ar-001`, `es-mx`, `es-001`, `es-es`, `fr-fr`, `fr-001`, `fr-ca`, `ru-ru`, `ru-001`, `ru-by`, `bn-bd`, `bn-001`, `bn-in`, `id-id`, `id-001`, `id-my`, `th-th`, and `th-001`. Choosing one navigates to the same
+  - **Locale**: `en-001`, `en-gb`, `en-us`, `cy-gb`, `zh-cn`, `zh-001`, `hi-in`, `hi-001`, `ar-eg`, `ar-001`, `es-mx`, `es-001`, `es-es`, `fr-fr`, `fr-001`, `fr-ca`, `ru-ru`, `ru-001`, `ru-by`, `bn-bd`, `bn-001`, `bn-in`, `id-id`, `id-001`, `id-my`, `th-th`, `th-001`, `ja-jp`, `ja-001`, `ko-kr`, `ko-001`, `sw-tz`, `sw-001`, `sv-se`, `sv-001`, `nl-nl`, `nl-001`, `vi-vn`, `vi-001`, `de-de`, `de-001`, `de-at`, `pt-br`, `pt-001`, `pt-pt`, and `ur-001`. Choosing one navigates to the same
     page in that locale.
   - **Text size**: Lily default sizes.
   - **Share**: Copy Link, Email Link, LinkedIn, Reddit, Bluesky, and Mastodon (through
@@ -123,6 +123,25 @@ open source for the public good.
 | `id-my` Bahasa Indonesia (Malaysia) (Indonesian, Malaysia) | `/id-my/` | translated, from `locales/id-my/messages.json` (a copy of id-id) | `id-MY` |
 | `th-th` ไทย (ประเทศไทย) (Thai, Thailand) | `/th-th/` | translated, from `locales/th-th/messages.json` | `th-TH` |
 | `th-001` ไทย (โลก) (Thai, World) | `/th-001/` | translated, from `locales/th-001/messages.json` (a copy of th-th) | `th-001` |
+| `ja-jp` 日本語（日本） (Japanese, Japan) | `/ja-jp/` | translated, from `locales/ja-jp/messages.json` | `ja-JP` |
+| `ja-001` 日本語（世界） (Japanese, World) | `/ja-001/` | translated, from `locales/ja-001/messages.json` (a copy of ja-jp) | `ja-001` |
+| `ko-kr` 한국어(대한민국) (Korean, South Korea) | `/ko-kr/` | translated, from `locales/ko-kr/messages.json` | `ko-KR` |
+| `ko-001` 한국어(세계) (Korean, World) | `/ko-001/` | translated, from `locales/ko-001/messages.json` (a copy of ko-kr) | `ko-001` |
+| `sw-tz` Kiswahili (Tanzania) (Swahili, Tanzania) | `/sw-tz/` | translated, from `locales/sw-tz/messages.json` | `sw-TZ` |
+| `sw-001` Kiswahili (Dunia) (Swahili, World) | `/sw-001/` | translated, from `locales/sw-001/messages.json` (a copy of sw-tz) | `sw-001` |
+| `sv-se` Svenska (Sverige) (Swedish, Sweden) | `/sv-se/` | translated, from `locales/sv-se/messages.json` | `sv-SE` |
+| `sv-001` Svenska (världen) (Swedish, World) | `/sv-001/` | translated, from `locales/sv-001/messages.json` (a copy of sv-se) | `sv-001` |
+| `nl-nl` Nederlands (Nederland) (Dutch, Netherlands) | `/nl-nl/` | translated, from `locales/nl-nl/messages.json` | `nl-NL` |
+| `nl-001` Nederlands (wereld) (Dutch, World) | `/nl-001/` | translated, from `locales/nl-001/messages.json` (a copy of nl-nl) | `nl-001` |
+| `vi-vn` Tiếng Việt (Việt Nam) (Vietnamese, Vietnam) | `/vi-vn/` | translated, from `locales/vi-vn/messages.json` | `vi-VN` |
+| `vi-001` Tiếng Việt (Thế giới) (Vietnamese, World) | `/vi-001/` | translated, from `locales/vi-001/messages.json` (a copy of vi-vn) | `vi-001` |
+| `de-de` Deutsch (Deutschland) (German, Germany) | `/de-de/` | translated, from `locales/de-de/messages.json` | `de-DE` |
+| `de-001` Deutsch (Welt) (German, World) | `/de-001/` | translated, from `locales/de-001/messages.json` (a copy of de-de) | `de-001` |
+| `de-at` Deutsch (Österreich) (German, Austria) | `/de-at/` | translated, from `locales/de-at/messages.json` (de-de tuned for Austria) | `de-AT` |
+| `pt-br` Português (Brasil) (Portuguese, Brazil) | `/pt-br/` | translated, from `locales/pt-br/messages.json` | `pt-BR` |
+| `pt-001` Português (Mundo) (Portuguese, World) | `/pt-001/` | translated, from `locales/pt-001/messages.json` (a copy of pt-br) | `pt-001` |
+| `pt-pt` Português (Portugal) (Portuguese, Portugal) | `/pt-pt/` | translated, from `locales/pt-pt/messages.json` (pt-br tuned for Portugal) | `pt-PT` |
+| `ur-001` اردو (دنیا) (Urdu, World) | `/ur-001/` | translated, from `locales/ur-001/messages.json`; right to left | `ur-001` |
 
 - **Every locale has a path prefix**, including the default, like lilydesignsystem.com:
   `https://publicprojects.io/en-001/donate/`. Routes live under
@@ -130,7 +149,7 @@ open source for the public good.
 - **The site root `/` is a language chooser.** With JavaScript it redirects at once to
   the locale that best matches the browser's languages (`pickLocale()`: exact match,
   then language and region, then the language's `-001` variant, then any locale in that
-  language, so `cy` goes to `cy-gb`; `zh` and other Chinese regions go to `zh-001`; `hi` and Hindi outside India go to `hi-001`; `ar` and Arabic outside Egypt go to `ar-001`; `es` and Spanish outside Mexico and Spain go to `es-001`; `fr` and French outside France and Canada go to `fr-001`; `ru` and Russian outside Russia and Belarus go to `ru-001`; `bn` and Bengali outside Bangladesh and India go to `bn-001`; `id` and Indonesian outside Indonesia and Malaysia go to `id-001`; `th` and Thai outside Thailand go to `th-001`), falling back to `en-001`. It stores nothing.
+  language, so `cy` goes to `cy-gb`; `zh` and other Chinese regions go to `zh-001`; `hi` and Hindi outside India go to `hi-001`; `ar` and Arabic outside Egypt go to `ar-001`; `es` and Spanish outside Mexico and Spain go to `es-001`; `fr` and French outside France and Canada go to `fr-001`; `ru` and Russian outside Russia and Belarus go to `ru-001`; `bn` and Bengali outside Bangladesh and India go to `bn-001`; `id` and Indonesian outside Indonesia and Malaysia go to `id-001`; `th` and Thai outside Thailand go to `th-001`; `ja` and Japanese outside Japan go to `ja-001`; `ko` and Korean outside South Korea go to `ko-001`; `sw` and Swahili outside Tanzania go to `sw-001`; `sv` and Swedish outside Sweden go to `sv-001`; `nl` and Dutch outside the Netherlands, such as `nl-BE`, go to `nl-001`; `vi` and Vietnamese outside Vietnam go to `vi-001`; `de` and German outside Germany and Austria, such as `de-CH`, go to `de-001`; `pt` and Portuguese outside Brazil and Portugal, such as `pt-AO`, go to `pt-001`; `ur` and every Urdu region, such as `ur-PK` and `ur-IN`, go to `ur-001`), falling back to `en-001`. It stores nothing.
   Without JavaScript it lists every language by its own name.
 - **Unprefixed paths** (such as `/donate/`) are not pages and are not forwarded: like
   lilydesignsystem.com, they show "Page not found".
@@ -138,7 +157,7 @@ open source for the public good.
   string passes through `t(locale, text)` in `src/lib/locales.ts`.
   - en-us: `t()` applies an explicit, tested British-to-American word list. Add words
     there; never fork content.
-  - cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001, es-mx, es-001, es-es, fr-fr, fr-001, fr-ca, ru-ru, ru-001, ru-by, bn-bd, bn-001, bn-in, id-id, id-001, id-my, th-th, th-001: `t()` looks the English text up in `locales/<locale>/messages.json` (see
+  - cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001, es-mx, es-001, es-es, fr-fr, fr-001, fr-ca, ru-ru, ru-001, ru-by, bn-bd, bn-001, bn-in, id-id, id-001, id-my, th-th, th-001, ja-jp, ja-001, ko-kr, ko-001, sw-tz, sw-001, sv-se, sv-001, nl-nl, nl-001, vi-vn, vi-001, de-de, de-001, de-at, pt-br, pt-001, pt-pt, ur-001: `t()` looks the English text up in `locales/<locale>/messages.json` (see
     `locales/README.md`). A missing entry falls back to English and is reported as
     `I18N_MISSING` during the build; CI builds with `I18N_STRICT=1`, which fails on any
     missing entry.
@@ -152,7 +171,7 @@ open source for the public good.
     "downloads"; Arabic has `one|`, `two|`, `many|`, `other|`, and `compact|` forms.
     Compact counts ("16,5 тыс.", "16 ألف"), on cards and the home page tiles, use
     `"compact|<text>"`, else the plain entry.
-  - The Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, Indonesian, and Thai translations are drafts. Every page in a catalogue locale
+  - The Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, Indonesian, Thai, Japanese, Korean, Swahili, Swedish, Dutch, Vietnamese, German, Portuguese, and Urdu translations are drafts. Every page in a catalogue locale
     (`isTranslated()`) shows a notice saying so, in that language, with a
     link to report errors, until a first-language speaker has reviewed it.
 - Project names are translated when they describe the project ("Care Plan" →
@@ -164,7 +183,7 @@ open source for the public good.
   the JSON-LD keeps the English name beside its English description.
 - Not translated: technical tags, Lily theme names, and proper names
   ("World Health Organization").
-- Arabic is written right to left. `localeDir()` sets `<html dir="rtl">` at prerender
+- Arabic and Urdu are written right to left. `localeDir()` sets `<html dir="rtl">` at prerender
   time, the layout keeps `lang` and `dir` in step when the language picker navigates
   in the browser, and the root chooser marks each language's own name with its
   direction. Styles use logical properties (`margin-inline-start`, not `margin-left`),
@@ -354,10 +373,10 @@ CI runs the same three commands before deploying.
    three areas, and then every project card, each with a lower-left Lily SharePicker, and a status pill only when the status
    is demonstration, maintenance, or archived.
 2. The header has a Lily PickerBar with search, all Lily default themes (sorted, UK
-   and US last), locales en-001, en-gb, en-us, cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001, es-mx, es-001, es-es, fr-fr, fr-001, fr-ca, ru-ru, ru-001, ru-by, bn-bd, bn-001, bn-in, id-id, id-001, id-my, th-th, and th-001, text size, and the six share
+   and US last), locales en-001, en-gb, en-us, cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001, es-mx, es-001, es-es, fr-fr, fr-001, fr-ca, ru-ru, ru-001, ru-by, bn-bd, bn-001, bn-in, id-id, id-001, id-my, th-th, th-001, ja-jp, ja-001, ko-kr, ko-001, sw-tz, sw-001, sv-se, sv-001, nl-nl, nl-001, vi-vn, vi-001, de-de, de-001, de-at, pt-br, pt-001, pt-pt, and ur-001, text size, and the six share
    options.
 3. Choosing a locale navigates to the same page in that locale; en-us pages use
-   American spelling; cy-gb pages are fully Welsh and zh-cn and zh-001 pages fully Simplified Chinese, hi-in and hi-001 pages fully Hindi, ar-eg and ar-001 pages fully Arabic and right to left, es-mx, es-001, and es-es pages fully Spanish, fr-fr, fr-001, and fr-ca pages fully French, ru-ru, ru-001, and ru-by pages fully Russian, bn-bd, bn-001, and bn-in pages fully Bengali, id-id, id-001, and id-my pages fully Indonesian, and th-th and th-001 pages fully Thai, with the draft notice.
+   American spelling; cy-gb pages are fully Welsh and zh-cn and zh-001 pages fully Simplified Chinese, hi-in and hi-001 pages fully Hindi, ar-eg and ar-001 pages fully Arabic and right to left, es-mx, es-001, and es-es pages fully Spanish, fr-fr, fr-001, and fr-ca pages fully French, ru-ru, ru-001, and ru-by pages fully Russian, bn-bd, bn-001, and bn-in pages fully Bengali, id-id, id-001, and id-my pages fully Indonesian, th-th and th-001 pages fully Thai, ja-jp and ja-001 pages fully Japanese, ko-kr and ko-001 pages fully Korean, sw-tz and sw-001 pages fully Swahili, sv-se and sv-001 pages fully Swedish, nl-nl and nl-001 pages fully Dutch, vi-vn and vi-001 pages fully Vietnamese, de-de, de-001, and de-at pages fully German, pt-br, pt-001, and pt-pt pages fully Portuguese, and ur-001 pages fully Urdu and right to left, with the draft notice.
 4. Searching from the picker lands on the search page with matching results.
 5. Every project has a page in all three locales, with a source link and date for
    every number.
@@ -370,7 +389,7 @@ CI runs the same three commands before deploying.
 
 - Add recognition that has a public URL: analyst citations, talks, hackathon judging,
   and media coverage.
-- First-language review of the Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, Indonesian, and Thai translations, then remove the draft notice for each.
+- First-language review of the Welsh, Chinese, Hindi, Arabic, Spanish, French, Russian, Bengali, Indonesian, Thai, Japanese, Korean, Swahili, Swedish, Dutch, Vietnamese, German, Portuguese, and Urdu translations, then remove the draft notice for each.
 - zh-001 is a copy of zh-cn. Traditional Chinese readers (zh-TW, zh-HK) are sent to zh-001; add zh-tw if a Traditional catalogue is made.
 - hi-001 is a copy of hi-in. Some sentence-final full stops and commas around links come from page templates, so Chinese, Hindi, and Arabic pages show "." or "," there instead of "。", "।", or "،".
 - ar-001 is a copy of ar-eg. Arabic uses Western digits; a reviewer may prefer
@@ -419,5 +438,51 @@ CI runs the same three commands before deploying.
   gives for Thai. Thai has no plural forms. Sentences are separated by a space, as
   in Thai, with no full stop; full stops that page templates add after links still
   show as ".". Split sentences keep a leading comma where the English has one.
+- ja-001 is a copy of ja-jp, in polite written Japanese (です・ます調) that leaves out
+  "you". Dates are "2026年11月21日"; compact numbers use 万 and drop the decimal once the
+  number before the unit has two digits, as Chinese does ("9638万+", "1.6万+"). Japanese
+  has no plural forms. Full stops and commas that page templates add after links show
+  as "." or "," instead of "。" or "、".
+- ko-001 is a copy of ko-kr, in formal written Korean (합니다체) that leaves out "you".
+  Dates are "2026년 11월 21일"; compact numbers use 만 and drop the decimal once the
+  number before the unit has two digits, as Chinese and Japanese do ("9638만+",
+  "1.6만+"). Korean has no plural forms. Where a sentence is split around a link, the
+  link stands as its own word, so a particle after it is written with a space before it.
+- sw-001 is a copy of sw-tz, in standard written Swahili (Kiswahili sanifu). Dates are
+  "21 Novemba 2026"; compact numbers follow CLDR ("elfu 16.5+", "96M+"). Count words
+  have `one|` singular forms ("mradi 1", "miradi 15"); the template puts the number
+  before the noun, where Swahili would put it after.
+- sv-001 is a copy of sv-se, in standard Swedish, addressing the reader as "du". Dates are
+  "21 november 2026"; numbers group with spaces ("96 386 872") and compact numbers follow
+  CLDR ("16,5 tn+", "96,3 mn+"). Count words have `one|` singular forms ("1 nedladdning",
+  "120 nedladdningar").
+- nl-001 is a copy of nl-nl, in standard Dutch, addressing the reader as "je". Dates are
+  "21 november 2026"; numbers group with full stops ("96.386.872") and compact numbers follow
+  CLDR ("16,5K+", "96,3 mln.+"). Count words have `one|` singular forms ("1 project",
+  "12 projecten").
+- vi-001 is a copy of vi-vn, in standard Vietnamese, addressing the reader as "bạn". Dates
+  are "21 tháng 11, 2026"; numbers group with full stops ("96.386.872") and compact numbers
+  follow CLDR ("16,5 N+", "96,3 Tr+"). Vietnamese nouns do not inflect, so count words
+  need no plural forms ("1 dự án", "12 dự án").
+- de-001 is a copy of de-de, addressing the reader as "Sie", with „ “ quotation marks
+  and gender-neutral wording without gender stars ("Mitarbeitende", "Patientinnen und
+  Patienten"). de-at is de-de tuned for Austria: vocabulary and spelling such as
+  "Spital" and "selbständig"; dates say "Jänner". Numbers: de-DE and de-001
+  "96.386.872", de-AT "96 386 872" (a non-breaking space); compact "96,3 Mio.+".
+  German CLDR has no compact form for thousands, so "16.513+" shows in full. Count
+  words add the singular ("1 Projekt", "12 Projekte").
+- pt-001 is a copy of pt-br, in Brazilian Portuguese, addressing the reader as "você"
+  where needed but preferring impersonal phrasing, with “ ” quotation marks. pt-pt is
+  pt-br tuned for Portugal: vocabulary and spelling such as "equipa", "ficheiro",
+  "utilizador", "partilhar", and "registo". Numbers: pt-BR and pt-001 "96.386.872",
+  compact "96,3 mi+" and "16,5 mil+"; pt-PT "96 386 872" (a non-breaking space),
+  compact "96,3 M+". Count words add the singular ("1 projeto", "12 projetos").
+- ur-001 is the only Urdu locale, for readers in Pakistan, India, and elsewhere. It
+  addresses the reader as "آپ", is right to left like Arabic, and uses the Urdu full
+  stop "۔" and comma "،"; full stops and commas that page templates add after links
+  still show as "." and ",". Product and standard names, and the author's name, stay
+  in Latin script. Numbers use Western digits, as Intl gives for Urdu ("96,386,872"),
+  with crore and thousand compact units ("9.6 کروڑ+", "16 ہزار+"). Count words add
+  the singular ("1 پروجیکٹ", "12 پروجیکٹس").
 - Consider more locales, each with its own catalogue under `locales/`.
 - Add an Open Graph image.

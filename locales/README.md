@@ -58,6 +58,25 @@ whose plain entries are the plural for 3 to 10, adds `one|`, `two|`, `many|`,
 | [`id-my`](id-my/messages.json) | Bahasa Indonesia (Malaysia) (Indonesian, Malaysia) | Draft: a copy of `id-id`, for Indonesian speakers in Malaysia (Malay itself would be its own `ms` locale); keep the two in step |
 | [`th-th`](th-th/messages.json) | ไทย (ประเทศไทย) (Thai, Thailand) | Draft: needs review by a first-language Thai speaker |
 | [`th-001`](th-001/messages.json) | ไทย (โลก) (Thai, World) | Draft: a copy of `th-th`; keep the two in step |
+| [`ja-jp`](ja-jp/messages.json) | 日本語（日本） (Japanese, Japan) | Draft: needs review by a first-language Japanese speaker |
+| [`ja-001`](ja-001/messages.json) | 日本語（世界） (Japanese, World) | Draft: a copy of `ja-jp`; keep the two in step |
+| [`ko-kr`](ko-kr/messages.json) | 한국어(대한민국) (Korean, South Korea) | Draft: needs review by a first-language Korean speaker |
+| [`ko-001`](ko-001/messages.json) | 한국어(세계) (Korean, World) | Draft: a copy of `ko-kr`; keep the two in step |
+| [`sw-tz`](sw-tz/messages.json) | Kiswahili (Tanzania) (Swahili, Tanzania) | Draft: needs review by a first-language Swahili speaker |
+| [`sw-001`](sw-001/messages.json) | Kiswahili (Dunia) (Swahili, World) | Draft: a copy of `sw-tz`; keep the two in step |
+| [`sv-se`](sv-se/messages.json) | Svenska (Sverige) (Swedish, Sweden) | Draft: needs review by a first-language Swedish speaker |
+| [`sv-001`](sv-001/messages.json) | Svenska (världen) (Swedish, World) | Draft: a copy of `sv-se`; keep the two in step |
+| [`nl-nl`](nl-nl/messages.json) | Nederlands (Nederland) (Dutch, Netherlands) | Draft: needs review by a first-language Dutch speaker |
+| [`nl-001`](nl-001/messages.json) | Nederlands (wereld) (Dutch, World) | Draft: a copy of `nl-nl`; keep the two in step |
+| [`vi-vn`](vi-vn/messages.json) | Tiếng Việt (Việt Nam) (Vietnamese, Vietnam) | Draft: needs review by a first-language Vietnamese speaker |
+| [`vi-001`](vi-001/messages.json) | Tiếng Việt (Thế giới) (Vietnamese, World) | Draft: a copy of `vi-vn`; keep the two in step |
+| [`de-de`](de-de/messages.json) | Deutsch (Deutschland) (German, Germany) | Draft: needs review by a first-language German speaker |
+| [`de-001`](de-001/messages.json) | Deutsch (Welt) (German, World) | Draft: a copy of `de-de`; keep the two in step |
+| [`de-at`](de-at/messages.json) | Deutsch (Österreich) (German, Austria) | Draft: `de-de` tuned for Austria; keep it in step with `de-de` |
+| [`pt-br`](pt-br/messages.json) | Português (Brasil) (Portuguese, Brazil) | Draft: needs review by a first-language Portuguese speaker |
+| [`pt-001`](pt-001/messages.json) | Português (Mundo) (Portuguese, World) | Draft: a copy of `pt-br`; keep the two in step |
+| [`pt-pt`](pt-pt/messages.json) | Português (Portugal) (Portuguese, Portugal) | Draft: `pt-br` tuned for Portugal; keep it in step with `pt-br` |
+| [`ur-001`](ur-001/messages.json) | اردو (دنیا) (Urdu, World) | Draft: needs review by a first-language Urdu speaker; right to left |
 
 English locales (`en-001`, `en-gb`, `en-us`) need no catalogue: `en-us` spelling is
 derived by rule in `src/lib/locales.ts`.

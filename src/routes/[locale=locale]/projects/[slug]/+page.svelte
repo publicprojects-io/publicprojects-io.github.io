@@ -28,6 +28,9 @@
 	const href = (to: string) => `${base}${localePath(locale, to)}`;
 	const area = $derived(AREAS[project.area]);
 	const related = $derived(PROJECTS.filter((p) => p.area === project.area && p.slug !== project.slug).slice(0, 3));
+	// The stat source link is lower case after its number ("753 (source)"), except in
+	// German, where nouns keep their capital ("753 (Quelle)").
+	const sourceLink = $derived(locale.startsWith('de-') ? m.source : m.source.toLowerCase());
 	const status = $derived(statusOf(project));
 	const version = $derived(versionOf(project));
 	const licence = $derived(licenceOf(project));
@@ -120,7 +123,7 @@
 					<dt>{stat.label === 'stars' ? t(locale, 'GitHub stars', 'label') : s('Downloads')}</dt>
 					<dd>
 						{formatNumber(locale, stat.value)}
-						<span class="small">(<a href={statSource(ref)}>{m.source.toLowerCase()}</a>)</span>
+						<span class="small">(<a href={statSource(ref)}>{sourceLink}</a>)</span>
 					</dd>
 				{/each}
 				{#if project.languages}
