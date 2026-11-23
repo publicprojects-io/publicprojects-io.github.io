@@ -4,6 +4,11 @@ Assessment of https://openhealthtechnology.org (Open Health Technology Foundatio
 OHTF), and advice for improving https://publicprojects.io.
 
 - Researched: 21 November 2026, by reading all 28 pages of the site.
+- Refreshed: 23 November 2026. The home, about, projects, services, governance,
+  community, transparency, and contact pages were read again, along with the
+  candidates, project lifecycle, security, advisers, and two project pages, the HTML
+  metadata, `robots.txt`, and `llms.txt`. Each recommendation was checked against
+  this repository as it stands on that date.
 - Status: advice. Nothing here is a requirement until it is moved into
   [`spec/index.md`](../../index.md).
 - Reuse: OHTF's site content is licensed CC BY-SA 4.0. Learn from its structure and
@@ -12,14 +17,14 @@ OHTF), and advice for improving https://publicprojects.io.
 ## 1. What OHTF is
 
 OHTF is a UK community interest company (Open Health Technology CIC, company 17544421,
-incorporated 27 October 2026). It gives open-source health software a neutral,
-long-term home: it holds repositories at github.com/ohtf, holds domains and
-trademarks, and sells hosting, support, implementation and training to pay for
-maintenance. Its Articles of Association entrench a promise that Foundation Projects
-cannot be closed.
+incorporated 27 October 2026; a change of name to Open Health Technology Foundation
+CIC is in progress). It gives open-source health software a neutral, long-term home:
+it holds repositories at github.com/ohtf, holds domains and trademarks, and sells
+hosting, support, implementation and training to pay for maintenance. Its Articles of
+Association entrench a promise that Foundation Projects cannot be closed.
 
-Its site is a documentation-style static site (Zensical, the successor to Material for
-MkDocs) with about 28 pages:
+Its site is a documentation-style static site (Zensical 0.1.1, the successor to
+Material for MkDocs) with about 28 pages:
 
 | Section | Pages |
 | --- | --- |
@@ -34,42 +39,43 @@ MkDocs) with about 28 pages:
 
 ### Direct relevance to Public Projects
 
-OHTF's candidate projects page lists **NHS Number for Rust** ("The nhs-number Rust
-crate, by Joel Parker Henderson, implements the same NHS Number checks and is tested
-against the same shared vectors"), linking to the repository and crates.io. This is a
-public, third-party citation of a Public Projects project, and the Rust crate shares
-conformance test vectors with OHTF's Python `nhs-number` package.
+OHTF's candidate projects page still lists **NHS Number for Rust**: "The nhs-number
+Rust crate, by Joel Parker Henderson, implements the same NHS Number checks and is
+tested against the same shared vectors." The Rust crate shares conformance test vectors
+with OHTF's Python `nhs-number` package. Public Projects now cites this on the Impact
+page and in the NHS Number project's recognition.
 
 Source: https://openhealthtechnology.org/projects/candidates/#nhs-number-for-rust
 
 ## 2. What OHTF does well
 
-1. **States the problem first.** The home page opens with a one-line belief ("Public
-   money should buy public code") and a short "gap we fill" section, then how the
+1. **States the problem first.** The home page opens with a tagline ("A neutral,
+   long-term home for open-source health software"), a one-line belief ("Public money
+   should buy public code"), and a short "The gap OHTF fills" section, then how the
    organisation fills it.
 2. **Clear criteria.** Four tests (vendor-neutral, built for implementers, open and
    maintained, worth keeping) explain what belongs and what does not.
 3. **Says what it is not.** Not a standards body, not a product vendor, not a
    professional body, not a substitute for clinical safety work. This prevents
    misunderstanding, especially by NHS buyers.
-4. **An honest key-facts table on every project page**: lifecycle status, current
-   version, licence, authors or maintainers, Clinical Safety Officer, medical device
-   position, clinical safety documentation, source and documentation. Gaps are stated
-   plainly, such as "Clinical Safety Officer: not yet appointed".
+4. **A key-facts table on every project page**: lifecycle status, maturity, current
+   version, licence, authors, Clinical Safety Officer, medical device position,
+   clinical safety documentation, source, and documentation. Gaps are stated plainly,
+   such as "Not approved for live patient workflows".
 5. **An explicit project lifecycle** (Experimental, Candidate, Incubating, Active,
    Maintenance, Archived), with what users can expect at each stage and the rules for
-   moving between stages.
-6. **"In action" examples.** Each project page shows a few lines of real usage and
-   output, with the version they came from.
+   moving between them.
+6. **Real code instead of decoration.** The home page hero shows a `pip install
+   nhs-number` session with a valid and an invalid number, and each project page has
+   an "In action" example.
 7. **Shared conformance test vectors** that let a port in any language prove it gives
    the same answers. This turns a single library into a cross-language standard.
 8. **Contributor basics in one place**: code of conduct, DCO sign-off, private security
-   reporting (with GitHub private vulnerability reporting, a security address, and
-   response times of 5 and 15 working days), and "never include real patient data".
-   It also gives advice for contributing alongside a day job.
+   reporting, "you do not need permission to start", and advice for contributing
+   alongside a day job.
 9. **Transparency as a selling point.** "Why we publish so much" explains, for health
    buyers, why open safety documentation, limitations and governance make due
-   diligence easier and avoid lock-in.
+   diligence easier and avoid lock-in. It also says what is not published, and why.
 10. **Memorable storytelling.** The logo story (the Chamberlen forceps, kept secret for
     a century) makes the case against closed health technology in a way people
     remember and retell.
@@ -78,9 +84,10 @@ Source: https://openhealthtechnology.org/projects/candidates/#nhs-number-for-rus
     shows direction.
 12. **A sustainability model.** Free code, paid services; service income funds
     maintenance and never encloses the code.
-13. **Contact by purpose**: general, security, code of conduct, project issues, a
-    mailing list, and an edit link on every page.
-14. **A social card image** (Open Graph) for shared links.
+13. **Contact by purpose**: general, security, and code of conduct addresses, project
+    issues, a mailing list, and an edit link on every page.
+14. **Social sharing metadata**: a 1200 × 630 social card image (`og:image`, Twitter
+    `summary_large_image`) and a page-specific description on every page.
 
 ## 3. Where Public Projects is already stronger
 
@@ -88,121 +95,123 @@ Keep these; they are differentiators.
 
 - **Dated, sourced statistics** for every project, with a refresh script and an Impact
   page. OHTF shows no adoption figures.
-- **Translation**: four locales including Welsh, and projects published in 50 to 60+
-  languages. OHTF is English only (`lang="en"`).
-- **Accessibility and preferences**: 63 Lily themes, text size, and an accessibility
-  statement. OHTF has light and dark modes and no accessibility statement.
-- **Privacy**: no cookies, no third-party requests. OHTF loads Google Fonts, which
-  sends every visitor's IP address to Google.
-- **Machine-readable**: `sitemap.xml` with `hreflang`, `llms.txt`, `robots.txt`, and
-  JSON-LD. OHTF has a sitemap only (`robots.txt` and `llms.txt` return 404).
+- **Translation**: 47 locales in 21 languages, including right-to-left Arabic and
+  Urdu, with the root page sending each browser to its language at once. Many
+  projects are themselves published in 50 to 60+ languages. OHTF is English only
+  (`lang="en"`).
+- **Accessibility and preferences**: Lily's default themes, text size, and an
+  accessibility statement. OHTF has light and dark modes and no accessibility
+  statement.
+- **Privacy**: no cookies and no third-party requests. OHTF loads Google Fonts (Inter
+  and JetBrains Mono) from `fonts.googleapis.com`, which sends each visitor's IP
+  address to Google.
+- **Machine-readable**: `sitemap.xml` with `hreflang` alternates, `llms.txt`,
+  `robots.txt`, and JSON-LD. OHTF has a sitemap with no `lastmod`, no JSON-LD, and
+  `robots.txt` and `llms.txt` both return 404.
 - **Breadth**: public value and software engineering leadership as well as health.
 - **Site search** in every locale.
 
-## 4. Gaps in Public Projects, and advice
+## 4. Progress since 21 November
 
-Ranked by value for the site's three goals: reach, evidence of recognition, and
-usefulness to digital health teams.
+| Advice (21 November) | State on 23 November |
+| --- | --- |
+| Record the OHTF citation | Done: Impact page and the NHS Number project's recognition |
+| Give every project a lifecycle status, with a page defining each | Done: `statusOf()` and the Project status page (active, pre-release, demonstration, maintenance, archived); cards show the less common statuses |
+| Publish a security policy | Done: the Security page, with GitHub private vulnerability reporting |
+| Show each project in action | Done for the four core health crates: `fhir`, `hl7`, `snomed`, and `nhs-number` ("Use it", with real output and its version) |
+| Add a social card image | Done: one language-neutral 1200 × 630 card for every page and locale (§ 5, item 1) |
+| Add a key-facts table to every project page | Built, then removed on 23 November at the author's request: project pages are now a single column, and the licence and clinical safety data were deleted with it. This is a deliberate difference from OHTF; see § 6, question 4 |
+
+## 5. Remaining advice
+
+Ranked by value for the site's three goals (spec § 1): reach, evidence of recognition,
+and usefulness to digital health teams. Each needs entries in every catalogue for any
+new text.
 
 ### High value
 
-1. **Add a key-facts table to every project page.** Today the "Licence" row says only
-   "Free and open source; see the project for its licence." Add, from real sources:
-   - licence (SPDX, from crates.io, RubyGems, or the GitHub API);
-   - current version and release date;
-   - lifecycle status (see item 2);
-   - maintainer;
-   - for health projects: Clinical Safety Officer, medical device position, and
-     clinical safety documentation, stating gaps plainly ("None", "Not assessed").
-   Extend `scripts/refresh-stats.mjs` to collect licence and version, so the facts
-   stay dated and sourced.
-2. **Give every project a lifecycle status** (for example Experimental, Pre-release,
-   Active, Maintenance, Archived), shown on cards and detail pages, with a short
-   lifecycle page defining each status. For example, `fhir-rust` describes itself as
-   pre-release, and the emergency care system is a demonstration. An
-   honest status builds trust with clinical safety officers and buyers.
-3. **Record the OHTF citation.** Add it to the Impact page's Recognition section and to
-   the NHS Number project page: listed by the Open Health Technology Foundation as a
-   candidate project, tested against shared NHS Number test vectors. This is
-   third-party recognition with a public URL, useful for the Global Talent evidence
-   (spec § 1, subgoal 2).
-4. **Show each project in action.** Add an install line and three to five lines of
-   usage with real output to each project page, starting with the health crates
-   (`nhs-number`, `fhir`, `hl7`, `snomed`). Store the snippets in `projects.ts`
-   alongside the version they came from. This is the fastest way to convert visitors
-   into users.
-5. **Publish a security policy.** The current advice ("open an issue asking for a
-   private contact") is weak for health software. Enable GitHub private vulnerability
-   reporting on each repository, add `SECURITY.md` files, and add a Security page that
-   gives the reporting route, what to include, response times, safety-relevant
-   triage, and coordinated disclosure. Then update the privacy policy and terms to
-   point to it.
+1. **Add a social card image.** Done on 23 November: `static/social-card.png`
+   (1200 × 630, language-neutral), with `og:image`, its size and alt text, and
+   `twitter:card` `summary_large_image` on every page.
+2. **Add "What Public Projects is not" to the About page**: not a standards body, not
+   a product vendor, not a medical device supplier, not an employer's programme. This
+   gathers the independence and clinical safety notices into one memorable list, which
+   matters more now that project pages carry no clinical safety facts.
+3. **Add a short Contribute page**, linked from Donate › "Donate time" and Digital
+   health teams: "you do not need permission to start"; how to report a problem,
+   improve documentation, or send code; never include real patient data; report
+   security problems privately (link to Security); and a code of conduct (an adopted
+   standard such as the Contributor Covenant). Advice for contributing alongside a day
+   job is useful but must not name any employer.
 
 ### Medium value
 
-6. **Add a Contribute page**, or expand Donate › "Donate time", with the basics:
-   code of conduct, how to sign off contributions, private security reporting, the
-   rule "never include real patient data", and advice for contributing alongside a day
-   job. Add a code of conduct (an adopted standard such as the Contributor Covenant).
-7. **Add "What Public Projects is not"** to the About page: not a standards body, not a
-   product vendor, not a certified medical device supplier, not an employer's
-   programme. This reinforces the independence and clinical safety notices in one
-   memorable list.
-8. **State the problem and criteria on the home page.** Open with one belief sentence
-   and a short "the gap" paragraph, then the criteria for what Public Projects builds
-   (for example: shared foundations, open and maintained, honest about safety, useful
-   across borders).
-9. **Publish shared test vectors** for the standards crates (NHS Number already has
-   them through OHTF), and say so on project pages. Conformance across languages is
-   strong evidence of engineering leadership and invites ports.
-10. **Publish a gaps or roadmap list**, like Awesome Missing NHS Things: what digital
-    health and public services need that Public Projects intends to build or would
-    welcome help with. Link it from Donate and Digital health teams.
-11. **Add a news or updates channel**: a dated changelog page and an RSS or Atom feed
-    (generated at build time, with no third-party service). This gives returning
-    visitors and recommenders a reason to come back, and gives evidence of continued
-    activity.
+4. **More "Use it" examples.** Extend the verified examples beyond the four health
+   crates to other crates, such as `er7`, `openehr`, and `assertables`, each run
+   before publishing (spec § Project pages).
+5. **Say where test vectors are shared.** NHS Number already shares vectors with OHTF's
+   Python package. Say so in the NHS Number "Use it" section, and publish vectors for
+   other standards crates where they exist. Cross-language conformance is strong
+   evidence of engineering leadership and invites ports.
+6. **State the problem and the criteria on the home page.** The hero could open with
+   one belief sentence, then a short list of what Public Projects builds (for example:
+   shared foundations, open and maintained, useful across borders, honest about
+   safety). The existing "Why public open source matters" section is the natural
+   place.
+7. **Publish a gaps list**, like Awesome Missing NHS Things: what digital health and
+   public services need that Public Projects would build or welcome help with. Link it
+   from Donate and Digital health teams.
+8. **Add an updates feed**: a dated changelog page and an Atom feed generated at build
+   time, with no third-party service. It gives recommenders and returning visitors
+   evidence of continued activity.
 
 ### Lower value or optional
 
-12. **Add a social card image** (already an open item in the spec), drawn from the hero
-    art, so shared links show a preview.
-13. **Add an "On this page" contents list** to long pages (policies, impact, digital
-    health teams), using Lily's `ContentsNav`.
-14. **Tell a story.** A short, sourced "why open" story, as OHTF does with its logo, could
-    make the home page's argument more memorable. It must be factual and cited.
-15. **Edit links.** OHTF puts an edit link on every page. The footer's source-code link
-    was removed by request, so treat this as a decision for the author, not a default.
-16. **Contact by purpose.** Today the issue tracker and the author's email (Donate page
-    only) are the contact routes. If volume grows, add a Contact page that lists
-    routes by purpose: projects, security, conduct, and donations.
+9. **An "On this page" contents list** on long pages (policies, Impact, Digital health
+   teams), using Lily's `ContentsNav`.
+10. **Contact by purpose.** Today the routes are the issue tracker, the Security page,
+    and the author's email (Donate page only). If volume grows, a Contact page could
+    list them by purpose.
+11. **Tell a story.** A short, sourced "why open" story, as OHTF does with its logo,
+    could make the home page's argument more memorable. It must be factual and cited.
+12. **Edit links.** OHTF puts an edit link on every page. The footer's source-code link
+    was removed by request, so this is a decision for the author, not a default.
 
-## 5. Strategic questions for the author
+## 6. Strategic questions for the author
 
 These are decisions for the author, not changes to make by default.
 
-- **Continuity of health projects.** OHTF's core argument is that important health
-  software should not live in one person's GitHub account. Many Public Projects health
-  crates live in personal or single-person organisations. Options: propose more crates
-  to OHTF as candidates (as NHS Number for Rust already is), name co-maintainers, or
-  publish a continuity statement. Any of these strengthens the case to NHS teams that
-  adopting a crate is safe in the long term.
-- **Relationship with OHTF.** Public Projects can complement OHTF rather than overlap:
-  Public Projects as the author's portfolio and incubator across health, public value
-  and engineering; OHTF as the neutral long-term home for health projects that mature.
-  A short note and link on the Digital health teams page would make this explicit.
-- **Donations.** OHTF funds maintenance through paid services under a CIC asset lock.
-  Public Projects asks for personal donations by PayPal or Venmo. Consider adding
-  GitHub Sponsors, or a fiscal host such as Open Collective, which publish income and
-  spending and may reassure organisational donors.
+1. **Continuity of health projects.** OHTF's core argument is that important health
+   software should not depend on one person's GitHub account. Many Public Projects
+   health crates live in personal or single-person organisations. Options: propose more
+   crates to OHTF as candidates (for example `fhir`, `hl7`, or `snomed`, as NHS Number
+   for Rust already is), name co-maintainers, or publish a short continuity statement.
+   Any of these strengthens the case to health teams that adopting a crate is safe in
+   the long term.
+2. **Relationship with OHTF.** Public Projects can complement OHTF rather than overlap:
+   Public Projects as the author's portfolio and incubator across health, public value,
+   and engineering; OHTF as the neutral long-term home for health projects that mature.
+   OHTF's lifecycle already has a route for this (Candidate, then Incubating once the
+   repository moves to github.com/ohtf). A short note and link on the Digital health
+   teams page would make the relationship explicit.
+3. **Donations.** OHTF funds maintenance through paid services under a CIC asset lock.
+   Public Projects asks for personal donations by PayPal or Venmo. GitHub Sponsors, or
+   a fiscal host such as Open Collective, publish income and spending and may
+   reassure organisational donors.
+4. **Where health teams find a project's safety position.** OHTF shows each project's
+   licence, Clinical Safety Officer, medical device position, and safety documentation
+   on its page. Public Projects removed these on 23 November, so a clinical safety
+   officer must now look in each repository. The site-wide clinical safety notices
+   remain. Options: leave it to the repositories (simplest, and nothing on the site
+   can go stale); add a sentence on the Health care page pointing to each
+   repository's safety documents; or, if health teams ask, publish the position
+   elsewhere, such as on the Digital health teams page.
 
-## 6. Suggested next steps
+## 7. Suggested next steps
 
-1. Record the OHTF citation on the Impact and NHS Number pages (item 3).
-2. Add licence, version and lifecycle status to the stats script, catalogue, and
-   project pages (items 1 and 2).
-3. Enable private vulnerability reporting and add the Security page (item 5).
-4. Add "in action" snippets for the four core health crates (item 4).
-5. Decide on the strategic questions in § 5.
-
-Each step needs Welsh translations for any new text (`locales/cy-gb/messages.json`).
+1. ~~Add the social card image~~ (done on 23 November).
+2. Add "What Public Projects is not" to About, and the Contribute page (items 2 and 3).
+3. Decide the strategic questions in § 6, starting with continuity and the
+   relationship with OHTF, which affect what the Digital health teams page says.
+4. Add further verified "Use it" examples, and note the shared NHS Number test vectors
+   (items 4 and 5).

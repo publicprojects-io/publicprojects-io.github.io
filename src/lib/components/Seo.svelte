@@ -1,5 +1,5 @@
 <script lang="ts">
-	// Title, description, canonical URL, hreflang alternates, and Open Graph tags.
+	// Title, description, canonical URL, hreflang alternates, and Open Graph tags with the social card image.
 	import { base } from '#lib/base.js';
 	import { DEFAULT_LOCALE, LOCALES, LOCALE_TAGS, localePath, type Locale } from '#lib/locales.js';
 	import { SITE_NAME, SITE_ORIGIN } from '#lib/site.js';
@@ -34,6 +34,12 @@
 	{#if locale !== DEFAULT_LOCALE}
 		<meta property="og:locale" content={LOCALE_TAGS[locale].replace('-', '_')} />
 	{/if}
-	<meta name="twitter:card" content="summary" />
+	<!-- One language-neutral card (static/social-card.png, from scripts/social-card.html) for every page and locale. -->
+	<meta property="og:image" content={`${SITE_ORIGIN}${base}/social-card.png`} />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content={SITE_NAME} />
+	<meta name="twitter:card" content="summary_large_image" />
 	{@html ld}
 </svelte:head>

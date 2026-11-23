@@ -282,6 +282,12 @@ Logo, navigation links, and the PickerBar share one row (the header container is
 The logo and PickerBar never shrink; the links may wrap within their space. Below
 60rem the header stacks.
 
+Every page shares one social card image, `static/social-card.png` (1200 × 630, made
+from `scripts/social-card.html`): the logo, "Public Projects", "publicprojects.io", and
+the hero art, in Lily's default light theme. It has no other words, so it serves every
+locale. Pages set `og:image` with its size and `og:image:alt` (the site name), and
+`twitter:card` `summary_large_image`.
+
 Machine-readable routes: `sitemap.xml` (all locales, with `xhtml:link` alternates),
 `llms.txt`, and `robots.txt`. Pages include schema.org JSON-LD: `WebSite` on home,
 `SoftwareSourceCode` or `CreativeWork` on projects, and `ProfilePage` on about.
