@@ -118,9 +118,10 @@ Keep these; they are differentiators.
 | Record the OHTF citation | Done: Impact page and the NHS Number project's recognition |
 | Give every project a lifecycle status, with a page defining each | Done: `statusOf()` and the Project status page (active, pre-release, demonstration, maintenance, archived); cards show the less common statuses |
 | Publish a security policy | Done: the Security page, with GitHub private vulnerability reporting |
-| Show each project in action | Done for the four core health crates: `fhir`, `hl7`, `snomed`, and `nhs-number` ("Use it", with real output and its version) |
+| Show each project in action | Done for seven crates: `fhir`, `hl7`, `snomed`, `nhs-number`, `er7`, `openehr`, and `assertables` ("Use it", with real output and its version) |
 | Add a social card image | Done: one language-neutral 1200 × 630 card for every page and locale (§ 5, item 1) |
 | (New) Add "What Public Projects is not" to About | Done (§ 5, item 2) |
+| (New) Add a Contribute page with a code of conduct | Done (§ 5, item 3) |
 | Add a key-facts table to every project page | Built, then removed on 23 November at the author's request: project pages are now a single column, and the licence and clinical safety data were deleted with it. This is a deliberate difference from OHTF; see § 6, question 4 |
 
 ## 5. Remaining advice
@@ -137,22 +138,24 @@ new text.
 2. **Add "What Public Projects is not" to the About page.** Done on 23 November:
    not a standards body, not a vendor, not a medical device supplier, not an
    employer’s programme, and not a charity, in every locale.
-3. **Add a short Contribute page**, linked from Donate › "Donate time" and Digital
-   health teams: "you do not need permission to start"; how to report a problem,
-   improve documentation, or send code; never include real patient data; report
-   security problems privately (link to Security); and a code of conduct (an adopted
-   standard such as the Contributor Covenant). Advice for contributing alongside a day
-   job is useful but must not name any employer.
+3. **Add a short Contribute page.** Done on 23 November: `/contribute/`, linked from
+   Donate › "Donate time", Digital health teams, and the footer: no permission
+   needed; ways to help; never include real patient data; security reports privately;
+   each project's licence; and the Contributor Covenant 2.1 code of conduct. Advice
+   for contributing alongside a day job was left out, since it risks naming an
+   employer.
 
 ### Medium value
 
-4. **More "Use it" examples.** Extend the verified examples beyond the four health
-   crates to other crates, such as `er7`, `openehr`, and `assertables`, each run
-   before publishing (spec § Project pages).
-5. **Say where test vectors are shared.** NHS Number already shares vectors with OHTF's
-   Python package. Say so in the NHS Number "Use it" section, and publish vectors for
-   other standards crates where they exist. Cross-language conformance is strong
-   evidence of engineering leadership and invites ports.
+4. **More "Use it" examples.** Done on 23 November for `er7` 0.3.0, `openehr` 0.11.0,
+   and `assertables` 10.1.0, each run against that version before publishing. A test
+   now fails when `stats.json` records a newer version than an example was run
+   against, so examples are re-run after each `pnpm stats`.
+5. **Say where test vectors are shared.** The NHS Number page already says so, in its
+   recognition, with OHTF's link; repeating it under "Use it" would duplicate it.
+   What remains is outside this site: publish vectors for other standards crates where
+   they exist. Cross-language conformance is strong evidence of engineering
+   leadership and invites ports.
 6. **State the problem and the criteria on the home page.** The hero could open with
    one belief sentence, then a short list of what Public Projects builds (for example:
    shared foundations, open and maintained, useful across borders, honest about
@@ -161,14 +164,17 @@ new text.
 7. **Publish a gaps list**, like Awesome Missing NHS Things: what digital health and
    public services need that Public Projects would build or welcome help with. Link it
    from Donate and Digital health teams.
-8. **Add an updates feed**: a dated changelog page and an Atom feed generated at build
-   time, with no third-party service. It gives recommenders and returning visitors
-   evidence of continued activity.
+8. **Add an updates feed.** Done on 23 November as a Releases page and an Atom feed
+   (`releases.xml`), built from the release dates already in `stats.json`, so every
+   entry is dated and sourced and nothing is written by hand. A hand-written changelog
+   of the site itself was left out: it would need the author's wording.
 
 ### Lower value or optional
 
-9. **An "On this page" contents list** on long pages (policies, Impact, Digital health
-   teams), using Lily's `ContentsNav`.
+9. **An "On this page" contents list.** Done on 23 November on the four policy pages,
+   using Lily's `ContentsNav`, with anchors that are the same in every locale. Impact
+   and Digital health teams were left without one: Impact's sections are short and
+   already have ids, and Digital health teams has only three.
 10. **Contact by purpose.** Today the routes are the issue tracker, the Security page,
     and the author's email (Donate page only). If volume grows, a Contact page could
     list them by purpose.
@@ -210,8 +216,8 @@ These are decisions for the author, not changes to make by default.
 ## 7. Suggested next steps
 
 1. ~~Add the social card image~~ (done on 23 November).
-2. ~~Add "What Public Projects is not" to About~~ (done on 23 November); add the Contribute page (item 3).
+2. ~~Add "What Public Projects is not" to About~~ and ~~the Contribute page~~ (done on 23 November).
 3. Decide the strategic questions in § 6, starting with continuity and the
    relationship with OHTF, which affect what the Digital health teams page says.
-4. Add further verified "Use it" examples, and note the shared NHS Number test vectors
-   (items 4 and 5).
+4. ~~Add further verified "Use it" examples~~ (done on 23 November); publish shared
+   test vectors for other standards crates (item 5, outside this site).

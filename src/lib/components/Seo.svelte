@@ -41,5 +41,6 @@
 	<meta property="og:image:height" content="630" />
 	<meta property="og:image:alt" content={SITE_NAME} />
 	<meta name="twitter:card" content="summary_large_image" />
+	<link rel="alternate" type="application/atom+xml" title={`${SITE_NAME}: releases`} href={`${SITE_ORIGIN}${base}/releases.xml`} />
 	{@html ld}
 </svelte:head>

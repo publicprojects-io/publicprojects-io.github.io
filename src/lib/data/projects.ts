@@ -184,6 +184,12 @@ println!("{:?}", message.get("MSH-9.1")?.as_deref());`,
 	{
 		slug: 'er7',
 		repo: 'er7-rust/er7-rust',
+		usage: {
+			version: '0.3.0',
+			install: 'cargo add er7',
+			code: "let text = \"MSH|^~\\\\&|LAB|ACME|EHR|CLINIC|20260815081500||ORU^R01|MSG00042|P|2.5\\r\\\n            PID|1||444333222^^^ACME^MR||EVERYWOMAN^EVE^E||19620320|F\\r\\\n            OBX|1|NM|2093-3^Cholesterol^LN||187|mg/dL|||||F\";\n\nlet message = er7::parse(text).unwrap();\nprintln!(\"{}\", message.control_id().unwrap());\nprintln!(\"{}\", message.query(\"PID-5.1\").unwrap().unwrap());\nprintln!(\"{}\", message.query(\"OBX-3.2\").unwrap().unwrap());\n\n// What went in comes back out, byte for byte.\nprintln!(\"{}\", message.to_er7() == text);",
+			output: "MSG00042\nEVERYWOMAN\nCholesterol\ntrue"
+		},
 		name: 'ER7 for Rust',
 		area: 'health',
 		summary: 'Parse, query, edit, and write HL7® v2 messages in the ER7 pipe-hat encoding, with zero dependencies.',
@@ -222,6 +228,12 @@ println!("{}", SctId::parse("22298007").is_ok());`,
 	{
 		slug: 'openehr',
 		repo: 'openehr-rust/openehr-rust',
+		usage: {
+			version: '0.11.0',
+			install: 'cargo add openehr serde_json',
+			code: "use openehr::rm::data_structures::Element;\nuse openehr::validation::Validate;\n\n// A null flavour with a value: no constructor builds this, but a sender can send it.\nlet element: Element = serde_json::from_str(\n    r#\"{\"name\":{\"value\":\"Systolic\"},\"archetype_node_id\":\"at0004\",\n        \"value\":{\"_type\":\"DV_COUNT\",\"magnitude\":1},\n        \"null_flavour\":{\"value\":\"unknown\",\"defining_code\":\n          {\"terminology_id\":{\"value\":\"openehr\"},\"code_string\":\"253\"}}}\"#,\n).unwrap();\n\nfor violation in element.validate().violations() {\n    println!(\"{}\", violation.invariant);\n}",
+			output: "Inv_null_flavour_indicated"
+		},
 		name: 'openEHR for Rust',
 		area: 'health',
 		summary: 'openEHR® Reference Model types, validation, paths, AQL parsing, and change-control security primitives in Rust.',
@@ -518,6 +530,12 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'assertables',
 		repo: 'assertables/assertables-rust-crate',
+		usage: {
+			version: '10.1.0',
+			install: 'cargo add assertables',
+			code: "use assertables::*;\n\nassert_lt!(1, 2);\nassert_starts_with!(\"hello\", \"h\");\nassert_contains!([1, 2, 3], &2);\n\n// Every macro has a Result form, for checks at run time.\nif let Err(message) = assert_lt_as_result!(3, 2) {\n    println!(\"{}\", message);\n}",
+			output: "assertion failed: `assert_lt!(a, b)`\nhttps://docs.rs/assertables/10.1.0/assertables/macro.assert_lt.html\n a label: `3`,\n a debug: `3`,\n b label: `2`,\n b debug: `2`"
+		},
 		name: 'Assertables',
 		area: 'engineering',
 		summary: 'A Rust crate of assert macros for better testing, debugging, quality assurance, and runtime reliability.',
@@ -686,6 +704,13 @@ export function projectBySlug(slug: string): Project | undefined {
 	return PROJECTS.find((project) => project.slug === slug);
 }
 
+/** The project with `slug`; a typo fails the build instead of rendering a broken page. */
+export function requireProject(slug: string): Project {
+	const project = projectBySlug(slug);
+	if (!project) throw new Error(`Unknown project: ${slug}`);
+	return project;
+}
+
 /** The home page shows these first, three to a row, then every other project in catalogue order. */
 export const HOME_FIRST = [
 	'public-value',
@@ -700,11 +725,7 @@ export const HOME_FIRST = [
 ];
 
 export function homeProjects(): Project[] {
-	const first = HOME_FIRST.map((slug) => {
-		const project = projectBySlug(slug);
-		if (!project) throw new Error(`HOME_FIRST: no project ${slug}`);
-		return project;
-	});
+	const first = HOME_FIRST.map(requireProject);
 	return [...first, ...PROJECTS.filter((p) => !HOME_FIRST.includes(p.slug))];
 }
 
@@ -743,3 +764,27 @@ export const TOTALS = {
 	projects: PROJECTS.length,
 	healthProjects: PROJECTS.filter((project) => project.area === 'health').length
 };
+
+export type Release = {
+	project: Project;
+	/** The package's name in its registry. */
+	name: string;
+	registry: 'crates.io' | 'RubyGems';
+	version: string;
+	/** ISO date. */
+	released: string;
+	/** The package's registry page. */
+	href: string;
+};
+
+/** The latest release of every published package, newest first, from stats.json. */
+export function releases(): Release[] {
+	return PROJECTS.flatMap((project) =>
+		(project.stats ?? []).flatMap((ref): Release[] => {
+			if (ref.kind === 'github') return [];
+			const { version, released } = ref.kind === 'crate' ? stats.crateVersions[ref.key] : stats.gemVersions[ref.key];
+			const registry = ref.kind === 'crate' ? 'crates.io' : 'RubyGems';
+			return [{ project, name: ref.key, registry, version, released, href: statSource(ref) }];
+		})
+	).sort((a, b) => b.released.localeCompare(a.released) || a.name.localeCompare(b.name));
+}

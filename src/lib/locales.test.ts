@@ -162,6 +162,7 @@ describe('paths', () => {
 	it('picks the best locale for a browser', () => {
 		expect(pickLocale(['cy-GB', 'en'])).toBe('cy-gb');
 		expect(pickLocale(['cy'])).toBe('cy-gb');
+		expect(pickLocale(['', ' ', '-', 'fr'])).toBe('fr-001');
 		expect(pickLocale(['zh-CN'])).toBe('zh-cn');
 		expect(pickLocale(['zh-Hans-CN'])).toBe('zh-cn');
 		expect(pickLocale(['zh'])).toBe('zh-001');

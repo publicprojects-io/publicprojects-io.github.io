@@ -30,6 +30,7 @@
 					<li><a href={href(page.slug)}>{s(page.name)}</a></li>
 				{/each}
 				<li><a href={href('project-status')}>{s('Project status')}</a></li>
+				<li><a href={href('releases')}>{s('Releases')}</a></li>
 				<li><a href={href('search')}>{s('Search')}</a></li>
 			</ul>
 
@@ -51,6 +52,7 @@
 			<ul>
 				<li><a href={`${base}/sitemap.xml`}>sitemap.xml</a></li>
 				<li><a href={`${base}/llms.txt`}>llms.txt</a></li>
+				<li><a href={`${base}/releases.xml`} type="application/atom+xml">releases.xml</a></li>
 			</ul>
 		</section>
 

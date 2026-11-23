@@ -214,7 +214,9 @@ open source for the public good.
 | `projects` | Every project, grouped by area |
 | `projects/<slug>` | One page per project: summary, links, about, public value, "Use it" (where a verified example exists), recognition (where any), related projects; no key-facts column. See § Project pages |
 | `project-status` | What each status means and the rule that decides it, with a count per status |
+| `releases` | The latest release of each published crate and gem, newest first (date, project, package, version), from `stats.json` via `releases()`; links to the Atom feed. Linked from Impact and the site map |
 | `security` | Security policy: private reporting through GitHub private vulnerability reporting on the affected repository, what to include, safety-relevant reports, coordinated disclosure |
+| `contribute` | How to contribute: no permission needed; ways to help (report a problem, documentation, code, translation); ground rules (no real patient or personal data, security reports privately, each project's licence); the Contributor Covenant 2.1 code of conduct, with conduct reports by email to the author via the Donate page. Linked from Donate › Donate time and Digital health teams › How to get involved |
 | `digital-health-teams` | For digital health groups: an independence and clinical safety notice, a table mapping needs to projects, why open source fits (with UK examples: Service Standard point 12, Technology Code of Practice), and how to get involved |
 | `impact` | Every statistic with its date and source link; GitHub stars by account (joelparkerhenderson, gitalias, sixarm: every owned repository, including forks) and by project; recognition; translations; method |
 | `donate` | How to donate time (code, docs, translation, testing, sharing) and money (PayPal or Venmo to the author's email), and to ask about other ways; donations go to the author personally, not tax-deductible |
@@ -226,9 +228,14 @@ open source for the public good.
 | `terms-of-use` | Use of the site; per-project licences; trademarks and independence; health and clinical use; no warranty; responsible use; links; changes |
 | `site-map` | Every page and project, grouped, plus locales and machine-readable files |
 
+The four policy pages (accessibility statement, cookie policy, privacy policy, terms of use)
+open with an "On this page" list (`OnThisPage`, Lily `ContentsNav`) linking to each section.
+Section anchors come from the English heading (`anchor()` in `urls.ts`), so a link to a
+section is the same in every locale; the prerender fails if a link has no target.
+
 Main navigation (in the header, and repeated in the footer): Health care, Public
 value, Software engineering, All projects, Digital health teams, Impact, Donate,
-About. The footer's policy row: Security, Accessibility statement, Cookie policy,
+About. The footer's policy row: Security, Contribute, Accessibility statement, Cookie policy,
 Privacy policy, Terms of use, Site map. The footer colophon is © year, name, GitHub,
 ORCID, LinkedIn. The footer has no locale links: language is chosen with the header's
 locale picker or the root chooser.
@@ -300,7 +307,8 @@ locale. Pages set `og:image` with its size and `og:image:alt` (the site name), a
 `twitter:card` `summary_large_image`.
 
 Machine-readable routes: `sitemap.xml` (all locales, with `xhtml:link` alternates),
-`llms.txt`, and `robots.txt`. Pages include schema.org JSON-LD: `WebSite` on home,
+`llms.txt`, `robots.txt`, and `releases.xml`, an Atom feed of the same releases as the
+`releases` page, which every page links to with `<link rel="alternate">`. Pages include schema.org JSON-LD: `WebSite` on home,
 `SoftwareSourceCode` or `CreativeWork` on projects, and `ProfilePage` on about.
 
 ## 6. Content
@@ -377,10 +385,16 @@ Before a change is done:
 ```sh
 pnpm run check   # svelte-kit sync + svelte-check: 0 errors, 0 warnings
 pnpm test        # vitest: spelling, paths, search, theme order
+pnpm run coverage # the same, failing below 100% coverage of src/*.ts, src/lib/**/*.ts, and src/routes/**/*.ts,
+                  # or of the statements, functions, and lines of every component and page (.svelte)
 pnpm run build   # prerenders every page in every locale; fails on broken links or missing ids
 ```
 
-CI runs the same three commands before deploying.
+CI runs check, coverage, and build before deploying.
+
+Tests run in two Vitest projects: `node` (`*.test.ts`) and `dom` (`*.dom.test.ts`, happy-dom),
+which mounts the components and every page, in more than one locale, so that event
+handlers and `onMount` run.
 
 ## 10. Acceptance criteria
 

@@ -59,12 +59,10 @@ const BASE = {
 
 export type Ui = typeof BASE;
 
+/** Every string in `value`, a string or an object of strings, translated. */
 function translateAll<T>(locale: Locale, value: T): T {
 	if (typeof value === 'string') return t(locale, value) as T;
-	if (value && typeof value === 'object') {
-		return Object.fromEntries(Object.entries(value).map(([key, inner]) => [key, translateAll(locale, inner)])) as T;
-	}
-	return value;
+	return Object.fromEntries(Object.entries(value as object).map(([key, inner]) => [key, translateAll(locale, inner)])) as T;
 }
 
 const cache = new Map<Locale, Ui>();

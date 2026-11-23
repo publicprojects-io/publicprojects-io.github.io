@@ -5,6 +5,8 @@
 	import { formatDate, localePath, t } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { ISSUES_URL, POLICIES_REVIEWED, STORAGE_KEYS } from '#lib/site.js';
+	import OnThisPage from '#lib/components/OnThisPage.svelte';
+	import { anchor } from '#lib/urls.js';
 
 	let { data } = $props();
 	const locale = $derived(data.locale);
@@ -24,7 +26,17 @@
 			</p>
 		</header>
 
-		<h2>{s('What are cookies?')}</h2>
+		<OnThisPage {locale} sections={[
+			'What are cookies?',
+			'How we use cookies',
+			'Browser storage we use',
+			'Managing cookies and storage',
+			'Other websites',
+			'If you have a concern',
+			'Changes to this policy'
+		]} />
+
+		<h2 id={anchor('What are cookies?')}>{s('What are cookies?')}</h2>
 		<p>
 			{s('Cookies are small files saved on your phone, tablet, or computer by websites that you visit. They are widely used to make websites work, or work more efficiently, and to give information to the owners of a site. A cookie is sent back to the website with every later request.')}
 		</p>
@@ -32,12 +44,12 @@
 			{s('Browsers also offer storage that stays on your device and is never sent to a website’s server: local storage, which is kept until you clear it, and session storage, which is cleared when you close the tab. This policy covers cookies and browser storage.')}
 		</p>
 
-		<h2>{s('How we use cookies')}</h2>
+		<h2 id={anchor('How we use cookies')}>{s('How we use cookies')}</h2>
 		<p>
 			{s('We do not use cookies. There are no essential cookies, no analytics or measurement cookies, and no advertising or tracking cookies. The site loads no third-party scripts, fonts, or embedded media. Because of that, there is no cookie banner and nothing to accept.')}
 		</p>
 
-		<h2>{s('Browser storage we use')}</h2>
+		<h2 id={anchor('Browser storage we use')}>{s('Browser storage we use')}</h2>
 		<p>{s('These values stay in your browser and are never sent to us. They hold your own choices and nothing that identifies you.')}</p>
 		<div class="needs-table-wrap">
 			<table class="data-table">
@@ -65,7 +77,7 @@
 			{s('Your language is not stored: it is part of the page address, such as /en-gb/. The site works without any of this storage. If storage is blocked, you get the default theme and text size each time.')}
 		</p>
 
-		<h2>{s('Managing cookies and storage')}</h2>
+		<h2 id={anchor('Managing cookies and storage')}>{s('Managing cookies and storage')}</h2>
 		<ul>
 			<li>{s('Use the theme and text-size controls in the header at any time; each new choice replaces the old one.')}</li>
 			<li>{s('Clear the stored values in your browser’s settings, under site data, or use private browsing, which discards them when you close the window.')}</li>
@@ -76,17 +88,17 @@
 			<a href="https://ico.org.uk/for-the-public/online/cookies/">{s('the UK Information Commissioner’s Office guide to cookies')}</a>.
 		</p>
 
-		<h2>{s('Other websites')}</h2>
+		<h2 id={anchor('Other websites')}>{s('Other websites')}</h2>
 		<p>
 			{s('This site links to other websites, such as code repositories, package registries, and social networks when you use the share control. They may set their own cookies. We do not control them; read their policies before you use them.')}
 		</p>
 
-		<h2>{s('If you have a concern')}</h2>
+		<h2 id={anchor('If you have a concern')}>{s('If you have a concern')}</h2>
 		<p>
 			{s('If you have a question or concern about how this site uses cookies or storage, tell us on')} <a href={ISSUES_URL}>{s('the issue tracker')}</a>.
 		</p>
 
-		<h2>{s('Changes to this policy')}</h2>
+		<h2 id={anchor('Changes to this policy')}>{s('Changes to this policy')}</h2>
 		<p>
 			{s('If we ever add a cookie, or a script that sets one, we will list it here before it goes live and ask for your permission first. This policy was last reviewed on')}
 			{reviewed}. {s('See also the')} <a href={href('privacy-policy')}>{s('privacy policy')}</a>.

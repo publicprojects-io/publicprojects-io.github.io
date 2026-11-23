@@ -10,13 +10,14 @@
 	import { projectBySlug } from '#lib/data/projects.js';
 	import { ISSUES_URL, PERSON, SITE_NAME, SITE_TAGLINE } from '#lib/site.js';
 	import { ui } from '#lib/ui.js';
+	import { sitePath } from '#lib/urls.js';
 
 	let { data, children }: { data: { locale: import('#lib/locales.js').Locale }; children: Snippet } = $props();
 
 	const locale = $derived(data.locale);
 	const m = $derived(ui(locale));
 	const s = (text: string) => t(locale, text);
-	const slug = $derived(parsePath(page.url.pathname.slice(base.length) || '/').slug);
+	const slug = $derived(parsePath(sitePath(page.url.pathname)).slug);
 	const section = $derived(slug.split('/')[0]);
 	const href = (to: string) => `${base}${localePath(locale, to)}`;
 	const title = $derived.by(() => {

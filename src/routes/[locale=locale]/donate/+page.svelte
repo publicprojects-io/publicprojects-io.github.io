@@ -37,6 +37,7 @@
 				{s('To start, open an issue on the project’s repository, or on')} <a href={ISSUES_URL}>{s('the issue tracker for this site')}</a>.
 				{s('See')} <a href={href('projects')}>{s('all projects')}</a>.
 			</p>
+			<p><a href={href('contribute')}>{s('Read how to contribute, and the code of conduct')}</a></p>
 		</section>
 
 		<section aria-labelledby="money-heading">

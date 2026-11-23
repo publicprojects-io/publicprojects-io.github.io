@@ -3,8 +3,9 @@
 	import { page } from '$app/state';
 	import { ContainerWithFixedWidth } from '@lilydesignsystem/svelte-headless';
 	import { localePath, parsePath, t } from '#lib/locales.js';
+	import { sitePath } from '#lib/urls.js';
 
-	const locale = $derived(parsePath(page.url.pathname.slice(base.length) || '/').locale);
+	const locale = $derived(parsePath(sitePath(page.url.pathname)).locale);
 	const s = (text: string) => t(locale, text);
 </script>
 

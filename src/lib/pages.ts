@@ -67,9 +67,22 @@ export const PAGES: PageInfo[] = [
 		nav: false
 	},
 	{
+		slug: 'releases',
+		name: 'Releases',
+		description: 'The latest release of each Public Projects package on crates.io and RubyGems, newest first, with an Atom feed.',
+		nav: false
+	},
+	{
 		slug: 'security',
 		name: 'Security',
 		description: 'How to report a security vulnerability in Public Projects privately, and what happens next.',
+		nav: false,
+		footer: true
+	},
+	{
+		slug: 'contribute',
+		name: 'Contribute',
+		description: 'How to contribute to Public Projects: report a problem, improve the documentation or code, or translate, and the code of conduct.',
 		nav: false,
 		footer: true
 	},

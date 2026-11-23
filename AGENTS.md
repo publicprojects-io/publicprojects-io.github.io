@@ -37,13 +37,15 @@ pnpm install
 pnpm dev          # copies Lily themes, starts the dev server
 pnpm run check    # svelte-check: must report 0 errors and 0 warnings
 pnpm test         # vitest unit tests
+pnpm run coverage # the same tests; fails below 100% coverage of the TypeScript modules (routes included), or of
+                  # the statements, functions, and lines of every component and page (CI runs this)
 pnpm run build    # prerenders every page in every locale into build/
 pnpm run preview  # serve build/ (restart it after each rebuild)
 pnpm stats        # refresh stats.json from GitHub, crates.io, and RubyGems; review the diff
 BASE_PATH=/preview pnpm run build   # optional: preview under a sub-path (production has none)
 ```
 
-A change is done when `check`, `test`, and `build` all pass.
+A change is done when `check`, `coverage` (or `test`), and `build` all pass.
 
 ## SvelteKit 3 notes
 

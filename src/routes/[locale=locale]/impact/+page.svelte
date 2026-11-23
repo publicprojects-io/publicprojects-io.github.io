@@ -2,7 +2,7 @@
 	import { base } from '#lib/base.js';
 	import { ContainerWithFixedWidth } from '@lilydesignsystem/svelte-headless';
 	import Seo from '#lib/components/Seo.svelte';
-	import { OWNERS, PROJECTS, STATS_AS_OF, TOTALS, statSource, statValue } from '#lib/data/projects.js';
+	import { OWNERS, PROJECTS, STATS_AS_OF, TOTALS, statSource, statValue, type Project } from '#lib/data/projects.js';
 	import { formatDate, formatNumber, localePath, t } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { PERSON } from '#lib/site.js';
@@ -21,7 +21,7 @@
 	);
 	const downloads = $derived(rows.filter((r) => r.label === 'downloads'));
 	const stars = $derived(rows.filter((r) => r.label === 'stars'));
-	const translated = PROJECTS.filter((p) => p.languages);
+	const translated = PROJECTS.filter((p): p is Project & { languages: string } => Boolean(p.languages));
 </script>
 
 <Seo {locale} slug="impact" title={s('Impact')} description={s(pageBySlug('impact').description)} />
@@ -81,6 +81,7 @@
 				</tbody>
 			</table>
 		</div>
+		<p>{s('See also the')} <a href={href('releases')}>{s('latest release of each package')}</a>.</p>
 	</section>
 
 	<section class="section" aria-labelledby="accounts-heading">
@@ -132,7 +133,7 @@
 		<h2 id="translations-heading">{s('Translations')}</h2>
 		<ul class="plain-list">
 			{#each translated as project (project.slug)}
-				<li><a href={href(`projects/${project.slug}`)}>{s(project.name)}</a>: {s(project.languages ?? '')}</li>
+				<li><a href={href(`projects/${project.slug}`)}>{s(project.name)}</a>: {s(project.languages)}</li>
 			{/each}
 		</ul>
 		<p class="small">{s('Translation counts are as published by each project.')}</p>

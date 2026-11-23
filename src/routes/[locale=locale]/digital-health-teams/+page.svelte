@@ -2,7 +2,7 @@
 	import { base } from '#lib/base.js';
 	import { ContainerWithFixedWidth, InsetText } from '@lilydesignsystem/svelte-headless';
 	import Seo from '#lib/components/Seo.svelte';
-	import { projectBySlug } from '#lib/data/projects.js';
+	import { requireProject } from '#lib/data/projects.js';
 	import { localePath, t } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { PERSON } from '#lib/site.js';
@@ -10,11 +10,7 @@
 	let { data } = $props();
 	const locale = $derived(data.locale);
 	const s = (text: string) => t(locale, text);
-	const project = (slug: string) => {
-		const p = projectBySlug(slug);
-		if (!p) throw new Error(`Unknown project: ${slug}`);
-		return p;
-	};
+	const project = requireProject;
 	const href = (to: string) => `${base}${localePath(locale, to)}`;
 
 	// Common needs in a national digital health organisation, mapped to projects that can help.
@@ -129,6 +125,7 @@
 			<li><strong>{s('Contribute')}</strong>: {s('improvements to code, documentation, tests, and translations are all welcome, including translations into more languages.')}</li>
 			<li><strong>{s('Share it')}</strong>: {s('use the share button at the top of this page to send it to a colleague who might benefit.')}</li>
 		</ol>
+		<p><a href={href('contribute')}>{s('Read how to contribute, and the code of conduct')}</a></p>
 		<p>
 			{s('Questions are welcome on')} <a href={PERSON.github}>GitHub</a> {s('or')} <a href={PERSON.linkedin}>LinkedIn</a>.
 		</p>
