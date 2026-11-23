@@ -3,7 +3,7 @@
 // en-us spelling is derived by rule; Welsh (cy-gb), Simplified Chinese
 // (zh-cn, zh-001), Hindi (hi-in, hi-001), Arabic (ar-eg, ar-001), Spanish (es-mx,
 // es-001, es-es), French (fr-fr, fr-001, fr-ca), Russian (ru-ru, ru-001, ru-by),
-// Bengali (bn-bd, bn-001, bn-in), Indonesian (id-id, id-001, id-my), Thai (th-th, th-001), Japanese (ja-jp, ja-001), Korean (ko-kr, ko-001), Swahili (sw-tz, sw-001), Swedish (sv-se, sv-001), Dutch (nl-nl, nl-001), Vietnamese (vi-vn, vi-001), German (de-de, de-001, de-at), Portuguese (pt-br, pt-001, pt-pt), and Urdu (ur-001) come from the catalogues in locales/<locale>/messages.json,
+// Bengali (bn-bd, bn-001, bn-in), Indonesian (id-id, id-001, id-my), Thai (th-th, th-001), Japanese (ja-jp, ja-001), Korean (ko-kr, ko-001), Swahili (sw-tz, sw-001), Swedish (sv-se, sv-001), Dutch (nl-nl, nl-001), Vietnamese (vi-vn, vi-001), German (de-de, de-001, de-at), Portuguese (pt-br, pt-001, pt-pt), Urdu (ur-001), and Danish (da-001) come from the catalogues in locales/<locale>/messages.json,
 // keyed by the English source text. Dates and
 // numbers come from Intl. See spec/index.md § Locales.
 import cyGb from '../../locales/cy-gb/messages.json' with { type: 'json' };
@@ -49,8 +49,9 @@ import ptBr from '../../locales/pt-br/messages.json' with { type: 'json' };
 import pt001 from '../../locales/pt-001/messages.json' with { type: 'json' };
 import ptPt from '../../locales/pt-pt/messages.json' with { type: 'json' };
 import ur001 from '../../locales/ur-001/messages.json' with { type: 'json' };
+import da001 from '../../locales/da-001/messages.json' with { type: 'json' };
 
-export const LOCALES = ['en-001', 'en-gb', 'en-us', 'cy-gb', 'zh-cn', 'zh-001', 'hi-in', 'hi-001', 'ar-eg', 'ar-001', 'es-mx', 'es-001', 'es-es', 'fr-fr', 'fr-001', 'fr-ca', 'ru-ru', 'ru-001', 'ru-by', 'bn-bd', 'bn-001', 'bn-in', 'id-id', 'id-001', 'id-my', 'th-th', 'th-001', 'ja-jp', 'ja-001', 'ko-kr', 'ko-001', 'sw-tz', 'sw-001', 'sv-se', 'sv-001', 'nl-nl', 'nl-001', 'vi-vn', 'vi-001', 'de-de', 'de-001', 'de-at', 'pt-br', 'pt-001', 'pt-pt', 'ur-001'] as const;
+export const LOCALES = ['en-001', 'en-gb', 'en-us', 'cy-gb', 'zh-cn', 'zh-001', 'hi-in', 'hi-001', 'ar-eg', 'ar-001', 'es-mx', 'es-001', 'es-es', 'fr-fr', 'fr-001', 'fr-ca', 'ru-ru', 'ru-001', 'ru-by', 'bn-bd', 'bn-001', 'bn-in', 'id-id', 'id-001', 'id-my', 'th-th', 'th-001', 'ja-jp', 'ja-001', 'ko-kr', 'ko-001', 'sw-tz', 'sw-001', 'sv-se', 'sv-001', 'nl-nl', 'nl-001', 'vi-vn', 'vi-001', 'de-de', 'de-001', 'de-at', 'pt-br', 'pt-001', 'pt-pt', 'ur-001', 'da-001'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 /**
@@ -107,7 +108,8 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 	'pt-br': 'Português (Brasil)',
 	'pt-001': 'Português (Mundo)',
 	'pt-pt': 'Português (Portugal)',
-	'ur-001': 'اردو (دنیا)'
+	'ur-001': 'اردو (دنیا)',
+	'da-001': 'Dansk (verden)'
 };
 
 /** BCP 47 tag with canonical case, for <html lang>, hreflang, and Intl. */
@@ -157,7 +159,8 @@ export const LOCALE_TAGS: Record<Locale, string> = {
 	'pt-br': 'pt-BR',
 	'pt-001': 'pt-001',
 	'pt-pt': 'pt-PT',
-	'ur-001': 'ur-001'
+	'ur-001': 'ur-001',
+	'da-001': 'da-001'
 };
 
 /** Text direction for <html dir> and for any element that shows a locale's own name. */
@@ -258,7 +261,7 @@ function matchCase(source: string, target: string): string {
 	return source[0] === source[0].toUpperCase() ? target[0].toUpperCase() + target.slice(1) : target;
 }
 
-const CATALOGUES: Partial<Record<Locale, Record<string, string>>> = { 'cy-gb': cyGb, 'zh-cn': zhCn, 'zh-001': zh001, 'hi-in': hiIn, 'hi-001': hi001, 'ar-eg': arEg, 'ar-001': ar001, 'es-mx': esMx, 'es-001': es001, 'es-es': esEs, 'fr-fr': frFr, 'fr-001': fr001, 'fr-ca': frCa, 'ru-ru': ruRu, 'ru-001': ru001, 'ru-by': ruBy, 'bn-bd': bnBd, 'bn-001': bn001, 'bn-in': bnIn, 'id-id': idId, 'id-001': id001, 'id-my': idMy, 'th-th': thTh, 'th-001': th001, 'ja-jp': jaJp, 'ja-001': ja001, 'ko-kr': koKr, 'ko-001': ko001, 'sw-tz': swTz, 'sw-001': sw001, 'sv-se': svSe, 'sv-001': sv001, 'nl-nl': nlNl, 'nl-001': nl001, 'vi-vn': viVn, 'vi-001': vi001, 'de-de': deDe, 'de-001': de001, 'de-at': deAt, 'pt-br': ptBr, 'pt-001': pt001, 'pt-pt': ptPt, 'ur-001': ur001 };
+const CATALOGUES: Partial<Record<Locale, Record<string, string>>> = { 'cy-gb': cyGb, 'zh-cn': zhCn, 'zh-001': zh001, 'hi-in': hiIn, 'hi-001': hi001, 'ar-eg': arEg, 'ar-001': ar001, 'es-mx': esMx, 'es-001': es001, 'es-es': esEs, 'fr-fr': frFr, 'fr-001': fr001, 'fr-ca': frCa, 'ru-ru': ruRu, 'ru-001': ru001, 'ru-by': ruBy, 'bn-bd': bnBd, 'bn-001': bn001, 'bn-in': bnIn, 'id-id': idId, 'id-001': id001, 'id-my': idMy, 'th-th': thTh, 'th-001': th001, 'ja-jp': jaJp, 'ja-001': ja001, 'ko-kr': koKr, 'ko-001': ko001, 'sw-tz': swTz, 'sw-001': sw001, 'sv-se': svSe, 'sv-001': sv001, 'nl-nl': nlNl, 'nl-001': nl001, 'vi-vn': viVn, 'vi-001': vi001, 'de-de': deDe, 'de-001': de001, 'de-at': deAt, 'pt-br': ptBr, 'pt-001': pt001, 'pt-pt': ptPt, 'ur-001': ur001, 'da-001': da001 };
 
 /** Locales translated from a catalogue. Their translations are drafts until reviewed, so their pages show a notice. */
 export function isTranslated(locale: Locale): boolean {

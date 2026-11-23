@@ -211,6 +211,8 @@ describe('paths', () => {
 		expect(pickLocale(['ur-PK'])).toBe('ur-001');
 		expect(pickLocale(['ur-IN'])).toBe('ur-001');
 		expect(pickLocale(['ur'])).toBe('ur-001');
+		expect(pickLocale(['da-DK'])).toBe('da-001');
+		expect(pickLocale(['da'])).toBe('da-001');
 		expect(pickLocale(['en'])).toBe('en-001');
 		expect(pickLocale(['en-US'])).toBe('en-us');
 		expect(pickLocale(['en-AU'])).toBe('en-001');
@@ -415,5 +417,19 @@ describe('Urdu', () => {
 		expect(formatDate('ur-001', '2026-11-21')).toBe('21 نومبر، 2026');
 		expect(isTranslated('ur-001')).toBe(true);
 		expect(localeDir('ur-001')).toBe('rtl');
+	});
+});
+
+describe('Danish', () => {
+	it('translates, with singular count words and Danish numbers and dates', () => {
+		expect(t('da-001', 'Home')).toBe('Forside');
+		expect(tCount('da-001', 'GitHub stars', 1)).toBe('GitHub-stjerne');
+		expect(tCount('da-001', 'GitHub stars', 5)).toBe('GitHub-stjerner');
+		expect(formatNumber('da-001', 96_386_872)).toBe('96.386.872');
+		expect(formatNumber('da-001', 96_386_872, true)).toBe('96,3\u00a0mio.');
+		expect(formatNumber('da-001', 16_513, true)).toBe('16,5\u00a0t');
+		expect(formatDate('da-001', '2026-11-21')).toBe('21. november 2026');
+		expect(isTranslated('da-001')).toBe(true);
+		expect(localeDir('da-001')).toBe('ltr');
 	});
 });

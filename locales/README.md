@@ -77,6 +77,7 @@ whose plain entries are the plural for 3 to 10, adds `one|`, `two|`, `many|`,
 | [`pt-001`](pt-001/messages.json) | Português (Mundo) (Portuguese, World) | Draft: a copy of `pt-br`; keep the two in step |
 | [`pt-pt`](pt-pt/messages.json) | Português (Portugal) (Portuguese, Portugal) | Draft: `pt-br` tuned for Portugal; keep it in step with `pt-br` |
 | [`ur-001`](ur-001/messages.json) | اردو (دنیا) (Urdu, World) | Draft: needs review by a first-language Urdu speaker; right to left |
+| [`da-001`](da-001/messages.json) | Dansk (verden) (Danish, World) | Draft: needs review by a first-language Danish speaker |
 
 English locales (`en-001`, `en-gb`, `en-us`) need no catalogue: `en-us` spelling is
 derived by rule in `src/lib/locales.ts`.
