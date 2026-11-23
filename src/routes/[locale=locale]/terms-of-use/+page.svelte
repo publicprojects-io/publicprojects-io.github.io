@@ -27,7 +27,7 @@
 
 		<h2>{s('Licences')}</h2>
 		<p>
-			{s('Each project has its own licence, stated in its repository or package registry entry and shown in its key facts; that licence, not this page, sets out what you may do with the project. Where a project’s key facts say its licence is not stated, ask the author before reusing it.')}
+			{s('Each project has its own licence, stated in its repository or package registry entry; that licence, not this page, sets out what you may do with the project. Where a project’s repository states no licence, ask the author before reusing it.')}
 		</p>
 		<p>{s('The source code of this website is public in')} <a href={SOURCE_URL}>{s('its repository')}</a>.</p>
 

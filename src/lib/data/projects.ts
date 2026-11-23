@@ -39,44 +39,13 @@ export type Project = {
 	tags: string[];
 	/** Main repository, "owner/name" in lower case; a key of stats.json `repos`. */
 	repo: keyof typeof stats.repos;
-	/**
-	 * Licence as the project states it, for projects with no package. Packages take
-	 * their licence from the registry (stats.json). Absent means the repository states
-	 * no licence, which the site shows plainly.
-	 */
-	licence?: string;
 	/** Overrides the computed status; see statusOf and the project-status page. */
 	status?: 'demonstration' | 'pre-release';
-	/** Health projects: overrides of DEFAULT_CLINICAL_SAFETY. */
-	clinicalSafety?: Partial<ClinicalSafety>;
 	/** A verified example: run against `version`, with its real output. */
 	usage?: { version: string; install: string; code: string; output: string };
 	/** Third-party recognition, each with a public link. */
 	recognition?: Link[];
 };
-
-export type ClinicalSafety = {
-	/** Clinical Safety Officer. */
-	officer: string;
-	/** Medical device position. */
-	device: string;
-	/** Published clinical safety documentation, if any. */
-	documents?: Link;
-};
-
-/**
- * What every health project shows unless it publishes more. These describe what the
- * repositories contain, checked on the stats date: no named Clinical Safety Officer
- * and no medical device assessment.
- */
-export const DEFAULT_CLINICAL_SAFETY: ClinicalSafety = {
-	officer: 'None named',
-	device: 'No assessment published'
-};
-
-export function clinicalSafetyOf(project: Project): ClinicalSafety | undefined {
-	return project.area === 'health' ? { ...DEFAULT_CLINICAL_SAFETY, ...project.clinicalSafety } : undefined;
-}
 
 export type Status = 'active' | 'pre-release' | 'demonstration' | 'maintenance' | 'archived';
 
@@ -118,20 +87,6 @@ export function versionOf(project: Project): { version: string; released: string
 	return undefined;
 }
 
-/** The licence: from the registry for packages, else as the project states it; undefined if none is stated. */
-export function licenceOf(project: Project): string | undefined {
-	for (const ref of project.stats ?? []) {
-		if (ref.kind === 'crate') return stats.crateVersions[ref.key].licence;
-		if (ref.kind === 'gem') return stats.gemVersions[ref.key].licences.join(' OR ');
-	}
-	return project.licence;
-}
-
-/** Date of the latest commit to the main repository. */
-export function lastCommitOf(project: Project): string {
-	return stats.repos[project.repo].pushedAt;
-}
-
 export const AREAS: Record<Area, { name: string; slug: string; summary: string }> = {
 	health: {
 		name: 'Health care and medical',
@@ -162,7 +117,6 @@ export const PROJECTS: Project[] = [
 	{
 		slug: 'international-patient-summary',
 		repo: 'international-patient-summary/international-patient-summary',
-		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		name: 'International Patient Summary',
 		area: 'health',
 		summary:
@@ -338,8 +292,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'form-examples',
 		repo: 'formexamples/form-examples',
-		licence: 'CC-BY-NC-SA-4.0 OR OGL-UK-3.0',
-		clinicalSafety: { device: 'Discussed in each form’s safety case notes', documents: { label: 'Safety case notes for each form', href: 'https://github.com/FormExamples/form-examples/tree/main/forms' } },
 		name: 'Form Examples',
 		area: 'health',
 		summary: '360 medical-form reference implementations: clinical assessments, scoring engines, SQL, FHIR R5, SvelteKit, and Rust.',
@@ -387,9 +339,7 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'electronic-patient-record',
 		repo: 'electronic-patient-record/electronic-patient-record',
-		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		status: 'pre-release',
-		clinicalSafety: { officer: 'Not named', documents: { label: 'Draft risk management plan and hazard log', href: 'https://github.com/electronic-patient-record/electronic-patient-record/tree/main/governance/clinical-safety' } },
 		name: 'Electronic Patient Record',
 		area: 'health',
 		summary: 'Software for longitudinal patient records, developed in public under open licences.',
@@ -401,9 +351,7 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'patient-administration-system',
 		repo: 'patient-administration-system/patient-administration-system',
-		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		status: 'pre-release',
-		clinicalSafety: { officer: 'Not named', documents: { label: 'Draft hazard log', href: 'https://github.com/patient-administration-system/patient-administration-system/blob/main/governance/clinical-safety.md' } },
 		name: 'Patient Administration System',
 		area: 'health',
 		summary: 'An open-source patient administration system for hospitals and clinics: appointments, reminders, waiting lists, and access reporting.',
@@ -415,7 +363,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'emergency-care-system',
 		repo: 'emergency-care-system/emergency-care-system',
-		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		status: 'demonstration',
 		name: 'Emergency Care System',
 		area: 'health',
@@ -441,7 +388,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'bold-contacts',
 		repo: 'boldcontacts/boldcontacts-mobile-app-for-apple',
-		licence: 'GPL-2.0-or-later',
 		name: 'Bold Contacts',
 		area: 'health',
 		summary: 'A mobile contacts app for people with vision, cognition, or motor disabilities.',
@@ -474,7 +420,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'coordinated-vulnerability-disclosure',
 		repo: 'coordinated-vulnerability-disclosure/coordinated-vulnerability-disclosure',
-		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		name: 'Coordinated Vulnerability Disclosure',
 		area: 'public-value',
 		summary: 'Guidance and policy examples for coordinated vulnerability disclosure (CVD), in 60+ languages.',
@@ -488,7 +433,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'lily-design-system',
 		repo: 'lilydesignsystem/lily-design-system',
-		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		name: 'Lily Design System',
 		area: 'public-value',
 		summary: 'A free, open-source headless design system: accessible components across seven frameworks, with themes and 60+ languages.',
@@ -502,7 +446,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'service-management',
 		repo: 'service-management-guide/service-management-guide',
-		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		name: 'Service Management Guide and Metrics',
 		area: 'public-value',
 		summary: 'A guide to IT service management, with a companion metrics site.',
@@ -514,7 +457,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'agile-itil',
 		repo: 'agile-itil-guide/agile-itil-guide',
-		licence: 'MIT OR Apache-2.0 OR BSD-3-Clause OR GPL-2.0-only OR GPL-3.0-only OR OGL-UK-3.0 OR CC-BY-NC-SA-4.0',
 		name: 'Agile ITIL Guide and Metrics',
 		area: 'public-value',
 		summary: 'A guide to combining agile ways of working with ITIL service management, in 10+ languages.',
@@ -541,7 +483,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'architecture-decision-record',
 		repo: 'architecture-decision-record/architecture-decision-record',
-		licence: 'CC-BY-NC-SA-4.0 OR OGL-UK-3.0',
 		name: 'Architecture Decision Record',
 		area: 'engineering',
 		summary: 'Architecture decision record (ADR) examples and templates for software planning and IT leadership, in 60+ languages.',
@@ -601,7 +542,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'gitalias',
 		repo: 'gitalias/gitalias',
-		licence: 'GPL-2.0-or-later',
 		name: 'GitAlias',
 		area: 'engineering',
 		summary: 'Hundreds of git alias commands for faster, easier version control.',
@@ -614,7 +554,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'queueing-theory',
 		repo: 'joelparkerhenderson/queueing-theory',
-		licence: 'MIT OR Apache-2.0 OR GPL-2.0 OR GPL-3.0',
 		name: 'Queueing Theory',
 		area: 'engineering',
 		summary: 'An introduction to queueing theory for software development.',
@@ -714,7 +653,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'num',
 		repo: 'numcommand/num',
-		licence: 'Any of: Apache, BSD, Creative Commons BY-NC-SA, AGPL, GPL, LGPL, MIT, Perl Artistic, or Ruby',
 		name: 'Num',
 		area: 'engineering',
 		summary: 'Number utilities for statistics on the command line, using only standard POSIX.',
@@ -727,7 +665,6 @@ println!("{}", nhs_number.validate_check_digit());`,
 	{
 		slug: 'demo-rust-axum',
 		repo: 'joelparkerhenderson/demo-rust-axum',
-		licence: 'Creative Commons ShareAlike',
 		status: 'demonstration',
 		name: 'Demo Rust Axum',
 		area: 'engineering',

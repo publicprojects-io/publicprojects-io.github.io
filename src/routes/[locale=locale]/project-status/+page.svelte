@@ -42,7 +42,7 @@
 		<header class="page-header">
 			<h1>{s('Project status')}</h1>
 			<p class="lead">
-				{s('Every project shows a status, so you can tell how much to rely on it today. Statuses are worked out from dated facts, such as package versions and the latest commit, so they stay honest as projects change.')}
+				{s('Every project has a status, so you can tell how much to rely on it today. Statuses are worked out from dated facts, such as package versions and the latest commit, so they stay honest as projects change.')}
 			</p>
 		</header>
 		<div class="needs-table-wrap">
@@ -63,7 +63,7 @@
 			</table>
 		</div>
 		<p>
-			{s('The checks run in this order: archived first, then a project’s own description, then the package version, then the latest commit. See each project’s key facts for its version and latest commit, and')}
+			{s('The checks run in this order: archived first, then a project’s own description, then the package version, then the latest commit. See also')}
 			<a href={href('projects')}>{s('all projects')}</a>.
 		</p>
 	</div>

@@ -14,8 +14,8 @@ catalogue that maps each English source string to its translation:
 ```
 
 Some English text is used two ways: "GitHub stars" follows a number on the home
-page and project cards ("16.5K+ GitHub stars"), and stands alone as a label on
-project pages. The plain entry is the form after a number, in lower case like
+page and project cards ("16.5K+ GitHub stars"), and can stand alone as a label,
+through `t(locale, text, 'label')`. The plain entry is the form after a number, in lower case like
 "downloads". Where the stand-alone label differs, add it as `"label|GitHub stars"`
 (Russian "звёзд на GitHub" after a number, "Звёзды на GitHub" as a label).
 Languages that need only one form leave the `label|` entry out.

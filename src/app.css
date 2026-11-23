@@ -470,43 +470,8 @@ main:focus {
 
 /* ── Project detail ─────────────────────────────────────────────────── */
 
-.detail-grid {
-	display: grid;
-	/* One column on small screens; minmax(0, …) stops a wide code block widening the page. */
-	grid-template-columns: minmax(0, 1fr);
-	gap: var(--lily-space-lg, 2rem);
+.detail-prose {
 	padding-block: var(--lily-space-md, 1rem);
-}
-
-@media (min-width: 52rem) {
-	.detail-grid {
-		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-	}
-}
-
-.detail-facts {
-	align-self: start;
-	padding: var(--lily-space-md, 1rem) var(--lily-space-md, 1.25rem);
-	border-radius: var(--lily-radius-md, 0.5rem);
-	background: var(--color-base-200);
-}
-
-.detail-facts h2 {
-	margin-block-start: 0;
-}
-
-.detail-facts dt {
-	font-weight: 700;
-}
-
-.detail-facts dd {
-	margin: 0 0 0.75rem;
-}
-
-.detail-facts .tag-group {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.35rem;
 }
 
 /* ── Tables ─────────────────────────────────────────────────────────── */
@@ -686,7 +651,3 @@ main:focus {
 	border-style: dashed;
 }
 
-.licence {
-	font-size: 0.85rem;
-	overflow-wrap: anywhere;
-}

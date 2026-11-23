@@ -26,7 +26,7 @@
 	const m = $derived(ui(locale));
 	const path = $derived(`${base}${localePath(locale, `projects/${project.slug}`)}`);
 	const status = $derived(statusOf(project));
-	// Cards leave out the common statuses; the project page still shows them in its key facts.
+	// Cards leave out the common statuses; the project-status page lists every project’s status.
 	const QUIET_STATUSES: string[] = ['active', 'pre-release'];
 </script>
 

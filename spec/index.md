@@ -212,7 +212,7 @@ open source for the public good.
 | `public-value` | Public value projects; translation and accessibility as public value |
 | `engineering` | Software engineering leadership (nav label "Software engineering"); adoption and citation |
 | `projects` | Every project, grouped by area |
-| `projects/<slug>` | One page per project: summary, links, about, public value, "Use it" (where a verified example exists), recognition (where any), key facts, topics, related projects. See § Project pages |
+| `projects/<slug>` | One page per project: summary, links, about, public value, "Use it" (where a verified example exists), recognition (where any), related projects; no key-facts column. See § Project pages |
 | `project-status` | What each status means and the rule that decides it, with a count per status |
 | `security` | Security policy: private reporting through GitHub private vulnerability reporting on the affected repository, what to include, safety-relevant reports, coordinated disclosure |
 | `digital-health-teams` | For digital health groups: an independence and clinical safety notice, a table mapping needs to projects, why open source fits (with UK examples: Service Standard point 12, Technology Code of Practice), and how to get involved |
@@ -261,21 +261,16 @@ then the footer.
 
 ### Project pages
 
-Each project page has a key-facts list, from dated, sourced data:
+Each project page has a single column: summary, links, about, public value, "Use it",
+recognition, and related projects. It has no key-facts column: no status, version,
+licence, maintainer, latest commit, stars, downloads, source, topics, or clinical
+safety list.
 
 - **Status** (see `project-status`), computed by `statusOf()`: archived repository,
   then the project's own override (demonstration or pre-release), then a package
   version below 1.0.0 (pre-release), then no commit for over a year (maintenance),
-  else active. Cards show the status too, except active and pre-release, which are
+  else active. Cards show the status, except active and pre-release, which are
   common enough to be noise on a card.
-- **Current version** and release date, for crates and gems.
-- **Licence**: from the registry for packages; otherwise as the project's licence
-  file or README states it, recorded in `projects.ts`. If the repository states no
-  licence, the page says "Not stated in the repository". Never assume one.
-- **Maintainer**, **latest commit**, area, downloads or stars, translations, source.
-- For health projects: **Clinical Safety Officer**, **medical device position**, and
-  **clinical safety documentation**, defaulting to "None named", "No assessment
-  published" and "None published", with links where a project publishes documents.
 - A "Use it" section for projects with a verified example: install command, code,
   and the real output, with the version it was run against. Examples must be run
   before they are published.
@@ -300,7 +295,7 @@ Machine-readable routes: `sitemap.xml` (all locales, with `xhtml:link` alternate
 `summary`, a `description`, a `value` (why it matters to the public), `links`,
 optional `stats` (pointers into `stats.json`), an optional `languages` (a translation
 count the project itself publishes), `tags`, `repo` (main repository), and optionally
-`licence`, `status`, `clinicalSafety`, `usage`, and `recognition`.
+`status`, `usage`, and `recognition`.
 
 ### Content integrity (strict)
 
