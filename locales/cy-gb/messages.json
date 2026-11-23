@@ -604,5 +604,16 @@
 	"Your theme and text-size choices stay in your own browser.": "Mae eich dewisiadau thema a maint testun yn aros yn eich porwr eich hun.",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "Mae dim dibyniaethau yn golygu arwyneb ymosod llai a sicrwydd symlach ar gyfer meddalwedd sy’n trin data cleifion.",
 	"zoom in to 400 percent without text spilling off the screen;": "chwyddo i 400 y cant heb i destun lifo oddi ar y sgrin;",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "Mae “Doeddwn i ddim yn gallu gweithredu hwn gyda’r bysellfwrdd” yn adroddiad cyflawn. Nid oes angen i chi enwi maen prawf WCAG. Dywedwch pa dudalen, pa borwr a pha dechnoleg gynorthwyol yr oeddech yn ei defnyddio, os ydych yn gwybod."
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "Mae “Doeddwn i ddim yn gallu gweithredu hwn gyda’r bysellfwrdd” yn adroddiad cyflawn. Nid oes angen i chi enwi maen prawf WCAG. Dywedwch pa dudalen, pa borwr a pha dechnoleg gynorthwyol yr oeddech yn ei defnyddio, os ydych yn gwybod.",
+	"What Public Projects is not": "Beth nad yw Public Projects",
+	"Not a standards body": "Nid corff safonau",
+	"the projects implement published standards; they do not set them.": "mae’r prosiectau’n gweithredu safonau cyhoeddedig; nid ydynt yn eu gosod.",
+	"Not a vendor": "Nid gwerthwr",
+	"there is no paid tier, no licence fee, and nothing to buy.": "does dim haen â thâl, dim ffi trwydded, a dim i’w brynu.",
+	"Not a medical device supplier": "Nid cyflenwr dyfeisiau meddygol",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "mae defnyddio prosiect iechyd mewn gofal cleifion yn gofyn am waith diogelwch clinigol y system sy’n ei ddefnyddio.",
+	"Not an employer’s programme": "Nid rhaglen cyflogwr",
+	"these are personal projects, not products of any employer.": "prosiectau personol yw’r rhain, nid cynhyrchion unrhyw gyflogwr.",
+	"Not a charity": "Nid elusen",
+	"donations go to the author personally and are not tax-deductible.": "mae rhoddion yn mynd i’r awdur yn bersonol, ac ni ellir eu didynnu o dreth."
 }

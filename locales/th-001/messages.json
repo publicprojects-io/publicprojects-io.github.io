@@ -603,5 +603,16 @@
 	"Your theme and text-size choices stay in your own browser.": "ตัวเลือกธีมและขนาดตัวอักษรของคุณจะอยู่ในเบราว์เซอร์ของคุณเอง",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "การไม่มี dependency เลยหมายถึงพื้นที่การโจมตีที่เล็กลงและการรับรองความปลอดภัยที่ง่ายขึ้นสำหรับซอฟต์แวร์ที่จัดการข้อมูลผู้ป่วย",
 	"zoom in to 400 percent without text spilling off the screen;": "ซูมเข้าได้ถึง 400 เปอร์เซ็นต์โดยข้อความไม่ล้นออกนอกหน้าจอ;",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "“ฉันใช้งานส่วนนี้ด้วยแป้นพิมพ์ไม่ได้” ก็เป็นรายงานที่สมบูรณ์แล้ว ไม่จำเป็นต้องระบุเกณฑ์ WCAG โปรดระบุหน้า เบราว์เซอร์ และเทคโนโลยีสิ่งอำนวยความสะดวกที่ใช้อยู่ หากทราบ"
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "“ฉันใช้งานส่วนนี้ด้วยแป้นพิมพ์ไม่ได้” ก็เป็นรายงานที่สมบูรณ์แล้ว ไม่จำเป็นต้องระบุเกณฑ์ WCAG โปรดระบุหน้า เบราว์เซอร์ และเทคโนโลยีสิ่งอำนวยความสะดวกที่ใช้อยู่ หากทราบ",
+	"What Public Projects is not": "สิ่งที่ Public Projects ไม่ใช่",
+	"Not a standards body": "ไม่ใช่หน่วยงานกำหนดมาตรฐาน",
+	"the projects implement published standards; they do not set them.": "โครงการต่าง ๆ นำมาตรฐานที่เผยแพร่แล้วมาใช้ แต่ไม่ได้เป็นผู้กำหนดมาตรฐาน",
+	"Not a vendor": "ไม่ใช่ผู้ขาย",
+	"there is no paid tier, no licence fee, and nothing to buy.": "ไม่มีรุ่นแบบเสียเงิน ไม่มีค่าสัญญาอนุญาต และไม่มีสิ่งใดต้องซื้อ",
+	"Not a medical device supplier": "ไม่ใช่ผู้จัดหาเครื่องมือแพทย์",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "การใช้โครงการด้านสุขภาพในการดูแลผู้ป่วย ต้องอาศัยงานด้านความปลอดภัยทางคลินิกของระบบที่นำโครงการนั้นไปใช้",
+	"Not an employer’s programme": "ไม่ใช่โครงการของนายจ้าง",
+	"these are personal projects, not products of any employer.": "โครงการเหล่านี้เป็นโครงการส่วนตัว ไม่ใช่ผลิตภัณฑ์ของนายจ้างใด",
+	"Not a charity": "ไม่ใช่องค์กรการกุศล",
+	"donations go to the author personally and are not tax-deductible.": "เงินบริจาคมอบให้ผู้เขียนเป็นการส่วนตัว และนำไปลดหย่อนภาษีไม่ได้"
 }

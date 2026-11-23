@@ -608,5 +608,16 @@
 	"one|downloads": "download",
 	"one|GitHub stars": "estrela no GitHub",
 	"label|GitHub stars": "Estrelas no GitHub",
-	"one|free, open-source projects in three areas. Every project is free to use, study, change, and share.": "projeto gratuito de código aberto em três áreas. O projeto pode ser usado, estudado, modificado e compartilhado livremente."
+	"one|free, open-source projects in three areas. Every project is free to use, study, change, and share.": "projeto gratuito de código aberto em três áreas. O projeto pode ser usado, estudado, modificado e compartilhado livremente.",
+	"What Public Projects is not": "O que o Public Projects não é",
+	"Not a standards body": "Não é um órgão de normalização",
+	"the projects implement published standards; they do not set them.": "os projetos implementam padrões publicados; não os definem.",
+	"Not a vendor": "Não é um fornecedor comercial",
+	"there is no paid tier, no licence fee, and nothing to buy.": "não há plano pago, taxa de licença nem nada para comprar.",
+	"Not a medical device supplier": "Não é um fornecedor de dispositivos médicos",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "usar um projeto de saúde no atendimento a pacientes exige o trabalho de segurança clínica do sistema que o utiliza.",
+	"Not an employer’s programme": "Não é um programa de um empregador",
+	"these are personal projects, not products of any employer.": "são projetos pessoais, não produtos de nenhum empregador.",
+	"Not a charity": "Não é uma instituição de caridade",
+	"donations go to the author personally and are not tax-deductible.": "as doações vão pessoalmente para o autor e não são dedutíveis do imposto de renda."
 }

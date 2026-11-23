@@ -604,5 +604,16 @@
 	"Your theme and text-size choices stay in your own browser.": "Pilihan tema dan ukuran teks Anda tetap berada di browser Anda sendiri.",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "Tanpa dependensi berarti permukaan serangan yang lebih kecil dan jaminan yang lebih sederhana untuk perangkat lunak yang menangani data pasien.",
 	"zoom in to 400 percent without text spilling off the screen;": "memperbesar hingga 400 persen tanpa teks meluber keluar layar;",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "“Saya tidak dapat mengoperasikan ini dengan papan ketik” adalah laporan yang lengkap. Anda tidak perlu menyebutkan kriteria WCAG. Mohon sebutkan halaman mana, browser mana, dan teknologi bantu apa yang Anda gunakan, jika Anda mengetahuinya."
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "“Saya tidak dapat mengoperasikan ini dengan papan ketik” adalah laporan yang lengkap. Anda tidak perlu menyebutkan kriteria WCAG. Mohon sebutkan halaman mana, browser mana, dan teknologi bantu apa yang Anda gunakan, jika Anda mengetahuinya.",
+	"What Public Projects is not": "Yang bukan Public Projects",
+	"Not a standards body": "Bukan badan standar",
+	"the projects implement published standards; they do not set them.": "proyek-proyek ini menerapkan standar yang telah diterbitkan; proyek-proyek ini tidak menetapkannya.",
+	"Not a vendor": "Bukan vendor",
+	"there is no paid tier, no licence fee, and nothing to buy.": "tidak ada versi berbayar, biaya lisensi, atau apa pun yang perlu dibeli.",
+	"Not a medical device supplier": "Bukan pemasok alat kesehatan",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "menggunakan proyek kesehatan dalam perawatan pasien memerlukan pekerjaan keselamatan klinis dari sistem yang menggunakannya.",
+	"Not an employer’s programme": "Bukan program pemberi kerja",
+	"these are personal projects, not products of any employer.": "ini adalah proyek pribadi, bukan produk pemberi kerja mana pun.",
+	"Not a charity": "Bukan lembaga amal",
+	"donations go to the author personally and are not tax-deductible.": "donasi diberikan kepada pembuatnya secara pribadi dan tidak dapat dikurangkan dari pajak."
 }

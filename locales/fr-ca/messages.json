@@ -604,5 +604,16 @@
 	"Your theme and text-size choices stay in your own browser.": "Vos choix de thème et de taille du texte restent dans votre propre navigateur.",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "Zéro dépendance signifie une surface d’attaque plus réduite et une assurance plus simple pour les logiciels qui traitent des données de patients.",
 	"zoom in to 400 percent without text spilling off the screen;": "zoomer jusqu’à 400 % sans que le texte ne déborde de l’écran;",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "« Je n’ai pas pu utiliser ceci au clavier » est un signalement complet. Vous n’avez pas besoin de citer un critère des WCAG. Veuillez indiquer quelle page, quel navigateur et quelle technologie d’assistance vous utilisiez, si vous le savez."
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "« Je n’ai pas pu utiliser ceci au clavier » est un signalement complet. Vous n’avez pas besoin de citer un critère des WCAG. Veuillez indiquer quelle page, quel navigateur et quelle technologie d’assistance vous utilisiez, si vous le savez.",
+	"What Public Projects is not": "Ce que Public Projects n’est pas",
+	"Not a standards body": "Pas un organisme de normalisation",
+	"the projects implement published standards; they do not set them.": "les projets mettent en œuvre des normes publiées; ils ne les fixent pas.",
+	"Not a vendor": "Pas un éditeur commercial",
+	"there is no paid tier, no licence fee, and nothing to buy.": "il n’y a ni offre payante, ni frais de licence, ni rien à acheter.",
+	"Not a medical device supplier": "Pas un fournisseur d’instruments médicaux",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "utiliser un projet de santé dans les soins aux patients exige le travail de sécurité clinique du système qui l’utilise.",
+	"Not an employer’s programme": "Pas un programme d’employeur",
+	"these are personal projects, not products of any employer.": "ce sont des projets personnels, et non des produits d’un employeur.",
+	"Not a charity": "Pas un organisme de bienfaisance",
+	"donations go to the author personally and are not tax-deductible.": "les dons vont personnellement à l’auteur et ne donnent pas droit à une déduction d’impôt."
 }

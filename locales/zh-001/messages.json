@@ -603,5 +603,16 @@
 	"Your theme and text-size choices stay in your own browser.": "你的主题和文字大小选择保留在你自己的浏览器中。",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "零依赖意味着更小的攻击面，也让处理患者数据的软件更容易获得保证。",
 	"zoom in to 400 percent without text spilling off the screen;": "放大到 400% 而文字不会溢出屏幕；",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "“我无法用键盘操作这个”就是一份完整的报告。你不需要指出 WCAG 的具体准则。如果你知道，请说明是哪个页面、哪个浏览器以及你使用的是哪种辅助技术。"
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "“我无法用键盘操作这个”就是一份完整的报告。你不需要指出 WCAG 的具体准则。如果你知道，请说明是哪个页面、哪个浏览器以及你使用的是哪种辅助技术。",
+	"What Public Projects is not": "Public Projects 不是什么",
+	"Not a standards body": "不是标准制定机构",
+	"the projects implement published standards; they do not set them.": "这些项目实现已发布的标准，但不制定标准。",
+	"Not a vendor": "不是供应商",
+	"there is no paid tier, no licence fee, and nothing to buy.": "没有付费版本，没有许可费，也没有任何需要购买的东西。",
+	"Not a medical device supplier": "不是医疗器械供应商",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "在患者护理中使用医疗项目，需要由使用它的系统完成相应的临床安全工作。",
+	"Not an employer’s programme": "不是雇主的项目",
+	"these are personal projects, not products of any employer.": "这些是个人项目，不是任何雇主的产品。",
+	"Not a charity": "不是慈善机构",
+	"donations go to the author personally and are not tax-deductible.": "捐款归作者个人所有，不可抵税。"
 }

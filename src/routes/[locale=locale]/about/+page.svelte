@@ -66,6 +66,15 @@
 			<li><strong>{s('Safety first')}</strong>: {s('health projects are building blocks, not certified medical devices.')}</li>
 		</ul>
 
+		<h2>{s('What Public Projects is not')}</h2>
+		<ul>
+			<li><strong>{s('Not a standards body')}</strong>: {s('the projects implement published standards; they do not set them.')}</li>
+			<li><strong>{s('Not a vendor')}</strong>: {s('there is no paid tier, no licence fee, and nothing to buy.')}</li>
+			<li><strong>{s('Not a medical device supplier')}</strong>: {s('using a health project in patient care needs the clinical safety work of the system that uses it.')}</li>
+			<li><strong>{s('Not an employer’s programme')}</strong>: {s('these are personal projects, not products of any employer.')}</li>
+			<li><strong>{s('Not a charity')}</strong>: {s('donations go to the author personally and are not tax-deductible.')}</li>
+		</ul>
+
 		<h2>{s('Independence')}</h2>
 		<p>
 			{s('Public Projects are personal open-source projects, built in the author’s own time. They are not products of, or endorsed by, any employer or health organisation.')}

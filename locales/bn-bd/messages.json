@@ -603,5 +603,16 @@
 	"Your theme and text-size choices stay in your own browser.": "আপনার থিম ও টেক্সট-আকারের পছন্দ আপনার নিজের ব্রাউজারেই থাকে।",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "শূন্য নির্ভরতা মানে আক্রমণের ক্ষেত্র ছোট, এবং রোগীর ডেটা নিয়ে কাজ করা সফটওয়্যারের নিশ্চয়তা যাচাই সহজ।",
 	"zoom in to 400 percent without text spilling off the screen;": "টেক্সট স্ক্রিনের বাইরে না গিয়ে 400 শতাংশ পর্যন্ত জুম করতে পারা;",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "“আমি কিবোর্ড দিয়ে এটি চালাতে পারিনি” — এটুকুই একটি সম্পূর্ণ রিপোর্ট। কোনো WCAG মানদণ্ডের নাম বলার দরকার নেই। জানা থাকলে অনুগ্রহ করে বলুন কোন পৃষ্ঠা, কোন ব্রাউজার এবং কোন সহায়ক প্রযুক্তি ব্যবহার করছিলেন।"
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "“আমি কিবোর্ড দিয়ে এটি চালাতে পারিনি” — এটুকুই একটি সম্পূর্ণ রিপোর্ট। কোনো WCAG মানদণ্ডের নাম বলার দরকার নেই। জানা থাকলে অনুগ্রহ করে বলুন কোন পৃষ্ঠা, কোন ব্রাউজার এবং কোন সহায়ক প্রযুক্তি ব্যবহার করছিলেন।",
+	"What Public Projects is not": "Public Projects যা নয়",
+	"Not a standards body": "মান নির্ধারণকারী সংস্থা নয়",
+	"the projects implement published standards; they do not set them.": "প্রকল্পগুলো প্রকাশিত মান বাস্তবায়ন করে; সেগুলো নির্ধারণ করে না।",
+	"Not a vendor": "বিক্রেতা নয়",
+	"there is no paid tier, no licence fee, and nothing to buy.": "কোনো অর্থপ্রদত্ত স্তর নেই, লাইসেন্স ফি নেই, কেনার মতো কিছুই নেই।",
+	"Not a medical device supplier": "চিকিৎসা যন্ত্রের সরবরাহকারী নয়",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "রোগীর সেবায় কোনো স্বাস্থ্য প্রকল্প ব্যবহার করতে হলে, যে সিস্টেম এটি ব্যবহার করে তার ক্লিনিক্যাল নিরাপত্তার কাজ প্রয়োজন।",
+	"Not an employer’s programme": "কোনো নিয়োগকর্তার কর্মসূচি নয়",
+	"these are personal projects, not products of any employer.": "এগুলো ব্যক্তিগত প্রকল্প, কোনো নিয়োগকর্তার পণ্য নয়।",
+	"Not a charity": "দাতব্য সংস্থা নয়",
+	"donations go to the author personally and are not tax-deductible.": "অনুদান ব্যক্তিগতভাবে লেখকের কাছে যায় এবং তা করছাড়যোগ্য নয়।"
 }

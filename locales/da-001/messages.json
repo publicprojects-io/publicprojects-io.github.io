@@ -607,5 +607,16 @@
 	"one|projects": "projekt",
 	"one|downloads": "download",
 	"one|GitHub stars": "GitHub-stjerne",
-	"one|free, open-source projects in three areas. Every project is free to use, study, change, and share.": "gratis open source-projekt inden for tre områder. Projektet er gratis at bruge, studere, ændre og dele."
+	"one|free, open-source projects in three areas. Every project is free to use, study, change, and share.": "gratis open source-projekt inden for tre områder. Projektet er gratis at bruge, studere, ændre og dele.",
+	"What Public Projects is not": "Hvad Public Projects ikke er",
+	"Not a standards body": "Ikke et standardiseringsorgan",
+	"the projects implement published standards; they do not set them.": "projekterne implementerer offentliggjorte standarder; de fastsætter dem ikke.",
+	"Not a vendor": "Ikke en kommerciel leverandør",
+	"there is no paid tier, no licence fee, and nothing to buy.": "der er ingen betalingsversion, intet licensgebyr og intet at købe.",
+	"Not a medical device supplier": "Ikke en leverandør af medicinsk udstyr",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "brug af et sundhedsprojekt i patientbehandlingen kræver klinisk sikkerhedsarbejde i det system, der bruger det.",
+	"Not an employer’s programme": "Ikke en arbejdsgivers program",
+	"these are personal projects, not products of any employer.": "det er personlige projekter, ikke produkter fra nogen arbejdsgiver.",
+	"Not a charity": "Ikke en velgørenhedsorganisation",
+	"donations go to the author personally and are not tax-deductible.": "donationer går personligt til forfatteren og er ikke fradragsberettigede."
 }

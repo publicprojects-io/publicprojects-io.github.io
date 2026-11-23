@@ -607,5 +607,16 @@
 	"one|projects": "project",
 	"one|downloads": "download",
 	"one|GitHub stars": "GitHub-ster",
-	"one|free, open-source projects in three areas. Every project is free to use, study, change, and share.": "gratis opensourceproject in drie gebieden. Het project is vrij te gebruiken, te bestuderen, te wijzigen en te delen."
+	"one|free, open-source projects in three areas. Every project is free to use, study, change, and share.": "gratis opensourceproject in drie gebieden. Het project is vrij te gebruiken, te bestuderen, te wijzigen en te delen.",
+	"What Public Projects is not": "Wat Public Projects niet is",
+	"Not a standards body": "Geen normalisatie-instelling",
+	"the projects implement published standards; they do not set them.": "de projecten implementeren gepubliceerde standaarden; ze stellen ze niet vast.",
+	"Not a vendor": "Geen commercieel bedrijf",
+	"there is no paid tier, no licence fee, and nothing to buy.": "er is geen betaalde versie, geen licentiekosten en niets te kopen.",
+	"Not a medical device supplier": "Geen leverancier van medische hulpmiddelen",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "wie een zorgproject in de patiëntenzorg gebruikt, heeft het klinische veiligheidswerk nodig van het systeem dat het gebruikt.",
+	"Not an employer’s programme": "Geen programma van een werkgever",
+	"these are personal projects, not products of any employer.": "dit zijn persoonlijke projecten, geen producten van een werkgever.",
+	"Not a charity": "Geen goed doel",
+	"donations go to the author personally and are not tax-deductible.": "donaties gaan persoonlijk naar de auteur en zijn niet aftrekbaar van de belasting."
 }

@@ -614,5 +614,16 @@
 	"Your theme and text-size choices stay in your own browser.": "Ваши настройки темы и размера текста остаются в вашем собственном браузере.",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "Отсутствие зависимостей означает меньшую поверхность атаки и более простое обеспечение надёжности программ, работающих с данными пациентов.",
 	"zoom in to 400 percent without text spilling off the screen;": "увеличивать масштаб до 400 процентов так, чтобы текст не выходил за пределы экрана;",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "«У меня не получилось управлять этим с клавиатуры» — это полноценное сообщение. Не нужно называть критерий WCAG. Пожалуйста, укажите, если знаете, какую страницу, какой браузер и какую вспомогательную технологию вы использовали."
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "«У меня не получилось управлять этим с клавиатуры» — это полноценное сообщение. Не нужно называть критерий WCAG. Пожалуйста, укажите, если знаете, какую страницу, какой браузер и какую вспомогательную технологию вы использовали.",
+	"What Public Projects is not": "Чем Public Projects не является",
+	"Not a standards body": "Не орган по стандартизации",
+	"the projects implement published standards; they do not set them.": "проекты реализуют опубликованные стандарты, но не устанавливают их.",
+	"Not a vendor": "Не продавец",
+	"there is no paid tier, no licence fee, and nothing to buy.": "здесь нет платных тарифов и лицензионных сборов, и ничего не нужно покупать.",
+	"Not a medical device supplier": "Не поставщик медицинских изделий",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "чтобы использовать проект в области здравоохранения при оказании помощи пациентам, нужна работа по клинической безопасности системы, которая его использует.",
+	"Not an employer’s programme": "Не программа работодателя",
+	"these are personal projects, not products of any employer.": "это личные проекты, а не продукты какого-либо работодателя.",
+	"Not a charity": "Не благотворительная организация",
+	"donations go to the author personally and are not tax-deductible.": "пожертвования идут лично автору и не дают права на налоговый вычет."
 }

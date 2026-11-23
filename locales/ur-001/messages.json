@@ -607,5 +607,16 @@
 	"one|projects": "پروجیکٹ",
 	"one|downloads": "ڈاؤن لوڈ",
 	"one|GitHub stars": "GitHub اسٹار",
-	"one|free, open-source projects in three areas. Every project is free to use, study, change, and share.": "مفت، اوپن سورس پروجیکٹ، تین شعبوں میں۔ اس پروجیکٹ کو استعمال کرنا، اس کا مطالعہ کرنا، اس میں تبدیلی کرنا اور اسے شیئر کرنا مفت ہے۔"
+	"one|free, open-source projects in three areas. Every project is free to use, study, change, and share.": "مفت، اوپن سورس پروجیکٹ، تین شعبوں میں۔ اس پروجیکٹ کو استعمال کرنا، اس کا مطالعہ کرنا، اس میں تبدیلی کرنا اور اسے شیئر کرنا مفت ہے۔",
+	"What Public Projects is not": "Public Projects کیا نہیں ہے",
+	"Not a standards body": "معیار طے کرنے والا ادارہ نہیں",
+	"the projects implement published standards; they do not set them.": "یہ پروجیکٹس شائع شدہ معیارات کو نافذ کرتے ہیں؛ انہیں طے نہیں کرتے۔",
+	"Not a vendor": "فروخت کنندہ نہیں",
+	"there is no paid tier, no licence fee, and nothing to buy.": "نہ کوئی ادائیگی والا درجہ ہے، نہ لائسنس فیس، اور نہ ہی خریدنے کو کچھ۔",
+	"Not a medical device supplier": "طبی آلات فراہم کرنے والا نہیں",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "مریضوں کی دیکھ بھال میں صحت کا کوئی پروجیکٹ استعمال کرنے کے لیے، اسے استعمال کرنے والے نظام کا طبی حفاظتی کام ضروری ہے۔",
+	"Not an employer’s programme": "کسی آجر کا پروگرام نہیں",
+	"these are personal projects, not products of any employer.": "یہ ذاتی پروجیکٹس ہیں، کسی آجر کی مصنوعات نہیں۔",
+	"Not a charity": "خیراتی ادارہ نہیں",
+	"donations go to the author personally and are not tax-deductible.": "عطیات ذاتی طور پر مصنف کو جاتے ہیں اور ان پر ٹیکس میں چھوٹ نہیں ملتی۔"
 }

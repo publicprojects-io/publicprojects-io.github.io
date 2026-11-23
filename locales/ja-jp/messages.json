@@ -603,5 +603,16 @@
 	"Your theme and text-size choices stay in your own browser.": "テーマと文字サイズの選択は、ご自身のブラウザ内にとどまります。",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "依存関係ゼロは、攻撃対象領域が小さく、患者データを扱うソフトウェアの保証がより簡単になることを意味します。",
 	"zoom in to 400 percent without text spilling off the screen;": "文字が画面からはみ出すことなく 400% まで拡大できること",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "「キーボードで操作できなかった」というだけでも、十分な報告です。WCAG の達成基準を挙げる必要はありません。わかる範囲で、どのページで、どのブラウザと支援技術を使っていたかをお知らせください。"
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "「キーボードで操作できなかった」というだけでも、十分な報告です。WCAG の達成基準を挙げる必要はありません。わかる範囲で、どのページで、どのブラウザと支援技術を使っていたかをお知らせください。",
+	"What Public Projects is not": "Public Projects ではないもの",
+	"Not a standards body": "標準化団体ではありません",
+	"the projects implement published standards; they do not set them.": "プロジェクトは公開された標準を実装するものであり、標準を定めるものではありません。",
+	"Not a vendor": "販売事業者ではありません",
+	"there is no paid tier, no licence fee, and nothing to buy.": "有料プランも、ライセンス料もなく、購入するものは何もありません。",
+	"Not a medical device supplier": "医療機器の供給者ではありません",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "ヘルスケアのプロジェクトを患者のケアに使うには、それを使うシステムでの臨床安全性の取り組みが必要です。",
+	"Not an employer’s programme": "雇用主のプログラムではありません",
+	"these are personal projects, not products of any employer.": "これらは個人のプロジェクトであり、いかなる雇用主の製品でもありません。",
+	"Not a charity": "慈善団体ではありません",
+	"donations go to the author personally and are not tax-deductible.": "寄付は作者個人に渡り、税控除の対象にはなりません。"
 }

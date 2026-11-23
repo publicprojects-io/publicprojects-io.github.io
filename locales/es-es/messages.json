@@ -604,5 +604,16 @@
 	"Your theme and text-size choices stay in your own browser.": "Tus elecciones de tema y tamaño de texto se quedan en tu propio navegador.",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "Cero dependencias significa una superficie de ataque más pequeña y una garantía más sencilla para el software que trata datos de pacientes.",
 	"zoom in to 400 percent without text spilling off the screen;": "ampliar hasta el 400 % sin que el texto se salga de la pantalla;",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "«No pude usar esto con el teclado» es un informe completo. No necesitas mencionar un criterio de las WCAG. Por favor, indica qué página, qué navegador y qué tecnología de apoyo usabas, si lo sabes."
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "«No pude usar esto con el teclado» es un informe completo. No necesitas mencionar un criterio de las WCAG. Por favor, indica qué página, qué navegador y qué tecnología de apoyo usabas, si lo sabes.",
+	"What Public Projects is not": "Lo que Public Projects no es",
+	"Not a standards body": "No es un organismo de normalización",
+	"the projects implement published standards; they do not set them.": "los proyectos implementan estándares publicados; no los establecen.",
+	"Not a vendor": "No es un proveedor comercial",
+	"there is no paid tier, no licence fee, and nothing to buy.": "no hay versión de pago, ni cuota de licencia, ni nada que comprar.",
+	"Not a medical device supplier": "No es un proveedor de productos sanitarios",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "usar un proyecto de salud en la atención a pacientes requiere el trabajo de seguridad clínica del sistema que lo utiliza.",
+	"Not an employer’s programme": "No es un programa de un empleador",
+	"these are personal projects, not products of any employer.": "son proyectos personales, no productos de ningún empleador.",
+	"Not a charity": "No es una organización benéfica",
+	"donations go to the author personally and are not tax-deductible.": "las donaciones van al autor a título personal y no son deducibles fiscalmente."
 }

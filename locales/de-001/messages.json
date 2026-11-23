@@ -607,5 +607,16 @@
 	"one|projects": "Projekt",
 	"one|downloads": "Download",
 	"one|GitHub stars": "GitHub-Stern",
-	"one|free, open-source projects in three areas. Every project is free to use, study, change, and share.": "kostenloses Open-Source-Projekt in drei Bereichen. Das Projekt darf frei genutzt, untersucht, verändert und geteilt werden."
+	"one|free, open-source projects in three areas. Every project is free to use, study, change, and share.": "kostenloses Open-Source-Projekt in drei Bereichen. Das Projekt darf frei genutzt, untersucht, verändert und geteilt werden.",
+	"What Public Projects is not": "Was Public Projects nicht ist",
+	"Not a standards body": "Kein Normungsgremium",
+	"the projects implement published standards; they do not set them.": "die Projekte setzen veröffentlichte Standards um; sie legen sie nicht fest.",
+	"Not a vendor": "Kein kommerzieller Anbieter",
+	"there is no paid tier, no licence fee, and nothing to buy.": "es gibt keine kostenpflichtige Version, keine Lizenzgebühr und nichts zu kaufen.",
+	"Not a medical device supplier": "Kein Anbieter von Medizinprodukten",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "wer ein Gesundheitsprojekt in der Patientenversorgung einsetzt, braucht die klinische Sicherheitsarbeit des Systems, das es verwendet.",
+	"Not an employer’s programme": "Kein Programm eines Arbeitgebers",
+	"these are personal projects, not products of any employer.": "es sind persönliche Projekte, keine Produkte eines Arbeitgebers.",
+	"Not a charity": "Keine gemeinnützige Organisation",
+	"donations go to the author personally and are not tax-deductible.": "Spenden gehen persönlich an Joel Parker Henderson und sind nicht steuerlich absetzbar."
 }

@@ -218,7 +218,7 @@ open source for the public good.
 | `digital-health-teams` | For digital health groups: an independence and clinical safety notice, a table mapping needs to projects, why open source fits (with UK examples: Service Standard point 12, Technology Code of Practice), and how to get involved |
 | `impact` | Every statistic with its date and source link; GitHub stars by account (joelparkerhenderson, gitalias, sixarm: every owned repository, including forks) and by project; recognition; translations; method |
 | `donate` | How to donate time (code, docs, translation, testing, sharing) and money (PayPal or Venmo to the author's email), and to ask about other ways; donations go to the author personally, not tax-deductible |
-| `about` | About the site and the author; principles; independence |
+| `about` | About the site and the author; principles; what Public Projects is not (not a standards body, vendor, medical device supplier, employer’s programme, or charity); independence |
 | `search` | Client-side search results (not in nav, sitemap, or llms.txt) |
 | `accessibility-statement` | Aim (WCAG 2.2 AA, no conformance claim), what is checked, known shortfalls, other formats, reporting, plans |
 | `cookie-policy` | No cookies; what cookies are; the two localStorage keys (`publicprojects-theme`, `publicprojects-text-size`); managing storage; other sites; concerns; changes |

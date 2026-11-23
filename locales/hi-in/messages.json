@@ -603,5 +603,16 @@
 	"Your theme and text-size choices stay in your own browser.": "आपकी थीम और टेक्स्ट-आकार के विकल्प आपके अपने ब्राउज़र में रहते हैं।",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "शून्य निर्भरता का अर्थ है कम आक्रमण-सतह और रोगी डेटा संभालने वाले सॉफ़्टवेयर के लिए सरल आश्वासन।",
 	"zoom in to 400 percent without text spilling off the screen;": "टेक्स्ट के स्क्रीन से बाहर फैले बिना 400 प्रतिशत तक ज़ूम कर सकें;",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "“इसे कीबोर्ड से चलाना संभव नहीं था” अपने आप में पूरी रिपोर्ट है। आपको किसी WCAG मानदंड का नाम बताने की ज़रूरत नहीं है। यदि आपको पता हो, तो कृपया बताएँ कि कौन-सा पृष्ठ, कौन-सा ब्राउज़र और कौन-सी सहायक तकनीक उपयोग में थी।"
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "“इसे कीबोर्ड से चलाना संभव नहीं था” अपने आप में पूरी रिपोर्ट है। आपको किसी WCAG मानदंड का नाम बताने की ज़रूरत नहीं है। यदि आपको पता हो, तो कृपया बताएँ कि कौन-सा पृष्ठ, कौन-सा ब्राउज़र और कौन-सी सहायक तकनीक उपयोग में थी।",
+	"What Public Projects is not": "Public Projects क्या नहीं है",
+	"Not a standards body": "मानक निकाय नहीं",
+	"the projects implement published standards; they do not set them.": "परियोजनाएँ प्रकाशित मानकों को लागू करती हैं; वे उन्हें तय नहीं करतीं।",
+	"Not a vendor": "विक्रेता नहीं",
+	"there is no paid tier, no licence fee, and nothing to buy.": "न कोई सशुल्क स्तर है, न लाइसेंस शुल्क, और न ही ख़रीदने के लिए कुछ।",
+	"Not a medical device supplier": "चिकित्सा उपकरण आपूर्तिकर्ता नहीं",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "रोगी देखभाल में किसी स्वास्थ्य परियोजना का उपयोग करने के लिए, उसका उपयोग करने वाले सिस्टम का नैदानिक सुरक्षा कार्य आवश्यक है।",
+	"Not an employer’s programme": "किसी नियोक्ता का कार्यक्रम नहीं",
+	"these are personal projects, not products of any employer.": "ये व्यक्तिगत परियोजनाएँ हैं, किसी नियोक्ता के उत्पाद नहीं।",
+	"Not a charity": "धर्मार्थ संस्था नहीं",
+	"donations go to the author personally and are not tax-deductible.": "दान व्यक्तिगत रूप से लेखक को जाते हैं और उन पर कर छूट नहीं मिलती।"
 }

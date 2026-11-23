@@ -625,5 +625,16 @@
 	"Your theme and text-size choices stay in your own browser.": "تبقى اختياراتك للسمة وحجم النص في متصفحك أنت.",
 	"Zero dependencies means a smaller attack surface and simpler assurance for software that handles patient data.": "انعدام الاعتماديات يعني سطح هجوم أصغر وضمانًا أبسط للبرمجيات التي تتعامل مع بيانات المرضى.",
 	"zoom in to 400 percent without text spilling off the screen;": "التكبير حتى 400 بالمئة دون أن يخرج النص عن حدود الشاشة؛",
-	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "عبارة «لم أتمكن من تشغيل هذا بلوحة المفاتيح» بلاغ كامل. لا تحتاج إلى ذكر معيار WCAG. يُرجى ذكر الصفحة والمتصفح والتقنية المساعدة التي كنت تستخدمها، إن كنت تعرفها."
+	"“I could not operate this with the keyboard” is a complete report. You do not need to name a WCAG criterion. Please say which page, which browser, and which assistive technology you were using, if you know.": "عبارة «لم أتمكن من تشغيل هذا بلوحة المفاتيح» بلاغ كامل. لا تحتاج إلى ذكر معيار WCAG. يُرجى ذكر الصفحة والمتصفح والتقنية المساعدة التي كنت تستخدمها، إن كنت تعرفها.",
+	"What Public Projects is not": "ما لا تمثّله Public Projects",
+	"Not a standards body": "ليست هيئة معايير",
+	"the projects implement published standards; they do not set them.": "تطبّق المشروعات معايير منشورة، ولا تضعها.",
+	"Not a vendor": "ليست جهة بائعة",
+	"there is no paid tier, no licence fee, and nothing to buy.": "لا توجد فئة مدفوعة ولا رسوم ترخيص، ولا شيء يُشترى.",
+	"Not a medical device supplier": "ليست جهة موردة لأجهزة طبية",
+	"using a health project in patient care needs the clinical safety work of the system that uses it.": "يتطلب استخدام مشروع صحي في رعاية المرضى أعمال السلامة السريرية الخاصة بالنظام الذي يستخدمه.",
+	"Not an employer’s programme": "ليست برنامجًا لجهة عمل",
+	"these are personal projects, not products of any employer.": "هذه مشروعات شخصية، وليست من منتجات أي جهة عمل.",
+	"Not a charity": "ليست جمعية خيرية",
+	"donations go to the author personally and are not tax-deductible.": "تذهب التبرعات إلى المؤلف شخصيًا، ولا تُخصم من الضرائب."
 }

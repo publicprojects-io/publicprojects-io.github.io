@@ -120,6 +120,7 @@ Keep these; they are differentiators.
 | Publish a security policy | Done: the Security page, with GitHub private vulnerability reporting |
 | Show each project in action | Done for the four core health crates: `fhir`, `hl7`, `snomed`, and `nhs-number` ("Use it", with real output and its version) |
 | Add a social card image | Done: one language-neutral 1200 × 630 card for every page and locale (§ 5, item 1) |
+| (New) Add "What Public Projects is not" to About | Done (§ 5, item 2) |
 | Add a key-facts table to every project page | Built, then removed on 23 November at the author's request: project pages are now a single column, and the licence and clinical safety data were deleted with it. This is a deliberate difference from OHTF; see § 6, question 4 |
 
 ## 5. Remaining advice
@@ -133,10 +134,9 @@ new text.
 1. **Add a social card image.** Done on 23 November: `static/social-card.png`
    (1200 × 630, language-neutral), with `og:image`, its size and alt text, and
    `twitter:card` `summary_large_image` on every page.
-2. **Add "What Public Projects is not" to the About page**: not a standards body, not
-   a product vendor, not a medical device supplier, not an employer's programme. This
-   gathers the independence and clinical safety notices into one memorable list, which
-   matters more now that project pages carry no clinical safety facts.
+2. **Add "What Public Projects is not" to the About page.** Done on 23 November:
+   not a standards body, not a vendor, not a medical device supplier, not an
+   employer’s programme, and not a charity, in every locale.
 3. **Add a short Contribute page**, linked from Donate › "Donate time" and Digital
    health teams: "you do not need permission to start"; how to report a problem,
    improve documentation, or send code; never include real patient data; report
@@ -210,7 +210,7 @@ These are decisions for the author, not changes to make by default.
 ## 7. Suggested next steps
 
 1. ~~Add the social card image~~ (done on 23 November).
-2. Add "What Public Projects is not" to About, and the Contribute page (items 2 and 3).
+2. ~~Add "What Public Projects is not" to About~~ (done on 23 November); add the Contribute page (item 3).
 3. Decide the strategic questions in § 6, starting with continuity and the
    relationship with OHTF, which affect what the Digital health teams page says.
 4. Add further verified "Use it" examples, and note the shared NHS Number test vectors
