@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDate, formatNumber, isTranslated, localeDir, localePath, parsePath, pickLocale, t, tCount } from './locales';
+import { formatDate, formatNumber, isTranslated, localeDir, localePath, parsePath, pickLocale, rootRedirectScript, t, tCount } from './locales';
 
 describe('t', () => {
 	it('leaves en-001 and en-gb unchanged', () => {
@@ -218,6 +218,25 @@ describe('paths', () => {
 		expect(pickLocale(['en-AU'])).toBe('en-001');
 		expect(pickLocale(['fi-FI', 'en-GB'])).toBe('en-gb');
 		expect(pickLocale(['fi-FI'])).toBe(null);
+	});
+	it('redirects the site root like pickLocale, or to en-001', () => {
+		const go = (navigator: { languages?: string[]; language?: string }, base = '') => {
+			let target = '';
+			new Function('window', 'navigator', 'location', rootRedirectScript(base))(
+				{ navigator },
+				navigator,
+				{ replace: (url: string) => (target = url) }
+			);
+			return target;
+		};
+		const samples = ['cy', 'zh-Hans-CN', 'hi-Latn-IN', 'ar-SA', 'fr-CA', 'ru_BY', 'id-MY', 'de-CH', 'pt-PT', 'ur-IN', 'da-DK', 'en-US', 'en-AU'];
+		for (const lang of samples) expect(go({ languages: [lang] })).toBe(`/${pickLocale([lang])}/`);
+		expect(go({ languages: ['fi-FI', 'sv-FI'] })).toBe('/sv-001/');
+		expect(go({ languages: [], language: 'ja-JP' })).toBe('/ja-jp/');
+		expect(go({ languages: ['fi-FI'] })).toBe('/en-001/');
+		expect(go({ languages: [], language: '' })).toBe('/en-001/');
+		expect(go({})).toBe('/en-001/');
+		expect(go({ languages: ['da'] }, '/preview')).toBe('/preview/da-001/');
 	});
 });
 

@@ -220,6 +220,34 @@ export function pickLocale(preferred: readonly string[]): Locale | null {
 	return null;
 }
 
+/**
+ * Inline script for the site root: sends the browser to `pickLocale()` of its
+ * languages, or to the default locale when it has none or none match. It runs
+ * as the page's head is parsed, before the app loads, so there is no wait.
+ * Plain ES5 so it runs in any browser; tests check it agrees with `pickLocale()`.
+ */
+export function rootRedirectScript(base = ''): string {
+	return `(function () {
+	var L = ${JSON.stringify(LOCALES)};
+	function has(c) { return L.indexOf(c) !== -1; }
+	function pick(prefs) {
+		for (var i = 0; i < prefs.length; i++) {
+			var parts = String(prefs[i] || '').trim().toLowerCase().replace(/_/g, '-').split('-').filter(Boolean);
+			if (!parts.length) continue;
+			var region = '';
+			for (var j = 1; j < parts.length; j++) if (/^([a-z]{2}|\\d{3})$/.test(parts[j])) { region = parts[j]; break; }
+			var tries = [parts.join('-'), region ? parts[0] + '-' + region : '', parts[0] + '-001'];
+			for (var k = 0; k < tries.length; k++) if (has(tries[k])) return tries[k];
+			for (var m = 0; m < L.length; m++) if (L[m].indexOf(parts[0] + '-') === 0) return L[m];
+		}
+		return null;
+	}
+	var nav = window.navigator || {};
+	var prefs = nav.languages && nav.languages.length ? nav.languages : [nav.language];
+	location.replace(${JSON.stringify(base)} + '/' + (pick(prefs) || ${JSON.stringify(DEFAULT_LOCALE)}) + '/');
+})();`;
+}
+
 // British → American spelling. Whole words only, so names such as
 // "World Health Organization" (already American) are untouched.
 const WORDS: Record<string, string> = {
