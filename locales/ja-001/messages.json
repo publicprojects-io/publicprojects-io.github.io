@@ -614,5 +614,10 @@
 	"Not an employer’s programme": "雇用主のプログラムではありません",
 	"these are personal projects, not products of any employer.": "これらは個人のプロジェクトであり、いかなる雇用主の製品でもありません。",
 	"Not a charity": "慈善団体ではありません",
-	"donations go to the author personally and are not tax-deductible.": "寄付は作者個人に渡り、税控除の対象にはなりません。"
+	"donations go to the author personally and are not tax-deductible.": "寄付は作者個人に渡り、税控除の対象にはなりません。",
+	"All categories": "すべてのカテゴリ",
+	"Project categories": "プロジェクトのカテゴリ",
+	"Filter projects by keyword": "キーワードでプロジェクトを絞り込む",
+	"Projects shown:": "表示中のプロジェクト：",
+	"No projects match. Try fewer words, or another category.": "一致するプロジェクトはありません。語を減らすか、別のカテゴリを選んでください。"
 }

@@ -615,5 +615,10 @@
 	"Not an employer’s programme": "No es un programa de un empleador",
 	"these are personal projects, not products of any employer.": "son proyectos personales, no productos de ningún empleador.",
 	"Not a charity": "No es una organización benéfica",
-	"donations go to the author personally and are not tax-deductible.": "los donativos van personalmente al autor y no son deducibles de impuestos."
+	"donations go to the author personally and are not tax-deductible.": "los donativos van personalmente al autor y no son deducibles de impuestos.",
+	"All categories": "Todas las categorías",
+	"Project categories": "Categorías de proyectos",
+	"Filter projects by keyword": "Filtrar proyectos por palabra clave",
+	"Projects shown:": "Proyectos mostrados:",
+	"No projects match. Try fewer words, or another category.": "Ningún proyecto coincide. Prueba con menos palabras o con otra categoría."
 }

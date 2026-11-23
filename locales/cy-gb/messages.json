@@ -615,5 +615,10 @@
 	"Not an employer’s programme": "Nid rhaglen cyflogwr",
 	"these are personal projects, not products of any employer.": "prosiectau personol yw’r rhain, nid cynhyrchion unrhyw gyflogwr.",
 	"Not a charity": "Nid elusen",
-	"donations go to the author personally and are not tax-deductible.": "mae rhoddion yn mynd i’r awdur yn bersonol, ac ni ellir eu didynnu o dreth."
+	"donations go to the author personally and are not tax-deductible.": "mae rhoddion yn mynd i’r awdur yn bersonol, ac ni ellir eu didynnu o dreth.",
+	"All categories": "Pob categori",
+	"Project categories": "Categorïau prosiectau",
+	"Filter projects by keyword": "Hidlo prosiectau yn ôl allweddair",
+	"Projects shown:": "Prosiectau a ddangosir:",
+	"No projects match. Try fewer words, or another category.": "Does dim prosiectau’n cyfateb. Rhowch gynnig ar lai o eiriau, neu gategori arall."
 }

@@ -334,6 +334,61 @@ main:focus {
 	font-size: 0.9rem;
 }
 
+/* ── Project filter (home page) ─────────────────────────────────────── */
+
+.project-filter {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin-block-end: var(--lily-space-md, 1rem);
+}
+
+.project-filter-query {
+	max-width: 36rem;
+	padding: 0.6rem 0.75rem;
+	font: inherit;
+	border: 2px solid var(--color-base-300);
+	border-radius: var(--lily-radius-sm, 0.25rem);
+	background: var(--color-base-100);
+	color: inherit;
+}
+
+/* Lily themes give the group its inset band; keep it the width of its items. */
+.project-filter-categories {
+	align-self: flex-start;
+	gap: 0.5rem;
+}
+
+.project-filter-categories button {
+	padding: 0.4rem 0.9rem;
+	font: inherit;
+	border: 2px solid var(--color-base-300);
+	border-radius: 999px;
+	background: var(--color-base-100);
+	color: inherit;
+	cursor: pointer;
+}
+
+.project-filter-categories button:hover {
+	background: var(--color-base-200);
+}
+
+.project-filter-categories button[aria-checked='true'] {
+	border-color: var(--color-primary);
+	background: var(--color-primary);
+	color: var(--color-primary-content);
+	font-weight: 600;
+}
+
+.project-filter-status,
+.project-filter-empty {
+	margin: 0;
+}
+
+.project-filter-empty {
+	margin-block-end: var(--lily-space-md, 1rem);
+}
+
 /* ── Cards ──────────────────────────────────────────────────────────── */
 
 .card-grid {

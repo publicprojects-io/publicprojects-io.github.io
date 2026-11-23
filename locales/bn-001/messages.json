@@ -614,5 +614,10 @@
 	"Not an employer’s programme": "কোনো নিয়োগকর্তার কর্মসূচি নয়",
 	"these are personal projects, not products of any employer.": "এগুলো ব্যক্তিগত প্রকল্প, কোনো নিয়োগকর্তার পণ্য নয়।",
 	"Not a charity": "দাতব্য সংস্থা নয়",
-	"donations go to the author personally and are not tax-deductible.": "অনুদান ব্যক্তিগতভাবে লেখকের কাছে যায় এবং তা করছাড়যোগ্য নয়।"
+	"donations go to the author personally and are not tax-deductible.": "অনুদান ব্যক্তিগতভাবে লেখকের কাছে যায় এবং তা করছাড়যোগ্য নয়।",
+	"All categories": "সব বিভাগ",
+	"Project categories": "প্রকল্পের বিভাগ",
+	"Filter projects by keyword": "মূলশব্দ দিয়ে প্রকল্প ছাঁকুন",
+	"Projects shown:": "দেখানো প্রকল্প:",
+	"No projects match. Try fewer words, or another category.": "কোনো প্রকল্প মেলেনি। কম শব্দ লিখে দেখুন, বা অন্য বিভাগ বেছে নিন।"
 }

@@ -615,5 +615,10 @@
 	"Not an employer’s programme": "Không phải chương trình của nhà tuyển dụng",
 	"these are personal projects, not products of any employer.": "đây là các dự án cá nhân, không phải sản phẩm của bất kỳ nhà tuyển dụng nào.",
 	"Not a charity": "Không phải tổ chức từ thiện",
-	"donations go to the author personally and are not tax-deductible.": "tiền quyên góp được chuyển trực tiếp cho tác giả và không được khấu trừ thuế."
+	"donations go to the author personally and are not tax-deductible.": "tiền quyên góp được chuyển trực tiếp cho tác giả và không được khấu trừ thuế.",
+	"All categories": "Tất cả danh mục",
+	"Project categories": "Danh mục dự án",
+	"Filter projects by keyword": "Lọc dự án theo từ khóa",
+	"Projects shown:": "Dự án đang hiển thị:",
+	"No projects match. Try fewer words, or another category.": "Không có dự án phù hợp. Hãy thử ít từ hơn, hoặc một danh mục khác."
 }

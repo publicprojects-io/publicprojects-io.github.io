@@ -2,7 +2,7 @@
 	import { base } from '#lib/base.js';
 	import { ActionLink, ContainerWithFixedWidth, Hero, HeroHeadline } from '@lilydesignsystem/svelte-headless';
 	import HeroArt from '#lib/components/HeroArt.svelte';
-	import ProjectGrid from '#lib/components/ProjectGrid.svelte';
+	import ProjectFilter from '#lib/components/ProjectFilter.svelte';
 	import Seo from '#lib/components/Seo.svelte';
 	import { AREAS, PROJECTS, STATS_AS_OF, TOTALS, HOME_DOWNLOADS_FLOOR, homeProjects, type Area } from '#lib/data/projects.js';
 	import { formatDate, formatNumber, localePath, t, tCount } from '#lib/locales.js';
@@ -126,6 +126,6 @@
 	<!-- Spec: all other home page information comes first, then every project card, then the footer. -->
 	<section class="section" aria-labelledby="projects-heading">
 		<h2 id="projects-heading">{s('All projects')} ({PROJECTS.length})</h2>
-		<ProjectGrid projects={homeProjects()} {locale} showArea share maxColumns={3} />
+		<ProjectFilter projects={homeProjects()} {locale} share />
 	</section>
 </ContainerWithFixedWidth>

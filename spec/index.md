@@ -257,6 +257,17 @@ then the footer.
    - Ways of Working, International Patient Summary, Architecture Decision Record;
    - Coordinated Vulnerability Disclosure, Queueing Theory, Assertables.
 
+   Above the cards, a project filter (`ProjectFilter`, logic in
+   `src/lib/project-filter.ts`): a Lily `SearchInput` that keeps the projects
+   containing every keyword (in the page's language, the English name, and the tags),
+   and a Lily `SegmentGroup` of categories with their counts: All categories, then
+   each name shown above project names on cards (Health care and medical, Public
+   value, Software engineering leadership, Business executive leadership). The two
+   combine. A live status line gives the number shown, and a message replaces the
+   grid when nothing matches. Filtering keeps the order above. It runs in the
+   browser, so the controls appear after hydration; without JavaScript every card
+   shows.
+
    Every other project follows in catalogue order (`HOME_FIRST` in `projects.ts`).
 
 ### Project pages
@@ -374,7 +385,7 @@ CI runs the same three commands before deploying.
 ## 10. Acceptance criteria
 
 1. The home page shows a Lily Hero, headline numbers dated from `stats.json`, the
-   three areas, and then every project card, each with a lower-left Lily SharePicker, and a status pill only when the status
+   three areas, and then a category and keyword filter above every project card, each with a lower-left Lily SharePicker, and a status pill only when the status
    is demonstration, maintenance, or archived.
 2. The header has a Lily PickerBar with search, all Lily default themes (sorted, UK
    and US last), locales en-001, en-gb, en-us, cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001, es-mx, es-001, es-es, fr-fr, fr-001, fr-ca, ru-ru, ru-001, ru-by, bn-bd, bn-001, bn-in, id-id, id-001, id-my, th-th, th-001, ja-jp, ja-001, ko-kr, ko-001, sw-tz, sw-001, sv-se, sv-001, nl-nl, nl-001, vi-vn, vi-001, de-de, de-001, de-at, pt-br, pt-001, pt-pt, ur-001, and da-001, text size, and the six share

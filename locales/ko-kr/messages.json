@@ -614,5 +614,10 @@
 	"Not an employer’s programme": "고용주의 프로그램이 아닙니다",
 	"these are personal projects, not products of any employer.": "이들은 개인 프로젝트이며, 어떤 고용주의 제품도 아닙니다.",
 	"Not a charity": "자선 단체가 아닙니다",
-	"donations go to the author personally and are not tax-deductible.": "기부금은 작성자 개인에게 전달되며 세금 공제 대상이 아닙니다."
+	"donations go to the author personally and are not tax-deductible.": "기부금은 작성자 개인에게 전달되며 세금 공제 대상이 아닙니다.",
+	"All categories": "모든 분류",
+	"Project categories": "프로젝트 분류",
+	"Filter projects by keyword": "키워드로 프로젝트 필터링",
+	"Projects shown:": "표시된 프로젝트:",
+	"No projects match. Try fewer words, or another category.": "일치하는 프로젝트가 없습니다. 단어를 줄이거나 다른 분류를 선택해 보세요."
 }

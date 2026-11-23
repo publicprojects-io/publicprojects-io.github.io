@@ -614,5 +614,10 @@
 	"Not an employer’s programme": "不是雇主的项目",
 	"these are personal projects, not products of any employer.": "这些是个人项目，不是任何雇主的产品。",
 	"Not a charity": "不是慈善机构",
-	"donations go to the author personally and are not tax-deductible.": "捐款归作者个人所有，不可抵税。"
+	"donations go to the author personally and are not tax-deductible.": "捐款归作者个人所有，不可抵税。",
+	"All categories": "全部类别",
+	"Project categories": "项目类别",
+	"Filter projects by keyword": "按关键词筛选项目",
+	"Projects shown:": "显示的项目：",
+	"No projects match. Try fewer words, or another category.": "没有匹配的项目。请减少关键词，或选择其他类别。"
 }

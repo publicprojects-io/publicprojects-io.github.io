@@ -636,5 +636,10 @@
 	"Not an employer’s programme": "ليست برنامجًا لجهة عمل",
 	"these are personal projects, not products of any employer.": "هذه مشروعات شخصية، وليست من منتجات أي جهة عمل.",
 	"Not a charity": "ليست جمعية خيرية",
-	"donations go to the author personally and are not tax-deductible.": "تذهب التبرعات إلى المؤلف شخصيًا، ولا تُخصم من الضرائب."
+	"donations go to the author personally and are not tax-deductible.": "تذهب التبرعات إلى المؤلف شخصيًا، ولا تُخصم من الضرائب.",
+	"All categories": "كل الفئات",
+	"Project categories": "فئات المشروعات",
+	"Filter projects by keyword": "تصفية المشروعات بكلمة مفتاحية",
+	"Projects shown:": "المشروعات المعروضة:",
+	"No projects match. Try fewer words, or another category.": "لا توجد مشروعات مطابقة. جرّب كلمات أقل، أو فئة أخرى."
 }

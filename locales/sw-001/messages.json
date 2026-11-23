@@ -619,5 +619,10 @@
 	"Not an employer’s programme": "Si programu ya mwajiri",
 	"these are personal projects, not products of any employer.": "hii ni miradi binafsi, si bidhaa za mwajiri yeyote.",
 	"Not a charity": "Si shirika la hisani",
-	"donations go to the author personally and are not tax-deductible.": "michango huenda kwa mwandishi binafsi na haipunguzi kodi."
+	"donations go to the author personally and are not tax-deductible.": "michango huenda kwa mwandishi binafsi na haipunguzi kodi.",
+	"All categories": "Makundi yote",
+	"Project categories": "Makundi ya miradi",
+	"Filter projects by keyword": "Chuja miradi kwa neno kuu",
+	"Projects shown:": "Miradi inayoonyeshwa:",
+	"No projects match. Try fewer words, or another category.": "Hakuna mradi unaolingana. Jaribu maneno machache zaidi, au kundi jingine."
 }

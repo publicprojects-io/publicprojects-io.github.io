@@ -49,6 +49,10 @@ const BASE = {
 	stars: 'GitHub stars',
 	downloads: 'downloads',
 	source: 'Source',
+	projectFilter: {
+		categories: 'Project categories',
+		query: 'Filter projects by keyword'
+	},
 	footerAbout:
 		'Public Projects are personal open-source projects by Joel Parker Henderson, built in the author’s own time. They are not products of, or endorsed by, any employer.',
 };

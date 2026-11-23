@@ -618,5 +618,10 @@
 	"Not an employer’s programme": "Inte en arbetsgivares program",
 	"these are personal projects, not products of any employer.": "det här är personliga projekt, inte produkter från någon arbetsgivare.",
 	"Not a charity": "Inte en välgörenhetsorganisation",
-	"donations go to the author personally and are not tax-deductible.": "gåvor går till upphovspersonen personligen och är inte avdragsgilla."
+	"donations go to the author personally and are not tax-deductible.": "gåvor går till upphovspersonen personligen och är inte avdragsgilla.",
+	"All categories": "Alla kategorier",
+	"Project categories": "Projektkategorier",
+	"Filter projects by keyword": "Filtrera projekt efter nyckelord",
+	"Projects shown:": "Visade projekt:",
+	"No projects match. Try fewer words, or another category.": "Inga projekt matchar. Prova färre ord eller en annan kategori."
 }

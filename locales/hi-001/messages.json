@@ -614,5 +614,10 @@
 	"Not an employer’s programme": "किसी नियोक्ता का कार्यक्रम नहीं",
 	"these are personal projects, not products of any employer.": "ये व्यक्तिगत परियोजनाएँ हैं, किसी नियोक्ता के उत्पाद नहीं।",
 	"Not a charity": "धर्मार्थ संस्था नहीं",
-	"donations go to the author personally and are not tax-deductible.": "दान व्यक्तिगत रूप से लेखक को जाते हैं और उन पर कर छूट नहीं मिलती।"
+	"donations go to the author personally and are not tax-deductible.": "दान व्यक्तिगत रूप से लेखक को जाते हैं और उन पर कर छूट नहीं मिलती।",
+	"All categories": "सभी श्रेणियाँ",
+	"Project categories": "परियोजना श्रेणियाँ",
+	"Filter projects by keyword": "कीवर्ड से परियोजनाएँ छाँटें",
+	"Projects shown:": "दिखाई गई परियोजनाएँ:",
+	"No projects match. Try fewer words, or another category.": "कोई परियोजना मेल नहीं खाती। कम शब्द आज़माएँ, या कोई दूसरी श्रेणी चुनें।"
 }

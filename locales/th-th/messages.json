@@ -614,5 +614,10 @@
 	"Not an employer’s programme": "ไม่ใช่โครงการของนายจ้าง",
 	"these are personal projects, not products of any employer.": "โครงการเหล่านี้เป็นโครงการส่วนตัว ไม่ใช่ผลิตภัณฑ์ของนายจ้างใด",
 	"Not a charity": "ไม่ใช่องค์กรการกุศล",
-	"donations go to the author personally and are not tax-deductible.": "เงินบริจาคมอบให้ผู้เขียนเป็นการส่วนตัว และนำไปลดหย่อนภาษีไม่ได้"
+	"donations go to the author personally and are not tax-deductible.": "เงินบริจาคมอบให้ผู้เขียนเป็นการส่วนตัว และนำไปลดหย่อนภาษีไม่ได้",
+	"All categories": "ทุกหมวดหมู่",
+	"Project categories": "หมวดหมู่โครงการ",
+	"Filter projects by keyword": "กรองโครงการตามคำสำคัญ",
+	"Projects shown:": "โครงการที่แสดง:",
+	"No projects match. Try fewer words, or another category.": "ไม่มีโครงการที่ตรงกัน ลองใช้คำให้น้อยลง หรือเลือกหมวดหมู่อื่น"
 }

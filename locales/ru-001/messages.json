@@ -625,5 +625,10 @@
 	"Not an employer’s programme": "Не программа работодателя",
 	"these are personal projects, not products of any employer.": "это личные проекты, а не продукты какого-либо работодателя.",
 	"Not a charity": "Не благотворительная организация",
-	"donations go to the author personally and are not tax-deductible.": "пожертвования идут лично автору и не дают права на налоговый вычет."
+	"donations go to the author personally and are not tax-deductible.": "пожертвования идут лично автору и не дают права на налоговый вычет.",
+	"All categories": "Все категории",
+	"Project categories": "Категории проектов",
+	"Filter projects by keyword": "Фильтр проектов по ключевому слову",
+	"Projects shown:": "Показано проектов:",
+	"No projects match. Try fewer words, or another category.": "Подходящих проектов нет. Попробуйте меньше слов или другую категорию."
 }
