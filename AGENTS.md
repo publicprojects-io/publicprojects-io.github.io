@@ -28,6 +28,7 @@ a static SvelteKit 3 site on the `publicprojects-io` organisation's root GitHub 
 | `src/lib/ui.ts` | Interface strings and accessible names |
 | `.github/workflows/deploy.yml` | Check, test with coverage, build, and deploy to GitHub Pages |
 | `.github/dependabot.yml` | Weekly npm and GitHub Actions update pull requests |
+| `LICENSE.md`, `LICENSES/` | The site's licence choice (MIT, Apache-2.0, BSD-3-Clause, GPL-2.0-only, GPL-3.0-only, OGL-UK-3.0, or CC-BY-SA-4.0) and each licence text |
 
 ## Commands
 
