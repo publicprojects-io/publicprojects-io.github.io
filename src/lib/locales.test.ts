@@ -241,15 +241,6 @@ describe('paths', () => {
 	});
 });
 
-describe('t with a label context', () => {
-	it('uses the label entry where a catalogue has one, else the plain entry', () => {
-		expect(t('ru-ru', 'GitHub stars')).toBe('звёзд на GitHub');
-		expect(t('ru-ru', 'GitHub stars', 'label')).toBe('Звёзды на GitHub');
-		expect(t('fr-fr', 'GitHub stars', 'label')).toBe('Étoiles GitHub');
-		expect(t('zh-cn', 'GitHub stars', 'label')).toBe(t('zh-cn', 'GitHub stars'));
-		expect(t('en-001', 'GitHub stars', 'label')).toBe('GitHub stars');
-	});
-});
 
 describe('tCount', () => {
 	it('uses the plural form for the count, and the plain entry after a compact count', () => {

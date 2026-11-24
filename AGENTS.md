@@ -26,7 +26,8 @@ a static SvelteKit 3 site on the `publicprojects-io` organisation's root GitHub 
 | `src/lib/locales.ts` | Locales, paths, `t()` (en-us spelling, catalogue lookup), and number and date formats |
 | `locales/<locale>/messages.json` | Translation catalogues (cy-gb Welsh; zh-cn and zh-001 Simplified Chinese; hi-in and hi-001 Hindi; ar-eg and ar-001 Arabic, right to left; es-mx, es-001, and es-es Spanish; fr-fr, fr-001, and fr-ca French; ru-ru, ru-001, and ru-by Russian; bn-bd, bn-001, and bn-in Bengali; id-id, id-001, and id-my Indonesian; th-th and th-001 Thai; ja-jp and ja-001 Japanese; ko-kr and ko-001 Korean; sw-tz and sw-001 Swahili; sv-se and sv-001 Swedish; nl-nl and nl-001 Dutch; vi-vn and vi-001 Vietnamese; de-de, de-001, and de-at German; pt-br, pt-001, and pt-pt Portuguese; ur-001 Urdu, right to left; da-001 Danish), keyed by English source text; see `locales/README.md` |
 | `src/lib/ui.ts` | Interface strings and accessible names |
-| `.github/workflows/deploy.yml` | Check, test, build, and deploy to GitHub Pages |
+| `.github/workflows/deploy.yml` | Check, test with coverage, build, and deploy to GitHub Pages |
+| `.github/dependabot.yml` | Weekly npm and GitHub Actions update pull requests |
 
 ## Commands
 
@@ -46,6 +47,11 @@ BASE_PATH=/preview pnpm run build   # optional: preview under a sub-path (produc
 ```
 
 A change is done when `check`, `coverage` (or `test`), and `build` all pass.
+
+Keep `typescript` on `^6`: TypeScript 7 has no JavaScript compiler API, and SvelteKit
+refuses to run without it (`typescript_compiler_api_missing`). Dependabot opens a
+weekly pull request for each npm and GitHub Actions update; merge one only after the
+checks above pass on it.
 
 ## SvelteKit 3 notes
 

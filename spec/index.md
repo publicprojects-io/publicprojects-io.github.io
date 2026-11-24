@@ -59,8 +59,10 @@ public open source for the global good.
   **https://publicprojects.io** (`static/CNAME`), like `lilydesignsystem.com`.
   HTTPS is enforced, and the organisation has verified the domain; keep its DNS
   `TXT` record `_github-pages-challenge-publicprojects-io`, which GitHub rechecks.
-  `.github/workflows/deploy.yml` installs, checks, tests, builds, and deploys on push
-  to `main`. The site lives at the domain root, so there is no base path.
+  `.github/workflows/deploy.yml` installs, checks, tests (with coverage), builds, and
+  deploys on push to `main`. `.github/dependabot.yml` proposes weekly npm and GitHub
+  Actions updates (Lily packages grouped; TypeScript majors ignored, since SvelteKit
+  needs TypeScript 6's compiler API). The site lives at the domain root, so there is no base path.
   `BASE_PATH` (injected as `__BASE_PATH__`, read via `src/lib/base.ts`, because
   SvelteKit 3 removed `base` from `$app/paths`) exists only to preview a build under
   a sub-path. `SITE_ORIGIN` in `src/lib/site.ts` is `https://publicprojects.io`.
@@ -164,10 +166,9 @@ public open source for the global good.
     `locales/README.md`). A missing entry falls back to English and is reported as
     `I18N_MISSING` during the build; CI builds with `I18N_STRICT=1`, which fails on any
     missing entry.
-  - Where one English string is used two ways and a language needs two
-    translations, `t(locale, text, 'label')` first looks up `"label|<text>"`, then
-    the plain entry. "GitHub stars" is the form after a number (home page tile,
-    project cards); "label|GitHub stars" is the project page label.
+  - Stand-alone labels get their own title-case entry rather than reusing the
+    form after a number: the home page tiles use "Downloads" and "GitHub Stars",
+    while project cards use "downloads" and "GitHub stars" after a count.
   - Words after an exact count (project cards) use `tCount()`, which picks the
     language's plural form (Intl.PluralRules) from `"<category>|<text>"`, else the
     plain entry. Russian has `one|` and `few|` forms for "GitHub stars" and
@@ -269,8 +270,9 @@ then the footer.
    `src/lib/project-filter.ts`): a Lily `SearchInput` that keeps the projects
    containing every keyword (in the page's language, the English name, and the tags),
    and a Lily `SegmentGroup` of categories with their counts: All categories, then
-   each name shown above project names on cards (Health care and medical, Public
-   value, Software engineering leadership, Business executive leadership). The two
+   one button for each name shown above project names on cards. The buttons use
+   short title-case labels (`categoryLabel`): Health Care, Public Value, Software
+   Engineering, and Business Leadership; cards keep the full names. The two
    combine. A live status line gives the number shown, and a message replaces the
    grid when nothing matches. Filtering keeps the order above. It runs in the
    browser, so the controls appear after hydration; without JavaScript every card
