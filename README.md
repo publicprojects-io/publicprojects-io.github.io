@@ -5,7 +5,7 @@ global good.
 
 The site presents Joel Parker Henderson's free, open source projects in health care,
 public value, and software engineering, with dated statistics that anyone can check,
-in English and 20 other languages.
+in 20+ languages.
 
 It is a static [SvelteKit](https://svelte.dev/docs/kit) site, built with the
 [Lily Design System](https://github.com/LilyDesignSystem/lily-design-system) and
