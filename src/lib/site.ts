@@ -3,7 +3,7 @@
 /** Origin the site is served from: the custom domain on the org root Pages site (static/CNAME). */
 export const SITE_ORIGIN = 'https://publicprojects.io';
 export const SITE_NAME = 'Public Projects';
-export const SITE_TAGLINE = 'Open source for the public good';
+export const SITE_TAGLINE = 'Public open source work for the global good';
 export const SOURCE_URL = 'https://github.com/publicprojects-io/publicprojects-io.github.io';
 export const ISSUES_URL = `${SOURCE_URL}/issues`;
 

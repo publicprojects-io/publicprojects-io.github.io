@@ -56,9 +56,9 @@
 		<HeroHeadline label={s(SITE_TAGLINE)}>
 			{#snippet media()}<HeroArt />{/snippet}
 			<div class="hero-copy">
-			<h1>{s('Open source for the public good')}</h1>
+			<h1>{s(SITE_TAGLINE)}</h1>
 			<p class="hero-lead">
-				{s('Free, open-source software, standards tooling, and guides for health care, public services, and software engineering. Built in public, translated for the world, and free for anyone to use.')}
+				{s('Free, open source software, standards tooling, and guides for health care, public services, and software engineering. Built in public, translated for the world, and free for anyone to use.')}
 			</p>
 			<div class="hero-actions">
 				<ActionLink href={href('projects')}>{s('Explore the projects')}</ActionLink>
@@ -74,10 +74,10 @@
 	<section class="stat-band" aria-labelledby="impact-heading">
 		<h2 id="impact-heading" class="visually-hidden">{s('Impact at a glance')}</h2>
 		<dl>
-			<div><dt>{tCount(locale, 'downloads', HOME_DOWNLOADS_FLOOR, true)}</dt><dd>{n(HOME_DOWNLOADS_FLOOR)}+</dd></div>
+			<div><dt>{s('Downloads')}</dt><dd>{n(HOME_DOWNLOADS_FLOOR)}+</dd></div>
 			<div><dt>{tCount(locale, 'GitHub stars', TOTALS.ownerStars, true)}</dt><dd>{n(TOTALS.ownerStars)}+</dd></div>
-			<div><dt>{s('languages for the most-translated guides')}</dt><dd>60+</dd></div>
-			<div><dt>{s('open-source projects, including health care')}</dt><dd>{TOTALS.projects}</dd></div>
+			<div><dt>{s('Languages')}</dt><dd>60+</dd></div>
+			<div><dt>{s('Projects')}</dt><dd>{TOTALS.projects}</dd></div>
 		</dl>
 		<p class="stat-band-note">
 			{s('Figures as of')} {formatDate(locale, STATS_AS_OF)}{s(', from GitHub, crates.io, and RubyGems.')}
@@ -118,7 +118,7 @@
 	<section class="section callout" aria-labelledby="teams-heading">
 		<h2 id="teams-heading">{s('For digital health teams')}</h2>
 		<p>
-			{s('NHS Number validation, HL7 and FHIR integration, SNOMED CT terminology, architecture decision records, and public value business cases: see where these open-source projects can help your work, and how to get involved.')}
+			{s('NHS Number validation, HL7 and FHIR integration, SNOMED CT terminology, architecture decision records, and public value business cases: see where these open source projects can help your work, and how to get involved.')}
 		</p>
 		<p><ActionLink href={href('digital-health-teams')}>{s('Open the digital health teams page')}</ActionLink></p>
 	</section>

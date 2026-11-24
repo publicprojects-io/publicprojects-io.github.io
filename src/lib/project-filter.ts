@@ -11,6 +11,19 @@ export function categoryOf(project: Project): string {
 /** Every category, in catalogue order, each listed once. */
 export const CATEGORIES: string[] = [...new Set(PROJECTS.map(categoryOf))];
 
+/** Short, title-case names for the filter's buttons; other categories show their full name. */
+const LABELS: Record<string, string> = {
+	'Health care and medical': 'Health Care',
+	'Public value': 'Public Value',
+	'Software engineering leadership': 'Software Engineering',
+	'Business executive leadership': 'Business Leadership'
+};
+
+/** The label for `category` on the filter's buttons, in English (translate it with `t`). */
+export function categoryLabel(category: string): string {
+	return LABELS[category] ?? category;
+}
+
 /** The text a project matches against: in `locale`, plus its English name and tags. */
 export function projectText(locale: Locale, project: Project): string {
 	const s = (text: string) => t(locale, text);

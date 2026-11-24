@@ -12,7 +12,7 @@ export function GET() {
 	const lines = [
 		`# ${SITE_NAME}`,
 		'',
-		`> ${SITE_TAGLINE}: free, open-source software, standards tooling, and guides for health care, public services, and software engineering, by ${PERSON.name}. Statistics as of ${STATS_AS_OF}.`,
+		`> ${SITE_TAGLINE}: free, open source software, standards tooling, and guides for health care, public services, and software engineering, by ${PERSON.name}. Statistics as of ${STATS_AS_OF}.`,
 		'',
 		'## Pages',
 		'',

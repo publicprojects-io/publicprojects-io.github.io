@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { PROJECTS } from './data/projects';
-import { CATEGORIES, categoryOf, filterProjects } from './project-filter';
+import { CATEGORIES, categoryLabel, categoryOf, filterProjects } from './project-filter';
 
 const slugs = (projects: { slug: string }[]) => projects.map((p) => p.slug);
 
@@ -43,5 +43,10 @@ describe('project filter', () => {
 	it('matches translated text and the English name', () => {
 		expect(slugs(filterProjects('fr-fr', PROJECTS, '', 'santé'))).not.toEqual([]);
 		expect(slugs(filterProjects('fr-fr', PROJECTS, '', 'GitAlias'))).toEqual(['gitalias']);
+	});
+
+	it('labels the filter buttons with short names, and any other category with its own', () => {
+		expect(CATEGORIES.map(categoryLabel)).toEqual(['Health Care', 'Public Value', 'Software Engineering', 'Business Leadership']);
+		expect(categoryLabel('Something new')).toBe('Something new');
 	});
 });

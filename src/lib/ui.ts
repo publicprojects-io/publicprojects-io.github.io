@@ -54,7 +54,7 @@ const BASE = {
 		query: 'Filter projects by keyword'
 	},
 	footerAbout:
-		'Public Projects are personal open-source projects by Joel Parker Henderson, built in the author’s own time. They are not products of, or endorsed by, any employer.',
+		'Public Projects are personal open source projects by Joel Parker Henderson, built in the author’s own time. They are not products of, or endorsed by, any employer.',
 };
 
 export type Ui = typeof BASE;

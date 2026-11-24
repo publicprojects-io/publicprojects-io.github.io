@@ -29,7 +29,7 @@
 		<InsetText>
 			<p>
 				<strong>{s('Clinical safety')}:</strong>
-				{s('These are open-source building blocks provided as is, without warranty. Any use in a live clinical setting needs your own organisation’s clinical safety assessment, for example under the UK standards DCB0129 and DCB0160. Demonstration projects are for learning only and are not for medical use.')}
+				{s('These are open source building blocks provided as is, without warranty. Any use in a live clinical setting needs your own organisation’s clinical safety assessment, for example under the UK standards DCB0129 and DCB0160. Demonstration projects are for learning only and are not for medical use.')}
 			</p>
 		</InsetText>
 		<p class="small">

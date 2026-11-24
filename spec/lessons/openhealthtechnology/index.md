@@ -18,7 +18,7 @@ OHTF), and advice for improving https://publicprojects.io.
 
 OHTF is a UK community interest company (Open Health Technology CIC, company 17544421,
 incorporated 27 October 2026; a change of name to Open Health Technology Foundation
-CIC is in progress). It gives open-source health software a neutral, long-term home:
+CIC is in progress). It gives open source health software a neutral, long-term home:
 it holds repositories at github.com/ohtf, holds domains and trademarks, and sells
 hosting, support, implementation and training to pay for maintenance. Its Articles of
 Association entrench a promise that Foundation Projects cannot be closed.
@@ -32,7 +32,7 @@ Material for MkDocs) with about 28 pages:
 | About | What OHTF does and is not; operating principles; legal form; origins; why OHTF rather than an existing body; Awesome Missing NHS Things; the logo story (Chamberlen forceps); advisers |
 | Projects | Foundation, candidate and experimental projects; a page per project with key facts; bring a project |
 | Services | Hosted services, support, implementation, training |
-| Governance | Company details; do-ocracy; open-source commitment; project lifecycle |
+| Governance | Company details; do-ocracy; open source commitment; project lifecycle |
 | Community | Contributing; code of conduct; Developer Certificate of Origin; security policy |
 | Transparency | Why we publish so much; incorporation; Articles of Association |
 | Contact | Addresses by purpose (hello, security, conduct), mailing list, issues |
@@ -50,7 +50,7 @@ Source: https://openhealthtechnology.org/projects/candidates/#nhs-number-for-rus
 ## 2. What OHTF does well
 
 1. **States the problem first.** The home page opens with a tagline ("A neutral,
-   long-term home for open-source health software"), a one-line belief ("Public money
+   long-term home for open source health software"), a one-line belief ("Public money
    should buy public code"), and a short "The gap OHTF fills" section, then how the
    organisation fills it.
 2. **Clear criteria.** Four tests (vendor-neutral, built for implementers, open and

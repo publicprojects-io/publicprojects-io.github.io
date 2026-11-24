@@ -6,7 +6,7 @@
 	import { SearchInput, SegmentGroup, SegmentGroupItem } from '@lilydesignsystem/svelte-headless';
 	import type { Project } from '#lib/data/projects.js';
 	import { formatNumber, t, type Locale } from '#lib/locales.js';
-	import { CATEGORIES, filterProjects } from '#lib/project-filter.js';
+	import { CATEGORIES, categoryLabel, filterProjects } from '#lib/project-filter.js';
 	import { ui } from '#lib/ui.js';
 	import ProjectGrid from './ProjectGrid.svelte';
 
@@ -19,7 +19,7 @@
 	let query = $state('');
 	const shown = $derived(filterProjects(locale, projects, category, query));
 	const count = (c: string) => filterProjects(locale, projects, c, '').length;
-	const options = $derived([{ value: '', name: s('All categories') }, ...CATEGORIES.map((c) => ({ value: c, name: s(c) }))]);
+	const options = $derived([{ value: '', name: s('All categories') }, ...CATEGORIES.map((c) => ({ value: c, name: s(categoryLabel(c)) }))]);
 
 	onMount(() => (ready = true));
 </script>

@@ -34,7 +34,7 @@
 	<header class="page-header">
 		<h1>{s('About Public Projects')}</h1>
 		<p class="lead">
-			{s('Public Projects collects open-source software, standards tooling, and guides that create public value, especially in health care. Everything is free to use, study, change, and share.')}
+			{s('Public Projects collects open source software, standards tooling, and guides that create public value, especially in health care. Everything is free to use, study, change, and share.')}
 		</p>
 	</header>
 
@@ -47,7 +47,7 @@
 			{s('Since 2006, Joel has run SixArm Software Consulting, building and leading software teams from zero through launch and scale. Roles include Chief Technology Officer at a Y Combinator-backed startup, technology consultant to the CTO of a venture-backed fintech, and Principal Consultant at ThoughtWorks, where Joel grew a team from zero to twenty and coached Fortune 50 clients.')}
 		</p>
 		<p>
-			{s('Joel has written guidebooks on agile change, project management, UI/UX design, software programming, innovation partnerships, startups, and business language, and maintains hundreds of open-source repositories.')}
+			{s('Joel has written guidebooks on agile change, project management, UI/UX design, software programming, innovation partnerships, startups, and business language, and maintains hundreds of open source repositories.')}
 		</p>
 
 		<h2>{s('Find Joel elsewhere')}</h2>
@@ -77,7 +77,7 @@
 
 		<h2>{s('Independence')}</h2>
 		<p>
-			{s('Public Projects are personal open-source projects, built in the author’s own time. They are not products of, or endorsed by, any employer or health organisation.')}
+			{s('Public Projects are personal open source projects, built in the author’s own time. They are not products of, or endorsed by, any employer or health organisation.')}
 		</p>
 		<p><a href={SOURCE_URL}>{s('The source code for this website')}</a> {s('is open too.')}</p>
 	</div>

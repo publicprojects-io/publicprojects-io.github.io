@@ -10,8 +10,8 @@ Related specifications:
 
 ## 1. Goal
 
-A user-friendly website for Joel Parker Henderson's public open-source projects:
-open source for the public good.
+A user-friendly website for Joel Parker Henderson's public open source projects:
+public open source work for the global good.
 
 ### Subgoals
 
@@ -30,7 +30,7 @@ open source for the public good.
 
 ### Emphasis
 
-- **The global importance of public open-source projects**: solve once and share
+- **The global importance of public open source projects**: solve once and share
   everywhere, public money and public code, reach in many languages, safer software.
 - **Public value, and health care and medical value**: what each project does for
   patients, carers, citizens, and public services.
@@ -442,7 +442,7 @@ handlers and `onMount` run.
   "г." ("21 ноября 2026"), because a full stop often follows a date. Russian nouns
   after a number take one of three forms (1 результат, 3 результата, 5
   результатов), but a fragment such as "results for" has one translation, which
-  uses the "5" form, as does "free, open-source projects" after the project count
+  uses the "5" form, as does "free, open source projects" after the project count
   (right for 38 projects). `tCount()` adds the "1" and "3" forms for these, the
   home page area counts, and the card and tile counts.
 - bn-001 and bn-in are copies of bn-bd, addressing the reader as "আপনি". The site

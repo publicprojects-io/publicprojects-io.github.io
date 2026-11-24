@@ -74,7 +74,7 @@
 
 		<h2 id={anchor('If you are not happy with our reply')}>{s('If you are not happy with our reply')}</h2>
 		<p>
-			{s('Public Projects is a personal, open-source project, not a public sector body, so no statutory accessibility regulation applies to it directly. If a public service uses one of these projects and you have a concern about that service, contact the service and its regulator.')}
+			{s('Public Projects is a personal, open source project, not a public sector body, so no statutory accessibility regulation applies to it directly. If a public service uses one of these projects and you have a concern about that service, contact the service and its regulator.')}
 		</p>
 
 		<h2 id={anchor('Our plans')}>{s('Our plans')}</h2>

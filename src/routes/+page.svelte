@@ -18,7 +18,7 @@
 	{@html redirect}
 </svelte:head>
 
-<Seo locale={DEFAULT_LOCALE} slug="" title={SITE_TAGLINE} description="Public Projects: open source for the public good. Choose your language." />
+<Seo locale={DEFAULT_LOCALE} slug="" title={SITE_TAGLINE} description="Public Projects: public open source work for the global good. Choose your language." />
 
 <ContainerWithFixedWidth maxWidth="76rem">
 	<header class="page-header">

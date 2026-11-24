@@ -69,13 +69,13 @@
 	<header class="page-header" data-area="health">
 		<h1>{s('For digital health teams')}</h1>
 		<p class="lead">
-			{s('Free, open-source tools and guides for problems that digital health groups work on every day: patient identity, integration, terminology, business cases, architecture, and accessible services. Use them, adapt them, and help improve them.')}
+			{s('Free, open source tools and guides for problems that digital health groups work on every day: patient identity, integration, terminology, business cases, architecture, and accessible services. Use them, adapt them, and help improve them.')}
 		</p>
 	</header>
 
 	<InsetText>
 		<p>
-			{s('Public Projects are personal open-source projects by')} {PERSON.name}, {s('built in the author’s own time. They are not products of, or endorsed by, any employer or health organisation. Any use in a live clinical setting needs your own organisation’s clinical safety assessment, such as under DCB0129 and DCB0160 in the UK.')}
+			{s('Public Projects are personal open source projects by')} {PERSON.name}, {s('built in the author’s own time. They are not products of, or endorsed by, any employer or health organisation. Any use in a live clinical setting needs your own organisation’s clinical safety assessment, such as under DCB0129 and DCB0160 in the UK.')}
 		</p>
 	</InsetText>
 
@@ -112,7 +112,7 @@
 			{s('Public-sector guidance in many countries asks digital teams to work in the open. For example, the UK Service Standard asks teams to')}
 			<a href="https://www.gov.uk/service-manual/service-standard/point-12-make-new-source-code-open">{s('make new source code open')}</a>,
 			{s('and the Technology Code of Practice asks them to')}
-			<a href="https://www.gov.uk/guidance/be-open-and-use-open-source">{s('be open and use open source')}</a>.
+			<a href="https://www.gov.uk/guidance/be-open-and-use-open source">{s('be open and use open source')}</a>.
 			{s('Open, reusable building blocks help health organisations reduce duplicated effort, avoid supplier lock-in, and share what works with health systems in other regions and countries.')}
 		</p>
 	</section>

@@ -8,13 +8,13 @@ export const PAGES: PageInfo[] = [
 	{
 		slug: '',
 		name: 'Home',
-		description: 'Free, open-source software, standards tooling, and guides for health care, public services, and software engineering.',
+		description: 'Free, open source software, standards tooling, and guides for health care, public services, and software engineering.',
 		nav: false
 	},
 	{
 		slug: 'health',
 		name: 'Health care',
-		description: 'Open-source health data standards, clinical terminology, and patient-centred software: FHIR, HL7, SNOMED CT, openEHR, NHS Number, and the International Patient Summary.',
+		description: 'Open source health data standards, clinical terminology, and patient-centred software: FHIR, HL7, SNOMED CT, openEHR, NHS Number, and the International Patient Summary.',
 		nav: true
 	},
 	{
@@ -32,13 +32,13 @@ export const PAGES: PageInfo[] = [
 	{
 		slug: 'projects',
 		name: 'All projects',
-		description: 'Every Public Projects open-source project, with links, dated statistics, and the public value each one creates.',
+		description: 'Every Public Projects open source project, with links, dated statistics, and the public value each one creates.',
 		nav: true
 	},
 	{
 		slug: 'digital-health-teams',
 		name: 'Digital health teams',
-		description: 'For digital health groups, such as health services, health-tech teams, and public health organisations: where these open-source projects can help, and how to get involved.',
+		description: 'For digital health groups, such as health services, health-tech teams, and public health organisations: where these open source projects can help, and how to get involved.',
 		nav: true
 	},
 	{
@@ -110,7 +110,7 @@ export const PAGES: PageInfo[] = [
 	{
 		slug: 'terms-of-use',
 		name: 'Terms of use',
-		description: 'How you may use the Public Projects website and its open-source projects.',
+		description: 'How you may use the Public Projects website and its open source projects.',
 		nav: false,
 		footer: true
 	},

@@ -22,10 +22,10 @@ describe('ProjectFilter', () => {
 		const buttons = [...document.querySelectorAll<HTMLButtonElement>('[role="radio"]')];
 		expect(buttons.map((b) => b.textContent?.trim())).toEqual([
 			`All categories (${PROJECTS.length})`,
-			'Health care and medical (17)',
-			'Public value (6)',
-			'Software engineering leadership (12)',
-			'Business executive leadership (3)'
+			'Health Care (17)',
+			'Public Value (6)',
+			'Software Engineering (12)',
+			'Business Leadership (3)'
 		]);
 		buttons[4].click();
 		flushSync();

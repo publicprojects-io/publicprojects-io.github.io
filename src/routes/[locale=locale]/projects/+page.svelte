@@ -19,7 +19,7 @@
 	<header class="page-header">
 		<h1>{s('All projects')}</h1>
 		<p class="lead">
-			{PROJECTS.length} {tCount(locale, 'free, open-source projects in three areas. Every project is free to use, study, change, and share.', PROJECTS.length)}
+			{PROJECTS.length} {tCount(locale, 'free, open source projects in three areas. Every project is free to use, study, change, and share.', PROJECTS.length)}
 		</p>
 		<nav aria-label={s('Areas')}>
 			<ul class="inline-list">

@@ -157,7 +157,7 @@ describe('layout', () => {
 		shown = undefined;
 		at('/en-001/projects/no-such-project/', 'en-001');
 		expect((globalThis as { spiedProps?: { shareProps: { title: string } } }).spiedProps?.shareProps.title).toBe(
-			'Open source for the public good · Public Projects'
+			'Public open source work for the global good · Public Projects'
 		);
 	});
 });
