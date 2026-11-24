@@ -11,7 +11,7 @@ Related specifications:
 ## 1. Goal
 
 A user-friendly website for Joel Parker Henderson's public open source projects:
-public open source work for the global good.
+public open source for the global good.
 
 ### Subgoals
 
@@ -246,13 +246,14 @@ In this order: all relevant information first, then the entire list of project c
 then the footer.
 
 1. Hero: headline, lead, and action links. No eyebrow above the headline.
-2. Headline numbers, dated, with a link to the Impact page.
-   Downloads show as a round floor, "80M+" over the label "downloads", which must
+2. Headline numbers from `stats.json`, with no date or source line under them: the
+   Impact page gives each number's date and source.
+   Downloads show as a round floor, "80M+" over the label "Downloads", which must
    stay at or below the total in `stats.json`; the Impact page shows the exact total.
 3. Why public open source matters.
-4. The three areas.
-5. The digital health teams callout.
-6. All projects: every project card, with its area above the project name.
+4. The three areas. (The hero's action links lead to the digital health teams
+   page; there is no separate callout for it.)
+5. All projects: every project card, with its area above the project name.
    Objectives and Key Results, Key Performance Indicators, and Maturity Models show
    "Business executive leadership" there instead; they stay in the software
    engineering leadership area everywhere else. Each card has a Lily SharePicker,
@@ -398,9 +399,9 @@ handlers and `onMount` run.
 
 ## 10. Acceptance criteria
 
-1. The home page shows a Lily Hero, headline numbers dated from `stats.json`, the
+1. The home page shows a Lily Hero, headline numbers from `stats.json` (dated and sourced on the Impact page), the
    three areas, and then a category and keyword filter above every project card, each with a lower-left Lily SharePicker, and a status pill only when the status
-   is demonstration, maintenance, or archived.
+   is demonstration or archived.
 2. The header has a Lily PickerBar with search, all Lily default themes (sorted, UK
    and US last), locales en-001, en-gb, en-us, cy-gb, zh-cn, zh-001, hi-in, hi-001, ar-eg, ar-001, es-mx, es-001, es-es, fr-fr, fr-001, fr-ca, ru-ru, ru-001, ru-by, bn-bd, bn-001, bn-in, id-id, id-001, id-my, th-th, th-001, ja-jp, ja-001, ko-kr, ko-001, sw-tz, sw-001, sv-se, sv-001, nl-nl, nl-001, vi-vn, vi-001, de-de, de-001, de-at, pt-br, pt-001, pt-pt, ur-001, and da-001, text size, and the six share
    options.

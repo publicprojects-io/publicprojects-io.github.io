@@ -27,7 +27,7 @@
 	const path = $derived(`${base}${localePath(locale, `projects/${project.slug}`)}`);
 	const status = $derived(statusOf(project));
 	// Cards leave out the common statuses; the project-status page lists every project’s status.
-	const QUIET_STATUSES: string[] = ['active', 'pre-release'];
+	const QUIET_STATUSES: string[] = ['active', 'pre-release', 'maintenance'];
 </script>
 
 <Card class="project-card" heading={s(project.name)} {headingLevel} href={path} wholeCardLink>

@@ -238,13 +238,6 @@ main:focus {
 	max-width: 48rem;
 }
 
-.callout {
-	margin-block: var(--lily-space-lg, 2rem);
-	padding: var(--lily-space-lg, 2rem);
-	border-inline-start: 6px solid var(--color-primary);
-	border-radius: var(--lily-radius-md, 0.5rem);
-	background: var(--color-base-200);
-}
 
 .inline-list,
 .plain-list,
@@ -330,9 +323,6 @@ main:focus {
 	margin-block-start: 0.25rem;
 }
 
-.stat-band-note {
-	font-size: 0.9rem;
-}
 
 /* ── On this page (long policy pages) ───────────────────────────────── */
 

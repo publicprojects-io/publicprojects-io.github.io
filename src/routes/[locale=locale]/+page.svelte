@@ -4,8 +4,8 @@
 	import HeroArt from '#lib/components/HeroArt.svelte';
 	import ProjectFilter from '#lib/components/ProjectFilter.svelte';
 	import Seo from '#lib/components/Seo.svelte';
-	import { AREAS, PROJECTS, STATS_AS_OF, TOTALS, HOME_DOWNLOADS_FLOOR, homeProjects, type Area } from '#lib/data/projects.js';
-	import { formatDate, formatNumber, localePath, t, tCount } from '#lib/locales.js';
+	import { AREAS, PROJECTS, TOTALS, HOME_DOWNLOADS_FLOOR, homeProjects, type Area } from '#lib/data/projects.js';
+	import { formatNumber, localePath, t, tCount } from '#lib/locales.js';
 	import { pageBySlug } from '#lib/pages.js';
 	import { PERSON, SITE_NAME, SITE_ORIGIN, SITE_TAGLINE } from '#lib/site.js';
 
@@ -75,14 +75,10 @@
 		<h2 id="impact-heading" class="visually-hidden">{s('Impact at a glance')}</h2>
 		<dl>
 			<div><dt>{s('Downloads')}</dt><dd>{n(HOME_DOWNLOADS_FLOOR)}+</dd></div>
-			<div><dt>{tCount(locale, 'GitHub stars', TOTALS.ownerStars, true)}</dt><dd>{n(TOTALS.ownerStars)}+</dd></div>
+			<div><dt>{s('GitHub Stars')}</dt><dd>{n(TOTALS.ownerStars)}+</dd></div>
 			<div><dt>{s('Languages')}</dt><dd>60+</dd></div>
 			<div><dt>{s('Projects')}</dt><dd>{TOTALS.projects}</dd></div>
 		</dl>
-		<p class="stat-band-note">
-			{s('Figures as of')} {formatDate(locale, STATS_AS_OF)}{s(', from GitHub, crates.io, and RubyGems.')}
-			<a href={href('impact')}>{s('See every number and its source')}</a>.
-		</p>
 	</section>
 
 	<section class="section" aria-labelledby="why-heading">
@@ -113,14 +109,6 @@
 				</li>
 			{/each}
 		</ul>
-	</section>
-
-	<section class="section callout" aria-labelledby="teams-heading">
-		<h2 id="teams-heading">{s('For digital health teams')}</h2>
-		<p>
-			{s('NHS Number validation, HL7 and FHIR integration, SNOMED CT terminology, architecture decision records, and public value business cases: see where these open source projects can help your work, and how to get involved.')}
-		</p>
-		<p><ActionLink href={href('digital-health-teams')}>{s('Open the digital health teams page')}</ActionLink></p>
 	</section>
 
 	<!-- Spec: all other home page information comes first, then every project card, then the footer. -->
