@@ -39,7 +39,7 @@
 		<h2 id="totals-heading" class="visually-hidden">{s('Totals')}</h2>
 		<dl>
 			<div><dt>{s('package downloads')}</dt><dd>{formatNumber(locale, TOTALS.downloads)}</dd></div>
-			<div><dt>{s('GitHub stars across the joelparkerhenderson, GitAlias, and SixArm repositories')}</dt><dd>{formatNumber(locale, TOTALS.ownerStars)}</dd></div>
+			<div><dt>{s('GitHub stars across the joelparkerhenderson, GitAlias, SixArm, Architecture Decision Record, and Queue Theory repositories')}</dt><dd>{formatNumber(locale, TOTALS.ownerStars)}</dd></div>
 			<div><dt>{s('projects translated into 10 or more languages')}</dt><dd>{translated.length}</dd></div>
 			<div><dt>{s('health care and medical projects')}</dt><dd>{TOTALS.healthProjects}</dd></div>
 		</dl>
@@ -108,7 +108,6 @@
 				</tfoot>
 			</table>
 		</div>
-		<p class="small">{s('The Architecture Decision Record repository belongs to its own organisation, so its stars are listed separately below and are not in this total.')}</p>
 	</section>
 
 	<section class="section" aria-labelledby="stars-heading">

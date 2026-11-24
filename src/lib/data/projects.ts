@@ -571,14 +571,14 @@ println!("{}", nhs_number.validate_check_digit());`,
 	},
 	{
 		slug: 'queueing-theory',
-		repo: 'joelparkerhenderson/queueing-theory',
+		repo: 'queue-theory/queue-theory',
 		name: 'Queueing Theory',
 		area: 'engineering',
 		summary: 'An introduction to queueing theory for software development.',
 		description: 'Explains arrival rates, utilisation, lead time, and error rates for services, workflows, streams, and distributed systems.',
 		value: 'Queues are everywhere in public services, from waiting lists to call centres. Understanding them helps design systems that cope with demand.',
-		links: [github('joelparkerhenderson/queueing-theory')],
-		stats: [{ kind: 'github', key: 'joelparkerhenderson/queueing-theory' }],
+		links: [github('queue-theory/queue-theory')],
+		stats: [{ kind: 'github', key: 'queue-theory/queue-theory' }],
 		tags: ['queueing theory', 'performance', 'systems thinking']
 	},
 	{

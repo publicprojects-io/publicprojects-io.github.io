@@ -1,20 +1,20 @@
 {
-	"asOf": "2026-11-21",
+	"asOf": "2026-11-24",
 	"github": {
 		"architecture-decision-record/architecture-decision-record": {
-			"stars": 17500,
-			"forks": 2824
+			"stars": 17515,
+			"forks": 2826
 		},
 		"gitalias/gitalias": {
-			"stars": 2703,
+			"stars": 2702,
 			"forks": 347
 		},
-		"joelparkerhenderson/queueing-theory": {
+		"queue-theory/queue-theory": {
 			"stars": 2249,
 			"forks": 77
 		},
 		"joelparkerhenderson/git-commit-message": {
-			"stars": 1305,
+			"stars": 1304,
 			"forks": 122
 		},
 		"joelparkerhenderson/monorepo-vs-polyrepo": {
@@ -59,60 +59,68 @@
 		}
 	},
 	"crates": {
-		"assertables": 2808802,
-		"nhs-number": 18354,
-		"fhir": 11659,
-		"hl7": 5101,
-		"er7": 3801,
-		"snomed": 2114,
-		"openehr": 751,
-		"schematron": 333,
-		"software-engineering": 128,
-		"public-value": 126,
+		"assertables": 2831223,
+		"nhs-number": 18518,
+		"fhir": 12173,
+		"hl7": 5306,
+		"er7": 4410,
+		"snomed": 2319,
+		"openehr": 760,
+		"schematron": 335,
+		"software-engineering": 129,
+		"public-value": 127,
 		"who-fic": 122,
-		"digital-health": 85,
-		"health-economics": 85
+		"digital-health": 86,
+		"health-economics": 86
 	},
 	"gems": {
-		"sixarm_ruby_unaccent": 93535411
+		"sixarm_ruby_unaccent": 93577239
 	},
 	"owners": {
 		"joelparkerhenderson": {
-			"repos": 430,
-			"stars": 10867
+			"repos": 429,
+			"stars": 8617
 		},
 		"gitalias": {
 			"repos": 2,
-			"stars": 2705
+			"stars": 2704
 		},
 		"sixarm": {
 			"repos": 648,
 			"stars": 2941
+		},
+		"architecture-decision-record": {
+			"repos": 2,
+			"stars": 17518
+		},
+		"queue-theory": {
+			"repos": 2,
+			"stars": 2249
 		}
 	},
 	"repos": {
 		"international-patient-summary/international-patient-summary": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"fhir-rust/fhir-rust": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"hl7-rust/hl7-rust": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"er7-rust/er7-rust": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"snomed-rust/snomed-rust": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-23",
 			"archived": false
 		},
 		"openehr-rust/openehr-rust": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"joelparkerhenderson/nhs-number-using-rust": {
@@ -120,15 +128,15 @@
 			"archived": false
 		},
 		"schematron-rust/schematron-rust": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"who-fic-rust/who-fic-rust": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"formexamples/form-examples": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-23",
 			"archived": false
 		},
 		"publicprojects-io/digital-health-rust-crate": {
@@ -140,15 +148,15 @@
 			"archived": false
 		},
 		"electronic-patient-record/electronic-patient-record": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"patient-administration-system/patient-administration-system": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"emergency-care-system/emergency-care-system": {
-			"pushedAt": "2026-10-06",
+			"pushedAt": "2026-11-21",
 			"archived": false
 		},
 		"joelparkerhenderson/care-plan": {
@@ -168,15 +176,15 @@
 			"archived": false
 		},
 		"lilydesignsystem/lily-design-system": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"service-management-guide/service-management-guide": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-22",
 			"archived": false
 		},
 		"agile-itil-guide/agile-itil-guide": {
-			"pushedAt": "2026-11-21",
+			"pushedAt": "2026-11-22",
 			"archived": false
 		},
 		"ways-of-working/ways-of-working": {
@@ -203,8 +211,8 @@
 			"pushedAt": "2026-08-06",
 			"archived": false
 		},
-		"joelparkerhenderson/queueing-theory": {
-			"pushedAt": "2026-06-07",
+		"queue-theory/queue-theory": {
+			"pushedAt": "2026-11-24",
 			"archived": false
 		},
 		"joelparkerhenderson/git-commit-message": {
@@ -236,7 +244,7 @@
 			"archived": false
 		},
 		"numcommand/num": {
-			"pushedAt": "2023-10-06",
+			"pushedAt": "2026-11-22",
 			"archived": false
 		},
 		"joelparkerhenderson/demo-rust-axum": {
